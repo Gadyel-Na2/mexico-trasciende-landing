@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="_ds/industry-8bbe05e3-a5d1-47d9-a090-d3961e3808d2/styles.css">
+<script src="_ds/industry-8bbe05e3-a5d1-47d9-a090-d3961e3808d2/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #f2f2f3; color: #1d1f20; font-family: "Barlow", system-ui, sans-serif; }
+  a { color: #416180; text-decoration: none; }
+  a:hover { color: #1d2d3d; }
+  ::selection { background: rgba(89,128,166,.25); }
+  @keyframes mtFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes mtSweep { from { transform: translateX(-100%); } to { transform: translateX(320%); } }
+  @keyframes mtPulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+  @keyframes mtScan { 0% { top: 8%; } 100% { top: 88%; } }
+  @media (max-width: 1040px) {
+    .mt-split { grid-template-columns: minmax(0,1fr) !important; gap: 44px !important; }
+    .mt-grid4 { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+    .mt-grid6 { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+    .mt-header { flex-wrap: wrap !important; row-gap: 10px !important; }
+    .mt-nav { order: 3; width: 100%; margin-left: 0 !important; gap: 18px !important; font-size: 13px !important; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+    .mt-nav::-webkit-scrollbar { display: none; }
+    .mt-nav a { white-space: nowrap; }
+    .mt-ticket { margin-left: auto; }
+  }
+  @media (max-width: 680px) {
+    .mt-grid4, .mt-grid2 { grid-template-columns: minmax(0,1fr) !important; }
+    .mt-grid6 { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  }
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden">
+
+<header style="position:sticky;top:0;z-index:60;background:rgba(29,45,61,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(148,188,227,.22)">
+  <div class="mt-header" style="max-width:1240px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:28px">
+    <a href="#inicio" style="display:flex;align-items:center;gap:11px;flex:0 0 auto">
+      <img src="assets/mt-mark.png" alt="México Trasciende" style="height:34px;width:auto;display:block;filter:brightness(0) invert(1)">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;letter-spacing:.16em;color:#f2f2f3;line-height:1.05;text-transform:uppercase">México<br>Trasciende</span>
+    </a>
+    <nav class="mt-nav" style="display:flex;gap:26px;margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.13em;text-transform:uppercase">
+      <a href="#proposito" style="color:rgba(242,242,243,.72)" style-hover="color:#94bce3">Propósito</a>
+      <a href="#agenda" style="color:rgba(242,242,243,.72)" style-hover="color:#94bce3">Agenda</a>
+      <a href="#ponentes" style="color:rgba(242,242,243,.72)" style-hover="color:#94bce3">Ponentes</a>
+      <a href="#app" style="color:rgba(242,242,243,.72)" style-hover="color:#94bce3">App</a>
+      <a href="#sede" style="color:rgba(242,242,243,.72)" style-hover="color:#94bce3">Sede</a>
+      <a href="#faq" style="color:rgba(242,242,243,.72)" style-hover="color:#94bce3">FAQ</a>
+    </nav>
+    <a class="btn btn-primary blueprint mt-ticket" href="https://market.tec.mx/" target="_blank" rel="noopener" style="flex:0 0 auto;height:38px;padding:0 20px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#0f1b25" style-hover="background:#94bce3">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      Boletos
+    </a>
+  </div>
+</header>
+
+<section id="inicio" style="position:relative;background:#1d2d3d;color:#f2f2f3;overflow:hidden;border-bottom:1px solid rgba(148,188,227,.2)">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(148,188,227,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(148,188,227,.07) 1px,transparent 1px);background-size:72px 72px;pointer-events:none"></div>
+  <div style="position:absolute;top:-18%;right:-8%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(89,128,166,.5),transparent 66%);filter:blur(30px);pointer-events:none"></div>
+  <div class="mt-split" style="position:relative;max-width:1240px;margin:0 auto;padding:78px 28px 64px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center">
+    <div style="animation:mtFade .7s ease both">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+        <span style="width:34px;height:1px;background:#94bce3"></span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#94bce3">Foro de Liderazgo 2026 · Primera edición</span>
+      </div>
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(56px,7.4vw,104px);line-height:.88;letter-spacing:-.015em;margin:0;text-transform:uppercase">México<br><span style="color:#94bce3">Trasciende</span></h1>
+      <p style="max-width:520px;margin:26px 0 0;font-size:18px;line-height:1.6;color:rgba(242,242,243,.78);text-wrap:pretty">Un día para encender la chispa. Seis conferencias, conexiones auténticas y networking con impacto real, en el marco del 50 aniversario del Tec en la Ciudad de México.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin:34px 0 0;border-top:1px solid rgba(148,188,227,.24);border-bottom:1px solid rgba(148,188,227,.24)">
+        <div style="flex:1 1 150px;padding:14px 20px 14px 0;border-right:1px solid rgba(148,188,227,.24)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;color:rgba(148,188,227,.85);text-transform:uppercase">Fecha</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;letter-spacing:.02em;margin-top:2px;white-space:nowrap">Sáb 21 de noviembre</div>
+        </div>
+        <div style="flex:1 1 150px;padding:14px 20px;border-right:1px solid rgba(148,188,227,.24)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;color:rgba(148,188,227,.85);text-transform:uppercase">Sede</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;letter-spacing:.02em;margin-top:2px">Tec · Campus CCM</div>
+        </div>
+        <div style="flex:1 1 130px;padding:14px 0 14px 20px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;color:rgba(148,188,227,.85);text-transform:uppercase">Formato</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;letter-spacing:.02em;margin-top:2px">Presencial · 07:00–19:00</div>
+        </div>
+      </div>
+
+      <sc-if value="{{ showCountdown }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:10px;margin-top:28px">
+          <sc-for list="{{ countdown }}" as="u" hint-placeholder-count="4">
+            <div class="blueprint" style="flex:0 0 92px;padding:12px 0 10px;text-align:center;border-color:rgba(148,188,227,.32);color:rgba(148,188,227,.6)">
+              <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;line-height:1;color:#f2f2f3;font-variant-numeric:tabular-nums">{{ u.value }}</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(148,188,227,.9);margin-top:6px">{{ u.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:34px">
+        <a class="btn btn-primary blueprint" href="{{ ticketsHref }}" target="_blank" rel="noopener" style="height:52px;padding:0 30px;font-size:16px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:#0f1b25" style-hover="background:#94bce3">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          Comprar boletos en Market TEC
+        </a>
+        <a class="btn blueprint" href="#agenda" style="height:52px;padding:0 26px;font-size:16px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:#f2f2f3;border-color:rgba(148,188,227,.4);background:transparent" style-hover="background:rgba(148,188,227,.12)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          Ver la agenda
+        </a>
+      </div>
+    </div>
+
+    <div style="position:relative;animation:mtFade .9s .15s ease both">
+      <div class="blueprint" style="position:relative;padding:44px 34px;border-color:rgba(148,188,227,.34);color:rgba(148,188,227,.6);background:linear-gradient(160deg,rgba(148,188,227,.10),rgba(148,188,227,0))">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="position:absolute;top:0;left:0;width:34%;height:2px;background:linear-gradient(90deg,transparent,#94bce3,transparent);animation:mtSweep 4.5s linear infinite"></div>
+        <img src="assets/mt-logo.png" alt="México Trasciende" style="display:block;width:100%;height:auto;filter:brightness(0) invert(1)">
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(148,188,227,.8)">
+        <span>Grupo Estudiantil Trasciende</span>
+        <span>50 Aniversario Tec CCM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proposito" style="max-width:1240px;margin:0 auto;padding:92px 28px 20px">
+  <div class="mt-split" style="display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#416180">01 — Propósito</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,4.4vw,62px);line-height:.96;margin:14px 0 0;text-transform:uppercase">Sé parte<br>del cambio</h2>
+      <p style="font-size:17px;line-height:1.65;color:#424244;margin:22px 0 0;text-wrap:pretty">México Trasciende busca inspirar a las juventudes y combatir la creciente indiferencia social mediante conexiones auténticas y networking con impacto real. Nuestro público es curioso, abierto y busca activamente referentes que le muestren cómo vivir con propósito.</p>
+    </div>
+    <div class="mt-grid2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px">
+      <sc-for list="{{ razones }}" as="r" hint-placeholder-count="4">
+        <div class="card blueprint" style="padding:26px 22px 24px;gap:0">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:34px;line-height:1;color:#94bce3">{{ r.num }}</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:21px;letter-spacing:.08em;text-transform:uppercase;margin:12px 0 8px">{{ r.title }}</h3>
+          <p style="font-size:15px;line-height:1.55;color:#5d5d60;margin:0">{{ r.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="agenda" style="max-width:1240px;margin:0 auto;padding:92px 28px 0">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(29,31,32,.16);padding-bottom:22px">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#416180">02 — Agenda preliminar</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,4.4vw,62px);line-height:.96;margin:14px 0 0;text-transform:uppercase">Un día completo</h2>
+    </div>
+    <div style="display:flex;gap:0;border:1px solid rgba(29,31,32,.2)">
+      <button type="button" onClick="{{ showAM }}" style="{{ tabAMStyle }}">Mañana · 07:00–13:30</button>
+      <button type="button" onClick="{{ showPMStyleless }}" style="{{ tabPMStyle }}">Tarde · 13:30–19:00</button>
+    </div>
+  </div>
+
+  <p style="font-size:15px;color:#5d5d60;margin:18px 0 0;max-width:640px">Cada ponencia es un bloque de una hora: 45 min de exposición, 10 min de preguntas y respuestas y 5 min de cierre. Toca un bloque para ver el detalle.</p>
+
+  <div style="margin:30px 0 0;border-top:1px solid rgba(29,31,32,.14)">
+    <sc-for list="{{ agendaRows }}" as="row" hint-placeholder-count="6">
+      <div style="{{ row.wrapStyle }}">
+        <div onClick="{{ row.toggle }}" style="display:grid;grid-template-columns:132px 1fr auto;gap:24px;align-items:center;padding:20px 16px;cursor:pointer" style-hover="background:rgba(89,128,166,.07)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;letter-spacing:.02em;color:#1d2d3d;font-variant-numeric:tabular-nums">{{ row.time }}</div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:23px;letter-spacing:.06em;text-transform:uppercase;color:#1d1f20">{{ row.title }}</div>
+            <div style="font-size:14px;color:#7a7a7d;margin-top:2px">{{ row.kicker }}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <span style="{{ row.tagStyle }}">{{ row.tag }}</span>
+            <span style="{{ row.chevStyle }}">+</span>
+          </div>
+        </div>
+        <sc-if value="{{ row.open }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 16px 24px 172px;animation:mtFade .28s ease both">
+            <p style="font-size:15.5px;line-height:1.6;color:#424244;margin:0 0 14px;max-width:720px">{{ row.detail }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <sc-for list="{{ row.chips }}" as="c" hint-placeholder-count="3">
+                <span class="tag tag-outline" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:11px">{{ c }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="margin-top:18px;font-size:13px;color:#98989b;font-style:italic">Agenda preliminar sujeta a cambios conforme se confirmen ponentes.</div>
+</section>
+
+<section id="ponentes" style="max-width:1240px;margin:0 auto;padding:92px 28px 0">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#416180">03 — Ponentes</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,4.4vw,62px);line-height:.96;margin:14px 0 0;text-transform:uppercase">Quiénes suben<br>al escenario</h2>
+    </div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#5d5d60">{{ ponentesCount }}</div>
+  </div>
+
+  <div class="mt-grid4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;margin-top:44px">
+    <sc-for list="{{ ponentes }}" as="p" hint-placeholder-count="8">
+      <div class="blueprint" style="{{ p.cardStyle }}">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="{{ p.mediaStyle }}">
+          <sc-if value="{{ p.confirmed }}" hint-placeholder-val="{{ true }}">
+            <image-slot id="{{ p.slotId }}" shape="rect" fit="cover" placeholder="{{ p.slotHint }}"></image-slot>
+          </sc-if>
+          <sc-if value="{{ p.pending }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background-image:linear-gradient(rgba(89,128,166,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(89,128,166,.10) 1px,transparent 1px);background-size:22px 22px">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;line-height:1;color:rgba(65,97,128,.45)">{{ p.num }}</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(65,97,128,.75);animation:mtPulse 2.6s ease-in-out infinite">Por anunciar</div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="padding:18px 18px 20px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;letter-spacing:.04em;text-transform:uppercase;color:{{ p.nameColor }};line-height:1.05">{{ p.name }}</div>
+          <div style="font-size:14px;color:#7a7a7d;margin-top:6px;min-height:38px">{{ p.role }}</div>
+          <span class="tag" style="{{ p.tagStyle }}">{{ p.tag }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top:34px;display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:22px 24px;border:1px dashed rgba(65,97,128,.4)">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;letter-spacing:.06em;text-transform:uppercase">¿Tienes una historia que contar?</div>
+    <div style="font-size:15px;color:#5d5d60;flex:1 1 260px">Seguimos confirmando ponentes. Escríbenos y construimos juntos una conferencia que inspire a la próxima generación.</div>
+    <a class="btn btn-secondary blueprint" href="mailto:trasciendeccm@outlook.com?subject=Quiero%20ser%20ponente%20en%20M%C3%A9xico%20Trasciende" style="height:44px;padding:0 22px;letter-spacing:.12em;text-transform:uppercase">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      Únete como ponente
+    </a>
+  </div>
+</section>
+
+<section id="app" style="margin-top:96px;background:#1d2d3d;color:#f2f2f3;position:relative;overflow:hidden;border-top:1px solid rgba(148,188,227,.2);border-bottom:1px solid rgba(148,188,227,.2)">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(148,188,227,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(148,188,227,.06) 1px,transparent 1px);background-size:72px 72px;pointer-events:none"></div>
+  <div class="mt-split" style="position:relative;max-width:1240px;margin:0 auto;padding:84px 28px;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:64px;align-items:center">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#94bce3">04 — App oficial</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,4.4vw,62px);line-height:.96;margin:14px 0 0;text-transform:uppercase">Tu credencial<br>vive en el teléfono</h2>
+      <p style="font-size:17px;line-height:1.65;color:rgba(242,242,243,.75);margin:22px 0 0;max-width:560px;text-wrap:pretty">Cada asistente recibe una credencial digital única con su agenda del día. El QR se escanea al entrar a cada sala para registrar participación, y durante las ponencias la app se activa con dinámicas en vivo.</p>
+
+      <div class="mt-grid2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;margin-top:34px;background:rgba(148,188,227,.22)">
+        <sc-for list="{{ appFeatures }}" as="f" hint-placeholder-count="4">
+          <div onClick="{{ f.select }}" style="{{ f.style }}">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#94bce3">{{ f.kicker }}</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;letter-spacing:.05em;text-transform:uppercase;margin-top:6px">{{ f.title }}</div>
+            <div style="font-size:14px;line-height:1.5;color:rgba(242,242,243,.66);margin-top:6px">{{ f.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <a class="btn btn-primary blueprint" href="{{ appHref }}" target="_blank" rel="noopener" style="margin-top:32px;height:50px;padding:0 28px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#0f1b25" style-hover="background:#94bce3">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        Abrir México Trasciende App
+      </a>
+    </div>
+
+    <div style="position:relative;justify-self:center;max-width:100%">
+      <div style="position:relative;width:320px;height:648px;border:1px solid rgba(148,188,227,.45);background:#16222e;padding:12px">
+        <div style="position:absolute;top:-6px;left:-6px;width:11px;height:11px;border-left:1px solid #94bce3;border-top:1px solid #94bce3"></div>
+        <div style="position:absolute;top:-6px;right:-6px;width:11px;height:11px;border-right:1px solid #94bce3;border-top:1px solid #94bce3"></div>
+        <div style="position:absolute;bottom:-6px;left:-6px;width:11px;height:11px;border-left:1px solid #94bce3;border-bottom:1px solid #94bce3"></div>
+        <div style="position:absolute;bottom:-6px;right:-6px;width:11px;height:11px;border-right:1px solid #94bce3;border-bottom:1px solid #94bce3"></div>
+        <div style="height:100%;background:#0f1b25;border:1px solid rgba(148,188,227,.2);display:flex;flex-direction:column;overflow:hidden">
+          <div style="display:flex;justify-content:space-between;padding:12px 16px 8px;font-size:11px;letter-spacing:.1em;color:rgba(148,188,227,.75);font-family:'Barlow Condensed',sans-serif">
+            <span>21 NOV</span><span>MÉXICO TRASCIENDE</span><span>100%</span>
+          </div>
+          <div style="flex:1;padding:8px 16px 0;overflow:hidden">{{ phoneScreen }}</div>
+          <div style="display:flex;border-top:1px solid rgba(148,188,227,.2)">
+            <sc-for list="{{ appTabs }}" as="t" hint-placeholder-count="4">
+              <button type="button" onClick="{{ t.select }}" style="{{ t.style }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sede" style="max-width:1240px;margin:0 auto;padding:92px 28px 0">
+  <div class="mt-split" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#416180">05 — Sede</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,4.4vw,62px);line-height:.96;margin:14px 0 20px;text-transform:uppercase">Tec de Monterrey<br>Campus Ciudad de México</h2>
+      <p style="font-size:16px;line-height:1.6;color:#424244;margin:0 0 22px;max-width:460px">Calle del Puente 222, Ejidos de Huipulco, Tlalpan, 14380, Ciudad de México. Acceso peatonal por la entrada principal; presenta tu credencial digital al llegar.</p>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(29,31,32,.16);border:1px solid rgba(29,31,32,.16)">
+        <div style="background:#f2f2f3;padding:16px 18px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#7a7a7d">Registro</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px">07:00 hrs</div>
+        </div>
+        <div style="background:#f2f2f3;padding:16px 18px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#7a7a7d">Cierre</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px">19:00 hrs</div>
+        </div>
+        <div style="background:#f2f2f3;padding:16px 18px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#7a7a7d">Transporte</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Metro Periférico</div>
+        </div>
+        <div style="background:#f2f2f3;padding:16px 18px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#7a7a7d">Estacionamiento</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Disponible en campus</div>
+        </div>
+      </div>
+      <a class="btn btn-secondary blueprint" href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" style="margin-top:24px;height:44px;padding:0 22px;letter-spacing:.12em;text-transform:uppercase">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        Cómo llegar
+      </a>
+    </div>
+    <div class="blueprint" style="position:relative;height:420px;border-color:rgba(29,31,32,.2)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <image-slot id="mt-sede" shape="rect" fit="cover" placeholder="Foto del campus o mapa"></image-slot>
+    </div>
+  </div>
+</section>
+
+<section id="patrocinadores" style="max-width:1240px;margin:0 auto;padding:92px 28px 0">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(29,31,32,.16);padding-bottom:18px">
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:34px;letter-spacing:.06em;text-transform:uppercase;margin:0">Patrocinadores y aliados</h2>
+    <a href="mailto:trasciendeccm@outlook.com?subject=Patrocinio%20M%C3%A9xico%20Trasciende" style="font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase">Quiero patrocinar →</a>
+  </div>
+  <div class="mt-grid6" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:rgba(29,31,32,.16);border:1px solid rgba(29,31,32,.16);margin-top:26px">
+    <sc-for list="{{ sponsors }}" as="s" hint-placeholder-count="6">
+      <div style="background:#f2f2f3;height:108px;position:relative">
+        <image-slot id="{{ s.id }}" shape="rect" fit="contain" placeholder="Logo"></image-slot>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="faq" style="max-width:1240px;margin:0 auto;padding:92px 28px 0">
+  <div class="mt-split" style="display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:56px;align-items:start">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#416180">06 — Preguntas</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,3.6vw,52px);line-height:.98;margin:14px 0 0;text-transform:uppercase">Lo que más<br>nos preguntan</h2>
+    </div>
+    <div style="border-top:1px solid rgba(29,31,32,.16)">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(29,31,32,.16)">
+          <div onClick="{{ f.toggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 4px;cursor:pointer" style-hover="color:#416180">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:22px;letter-spacing:.04em;text-transform:uppercase">{{ f.q }}</span>
+            <span style="{{ f.iconStyle }}">+</span>
+          </div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0 0 22px;padding-right:60px;font-size:15.5px;line-height:1.6;color:#5d5d60;animation:mtFade .25s ease both">{{ f.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="margin-top:96px;background:#e9e9ea;border-top:1px solid rgba(29,31,32,.14)">
+  <div class="mt-split" style="max-width:1240px;margin:0 auto;padding:80px 28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start">
+    <div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,3.6vw,52px);line-height:.98;margin:0;text-transform:uppercase">Hablemos</h2>
+      <p style="font-size:16px;line-height:1.6;color:#424244;margin:18px 0 28px;max-width:420px">Patrocinios, prensa, voluntariado o ponencias: escríbenos y el equipo de Trasciende te responde.</p>
+      <div style="display:flex;flex-direction:column;gap:14px;font-family:'Barlow Condensed',sans-serif;font-size:20px;letter-spacing:.04em">
+        <a href="tel:+525580250624" style="display:flex;gap:14px;align-items:center"><span style="font-size:11px;letter-spacing:.24em;color:#7a7a7d;width:88px;text-transform:uppercase">Teléfono</span>+52 55 8025 0624</a>
+        <a href="mailto:trasciendeccm@outlook.com" style="display:flex;gap:14px;align-items:center"><span style="font-size:11px;letter-spacing:.24em;color:#7a7a7d;width:88px;text-transform:uppercase">Correo</span>trasciendeccm@outlook.com</a>
+        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" style="display:flex;gap:14px;align-items:center"><span style="font-size:11px;letter-spacing:.24em;color:#7a7a7d;width:88px;text-transform:uppercase">Instagram</span>@trasciende_tec</a>
+      </div>
+    </div>
+    <div class="blueprint" style="padding:30px 28px;border-color:rgba(29,31,32,.2);background:#f2f2f3">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:grid;gap:16px">
+        <div class="field"><label for="mt-nombre">Nombre</label><input class="input" id="mt-nombre" type="text" value="{{ formName }}" onChange="{{ onName }}" placeholder="Tu nombre"></div>
+        <div class="field"><label for="mt-mail">Correo</label><input class="input" id="mt-mail" type="email" value="{{ formMail }}" onChange="{{ onMail }}" placeholder="tucorreo@dominio.com"></div>
+        <div class="field"><label for="mt-msg">Mensaje</label><textarea class="input" id="mt-msg" value="{{ formMsg }}" onChange="{{ onMsg }}" placeholder="Cuéntanos en qué te podemos ayudar"></textarea></div>
+        <button type="button" class="btn btn-primary blueprint" onClick="{{ sendForm }}" style="height:46px;letter-spacing:.14em;text-transform:uppercase">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          {{ formCta }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#1d2d3d;color:rgba(242,242,243,.72)">
+  <div style="max-width:1240px;margin:0 auto;padding:52px 28px 40px;display:flex;flex-wrap:wrap;gap:36px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:26px">
+      <img src="assets/mt-logo.png" alt="México Trasciende" style="height:60px;width:auto;filter:brightness(0) invert(1)">
+      <span style="width:1px;height:46px;background:rgba(148,188,227,.3)"></span>
+      <div style="font-family:'Barlow Condensed',sans-serif;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;color:#f2f2f3">
+        <div style="font-size:16px">Tecnológico de Monterrey</div>
+        <div style="font-size:12px;color:rgba(148,188,227,.85)">Campus Ciudad de México · 50 Aniversario</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:28px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase">
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" style="color:#94bce3">Boletos</a>
+      <a href="https://mexico-trasciende-app.pages.dev/" target="_blank" rel="noopener" style="color:#94bce3">App</a>
+      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" style="color:#94bce3">Instagram</a>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(148,188,227,.18)">
+    <div style="max-width:1240px;margin:0 auto;padding:16px 28px;font-size:12.5px;letter-spacing:.06em;color:rgba(242,242,243,.5)">Grupo Estudiantil Trasciende · Foro de Liderazgo 2026 · Sábado 21 de noviembre</div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;porConfirmar&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:0,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ponentes&quot;},&quot;mostrarContador&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Inicio&quot;},&quot;agendaInicial&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Mañana&quot;,&quot;Tarde&quot;],&quot;default&quot;:&quot;Mañana&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Agenda&quot;},&quot;ticketsUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://market.tec.mx/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;appUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://mexico-trasciende-app.pages.dev/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;}}">
+class Component extends DCLogic {
+  state = {
+    turno: 'am', openRow: 'am-3', appTab: 0, openFaq: 0,
+    now: Date.now(), name: '', mail: '', msg: '', sent: false
+  };
+
+  componentDidMount() {
+    this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    if (this.props.agendaInicial === 'Tarde') this.setState({ turno: 'pm', openRow: null });
+  }
+  componentWillUnmount() { clearInterval(this.t); }
+
+  agenda() {
+    return {
+      am: [
+        { time: '07:00', title: 'Registro y acreditación', kicker: 'Entrega de credencial digital', tag: 'Logística',
+          detail: 'Apertura de puertas, validación del boleto de Market TEC y activación de la credencial digital en la app. Café de bienvenida en el lobby.',
+          chips: ['60 min', 'Lobby', 'Credencial digital'] },
+        { time: '08:00', title: 'Bienvenida y apertura', kicker: 'Comité organizador Trasciende', tag: 'Apertura',
+          detail: 'Palabras de apertura del grupo estudiantil y de la dirección del campus, en el marco del 50 aniversario del Tec en la Ciudad de México.',
+          chips: ['30 min', 'Auditorio'] },
+        { time: '08:30', title: 'Ponencia 01', kicker: 'Ponente por confirmar', tag: 'Conferencia',
+          detail: 'Bloque de una hora: 45 minutos de exposición, 10 minutos de preguntas del público y 5 minutos de cierre.',
+          chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+        { time: '09:30', title: 'Ponencia 02', kicker: 'Denise Dresser', tag: 'Conferencia',
+          detail: 'Bloque de una hora: 45 minutos de exposición, 10 minutos de preguntas del público y 5 minutos de cierre.',
+          chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+        { time: '10:30', title: 'Mini TED Talk + Networking', kicker: 'Intervención breve y conexión entre asistentes', tag: 'Networking',
+          detail: 'Una intervención relámpago de 10 minutos abre un espacio de networking dirigido: dinámicas de presentación rápida entre estudiantes, ponentes y aliados.',
+          chips: ['10 min talk', '50 min networking', 'Explanada'] },
+        { time: '11:30', title: 'Ponencia 03', kicker: 'Farid Dieck', tag: 'Conferencia',
+          detail: 'Bloque de una hora: 45 minutos de exposición, 10 minutos de preguntas del público y 5 minutos de cierre.',
+          chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+        { time: '12:30', title: 'Ponencia 04', kicker: 'Ponente por confirmar', tag: 'Conferencia',
+          detail: 'Último bloque de la mañana antes del receso. 45 minutos de exposición, 10 de preguntas y 5 de cierre.',
+          chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] }
+      ],
+      pm: [
+        { time: '13:30', title: 'Receso y show artístico', kicker: 'Comida y presentación en vivo', tag: 'Receso',
+          detail: 'Receso para comer acompañado de una presentación artística en el escenario principal. Espacio abierto para visitar el Networking Lounge y a los patrocinadores.',
+          chips: ['90 min', 'Show en vivo', 'Networking Lounge'] },
+        { time: '15:00', title: 'Ponencia 05', kicker: 'Ponente por confirmar', tag: 'Conferencia',
+          detail: 'Bloque de una hora: 45 minutos de exposición, 10 minutos de preguntas del público y 5 minutos de cierre.',
+          chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+        { time: '16:00', title: 'Ponencia 06', kicker: 'Ponente por confirmar', tag: 'Conferencia',
+          detail: 'La última conferencia del foro, pensada como cierre inspiracional del día.',
+          chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+        { time: '17:00', title: 'Bloque de integración', kicker: 'Dinámicas entre asistentes y ponentes', tag: 'Integración',
+          detail: 'Actividades de integración por mesas: los asistentes trabajan una idea de impacto con acompañamiento de ponentes y del equipo de Responsabilidad Social.',
+          chips: ['75 min', 'Mesas de trabajo'] },
+        { time: '18:15', title: 'Cierre y foto oficial', kicker: 'Comité organizador Trasciende', tag: 'Cierre',
+          detail: 'Conclusiones del foro, reconocimiento a ponentes y patrocinadores, foto oficial de la primera edición y despedida.',
+          chips: ['45 min', 'Auditorio'] }
+      ]
+    };
+  }
+
+  tabStyle(active) {
+    return 'font-family:\'Barlow Condensed\',sans-serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding:11px 20px;cursor:pointer;border:0;' +
+      (active ? 'background:#1d2d3d;color:#f2f2f3;' : 'background:transparent;color:#5d5d60;');
+  }
+
+  ponentesList() {
+    const pending = Math.max(0, Number(this.props.porConfirmar ?? 6));
+    const confirmed = [
+      { name: 'Denise Dresser', role: 'Politóloga, analista y escritora', slotId: 'mt-denise' },
+      { name: 'Farid Dieck', role: 'Comunicador y creador de contenido', slotId: 'mt-farid' }
+    ].map((p, i) => ({
+      ...p, confirmed: true, pending: false, num: '', slotHint: 'Foto de ' + p.name,
+      tag: 'Confirmado', nameColor: '#1d1f20',
+      cardStyle: 'display:flex;flex-direction:column;border:1px solid rgba(29,31,32,.2);background:transparent;color:rgba(29,31,32,.55)',
+      mediaStyle: 'position:relative;height:250px;border-bottom:1px solid rgba(29,31,32,.2)',
+      tagStyle: 'margin-top:14px;font-family:\'Barlow Condensed\',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:#5980a6;color:#f2f2f3;border:0'
+    }));
+    const rest = [];
+    for (let i = 0; i < pending; i++) {
+      const n = String(confirmed.length + i + 1).padStart(2, '0');
+      rest.push({
+        name: 'Por anunciar', role: 'Estamos cerrando la confirmación de este ponente.',
+        confirmed: false, pending: true, num: n, slotId: 'mt-pending-' + n, slotHint: '', tag: 'Espacio ' + n,
+        nameColor: 'rgba(29,31,32,.45)',
+        cardStyle: 'display:flex;flex-direction:column;border:1px dashed rgba(65,97,128,.45);background:transparent;color:rgba(65,97,128,.5)',
+        mediaStyle: 'position:relative;height:250px;border-bottom:1px dashed rgba(65,97,128,.45);overflow:hidden',
+        tagStyle: 'margin-top:14px;font-family:\'Barlow Condensed\',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:transparent;color:#416180;border:1px solid rgba(65,97,128,.45)'
+      });
+    }
+    return confirmed.concat(rest);
+  }
+
+  phone() {
+    const wrap = (kids) => React.createElement('div', { style: { display: 'flex', flexDirection: 'column', gap: 12, paddingTop: 8 } }, kids);
+    const label = (t) => React.createElement('div', { style: { fontFamily: "'Barlow Condensed',sans-serif", fontSize: 11, letterSpacing: '.24em', textTransform: 'uppercase', color: '#94bce3' } }, t);
+    const tab = this.state.appTab;
+    if (tab === 0) {
+      return wrap([
+        label('Credencial digital'), 
+        React.createElement('div', { key: 'c', style: { border: '1px solid rgba(148,188,227,.35)', padding: 16, background: 'linear-gradient(160deg,rgba(148,188,227,.14),transparent)' } }, [
+          React.createElement('div', { key: 'n', style: { fontFamily: "'Barlow Condensed',sans-serif", fontSize: 26, color: '#f2f2f3', letterSpacing: '.04em', lineHeight: 1.05 } }, 'ANA SOFÍA R.'),
+          React.createElement('div', { key: 'r', style: { fontSize: 12, color: 'rgba(242,242,243,.6)', marginTop: 2 } }, 'Asistente general · Folio MT-0421'),
+          React.createElement('div', { key: 'q', style: { position: 'relative', marginTop: 14, height: 150, background: '#f2f2f3', backgroundImage: 'repeating-linear-gradient(90deg,#0f1b25 0 7px,transparent 0 14px),repeating-linear-gradient(0deg,#0f1b25 0 7px,transparent 0 14px)', backgroundSize: '14px 14px' } }, [
+            React.createElement('div', { key: 1, style: { position: 'absolute', top: 10, left: 10, width: 34, height: 34, border: '7px solid #0f1b25', background: '#f2f2f3' } }),
+            React.createElement('div', { key: 2, style: { position: 'absolute', top: 10, right: 10, width: 34, height: 34, border: '7px solid #0f1b25', background: '#f2f2f3' } }),
+            React.createElement('div', { key: 3, style: { position: 'absolute', bottom: 10, left: 10, width: 34, height: 34, border: '7px solid #0f1b25', background: '#f2f2f3' } })
+          ]),
+          React.createElement('div', { key: 'f', style: { fontFamily: "'Barlow Condensed',sans-serif", fontSize: 11, letterSpacing: '.2em', color: 'rgba(242,242,243,.55)', marginTop: 12, textTransform: 'uppercase' } }, 'Válida 21 nov 2026 · Tec CCM')
+        ])
+      ]);
+    }
+    if (tab === 1) {
+      const rows = [['08:30', 'Ponencia 01', 'Auditorio'], ['09:30', 'Denise Dresser', 'Auditorio'], ['10:30', 'Networking', 'Explanada'], ['11:30', 'Farid Dieck', 'Auditorio'], ['13:30', 'Receso y show', 'Patio central']];
+      return wrap([
+        label('Tu agenda del día'),
+        React.createElement('div', { key: 'l', style: { display: 'flex', flexDirection: 'column' } }, rows.map((r, i) =>
+          React.createElement('div', { key: i, style: { display: 'grid', gridTemplateColumns: '52px 1fr', gap: 10, padding: '11px 0', borderTop: '1px solid rgba(148,188,227,.18)' } }, [
+            React.createElement('div', { key: 'a', style: { fontFamily: "'Barlow Condensed',sans-serif", fontSize: 16, color: '#94bce3' } }, r[0]),
+            React.createElement('div', { key: 'b' }, [
+              React.createElement('div', { key: 1, style: { fontFamily: "'Barlow Condensed',sans-serif", fontSize: 17, color: '#f2f2f3', letterSpacing: '.03em' } }, r[1]),
+              React.createElement('div', { key: 2, style: { fontSize: 11.5, color: 'rgba(242,242,243,.5)' } }, r[2])
+            ])
+          ])
+        ))
+      ]);
+    }
+    if (tab === 2) {
+      return wrap([
+        label('Escanea para registrar tu asistencia'),
+        React.createElement('div', { key: 'v', style: { position: 'relative', height: 250, marginTop: 4, border: '1px solid rgba(148,188,227,.25)', background: 'rgba(148,188,227,.05)' } }, [
+          React.createElement('div', { key: 1, style: { position: 'absolute', top: 26, left: 26, width: 34, height: 34, borderLeft: '2px solid #94bce3', borderTop: '2px solid #94bce3' } }),
+          React.createElement('div', { key: 2, style: { position: 'absolute', top: 26, right: 26, width: 34, height: 34, borderRight: '2px solid #94bce3', borderTop: '2px solid #94bce3' } }),
+          React.createElement('div', { key: 3, style: { position: 'absolute', bottom: 26, left: 26, width: 34, height: 34, borderLeft: '2px solid #94bce3', borderBottom: '2px solid #94bce3' } }),
+          React.createElement('div', { key: 4, style: { position: 'absolute', bottom: 26, right: 26, width: 34, height: 34, borderRight: '2px solid #94bce3', borderBottom: '2px solid #94bce3' } }),
+          React.createElement('div', { key: 5, style: { position: 'absolute', left: 26, right: 26, height: 1, background: '#94bce3', boxShadow: '0 0 12px #94bce3', animation: 'mtScan 2.4s ease-in-out infinite alternate' } })
+        ]),
+        React.createElement('div', { key: 't', style: { fontSize: 13, color: 'rgba(242,242,243,.62)', lineHeight: 1.5 } }, 'Apunta al código de la sala. Cada escaneo suma participación y desbloquea las dinámicas de esa ponencia.')
+      ]);
+    }
+    const opts = ['Pregunta al ponente', 'Trivia en vivo', 'Encuesta de cierre'];
+    return wrap([
+      label('Dinámica en vivo · Ponencia 02'),
+      React.createElement('div', { key: 'q', style: { border: '1px solid rgba(148,188,227,.3)', padding: 14 } }, [
+        React.createElement('div', { key: 't', style: { fontFamily: "'Barlow Condensed',sans-serif", fontSize: 19, color: '#f2f2f3', letterSpacing: '.03em', lineHeight: 1.2 } }, '¿Qué te llevas de esta conferencia?'),
+        React.createElement('div', { key: 'o', style: { display: 'flex', flexDirection: 'column', gap: 8, marginTop: 12 } }, opts.map((o, i) =>
+          React.createElement('div', { key: i, style: { border: '1px solid rgba(148,188,227,.28)', padding: '9px 11px', fontSize: 13, color: 'rgba(242,242,243,.8)', background: i === 1 ? 'rgba(148,188,227,.16)' : 'transparent' } }, o)
+        ))
+      ]),
+      React.createElement('div', { key: 'p', style: { display: 'flex', justifyContent: 'space-between', fontFamily: "'Barlow Condensed',sans-serif", fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', color: '#94bce3' } }, [
+        React.createElement('span', { key: 1 }, '4 sellos de 6'),
+        React.createElement('span', { key: 2 }, '320 pts')
+      ])
+    ]);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const target = new Date('2026-11-21T07:00:00-06:00').getTime();
+    const diff = Math.max(0, target - s.now);
+    const dd = Math.floor(diff / 86400000), hh = Math.floor(diff / 3600000) % 24,
+      mm = Math.floor(diff / 60000) % 60, ss = Math.floor(diff / 1000) % 60;
+    const pad = (n) => String(n).padStart(2, '0');
+
+    const rows = this.agenda()[s.turno].map((r, i) => {
+      const key = s.turno + '-' + i;
+      const open = s.openRow === key;
+      return {
+        ...r, open,
+        wrapStyle: 'border-bottom:1px solid rgba(29,31,32,.14);' + (open ? 'background:rgba(89,128,166,.06);' : ''),
+        toggle: () => this.setState({ openRow: open ? null : key }),
+        tagStyle: 'font-family:\'Barlow Condensed\',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(65,97,128,.4);color:#416180',
+        chevStyle: 'font-family:\'Barlow Condensed\',sans-serif;font-size:24px;line-height:1;color:#416180;transition:transform .2s ease;display:inline-block;transform:rotate(' + (open ? '45deg' : '0deg') + ')'
+      };
+    });
+
+    const featureData = [
+      { kicker: 'Acceso', title: 'Credencial digital', body: 'Una identidad única por asistente, lista desde el registro.' },
+      { kicker: 'Programa', title: 'Agenda personal', body: 'Los seis bloques del día, con sala y horario, en la palma.' },
+      { kicker: 'Check-in', title: 'Escaneo de QR', body: 'Registro de participación al entrar a cada conferencia.' },
+      { kicker: 'Engagement', title: 'Dinámicas en vivo', body: 'Trivia, preguntas al ponente y sellos coleccionables por sesión.' }
+    ];
+
+    const faqData = [
+      { q: '¿Dónde compro mi boleto?', a: 'En Market TEC, la plataforma oficial del Tecnológico de Monterrey. El botón de esta página te lleva directo; tu compra activa después la credencial digital en la app.' },
+      { q: '¿El evento es solo para estudiantes del Tec?', a: 'No. México Trasciende está dirigido a jóvenes de preparatoria y universidad de cualquier institución, así como a EXATEC y público interesado en liderazgo e impacto social.' },
+      { q: '¿Cuánto dura el foro?', a: 'Un día completo: el registro abre a las 07:00 y el cierre es a las 19:00 del sábado 21 de noviembre, con seis conferencias, un mini TED Talk, receso con show artístico y bloque de integración.' },
+      { q: '¿Necesito descargar la app?', a: 'No requiere descarga: la México Trasciende App funciona desde el navegador. Ahí vive tu credencial, la agenda y las dinámicas en vivo.' },
+      { q: '¿Puedo participar como ponente o patrocinador?', a: 'Sí, seguimos confirmando ponentes y aliados. Escríbenos a trasciendeccm@outlook.com o al +52 55 8025 0624 y te compartimos el paquete correspondiente.' }
+    ];
+
+    return {
+      showCountdown: this.props.mostrarContador !== false,
+      countdown: [
+        { value: pad(dd), label: 'Días' }, { value: pad(hh), label: 'Horas' },
+        { value: pad(mm), label: 'Min' }, { value: pad(ss), label: 'Seg' }
+      ],
+      ticketsHref: this.props.ticketsUrl || 'https://market.tec.mx/',
+      appHref: this.props.appUrl || 'https://mexico-trasciende-app.pages.dev/',
+
+      razones: [
+        { num: '01', title: 'Impacto real', body: 'Historias que encienden la chispa que un joven necesita para trascender en su vida personal y profesional.' },
+        { num: '02', title: 'Networking de valor', body: 'Conecta con líderes y referentes que comparten la misión de transformar a las nuevas generaciones.' },
+        { num: '03', title: 'Visibilidad', body: 'Una audiencia joven, comprometida y lista para actuar, frente a tu nombre y tu proyecto.' },
+        { num: '04', title: 'Comunidad Tec', body: 'Un movimiento formado por estudiantes y académicos de una de las mejores universidades de América Latina.' }
+      ],
+
+      showAM: () => this.setState({ turno: 'am', openRow: null }),
+      showPMStyleless: () => this.setState({ turno: 'pm', openRow: null }),
+      tabAMStyle: this.tabStyle(s.turno === 'am'),
+      tabPMStyle: this.tabStyle(s.turno === 'pm'),
+      agendaRows: rows,
+
+      ponentes: this.ponentesList(),
+      ponentesCount: '2 confirmados · ' + Math.max(0, Number(this.props.porConfirmar ?? 6)) + ' por anunciar',
+
+      appTabs: ['Credencial', 'Agenda', 'Escanear', 'Dinámicas'].map((label, i) => ({
+        label,
+        select: () => this.setState({ appTab: i }),
+        style: 'flex:1;padding:11px 0;border:0;cursor:pointer;font-family:\'Barlow Condensed\',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;' +
+          (s.appTab === i ? 'background:#5980a6;color:#0f1b25;' : 'background:transparent;color:rgba(148,188,227,.75);')
+      })),
+      appFeatures: featureData.map((f, i) => ({
+        ...f,
+        select: () => this.setState({ appTab: i }),
+        style: 'padding:20px 18px;cursor:pointer;background:' + (s.appTab === i ? 'rgba(148,188,227,.14)' : '#1d2d3d') + ';'
+      })),
+      phoneScreen: this.phone(),
+
+      sponsors: [1, 2, 3, 4, 5, 6].map((n) => ({ id: 'mt-sponsor-' + n })),
+
+      faqs: faqData.map((f, i) => ({
+        ...f, open: s.openFaq === i,
+        toggle: () => this.setState({ openFaq: s.openFaq === i ? null : i }),
+        iconStyle: 'font-family:\'Barlow Condensed\',sans-serif;font-size:26px;line-height:1;color:#416180;display:inline-block;transition:transform .2s ease;transform:rotate(' + (s.openFaq === i ? '45deg' : '0deg') + ')'
+      })),
+
+      formName: s.name, formMail: s.mail, formMsg: s.msg,
+      onName: (e) => this.setState({ name: e.target.value, sent: false }),
+      onMail: (e) => this.setState({ mail: e.target.value, sent: false }),
+      onMsg: (e) => this.setState({ msg: e.target.value, sent: false }),
+      formCta: s.sent ? 'Abriendo tu correo…' : 'Enviar mensaje',
+      sendForm: () => {
+        this.setState({ sent: true });
+        const body = encodeURIComponent(s.msg + '\n\n' + s.name + ' · ' + s.mail);
+        window.open('mailto:trasciendeccm@outlook.com?subject=' + encodeURIComponent('Contacto web · ' + (s.name || 'México Trasciende')) + '&body=' + body, '_blank');
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
