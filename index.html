@@ -14,7 +14,8 @@
       extend: {
         colors: {
           night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
-          royaldeep: '#16297f', gold: '#e0a04a', goldlight: '#f0b869', golddeep: '#e8b975',
+          royaldeep: '#16297f', gold: '#1ec8d6', goldlight: '#5adbe6', golddeep: '#17a8b4',
+          magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
           paper: '#f5f3ee', surface: '#ffffff', muted: '#5b6284', body: '#3a4066'
         },
         fontFamily: {
@@ -28,7 +29,7 @@
 <style>
   html { scroll-behavior: smooth; }
   body { font-family: 'Barlow', system-ui, sans-serif; }
-  ::selection { background: rgba(224,160,74,.35); }
+  ::selection { background: rgba(30,200,214,.35); }
   @keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4%,-3%,0) scale(1.12); } }
   @keyframes glow { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
   @keyframes pulse-soft { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
@@ -38,6 +39,9 @@
   .anim-glow { animation: glow 2.2s ease-in-out infinite; }
   .anim-pulse-soft { animation: pulse-soft 2.6s ease-in-out infinite; }
   .anim-marquee { animation: marquee 28s linear infinite; }
+  .anim-marquee-slow { animation: marquee 38s linear infinite; width: max-content; }
+  .anim-marquee-slow:hover { animation-play-state: paused; }
+  #espTexto1:empty { display: none; }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
   .liftup { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease, box-shadow .35s ease; }
@@ -45,7 +49,7 @@
   .logowall > * { filter: grayscale(1); opacity: .62; transition: filter .35s ease, opacity .35s ease, transform .35s ease; }
   .logowall:hover > * { filter: none; opacity: 1; transform: scale(1.04); }
   .nav-link { color: rgba(245,243,238,.7); transition: color .2s ease; }
-  .nav-link:hover { color: #e0a04a; }
+  .nav-link:hover { color: #1ec8d6; }
   a { transition: color .2s ease; }
   #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   #mobileMenu.open { max-height: 480px; }
@@ -63,15 +67,14 @@
       <span class="font-heading font-semibold text-[15px] tracking-[.17em] text-paper leading-tight uppercase">México<br>Trasciende</span>
     </a>
     <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
-      <a href="#quienes" class="nav-link">Nosotros</a>
+      <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
       <a href="#agenda" class="nav-link">Agenda</a>
-      <a href="#lounge" class="nav-link">Lounge</a>
-      <a href="#scholars" class="nav-link">Scholars</a>
       <a href="#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link">CLEIP</a>
     </nav>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="hidden lg:inline-flex shrink-0 items-center h-[38px] px-5 bg-gold text-night font-heading text-sm tracking-[.12em] uppercase shadow-[0_0_22px_rgba(224,160,74,.4)] hover:bg-goldlight">Boletos</a>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="hidden lg:inline-flex shrink-0 items-center h-[38px] px-5 bg-gold text-night font-heading text-sm tracking-[.12em] uppercase shadow-[0_0_22px_rgba(30,200,214,.4)] hover:bg-goldlight">Boletos</a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
       <span class="block w-6 h-[2px] bg-paper"></span>
       <span class="block w-6 h-[2px] bg-paper"></span>
@@ -80,13 +83,12 @@
   </div>
   <nav id="mobileMenu" class="lg:hidden px-6">
     <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-gold/15">
-      <a href="#quienes" class="nav-link">Nosotros</a>
+      <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
       <a href="#agenda" class="nav-link">Agenda</a>
-      <a href="#lounge" class="nav-link">Lounge</a>
-      <a href="#scholars" class="nav-link">Scholars</a>
       <a href="#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link">CLEIP</a>
       <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 bg-gold text-night font-heading tracking-[.12em] uppercase">Boletos</a>
     </div>
   </nav>
@@ -94,17 +96,17 @@
 
 <section id="inicio" class="relative text-paper overflow-hidden bg-night">
   <div class="absolute -top-[30%] -left-[10%] w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.55),transparent_62%)] blur-[40px] anim-drift pointer-events-none"></div>
-  <div class="absolute -bottom-[40%] -right-[8%] w-[820px] h-[820px] rounded-full bg-[radial-gradient(circle,rgba(224,160,74,.34),transparent_64%)] blur-[50px] anim-drift-rev pointer-events-none"></div>
+  <div class="absolute -bottom-[40%] -right-[8%] w-[820px] h-[820px] rounded-full bg-[radial-gradient(circle,rgba(30,200,214,.34),transparent_64%)] blur-[50px] anim-drift-rev pointer-events-none"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-night/90 pointer-events-none"></div>
 
   <div class="relative max-w-[1300px] mx-auto px-6 pt-20 pb-16 grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
     <div class="reveal">
       <div class="inline-flex items-center gap-3 py-[7px] pl-3 pr-4 rounded-full border border-gold/40 bg-gold/[.08] font-heading text-[13px] tracking-[.28em] uppercase text-golddeep mb-6">
-        <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_12px_#e0a04a] anim-glow"></span>
-        Connect · Live · Act · Participate · Empower
+        <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_12px_#1ec8d6] anim-glow"></span>
+        Conecta · Trasciende e Innova
       </div>
-      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase">México<br><span class="bg-gradient-to-r from-gold via-[#f3d08a] to-[#5b7dff] bg-clip-text text-transparent">Trasciende</span></h1>
-      <p class="max-w-[540px] mt-6 text-[18.5px] leading-relaxed text-paper/76" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo en el Campus Ciudad de México, diseñado en cinco espacios que reúnen a quienes normalmente no coinciden: estudiantes, empresarios, especialistas y organizaciones.</p>
+      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase">México<br><span class="bg-gradient-to-r from-magenta via-orange to-lime bg-clip-text text-transparent">Trasciende</span></h1>
+      <p class="max-w-[540px] mt-6 text-[18.5px] leading-relaxed text-paper/76" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo en el Campus Ciudad de México, diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes, empresarios, especialistas y organizaciones.</p>
 
       <div class="flex gap-3 mt-9" id="countdown">
         <div class="flex-none w-[94px] text-center py-3.5 border border-[rgba(120,150,255,.24)] rounded bg-gradient-to-br from-royal/[.28] to-night/20 backdrop-blur-sm">
@@ -126,8 +128,8 @@
       </div>
 
       <div class="flex flex-wrap gap-3.5 mt-9">
-        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="h-[54px] inline-flex items-center px-8 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-gold text-night shadow-[0_0_34px_rgba(224,160,74,.42)] hover:bg-goldlight">Comprar boletos en Market TEC</a>
-        <a href="#espacios" class="h-[54px] inline-flex items-center px-7 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-paper border border-[rgba(120,150,255,.4)] bg-royal/[.14] hover:bg-royal/[.3]">Conoce los 5 espacios</a>
+        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="h-[54px] inline-flex items-center px-8 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-gold text-night shadow-[0_0_34px_rgba(30,200,214,.42)] hover:bg-goldlight">Comprar boletos en Market TEC</a>
+        <a href="#espacios" class="h-[54px] inline-flex items-center px-7 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-paper border border-[rgba(120,150,255,.4)] bg-royal/[.14] hover:bg-royal/[.3]">Conoce los 3 espacios</a>
       </div>
     </div>
 
@@ -140,7 +142,7 @@
             <div class="font-heading text-[21px] text-ink">Sáb 21 · Nov 2026</div>
           </div>
           <div class="bg-[#f7f4ee] py-3.5 px-1 text-center">
-            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-muted">Sede</div>
+            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-muted">Ubicación</div>
             <div class="font-heading text-[21px] text-ink">Campus CCM</div>
           </div>
         </div>
@@ -160,26 +162,21 @@
     </div>
   </div>
 
-  <div class="relative max-w-[1300px] mx-auto px-6 grid grid-cols-2 lg:grid-cols-4">
-    <div class="reveal py-9 px-6 border-r border-[rgba(120,150,255,.18)]">
+  <div class="relative max-w-[1300px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-3">
+    <div class="reveal py-9 px-6 sm:border-r border-[rgba(120,150,255,.18)]">
       <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">+1000</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Asistentes esperados</div>
-      <div class="text-sm text-paper/55 mt-1">Preparatoria, universidad y comunidad</div>
+      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Te rodearás de</div>
+      <div class="text-sm text-paper/55 mt-1">Empresarios, líderes, especialistas y organizaciones listos para conectar contigo</div>
     </div>
-    <div class="reveal py-9 px-6 border-r border-[rgba(120,150,255,.18)]">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">5</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Espacios del foro</div>
-      <div class="text-sm text-paper/55 mt-1">Stage, Jardín, Lounge, Scholars, Lunch</div>
-    </div>
-    <div class="reveal py-9 px-6 border-r border-[rgba(120,150,255,.18)]">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">5+2</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Magistrales y TecTalks</div>
-      <div class="text-sm text-paper/55 mt-1">Programa del Main Stage</div>
+    <div class="reveal py-9 px-6 sm:border-r border-[rgba(120,150,255,.18)]">
+      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">3</div>
+      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Espacios del día</div>
+      <div class="text-sm text-paper/55 mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
     </div>
     <div class="reveal py-9 px-6">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">120</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Trasciende Scholars</div>
-      <div class="text-sm text-paper/55 mt-1">Becas financiadas por empresas</div>
+      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">5</div>
+      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Conferencias magistrales</div>
+      <div class="text-sm text-paper/55 mt-1">Programa del Main Stage</div>
     </div>
   </div>
 </section>
@@ -198,42 +195,10 @@
   </div>
 </section>
 
-<section id="quienes" class="bg-white text-ink">
-  <div class="max-w-[1300px] mx-auto px-6 py-24">
-    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
-      <div class="reveal">
-        <h2 class="font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Quiénes somos</h2>
-        <p class="text-[17px] leading-relaxed text-body mt-5" style="text-wrap:pretty">Somos el <strong class="font-semibold">Grupo Estudiantil Trasciende</strong> del Tecnológico de Monterrey, Campus Ciudad de México: un equipo de estudiantes que organiza México Trasciende de principio a fin — programación, ponentes, patrocinios, logística y comunicación.</p>
-        <p class="text-[17px] leading-relaxed text-body mt-4" style="text-wrap:pretty">Nos une la convicción de que la indiferencia social se combate creando encuentros que de otra forma no ocurrirían. Cada área del grupo existe para que un estudiante pueda cruzar la puerta y salir con una conexión real.</p>
-        <div class="grid grid-cols-2 gap-px bg-ink/[.12] border border-ink/[.12] mt-7">
-          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">2025</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Primera generación</div></div>
-          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">8</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Áreas de trabajo</div></div>
-          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">+50</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Estudiantes organizando</div></div>
-          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">1</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Campus · CCM</div></div>
-        </div>
-      </div>
-      <div class="reveal relative rounded-md overflow-hidden shadow-[0_24px_60px_rgba(11,18,51,.2)]" style="transition-delay:.1s">
-        <img src="assets/foto-grupo.png" alt="Grupo Estudiantil Trasciende" class="block w-full h-[420px] object-cover">
-        <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-ink/70"></div>
-        <div class="absolute left-6 right-6 bottom-5 font-heading text-[13px] tracking-[.2em] uppercase text-paper/90">Grupo Estudiantil Trasciende · Campus Ciudad de México</div>
-      </div>
-    </div>
-
-    <div class="flex items-center gap-3.5 mt-14 mb-5">
-      <span class="font-heading text-xs tracking-[.26em] uppercase text-muted whitespace-nowrap">Comité organizador</span>
-      <span class="flex-1 h-px bg-ink/[.14]"></span>
-    </div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="comiteGrid">
-      <!-- cards injected by JS -->
-    </div>
-    <div class="mt-4 text-[13px] text-muted italic">Foto pendiente para cada integrante — sustituye el marco por su fotografía.</div>
-  </div>
-</section>
-
 <section id="espacios" class="relative bg-night text-paper overflow-hidden">
   <div class="absolute top-[10%] -right-[12%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.4),transparent_65%)] blur-[50px] pointer-events-none"></div>
   <div class="relative max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] mb-7 uppercase">Cinco espacios,<br>un mismo día</h2>
+    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] mb-7 uppercase">Tres espacios,<br>un mismo día</h2>
 
     <div class="flex flex-wrap gap-2.5" id="espaciosTabs"></div>
 
@@ -242,8 +207,6 @@
         <img data-esp-img="0" src="assets/foto-mainstage.png" alt="Main Stage" class="absolute inset-0 w-full h-full object-cover transition-all duration-700">
         <img data-esp-img="1" src="assets/foto-jardin.png" alt="Jardín de Innovación" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
         <img data-esp-img="2" src="assets/foto-lounge.png" alt="Networking Lounge" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
-        <img data-esp-img="3" src="assets/foto-scholars.png" alt="Trasciende Scholars" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
-        <img data-esp-img="4" src="assets/exec-lunch.png" alt="Executive Lunch" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
         <div class="absolute inset-0 z-[3] bg-gradient-to-b from-transparent via-transparent to-night/75 pointer-events-none"></div>
         <div class="absolute left-6 bottom-[22px] z-[4] font-heading text-xs tracking-[.24em] uppercase text-golddeep" id="espKicker"></div>
       </div>
@@ -254,6 +217,22 @@
         <div class="border-t border-[rgba(120,150,255,.22)]" id="espDatos"></div>
       </div>
     </div>
+
+    <div id="espLoungeExtra" hidden class="mt-11">
+      <div class="flex items-center gap-3.5 mb-4">
+        <span class="font-heading text-xs tracking-[.26em] uppercase text-paper/50 whitespace-nowrap">Por escuela</span>
+        <span class="flex-1 h-px bg-[rgba(120,150,255,.18)]"></span>
+      </div>
+      <div class="flex flex-wrap gap-2.5" id="espSchoolTags"></div>
+
+      <div class="flex items-center gap-3.5 mt-9 mb-4">
+        <span class="font-heading text-xs tracking-[.26em] uppercase text-paper/50 whitespace-nowrap">Ponentes confirmados del Lounge</span>
+        <span class="flex-1 h-px bg-[rgba(120,150,255,.18)]"></span>
+      </div>
+      <div class="relative overflow-hidden" style="mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)">
+        <div class="flex flex-none anim-marquee-slow gap-4 py-1" id="loungeCarousel"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -261,19 +240,6 @@
   <div class="max-w-[1300px] mx-auto px-6 py-24">
     <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Los ponentes</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-9" id="ponentesGrid"></div>
-  </div>
-</section>
-
-<section id="lounge" class="relative bg-ink text-paper overflow-hidden">
-  <div class="absolute -bottom-[30%] -left-[6%] w-[640px] h-[640px] rounded-full bg-[radial-gradient(circle,rgba(224,160,74,.3),transparent_65%)] blur-[50px] pointer-events-none"></div>
-  <div class="relative max-w-[1300px] mx-auto px-6 py-24">
-    <div class="grid lg:grid-cols-[.82fr_1.18fr] gap-12 items-center">
-      <div class="reveal">
-        <h2 class="font-heading text-[36px] lg:text-[56px] leading-[.94] mb-4.5 uppercase">15 líderes<br>en una sola sala</h2>
-        <p class="text-[16.5px] leading-relaxed text-paper/76">Un espacio para proponer proyectos directamente a líderes de empresa, directores de academia y expertos en innovación. Reuniremos a quince líderes dispuestos a guiar y potenciar el talento de emprendedores con ideas en etapa de lanzamiento, crecimiento o expansión.</p>
-      </div>
-      <div class="grid grid-cols-2 gap-5" id="loungeGrid"></div>
-    </div>
   </div>
 </section>
 
@@ -294,48 +260,6 @@
       <div id="agendaRows"></div>
     </div>
     <div class="mt-4 text-[13px] text-muted italic">Agenda preliminar sujeta a cambios conforme se confirmen ponentes.</div>
-  </div>
-</section>
-
-<section id="scholars" class="relative overflow-hidden">
-  <img src="assets/foto-scholars.png" alt="Trasciende Scholars" class="absolute inset-0 w-full h-full object-cover">
-  <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,30,.96)_38%,rgba(11,18,51,.55))]"></div>
-  <div class="relative max-w-[1300px] mx-auto px-6 py-24 text-paper">
-    <div class="reveal max-w-[620px]">
-      <h2 class="font-heading text-[36px] lg:text-[58px] leading-[.94] mb-4.5 uppercase">120 becas para<br>quienes no tienen acceso</h2>
-      <p class="text-[16.5px] leading-relaxed text-paper/82">Las empresas participantes pueden financiar la asistencia de un bloque de 120 estudiantes de preparatoria y universidad de escuelas públicas y sectores vulnerables. Vivirán el foro junto con la comunidad del Tec, para que conocer a estos líderes no esté limitado a quienes ya tienen acceso al ecosistema.</p>
-    </div>
-  </div>
-</section>
-
-<section id="app" class="relative bg-night text-paper overflow-hidden">
-  <div class="absolute -top-[40%] right-[20%] w-[760px] h-[760px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.45),transparent_64%)] blur-[50px] anim-drift pointer-events-none"></div>
-  <div class="relative max-w-[1300px] mx-auto px-6 py-24 text-center">
-    <div class="font-heading text-xs tracking-[.3em] uppercase text-gold">CLEIP · Aplicación web oficial</div>
-    <h2 class="reveal font-heading text-[36px] lg:text-[62px] leading-[.94] mt-3.5 mx-auto max-w-[780px] uppercase">Tu credencial<br>vive en el teléfono</h2>
-    <p class="text-[17px] leading-relaxed text-paper/76 mt-5 mx-auto max-w-[620px]">CLEIP —Connect, Live, Act, Participate, Empower— es la aplicación web del foro. Cada asistente recibe una credencial digital única con su agenda del día. El QR se escanea al entrar a cada espacio para registrar participación, y durante las conferencias se activa con dinámicas en vivo.</p>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4.5 mt-9 text-left">
-      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
-        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Acceso</div>
-        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Credencial digital</div>
-        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Una identidad única por asistente, activa desde el registro.</div>
-      </div>
-      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
-        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Programa</div>
-        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Agenda personal</div>
-        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Main Stage, Jardín y Lounge con horario y sede, en la palma.</div>
-      </div>
-      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
-        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Check-in</div>
-        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Escaneo de QR</div>
-        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Registro de participación al entrar a cada espacio.</div>
-      </div>
-      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
-        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Engagement</div>
-        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Dinámicas en vivo</div>
-        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Trivia, preguntas al ponente y sellos coleccionables por sesión.</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -377,7 +301,7 @@
   <div class="max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-start">
     <div class="reveal">
       <h2 class="font-heading text-[34px] lg:text-[52px] leading-[.94] mb-4.5 uppercase">Tec de Monterrey<br>Campus Ciudad de México</h2>
-      <p class="text-base leading-relaxed text-body mb-5 max-w-[440px]">Calle del Puente 222, Ejidos de Huipulco, Tlalpan, 14380, Ciudad de México. El foro ocupa el Main Stage en la carpa de eventos, el jardín, la sala ejecutiva y el lounge.</p>
+      <p class="text-base leading-relaxed text-body mb-5 max-w-[440px]">Calle del Puente 222, Ejidos de Huipulco, Tlalpan, 14380, Ciudad de México. El foro ocupa el Main Stage en la carpa de eventos, el jardín y el lounge, ambos en Aulas 2.</p>
       <div class="grid grid-cols-2 gap-3">
         <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Registro</div><div class="font-heading text-[22px]">07:00 hrs</div></div>
         <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Cierre</div><div class="font-heading text-[22px]">19:00 hrs</div></div>
@@ -394,7 +318,7 @@
   <div class="max-w-[1300px] mx-auto px-6 py-20 grid lg:grid-cols-2 gap-14 items-start">
     <div class="reveal">
       <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br>México Trasciende</h2>
-      <p class="text-base leading-relaxed text-paper/72 my-4.5 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias, Trasciende Scholars o prensa: el equipo te responde.</p>
+      <p class="text-base leading-relaxed text-paper/72 my-4.5 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
       <div class="flex flex-col gap-3 font-heading text-xl tracking-wide">
         <a href="tel:+525580250624" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Teléfono</span>55 8025 0624</a>
         <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
@@ -433,7 +357,7 @@
     </div>
     <div class="flex gap-6 font-heading text-[13px] tracking-[.18em] uppercase">
       <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Boletos</a>
-      <a href="https://mexico-trasciende-app.pages.dev/" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">CLEIP</a>
+      <a href="cleip.html" class="text-gold hover:text-goldlight">CLEIP</a>
       <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Instagram</a>
     </div>
   </div>
@@ -444,41 +368,40 @@
 
 <script>
 // ---------- data ----------
-const COLORS = { 'Main Stage': '#e0a04a', 'Jardín': '#2fa98c', 'Lounge': '#3b62ff', 'Receso': '#c0455c', 'Protocolo': '#6e7ba6' };
+const COLORS = { 'Main Stage': '#ff7a29', 'Jardín': '#c6e21e', 'Lounge': '#ee1a8c', 'Receso': '#c0455c', 'Protocolo': '#6e7ba6' };
+const LIGHT_TAGS = ['Main Stage', 'Jardín'];
 
-const COMITE = [
-  { area: 'Presidente', name: 'Kevin Pascual' },
-  { area: 'Vicepresidente', name: 'Andrés Maldonado' },
-  { area: 'Asesor', name: 'Paúl Roldán' },
-  { area: 'Directora de Logística', name: 'Clara F. Aldrete' },
-  { area: 'Director de Responsabilidad Social', name: 'Emilio Martínez Romero' },
-  { area: 'Directora de Comunicación', name: 'Carol González' },
-  { area: 'Director de Finanzas', name: 'Leonardo de la Rosa' },
-  { area: 'Coordinador de Tecnología', name: 'Aldo Paz' },
-  { area: 'Coordinación de Patrocinios', name: 'Alexa Valle Alva' }
+const SCHOOL_KEYWORDS = [
+  { school: 'Ingeniería y Ciencias', keyword: 'Innovación' },
+  { school: 'Negocios', keyword: 'Relaciones' },
+  { school: 'Arquitectura, Arte y Diseño', keyword: 'Creatividad' },
+  { school: 'Ciencias Sociales y Gobierno', keyword: 'Liderazgo' },
+  { school: 'Humanidades y Educación', keyword: 'Comunicación' },
+  { school: 'TecSalud', keyword: 'Bienestar' }
+];
+
+const LOUNGE_SPEAKERS = [
+  { name: 'Oscar Diez', photo: null }, { name: 'Federico Cerdas', photo: null }, { name: 'Nelson Rodríguez', photo: null },
+  { name: 'María Eugenia', photo: null }, { name: 'Travise Blaise', photo: null }, { name: 'Jill Kickul', photo: null },
+  { name: 'Alejandro Madrigal', photo: null }, { name: 'Ernesto Stein', photo: null }, { name: 'Laura Enríquez', photo: null },
+  { name: 'Paola Ricaurte', photo: null }, { name: 'Ximena Lama', photo: null }, { name: 'Francisco Falcone', photo: null },
+  { name: 'Cruz Contreras', photo: null }
 ];
 
 const ESPACIOS = [
   { name: 'Main Stage', kicker: 'Bloque 01 · Carpa de eventos',
-    t1: 'Cinco conferencias magistrales y dos TecTalks con los referentes que encabezan el programa.',
+    t1: '',
     t2: 'La experiencia está organizada para que un estudiante pueda pasar de escuchar a interactuar directamente con personas y organizaciones.',
-    datos: [{ k: 'Formato', v: 'Conferencias magistrales' }, { k: 'Sesiones', v: '5 magistrales + 2 TecTalks' }, { k: 'Sede', v: 'Carpa de eventos' }] },
-  { name: 'Jardín de Innovación', kicker: 'Bloque 02 · Jardín del campus',
+    datos: [{ k: 'Formato', v: 'Conferencias magistrales' }, { k: 'Sesiones', v: '5 conferencias magistrales' }, { k: 'Ubicación', v: 'Carpa de eventos' }] },
+  { name: 'Jardín de Innovación', kicker: 'Bloque 02 · Jardín de Aulas 2',
     t1: 'Un espacio abierto donde empresas y organizaciones presentan proyectos, tecnología, productos, oportunidades y experiencias interactivas.',
     t2: 'La intención es que las organizaciones no estén únicamente presentes como patrocinadores, sino como participantes activos dentro de la experiencia del estudiante.',
-    datos: [{ k: 'Formato', v: 'Stands y experiencias' }, { k: 'Para quién', v: 'Empresas y organizaciones' }, { k: 'Sede', v: 'Jardín del campus' }] },
-  { name: 'Networking Lounge', kicker: 'Bloque 03 · Lounge Trasciende',
+    datos: [{ k: 'Formato', v: 'Stands y experiencias' }, { k: 'Quién estará', v: 'Empresas y organizaciones' }, { k: 'Ubicación', v: 'Jardín de Aulas 2' }] },
+  { name: 'Networking Lounge', kicker: 'Bloque 03 · Aulas 2',
     t1: 'Los asistentes proponen proyectos a líderes de empresa, directores de academia y expertos en innovación y empresas socialmente responsables.',
     t2: 'Reuniremos a quince líderes que deseen guiar y potenciar el talento de emprendedores con ideas en etapa de lanzamiento, crecimiento o expansión.',
-    datos: [{ k: 'Formato', v: 'Mesas de conversación' }, { k: 'Líderes', v: '15 invitados' }, { k: 'Sede', v: 'Lounge Trasciende' }] },
-  { name: 'Trasciende Scholars', kicker: 'Bloque 04 · Foro completo',
-    t1: 'Empresas participantes financian la asistencia de 120 estudiantes de preparatoria y universidad de escuelas públicas y sectores vulnerables.',
-    t2: 'Vivirán México Trasciende junto con la comunidad del Tec, participando en conferencias, espacios de interacción y experiencias.',
-    datos: [{ k: 'Becas', v: '120 estudiantes' }, { k: 'Financia', v: 'Empresas aliadas' }, { k: 'Acceso', v: 'Foro completo' }] },
-  { name: 'Executive Lunch', kicker: 'Invitación especial · Sala ejecutiva',
-    t1: 'Una conversación cerrada, sin escenario ni formato de conferencia, entre líderes invitados, empresas aliadas y autoridades del Tecnológico de Monterrey.',
-    t2: 'La intención es propiciar encuentros entre personas de distintas industrias y perspectivas que difícilmente coincidirían en una misma mesa.',
-    datos: [{ k: 'Formato', v: 'Conversación cerrada' }, { k: 'Acceso', v: 'Solo líderes invitados' }, { k: 'Sede', v: 'Sala ejecutiva' }] }
+    datos: [{ k: 'Formato', v: 'Mesas de conversación' }, { k: 'Líderes', v: '15 invitados' }, { k: 'Ubicación', v: 'Aulas 2' }],
+    schoolTags: SCHOOL_KEYWORDS, speakers: LOUNGE_SPEAKERS }
 ];
 
 const AGENDA = [
@@ -489,26 +412,19 @@ const AGENDA = [
   { time: '10:30', min: 60, short: 'TecTalk + Jardín', title: 'TecTalk y Jardín de Innovación', tag: 'Jardín', detail: 'Una TecTalk de 10 minutos abre el recorrido por el Jardín de Innovación: empresas y organizaciones presentan proyectos, tecnología y experiencias interactivas.', chips: ['10 min TecTalk', '50 min recorrido', 'Jardín'] },
   { time: '11:30', min: 60, short: 'Magistral 03', title: 'Conferencia magistral 03', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
   { time: '12:30', min: 60, short: 'Lounge I', title: 'Networking Lounge · primera ronda', tag: 'Lounge', detail: 'Los asistentes proponen proyectos a los líderes invitados en mesas de conversación de rotación corta.', chips: ['60 min', '15 líderes', 'Lounge'] },
-  { time: '13:30', min: 90, short: 'Receso · Executive Lunch', title: 'Receso, show artístico y Executive Lunch', tag: 'Receso', detail: 'Receso con presentación artística en el Main Stage. En paralelo, el Executive Lunch reúne a líderes invitados y autoridades del Tec en la sala ejecutiva.', chips: ['90 min', 'Show en vivo', 'Sala ejecutiva'] },
+  { time: '13:30', min: 90, short: 'Receso', title: 'Receso y show artístico', tag: 'Receso', detail: 'Receso con presentación artística en el Main Stage.', chips: ['90 min', 'Show en vivo'] },
   { time: '15:00', min: 60, short: 'Magistral 04', title: 'Conferencia magistral 04', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
   { time: '16:00', min: 60, short: 'TecTalk + Lounge', title: 'TecTalk y Networking Lounge', tag: 'Lounge', detail: 'Segunda TecTalk seguida de la ronda final de mesas en el Networking Lounge, con foco en proyectos en etapa de crecimiento y expansión.', chips: ['10 min TecTalk', '50 min mesas'] },
   { time: '17:00', min: 60, short: 'Magistral 05', title: 'Conferencia magistral 05', tag: 'Main Stage', detail: 'La última conferencia del foro, pensada como cierre inspiracional del día.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
-  { time: '18:00', min: 60, short: 'Cierre', title: 'Cierre, reconocimientos y foto oficial', tag: 'Protocolo', detail: 'Conclusiones del foro, reconocimiento a ponentes, patrocinadores y Trasciende Scholars, y foto oficial de la primera edición.', chips: ['60 min', 'Main Stage'] }
+  { time: '18:00', min: 60, short: 'Cierre', title: 'Cierre, reconocimientos y foto oficial', tag: 'Protocolo', detail: 'Conclusiones del foro, reconocimiento a ponentes y patrocinadores, y foto oficial de la primera edición.', chips: ['60 min', 'Main Stage'] }
 ];
 
 const PONENTES = [
-  { name: 'Galia Borja', role: 'Subgobernadora del Banco de México', eje: 'Economía y sociedad', status: 'Confirmada', photo: 'assets/p-galia.png', pos: 'center 18%' },
-  { name: 'Farid Dieck', role: 'Filósofo, psicólogo y creador de contenido en redes sociales', eje: 'Psicología y bienestar', status: 'Confirmado', photo: 'assets/ponente-farid.png', pos: 'center 18%' },
-  { name: 'Gerardo Galindo', role: 'Ex-capitán de los Pumas, bicampeón y sobreviviente de cáncer', eje: 'Deporte y resiliencia', status: 'Confirmado', photo: 'assets/p-gerardo.png', pos: 'center 12%' },
-  { name: 'Ekaterina Kostioukhina', role: 'Investigadora en medicina espacial de Harvard, pionera en hibernación humana', eje: 'Ingeniería y ciencias', status: 'Confirmada', photo: 'assets/p-ekaterina.png', pos: 'center 20%' },
-  { name: 'Marlene Garayzar', role: 'Cofundadora y Chief Governance Officer de Stori Card', eje: 'Finanzas y tecnología', status: 'Confirmada', photo: 'assets/p-marlene.png', pos: 'center 18%' }
-];
-
-const LOUNGE = [
-  { name: 'Federico Cerdas', role: 'CEO de Skyhaus y top 300 líderes de México', photo: 'assets/l-federico.png', pos: 'center 20%' },
-  { name: 'Oscar Diez', role: 'Ex CEO de Indra México y referente en tecnología corporativa', photo: 'assets/l-oscar.png', pos: 'center 28%' },
-  { name: 'Nelson Rodríguez', role: 'Estratega ejecutivo en IA y conferencista internacional de Oracle', photo: 'assets/l-nelson.png', pos: 'center 30%' },
-  { name: 'Ximena Lama', role: 'Head of Strategic Growth & Regional Expansion de Teradyne', photo: 'assets/l-ximena.png', pos: 'center 20%' }
+  { eje: 'Main Stage', status: 'Por confirmar', num: '01' },
+  { eje: 'Main Stage', status: 'Por confirmar', num: '02' },
+  { eje: 'Main Stage', status: 'Por confirmar', num: '03' },
+  { eje: 'Main Stage', status: 'Por confirmar', num: '04' },
+  { eje: 'Main Stage', status: 'Por confirmar', num: '05' }
 ];
 
 const SPONSORS = [
@@ -535,8 +451,7 @@ const ESCUELAS = [
 const FAQS = [
   { q: '¿Dónde compro mi boleto?', a: 'En Market TEC, la plataforma oficial del Tecnológico de Monterrey. El botón de esta página te lleva directo; tu compra activa después la credencial digital en la app.' },
   { q: '¿Es solo para estudiantes del Tec?', a: 'No. El foro está dirigido a jóvenes de preparatoria y universidad de cualquier institución, además de EXATEC, empresas aliadas y público interesado en liderazgo e impacto social.' },
-  { q: '¿Qué incluye la entrada?', a: 'Acceso al Main Stage —cinco conferencias magistrales y dos TecTalks—, al Jardín de Innovación y al Networking Lounge, más la credencial digital en la app.' },
-  { q: '¿Cómo funciona Trasciende Scholars?', a: 'Empresas aliadas financian la asistencia de 120 estudiantes de escuelas públicas y sectores vulnerables. Si tu organización quiere apadrinar un bloque, escríbenos.' },
+  { q: '¿Qué incluye la entrada?', a: 'Acceso al Main Stage —cinco conferencias magistrales—, al Jardín de Innovación y al Networking Lounge, más la credencial digital en la app.' },
   { q: '¿Necesito descargar CLEIP?', a: 'No requiere descarga: la aplicación web funciona desde el navegador. Ahí vive tu credencial, la agenda y las dinámicas en vivo.' }
 ];
 
@@ -566,25 +481,12 @@ function tickCountdown() {
 tickCountdown();
 setInterval(tickCountdown, 1000);
 
-// ---------- comité ----------
-const comiteGrid = document.getElementById('comiteGrid');
-comiteGrid.innerHTML = COMITE.map(c => `
-  <div class="liftup rounded-md overflow-hidden border border-ink/[.12] bg-gradient-to-br from-[#fbfaf7] to-[#f3f1ea] hover:border-royal/40 hover:shadow-[0_14px_34px_rgba(11,18,51,.1)]">
-    <div class="relative h-[230px] bg-gradient-to-br from-royal/[.07] to-gold/[.07] border-b border-ink/10 flex items-center justify-center text-center px-4">
-      <span class="text-xs text-muted uppercase tracking-widest">Foto pendiente</span>
-    </div>
-    <div class="p-5">
-      <div class="font-heading text-[11px] tracking-[.2em] uppercase text-royal min-h-[26px]">${c.area}</div>
-      <div class="font-heading text-2xl uppercase leading-tight mt-1.5">${c.name}</div>
-    </div>
-  </div>`).join('');
-
 // ---------- espacios ----------
 let espacioIdx = 0;
 const tabsWrap = document.getElementById('espaciosTabs');
 function renderTabs() {
   tabsWrap.innerHTML = ESPACIOS.map((e, i) => `
-    <button data-i="${i}" class="tag-tab font-heading text-[15px] tracking-[.12em] uppercase whitespace-nowrap px-5 py-3 rounded-full border ${i === espacioIdx ? 'bg-gold text-night border-gold shadow-[0_0_24px_rgba(224,160,74,.35)]' : 'bg-royal/[.14] text-paper/82 border-[rgba(120,150,255,.3)]'}">${e.name}</button>`).join('');
+    <button data-i="${i}" class="tag-tab font-heading text-[15px] tracking-[.12em] uppercase whitespace-nowrap px-5 py-3 rounded-full border ${i === espacioIdx ? 'bg-gold text-night border-gold shadow-[0_0_24px_rgba(30,200,214,.35)]' : 'bg-royal/[.14] text-paper/82 border-[rgba(120,150,255,.3)]'}">${e.name}</button>`).join('');
   tabsWrap.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { espacioIdx = Number(b.dataset.i); renderEspacio(); }));
 }
 function renderEspacio() {
@@ -604,6 +506,27 @@ function renderEspacio() {
     img.style.zIndex = on ? '2' : '1';
     img.style.transform = on ? 'scale(1)' : 'scale(1.04)';
   });
+
+  const loungeExtra = document.getElementById('espLoungeExtra');
+  if (e.schoolTags && e.speakers) {
+    loungeExtra.hidden = false;
+    document.getElementById('espSchoolTags').innerHTML = e.schoolTags.map((s, i) => {
+      const tones = ['bg-cyan/15 text-cyan border-cyan/40', 'bg-magenta/15 text-magenta border-magenta/40', 'bg-orange/15 text-orange border-orange/40', 'bg-lime/15 text-lime border-lime/40'];
+      return `<span class="font-heading text-[13px] tracking-[.06em] px-3.5 py-2 rounded-full border ${tones[i % tones.length]}"><strong class="uppercase tracking-[.12em]">${s.school}</strong> · ${s.keyword}</span>`;
+    }).join('');
+    const cards = e.speakers.map((sp, i) => {
+      const ringTones = ['border-cyan', 'border-magenta', 'border-orange', 'border-lime'];
+      const initials = sp.name.split(' ').map(w => w[0]).slice(0, 2).join('');
+      const avatar = sp.photo
+        ? `<div class="w-14 h-14 rounded-full bg-cover bg-center" style="background-image:url('${sp.photo}')"></div>`
+        : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-heading text-lg bg-royal/25">${initials}</div>`;
+      return `<div class="flex-none flex items-center gap-3 pl-2.5 pr-5 py-2.5 rounded-full border ${ringTones[i % ringTones.length]} bg-royal/[.12]">${avatar}<span class="font-heading text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span></div>`;
+    });
+    document.getElementById('loungeCarousel').innerHTML = cards.concat(cards).join('');
+  } else {
+    loungeExtra.hidden = true;
+  }
+
   renderTabs();
 }
 renderEspacio();
@@ -628,25 +551,11 @@ ponentesGrid.innerHTML = PONENTES.map(p => {
       </div>
       <div class="p-5">
         <div class="font-heading text-[11px] tracking-[.22em] uppercase text-royal">${p.eje}</div>
-        <div class="font-heading text-[27px] tracking-wide uppercase leading-tight mt-1.5 ${pending ? 'text-ink/50' : ''}">${p.name}</div>
-        <div class="text-[14.5px] text-muted mt-1.5 leading-snug min-h-[42px]">${p.role}</div>
+        ${pending ? '' : `<div class="font-heading text-[27px] tracking-wide uppercase leading-tight mt-1.5">${p.name}</div>
+        <div class="text-[14.5px] text-muted mt-1.5 leading-snug min-h-[42px]">${p.role}</div>`}
       </div>
     </div>`;
 }).join('');
-
-// ---------- lounge ----------
-document.getElementById('loungeGrid').innerHTML = LOUNGE.map(l => `
-  <div class="liftup rounded-md overflow-hidden border border-[rgba(120,150,255,.24)] bg-gradient-to-br from-royal/[.18] to-night/30 hover:border-gold/60">
-    <div class="relative h-[210px] overflow-hidden bg-night">
-      <div class="absolute inset-0" style="background-image:url('${l.photo}');background-size:cover;background-position:${l.pos}"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/80"></div>
-      <span class="absolute top-0 left-0 font-heading text-[10px] tracking-[.2em] uppercase bg-gold text-night px-2.5 py-1">Confirmado</span>
-    </div>
-    <div class="p-4.5">
-      <div class="font-heading text-2xl tracking-wide uppercase leading-tight">${l.name}</div>
-      <div class="text-sm text-paper/62 mt-2 leading-snug">${l.role}</div>
-    </div>
-  </div>`).join('');
 
 // ---------- agenda bar + rows ----------
 let openRow = 2;
@@ -656,7 +565,7 @@ function renderDayBar() {
     const c = COLORS[r.tag];
     const active = openRow === i;
     return `<button data-i="${i}" title="${r.time} · ${r.title}" style="flex:${r.min} 1 0;background:${c};${active ? 'box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);' : 'filter:saturate(.72) brightness(.94);'}" class="min-w-0 border-0 cursor-pointer px-2 relative transition-all overflow-hidden">
-      <span class="block font-heading text-[11px] tracking-wide uppercase whitespace-nowrap overflow-hidden text-ellipsis" style="color:${r.tag === 'Main Stage' ? '#070b1e' : '#fff'};opacity:${r.min >= 60 ? 1 : 0}">${r.short}</span>
+      <span class="block font-heading text-[11px] tracking-wide uppercase whitespace-nowrap overflow-hidden text-ellipsis" style="color:${LIGHT_TAGS.includes(r.tag) ? '#070b1e' : '#fff'};opacity:${r.min >= 60 ? 1 : 0}">${r.short}</span>
     </button>`;
   }).join('');
   dayBar.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { openRow = Number(b.dataset.i); renderAll(); }));
@@ -681,7 +590,7 @@ function renderAgendaRows() {
           <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full" style="background:${c};box-shadow:0 0 0 4px #f5f3ee,0 0 14px ${c}"></span>
           <div class="font-heading text-2xl tracking-wide uppercase leading-tight">${r.title}</div>
           <div class="flex items-center gap-3 mt-1.5">
-            <span class="font-heading text-[11px] tracking-[.18em] uppercase px-2.5 py-1 rounded whitespace-nowrap" style="background:${c}22;color:${r.tag === 'Main Stage' ? '#8a5c05' : c}">${r.tag}</span>
+            <span class="font-heading text-[11px] tracking-[.18em] uppercase px-2.5 py-1 rounded whitespace-nowrap" style="background:${c}22;color:${LIGHT_TAGS.includes(r.tag) ? '#8a5c05' : c}">${r.tag}</span>
             <span class="text-[13.5px] text-muted">${dur}</span>
           </div>
         </div>

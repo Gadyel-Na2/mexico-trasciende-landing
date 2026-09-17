@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLEIP · México Trasciende</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
+          royaldeep: '#16297f', gold: '#1ec8d6', goldlight: '#5adbe6', golddeep: '#17a8b4',
+          magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
+          paper: '#f5f3ee', surface: '#ffffff', muted: '#5b6284', body: '#3a4066'
+        },
+        fontFamily: {
+          heading: ["'Barlow Condensed'", 'sans-serif'],
+          body: ["'Barlow'", 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', system-ui, sans-serif; }
+  ::selection { background: rgba(30,200,214,.35); }
+  @keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4%,-3%,0) scale(1.12); } }
+  .anim-drift { animation: drift 18s ease-in-out infinite; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .liftup { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease, box-shadow .35s ease; }
+  .liftup:hover { transform: translateY(-6px); }
+  .nav-link { color: rgba(245,243,238,.7); transition: color .2s ease; }
+  .nav-link:hover { color: #1ec8d6; }
+  a { transition: color .2s ease; }
+  #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  #mobileMenu.open { max-height: 480px; }
+</style>
+</head>
+<body class="bg-night text-ink overflow-x-hidden">
+
+<header class="sticky top-0 z-[60] bg-night/80 backdrop-blur-md border-b border-gold/20">
+  <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center gap-6">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <img src="assets/mt-logo.png" alt="México Trasciende" class="h-8 w-auto brightness-0 invert">
+      <span class="font-heading font-semibold text-[15px] tracking-[.17em] text-paper leading-tight uppercase">México<br>Trasciende</span>
+    </a>
+    <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
+      <a href="equipo.html" class="nav-link">Nosotros</a>
+      <a href="index.html#espacios" class="nav-link">Espacios</a>
+      <a href="index.html#ponentes" class="nav-link">Ponentes</a>
+      <a href="index.html#agenda" class="nav-link">Agenda</a>
+      <a href="index.html#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link text-gold">CLEIP</a>
+    </nav>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="hidden lg:inline-flex shrink-0 items-center h-[38px] px-5 bg-gold text-night font-heading text-sm tracking-[.12em] uppercase shadow-[0_0_22px_rgba(30,200,214,.4)] hover:bg-goldlight">Boletos</a>
+    <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
+      <span class="block w-6 h-[2px] bg-paper"></span>
+      <span class="block w-6 h-[2px] bg-paper"></span>
+      <span class="block w-6 h-[2px] bg-paper"></span>
+    </button>
+  </div>
+  <nav id="mobileMenu" class="lg:hidden px-6">
+    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-gold/15">
+      <a href="equipo.html" class="nav-link">Nosotros</a>
+      <a href="index.html#espacios" class="nav-link">Espacios</a>
+      <a href="index.html#ponentes" class="nav-link">Ponentes</a>
+      <a href="index.html#agenda" class="nav-link">Agenda</a>
+      <a href="index.html#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link">CLEIP</a>
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 bg-gold text-night font-heading tracking-[.12em] uppercase">Boletos</a>
+    </div>
+  </nav>
+</header>
+
+<section class="relative bg-night text-paper overflow-hidden">
+  <div class="absolute -top-[40%] right-[20%] w-[760px] h-[760px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.45),transparent_64%)] blur-[50px] anim-drift pointer-events-none"></div>
+  <div class="relative max-w-[1300px] mx-auto px-6 py-24 text-center">
+    <div class="font-heading text-xs tracking-[.3em] uppercase text-gold">CLEIP · Aplicación web oficial</div>
+    <h2 class="reveal font-heading text-[36px] lg:text-[62px] leading-[.94] mt-3.5 mx-auto max-w-[780px] uppercase">Tu credencial<br>vive en el teléfono</h2>
+    <p class="text-[17px] leading-relaxed text-paper/76 mt-5 mx-auto max-w-[620px]">CLEIP —Connect, Live, Act, Participate, Empower— es la aplicación web del foro. Cada asistente recibe una credencial digital única con su agenda del día. El QR se escanea al entrar a cada espacio para registrar participación, y durante las conferencias se activa con dinámicas en vivo.</p>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4.5 mt-9 text-left">
+      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
+        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Acceso</div>
+        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Credencial digital</div>
+        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Una identidad única por asistente, activa desde el registro.</div>
+      </div>
+      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
+        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Programa</div>
+        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Agenda personal</div>
+        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Main Stage, Jardín y Lounge con horario y ubicación, en la palma.</div>
+      </div>
+      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
+        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Check-in</div>
+        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Escaneo de QR</div>
+        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Registro de participación al entrar a cada espacio.</div>
+      </div>
+      <div class="liftup p-5 border border-[rgba(120,150,255,.24)] rounded-md bg-gradient-to-br from-royal/20 to-night/35 hover:border-gold/55">
+        <div class="font-heading text-[11px] tracking-[.22em] uppercase text-gold">Engagement</div>
+        <div class="font-heading text-[23px] tracking-wide uppercase mt-2">Dinámicas en vivo</div>
+        <div class="text-[14.5px] leading-snug text-paper/66 mt-2">Trivia, preguntas al ponente y sellos coleccionables por sesión.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-night text-paper/70 border-t border-gold/20">
+  <div class="max-w-[1300px] mx-auto px-6 py-10 flex flex-wrap gap-8 items-center justify-between">
+    <div class="flex items-center gap-6">
+      <img src="assets/mt-logo.png" alt="México Trasciende" class="h-14 w-auto brightness-0 invert">
+      <span class="w-px h-11 bg-gold/35"></span>
+      <div class="font-heading leading-tight tracking-[.14em] uppercase text-paper">
+        <div class="text-base">Tecnológico de Monterrey</div>
+        <div class="text-xs text-gold">Campus Ciudad de México · 50 Aniversario</div>
+      </div>
+    </div>
+    <div class="flex gap-6 font-heading text-[13px] tracking-[.18em] uppercase">
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Boletos</a>
+      <a href="cleip.html" class="text-gold hover:text-goldlight">CLEIP</a>
+      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Instagram</a>
+    </div>
+  </div>
+  <div class="border-t border-[rgba(120,150,255,.16)]">
+    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-paper/50">Grupo Estudiantil Trasciende · Sábado 21 de noviembre · Campus Ciudad de México</div>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

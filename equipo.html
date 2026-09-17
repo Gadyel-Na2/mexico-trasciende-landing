@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiénes somos · México Trasciende</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
+          royaldeep: '#16297f', gold: '#1ec8d6', goldlight: '#5adbe6', golddeep: '#17a8b4',
+          magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
+          paper: '#f5f3ee', surface: '#ffffff', muted: '#5b6284', body: '#3a4066'
+        },
+        fontFamily: {
+          heading: ["'Barlow Condensed'", 'sans-serif'],
+          body: ["'Barlow'", 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', system-ui, sans-serif; }
+  ::selection { background: rgba(30,200,214,.35); }
+  @keyframes glow { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+  .anim-glow { animation: glow 2.2s ease-in-out infinite; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .nav-link { color: rgba(245,243,238,.7); transition: color .2s ease; }
+  .nav-link:hover { color: #1ec8d6; }
+  a { transition: color .2s ease; }
+  #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  #mobileMenu.open { max-height: 480px; }
+  .flip-card { perspective: 1200px; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .5s cubic-bezier(.2,.7,.3,1); transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face { position: absolute; inset: 0; backface-visibility: hidden; }
+  .flip-back { transform: rotateY(180deg); }
+</style>
+</head>
+<body class="bg-night text-ink overflow-x-hidden">
+
+<header class="sticky top-0 z-[60] bg-night/80 backdrop-blur-md border-b border-gold/20">
+  <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center gap-6">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <img src="assets/mt-logo.png" alt="México Trasciende" class="h-8 w-auto brightness-0 invert">
+      <span class="font-heading font-semibold text-[15px] tracking-[.17em] text-paper leading-tight uppercase">México<br>Trasciende</span>
+    </a>
+    <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
+      <a href="equipo.html" class="nav-link text-gold">Nosotros</a>
+      <a href="index.html#espacios" class="nav-link">Espacios</a>
+      <a href="index.html#ponentes" class="nav-link">Ponentes</a>
+      <a href="index.html#agenda" class="nav-link">Agenda</a>
+      <a href="index.html#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link">CLEIP</a>
+    </nav>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="hidden lg:inline-flex shrink-0 items-center h-[38px] px-5 bg-gold text-night font-heading text-sm tracking-[.12em] uppercase shadow-[0_0_22px_rgba(30,200,214,.4)] hover:bg-goldlight">Boletos</a>
+    <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
+      <span class="block w-6 h-[2px] bg-paper"></span>
+      <span class="block w-6 h-[2px] bg-paper"></span>
+      <span class="block w-6 h-[2px] bg-paper"></span>
+    </button>
+  </div>
+  <nav id="mobileMenu" class="lg:hidden px-6">
+    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-gold/15">
+      <a href="equipo.html" class="nav-link">Nosotros</a>
+      <a href="index.html#espacios" class="nav-link">Espacios</a>
+      <a href="index.html#ponentes" class="nav-link">Ponentes</a>
+      <a href="index.html#agenda" class="nav-link">Agenda</a>
+      <a href="index.html#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link">CLEIP</a>
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 bg-gold text-night font-heading tracking-[.12em] uppercase">Boletos</a>
+    </div>
+  </nav>
+</header>
+
+<section class="relative text-paper overflow-hidden bg-night">
+  <div class="absolute -top-[30%] -left-[10%] w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.5),transparent_62%)] blur-[40px] pointer-events-none"></div>
+  <div class="relative max-w-[1300px] mx-auto px-6 pt-16 pb-12">
+    <div class="inline-flex items-center gap-3 py-[7px] pl-3 pr-4 rounded-full border border-gold/40 bg-gold/[.08] font-heading text-[13px] tracking-[.28em] uppercase text-golddeep mb-6">
+      <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_12px_#1ec8d6] anim-glow"></span>
+      Grupo Estudiantil Trasciende
+    </div>
+    <h1 class="font-heading font-bold text-[44px] sm:text-[64px] leading-[.92] uppercase">Quiénes<br><span class="bg-gradient-to-r from-magenta via-orange to-lime bg-clip-text text-transparent">somos</span></h1>
+  </div>
+</section>
+
+<section class="bg-white text-ink">
+  <div class="max-w-[1300px] mx-auto px-6 py-20">
+    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+      <div class="reveal">
+        <p class="text-[17px] leading-relaxed text-body" style="text-wrap:pretty">Somos el <strong class="font-semibold">Grupo Estudiantil Trasciende</strong> del Tecnológico de Monterrey, Campus Ciudad de México: un equipo de estudiantes que organiza México Trasciende de principio a fin — programación, ponentes, patrocinios, logística y comunicación.</p>
+        <p class="text-[17px] leading-relaxed text-body mt-4" style="text-wrap:pretty">Nos une la convicción de que la indiferencia social se combate creando encuentros que de otra forma no ocurrirían. Cada área del grupo existe para que un estudiante pueda cruzar la puerta y salir con una conexión real.</p>
+        <div class="grid grid-cols-2 gap-px bg-ink/[.12] border border-ink/[.12] mt-7">
+          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">2025</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Primera generación</div></div>
+          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">8</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Áreas de trabajo</div></div>
+          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">+50</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Estudiantes organizando</div></div>
+          <div class="bg-[#fbfaf7] p-5"><div class="font-heading text-[34px] text-royal">1</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Campus · CCM</div></div>
+        </div>
+      </div>
+      <div class="reveal relative rounded-md overflow-hidden shadow-[0_24px_60px_rgba(11,18,51,.2)]" style="transition-delay:.1s">
+        <img src="assets/foto-grupo.png" alt="Grupo Estudiantil Trasciende" class="block w-full h-[420px] object-cover">
+        <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-ink/70"></div>
+        <div class="absolute left-6 right-6 bottom-5 font-heading text-[13px] tracking-[.2em] uppercase text-paper/90">Grupo Estudiantil Trasciende · Campus Ciudad de México</div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3.5 mt-16 mb-2">
+      <span class="font-heading text-xs tracking-[.26em] uppercase text-muted whitespace-nowrap">Comité organizador</span>
+      <span class="flex-1 h-px bg-ink/[.14]"></span>
+    </div>
+    <p class="text-[14px] text-muted mb-6">Toca una tarjeta para ver qué equipo lidera cada integrante.</p>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="comiteGrid"></div>
+    <div class="mt-4 text-[13px] text-muted italic">Foto pendiente para cada integrante — sustituye el marco por su fotografía.</div>
+  </div>
+</section>
+
+<footer class="bg-night text-paper/70 border-t border-gold/20">
+  <div class="max-w-[1300px] mx-auto px-6 py-10 flex flex-wrap gap-8 items-center justify-between">
+    <div class="flex items-center gap-6">
+      <img src="assets/mt-logo.png" alt="México Trasciende" class="h-14 w-auto brightness-0 invert">
+      <span class="w-px h-11 bg-gold/35"></span>
+      <div class="font-heading leading-tight tracking-[.14em] uppercase text-paper">
+        <div class="text-base">Tecnológico de Monterrey</div>
+        <div class="text-xs text-gold">Campus Ciudad de México · 50 Aniversario</div>
+      </div>
+    </div>
+    <div class="flex gap-6 font-heading text-[13px] tracking-[.18em] uppercase">
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Boletos</a>
+      <a href="cleip.html" class="text-gold hover:text-goldlight">CLEIP</a>
+      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Instagram</a>
+    </div>
+  </div>
+  <div class="border-t border-[rgba(120,150,255,.16)]">
+    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-paper/50">Grupo Estudiantil Trasciende · Sábado 21 de noviembre · Campus Ciudad de México</div>
+  </div>
+</footer>
+
+<script>
+const COMITE = [
+  { area: 'Presidente', name: 'Kevin Pascual', lidera: 'Dirección general del Grupo Estudiantil Trasciende: visión, coordinación entre áreas y representación ante el Tec.' },
+  { area: 'Vicepresidente', name: 'Andrés Maldonado', lidera: 'Apoyo directo a la presidencia y seguimiento operativo de todas las áreas del grupo.' },
+  { area: 'Asesor', name: 'Paúl Roldán', lidera: 'Acompañamiento y asesoría estratégica al comité organizador.' },
+  { area: 'Directora de Logística', name: 'Clara F. Aldrete', lidera: 'Equipo de Logística: montaje, proveedores, señalización y operación del día del evento.' },
+  { area: 'Director de Responsabilidad Social', name: 'Emilio Martínez Romero', lidera: 'Equipo de Responsabilidad Social: Trasciende Scholars y vinculación con comunidades.' },
+  { area: 'Directora de Comunicación', name: 'Carol González', lidera: 'Equipo de Comunicación: redes sociales, contenido y relación con medios.' },
+  { area: 'Director de Finanzas', name: 'Leonardo de la Rosa', lidera: 'Equipo de Finanzas: presupuesto, ingresos por boletaje y control de gastos del foro.' },
+  { area: 'Coordinador de Tecnología', name: 'Aldo Paz', lidera: 'Equipo de Tecnología: sitio web, CLEIP y soporte digital del evento.' },
+  { area: 'Coordinación de Patrocinios', name: 'Alexa Valle Alva', lidera: 'Equipo de Patrocinios: relación con empresas aliadas y activaciones de marca.' }
+];
+
+const comiteGrid = document.getElementById('comiteGrid');
+comiteGrid.innerHTML = COMITE.map((c, i) => `
+  <div class="flip-card liftup h-[300px]" data-i="${i}">
+    <div class="flip-inner">
+      <div class="flip-face rounded-md overflow-hidden border border-ink/[.12] bg-gradient-to-br from-[#fbfaf7] to-[#f3f1ea] cursor-pointer">
+        <div class="relative h-[190px] bg-gradient-to-br from-royal/[.07] to-gold/[.07] border-b border-ink/10 flex items-center justify-center text-center px-4">
+          <span class="text-xs text-muted uppercase tracking-widest">Foto pendiente</span>
+        </div>
+        <div class="p-5">
+          <div class="font-heading text-[11px] tracking-[.2em] uppercase text-royal min-h-[26px]">${c.area}</div>
+          <div class="font-heading text-2xl uppercase leading-tight mt-1.5">${c.name}</div>
+        </div>
+      </div>
+      <div class="flip-face flip-back rounded-md overflow-hidden border border-gold/40 bg-gradient-to-br from-royal to-royaldeep p-6 flex flex-col justify-center cursor-pointer">
+        <div class="font-heading text-[11px] tracking-[.24em] uppercase text-gold mb-2">Lidera</div>
+        <div class="font-heading text-xl uppercase leading-tight text-paper mb-3">${c.area}</div>
+        <p class="text-[14.5px] leading-relaxed text-paper/85">${c.lidera}</p>
+      </div>
+    </div>
+  </div>`).join('');
+
+comiteGrid.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+});
+
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
