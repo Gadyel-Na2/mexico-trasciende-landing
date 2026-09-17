@@ -41,16 +41,30 @@
   .anim-marquee { animation: marquee 28s linear infinite; }
   .anim-marquee-slow { animation: marquee 38s linear infinite; width: max-content; }
   .anim-marquee-slow:hover { animation-play-state: paused; }
-  #espTexto1:empty, #espTexto2:empty { display: none; }
+  #espTexto1:empty, #espTexto2:empty, #espSchoolTags:empty { display: none; }
   .flip-card { perspective: 1200px; }
   .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .5s cubic-bezier(.2,.7,.3,1); transform-style: preserve-3d; }
   .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
   .flip-face { position: absolute; inset: 0; backface-visibility: hidden; }
   .flip-back { transform: rotateY(180deg); }
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
   .liftup { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease, box-shadow .35s ease; }
   .liftup:hover { transform: translateY(-6px); }
+  @keyframes espIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .esp-anim { animation: espIn .5s cubic-bezier(.16,1,.3,1) both; }
+  .lounge-chip { transition: transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s ease, background-color .3s ease; }
+  .lounge-chip:hover { transform: translateY(-4px) scale(1.04); background-color: rgba(35,64,196,.28); }
+  @keyframes tickPop { from { transform: translateY(-5px); opacity: .5; } to { transform: translateY(0); opacity: 1; } }
+  .cd-tick { animation: tickPop .45s cubic-bezier(.16,1,.3,1); }
+  .tag-tab:hover { transform: translateY(-2px); }
+  .btn-shine { position: relative; overflow: hidden; }
+  .btn-shine::after { content: ''; position: absolute; top: 0; left: -120%; width: 55%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-18deg); transition: left .6s cubic-bezier(.16,1,.3,1); }
+  .btn-shine:hover::after { left: 130%; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
   .logowall > * { filter: grayscale(1); opacity: .62; transition: filter .35s ease, opacity .35s ease, transform .35s ease; }
   .logowall:hover > * { filter: none; opacity: 1; transform: scale(1.04); }
   .nav-link { color: rgba(245,243,238,.7); transition: color .2s ease; }
@@ -79,7 +93,7 @@
       <a href="#aliados" class="nav-link">Aliados</a>
       <a href="cleip.html" class="nav-link">CLEIP</a>
     </nav>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="hidden lg:inline-flex shrink-0 items-center h-[38px] px-5 bg-gold text-night font-heading text-sm tracking-[.12em] uppercase shadow-[0_0_22px_rgba(30,200,214,.4)] hover:bg-goldlight">Boletos</a>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[38px] px-5 bg-gold text-night font-heading text-sm tracking-[.12em] uppercase shadow-[0_0_22px_rgba(30,200,214,.4)] hover:bg-goldlight">Boletos</a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
       <span class="block w-6 h-[2px] bg-paper"></span>
       <span class="block w-6 h-[2px] bg-paper"></span>
@@ -101,7 +115,6 @@
 
 <section id="inicio" class="relative text-paper overflow-hidden bg-night">
   <div class="absolute -top-[30%] -left-[10%] w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.55),transparent_62%)] blur-[40px] anim-drift pointer-events-none"></div>
-  <div class="absolute -bottom-[40%] -right-[8%] w-[820px] h-[820px] rounded-full bg-[radial-gradient(circle,rgba(30,200,214,.34),transparent_64%)] blur-[50px] anim-drift-rev pointer-events-none"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-night/90 pointer-events-none"></div>
 
   <svg class="absolute left-[4%] top-[8%] w-14 h-14 pointer-events-none anim-glow" viewBox="0 0 60 60" fill="none">
@@ -142,7 +155,7 @@
       </div>
 
       <div class="flex flex-wrap gap-3.5 mt-9">
-        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="h-[54px] inline-flex items-center px-8 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-gold text-night shadow-[0_0_34px_rgba(30,200,214,.42)] hover:bg-goldlight">Comprar boletos en Market TEC</a>
+        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine h-[54px] inline-flex items-center px-8 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-gold text-night shadow-[0_0_34px_rgba(30,200,214,.42)] hover:bg-goldlight">Comprar boletos en Market TEC</a>
         <a href="#espacios" class="h-[54px] inline-flex items-center px-7 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-paper border border-[rgba(120,150,255,.4)] bg-royal/[.14] hover:bg-royal/[.3]">Conoce los 3 espacios</a>
       </div>
     </div>
@@ -178,17 +191,17 @@
 
   <div class="relative max-w-[1300px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-3">
     <div class="reveal py-9 px-6 sm:border-r border-[rgba(120,150,255,.18)]">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">+1000</div>
+      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent" data-count="1000" data-count-prefix="+">+1000</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Te rodearás de</div>
       <div class="text-sm text-paper/55 mt-1">Empresarios, líderes, especialistas y organizaciones listos para conectar contigo</div>
     </div>
     <div class="reveal py-9 px-6 sm:border-r border-[rgba(120,150,255,.18)]">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">3</div>
+      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent" data-count="3">3</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Espacios del día</div>
       <div class="text-sm text-paper/55 mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
     </div>
     <div class="reveal py-9 px-6">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent">5</div>
+      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent" data-count="5">5</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Conferencias magistrales</div>
       <div class="text-sm text-paper/55 mt-1">Programa del Main Stage</div>
     </div>
@@ -228,18 +241,13 @@
         <h3 class="font-heading text-4xl tracking-wide uppercase mb-3.5 leading-none" id="espNombre"></h3>
         <p class="text-[16.5px] leading-relaxed text-paper/74 mb-3" id="espTexto1"></p>
         <p class="text-[16.5px] leading-relaxed text-paper/74 mb-5" id="espTexto2"></p>
+        <div class="flex flex-wrap gap-2.5 mb-6" id="espSchoolTags"></div>
         <div class="border-t border-[rgba(120,150,255,.22)]" id="espDatos"></div>
       </div>
     </div>
 
     <div id="espLoungeExtra" hidden class="mt-11">
       <div class="flex items-center gap-3.5 mb-4">
-        <span class="font-heading text-xs tracking-[.26em] uppercase text-paper/50 whitespace-nowrap">Por escuela</span>
-        <span class="flex-1 h-px bg-[rgba(120,150,255,.18)]"></span>
-      </div>
-      <div class="flex flex-wrap gap-2.5" id="espSchoolTags"></div>
-
-      <div class="flex items-center gap-3.5 mt-9 mb-4">
         <span class="font-heading text-xs tracking-[.26em] uppercase text-paper/50 whitespace-nowrap">Ponentes confirmados del Lounge</span>
         <span class="flex-1 h-px bg-[rgba(120,150,255,.18)]"></span>
       </div>
@@ -306,7 +314,7 @@
     </div>
 
     <div class="mt-11 flex justify-end">
-      <a href="#contacto" class="inline-flex items-center h-[46px] px-6 font-heading tracking-[.12em] uppercase bg-gold text-night hover:bg-goldlight">Quiero patrocinar</a>
+      <a href="#contacto" class="btn-shine inline-flex items-center h-[46px] px-6 font-heading tracking-[.12em] uppercase bg-gold text-night hover:bg-goldlight">Quiero patrocinar</a>
     </div>
   </div>
 </section>
@@ -395,11 +403,19 @@ const SCHOOL_KEYWORDS = [
 ];
 
 const LOUNGE_SPEAKERS = [
-  { name: 'Oscar Diez', photo: null }, { name: 'Federico Cerdas', photo: null }, { name: 'Nelson Rodríguez', photo: null },
-  { name: 'María Eugenia', photo: null }, { name: 'Travise Blaise', photo: null }, { name: 'Jill Kickul', photo: null },
-  { name: 'Alejandro Madrigal', photo: null }, { name: 'Ernesto Stein', photo: null }, { name: 'Laura Enríquez', photo: null },
-  { name: 'Paola Ricaurte', photo: null }, { name: 'Ximena Lama', photo: null }, { name: 'Francisco Falcone', photo: null },
-  { name: 'Cruz Contreras', photo: null }
+  { name: 'Oscar Diez', photo: 'assets/l-oscar.jpg', pos: '62% 22%' },
+  { name: 'Federico Cerdas', photo: 'assets/l-federico.jpg', pos: 'center 18%' },
+  { name: 'Nelson Rodríguez', photo: 'assets/l-nelson.jpg', pos: '32% 42%' },
+  { name: 'María Eugenia', photo: 'assets/l-maria-eugenia.jpg', pos: 'center 22%' },
+  { name: 'Travise Blaise', photo: 'assets/l-travise.jpg', pos: 'center 32%' },
+  { name: 'Jill Kickul', photo: 'assets/l-jill.jpg', pos: 'center 28%' },
+  { name: 'Alejandro Madrigal', photo: 'assets/l-alejandro.jpg', pos: 'center 32%' },
+  { name: 'Ernesto Stein', photo: 'assets/l-ernesto.jpg', pos: 'center 32%' },
+  { name: 'Laura Enríquez', photo: 'assets/l-laura.jpg', pos: '40% 28%' },
+  { name: 'Paola Ricaurte', photo: 'assets/l-paola.jpg', pos: 'center 24%' },
+  { name: 'Ximena Lama', photo: 'assets/l-ximena.jpg', pos: '62% 26%' },
+  { name: 'Francisco Falcone', photo: 'assets/l-francisco.jpg', pos: 'center 32%' },
+  { name: 'Cruz Contreras', photo: 'assets/l-cruz.jpg', pos: '55% 26%' }
 ];
 
 const ESPACIOS = [
@@ -475,24 +491,70 @@ menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
 // ---------- scroll reveal ----------
-const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.15 });
-revealEls.forEach(el => io.observe(el));
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+function registerReveals(root = document) {
+  root.querySelectorAll('.reveal:not([data-rev])').forEach(el => {
+    el.setAttribute('data-rev', '');
+    io.observe(el);
+  });
+}
+// stagger siblings inside a grid/list so cards cascade instead of popping together
+function revealStagger(container, step = 70) {
+  [...container.children].forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * step) + 'ms';
+  });
+  registerReveals(container.parentElement || container);
+}
+registerReveals();
 
 // ---------- countdown ----------
 const target = new Date('2026-11-21T07:00:00-06:00').getTime();
 const pad = n => String(n).padStart(2, '0');
+function setCd(key, value) {
+  const el = document.querySelector(`[data-cd="${key}"]`);
+  if (el.textContent === value) return;
+  el.textContent = value;
+  el.classList.remove('cd-tick');
+  void el.offsetWidth;
+  el.classList.add('cd-tick');
+}
 function tickCountdown() {
   const diff = Math.max(0, target - Date.now());
-  document.querySelector('[data-cd="d"]').textContent = pad(Math.floor(diff / 86400000));
-  document.querySelector('[data-cd="h"]').textContent = pad(Math.floor(diff / 3600000) % 24);
-  document.querySelector('[data-cd="m"]').textContent = pad(Math.floor(diff / 60000) % 60);
-  document.querySelector('[data-cd="s"]').textContent = pad(Math.floor(diff / 1000) % 60);
+  setCd('d', pad(Math.floor(diff / 86400000)));
+  setCd('h', pad(Math.floor(diff / 3600000) % 24));
+  setCd('m', pad(Math.floor(diff / 60000) % 60));
+  setCd('s', pad(Math.floor(diff / 1000) % 60));
 }
 tickCountdown();
 setInterval(tickCountdown, 1000);
+
+// ---------- count-up stats ----------
+const countIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    countIo.unobserve(e.target);
+    const el = e.target;
+    const end = Number(el.dataset.count);
+    const prefix = el.dataset.countPrefix || '';
+    const start = performance.now();
+    const dur = 1100;
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = prefix + Math.round(end * eased);
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => {
+  el.textContent = (el.dataset.countPrefix || '') + '0';
+  countIo.observe(el);
+});
 
 // ---------- espacios ----------
 let espacioIdx = 0;
@@ -529,14 +591,20 @@ function renderEspacio() {
       const ringTones = ['border-cyan', 'border-magenta', 'border-orange', 'border-lime'];
       const initials = sp.name.split(' ').map(w => w[0]).slice(0, 2).join('');
       const avatar = sp.photo
-        ? `<div class="w-14 h-14 rounded-full bg-cover bg-center" style="background-image:url('${sp.photo}')"></div>`
-        : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-heading text-lg bg-royal/25">${initials}</div>`;
-      return `<div class="flex-none flex items-center gap-3 pl-2.5 pr-5 py-2.5 rounded-full border ${ringTones[i % ringTones.length]} bg-royal/[.12]">${avatar}<span class="font-heading text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span></div>`;
+        ? `<div class="w-14 h-14 rounded-full bg-cover shrink-0" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></div>`
+        : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-heading text-lg bg-royal/25 shrink-0">${initials}</div>`;
+      return `<div class="lounge-chip flex-none flex items-center gap-3 pl-2.5 pr-5 py-2.5 rounded-full border ${ringTones[i % ringTones.length]} bg-royal/[.12]">${avatar}<span class="font-heading text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span></div>`;
     });
     document.getElementById('loungeCarousel').innerHTML = cards.concat(cards).join('');
   } else {
     loungeExtra.hidden = true;
+    document.getElementById('espSchoolTags').innerHTML = '';
   }
+
+  const textCol = document.getElementById('espNombre').parentElement;
+  textCol.classList.remove('esp-anim');
+  void textCol.offsetWidth;
+  textCol.classList.add('esp-anim');
 
   renderTabs();
 }
@@ -580,6 +648,7 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
 ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => card.classList.toggle('flipped'));
 });
+revealStagger(ponentesGrid, 80);
 
 // ---------- agenda bar + rows ----------
 let openRow = 2;
@@ -645,6 +714,7 @@ function logoWall(list, pos, height) {
 document.getElementById('sponsorsGrid').innerHTML = logoWall(SPONSORS, 'center', 132);
 document.getElementById('areasGrid').innerHTML = logoWall(AREAS, 'center', 118);
 document.getElementById('escuelasGrid').innerHTML = logoWall(ESCUELAS, 'left center', 114);
+['sponsorsGrid', 'areasGrid', 'escuelasGrid'].forEach(id => revealStagger(document.getElementById(id), 60));
 
 // ---------- FAQ ----------
 let openFaq = 0;
