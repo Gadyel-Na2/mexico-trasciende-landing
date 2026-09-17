@@ -41,7 +41,12 @@
   .anim-marquee { animation: marquee 28s linear infinite; }
   .anim-marquee-slow { animation: marquee 38s linear infinite; width: max-content; }
   .anim-marquee-slow:hover { animation-play-state: paused; }
-  #espTexto1:empty { display: none; }
+  #espTexto1:empty, #espTexto2:empty { display: none; }
+  .flip-card { perspective: 1200px; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .5s cubic-bezier(.2,.7,.3,1); transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face { position: absolute; inset: 0; backface-visibility: hidden; }
+  .flip-back { transform: rotateY(180deg); }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
   .liftup { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease, box-shadow .35s ease; }
@@ -99,11 +104,20 @@
   <div class="absolute -bottom-[40%] -right-[8%] w-[820px] h-[820px] rounded-full bg-[radial-gradient(circle,rgba(30,200,214,.34),transparent_64%)] blur-[50px] anim-drift-rev pointer-events-none"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-night/90 pointer-events-none"></div>
 
+  <svg class="absolute left-[4%] top-[8%] w-14 h-14 pointer-events-none anim-glow" viewBox="0 0 60 60" fill="none">
+    <rect x="4" y="4" width="14" height="14" transform="rotate(45 11 11)" fill="#c6e21e"/>
+    <rect x="34" y="4" width="10" height="10" transform="rotate(45 39 9)" fill="#c6e21e" opacity=".6"/>
+    <rect x="4" y="34" width="10" height="10" transform="rotate(45 9 39)" fill="#c6e21e" opacity=".6"/>
+  </svg>
+  <svg class="absolute right-[8%] top-[16%] w-9 h-9 pointer-events-none anim-glow" style="animation-delay:.6s" viewBox="0 0 40 40" fill="none">
+    <path d="M20 0 L23 17 L40 20 L23 23 L20 40 L17 23 L0 20 L17 17 Z" fill="#f5f3ee"/>
+  </svg>
+
   <div class="relative max-w-[1300px] mx-auto px-6 pt-20 pb-16 grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
     <div class="reveal">
       <div class="inline-flex items-center gap-3 py-[7px] pl-3 pr-4 rounded-full border border-gold/40 bg-gold/[.08] font-heading text-[13px] tracking-[.28em] uppercase text-golddeep mb-6">
         <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_12px_#1ec8d6] anim-glow"></span>
-        Conecta · Trasciende e Innova
+        Conecta · Trasciende · Innova
       </div>
       <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase">México<br><span class="bg-gradient-to-r from-magenta via-orange to-lime bg-clip-text text-transparent">Trasciende</span></h1>
       <p class="max-w-[540px] mt-6 text-[18.5px] leading-relaxed text-paper/76" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo en el Campus Ciudad de México, diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes, empresarios, especialistas y organizaciones.</p>
@@ -315,12 +329,12 @@
 </section>
 
 <section id="contacto" class="bg-ink text-paper">
-  <div class="max-w-[1300px] mx-auto px-6 py-20 grid lg:grid-cols-2 gap-14 items-start">
+  <div class="max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-start">
     <div class="reveal">
       <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br>México Trasciende</h2>
-      <p class="text-base leading-relaxed text-paper/72 my-4.5 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
-      <div class="flex flex-col gap-3 font-heading text-xl tracking-wide">
-        <a href="tel:+525580250624" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Teléfono</span>55 8025 0624</a>
+      <p class="text-base leading-relaxed text-paper/72 mt-5 mb-8 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
+      <div class="flex flex-col gap-6 font-heading text-xl tracking-wide">
+        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
         <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
         <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
       </div>
@@ -398,8 +412,7 @@ const ESPACIOS = [
     t2: 'La intención es que las organizaciones no estén únicamente presentes como patrocinadores, sino como participantes activos dentro de la experiencia del estudiante.',
     datos: [{ k: 'Formato', v: 'Stands y experiencias' }, { k: 'Quién estará', v: 'Empresas y organizaciones' }, { k: 'Ubicación', v: 'Jardín de Aulas 2' }] },
   { name: 'Networking Lounge', kicker: 'Bloque 03 · Aulas 2',
-    t1: 'Los asistentes proponen proyectos a líderes de empresa, directores de academia y expertos en innovación y empresas socialmente responsables.',
-    t2: 'Reuniremos a quince líderes que deseen guiar y potenciar el talento de emprendedores con ideas en etapa de lanzamiento, crecimiento o expansión.',
+    t1: '', t2: '',
     datos: [{ k: 'Formato', v: 'Mesas de conversación' }, { k: 'Líderes', v: '15 invitados' }, { k: 'Ubicación', v: 'Aulas 2' }],
     schoolTags: SCHOOL_KEYWORDS, speakers: LOUNGE_SPEAKERS }
 ];
@@ -510,10 +523,8 @@ function renderEspacio() {
   const loungeExtra = document.getElementById('espLoungeExtra');
   if (e.schoolTags && e.speakers) {
     loungeExtra.hidden = false;
-    document.getElementById('espSchoolTags').innerHTML = e.schoolTags.map((s, i) => {
-      const tones = ['bg-cyan/15 text-cyan border-cyan/40', 'bg-magenta/15 text-magenta border-magenta/40', 'bg-orange/15 text-orange border-orange/40', 'bg-lime/15 text-lime border-lime/40'];
-      return `<span class="font-heading text-[13px] tracking-[.06em] px-3.5 py-2 rounded-full border ${tones[i % tones.length]}"><strong class="uppercase tracking-[.12em]">${s.school}</strong> · ${s.keyword}</span>`;
-    }).join('');
+    document.getElementById('espSchoolTags').innerHTML = e.schoolTags.map(s => `
+      <span class="font-heading text-[13px] tracking-[.06em] px-3.5 py-2 rounded-full border border-[rgba(120,150,255,.3)] bg-royal/[.14] text-paper/85"><strong class="uppercase tracking-[.12em] text-paper">${s.school}</strong> · ${s.keyword}</span>`).join('');
     const cards = e.speakers.map((sp, i) => {
       const ringTones = ['border-cyan', 'border-magenta', 'border-orange', 'border-lime'];
       const initials = sp.name.split(' ').map(w => w[0]).slice(0, 2).join('');
@@ -533,29 +544,42 @@ renderEspacio();
 
 // ---------- ponentes ----------
 const ponentesGrid = document.getElementById('ponentesGrid');
-ponentesGrid.innerHTML = PONENTES.map(p => {
-  const confirmed = p.status === 'Confirmado' || p.status === 'Confirmada';
+ponentesGrid.innerHTML = PONENTES.map((p, i) => {
   const pending = !p.photo;
-  const badge = confirmed ? `bg-gold text-night` : `bg-ink/[.08] text-royal`;
-  const media = pending
-    ? `<div class="absolute inset-0 flex flex-col items-center justify-center gap-2.5">
-         <div class="font-heading text-[52px] leading-none text-royal/[.28]">${p.num}</div>
-         <div class="font-heading text-[11px] tracking-[.26em] uppercase text-royal/70 anim-pulse-soft">Por anunciar</div>
-       </div>`
-    : `<div class="absolute inset-0" style="background-image:url('${p.photo}');background-size:cover;background-position:${p.pos}"></div>`;
+  if (pending) {
+    return `
+    <div class="flip-card h-[280px]" data-i="${i}">
+      <div class="flip-inner">
+        <div class="flip-face liftup flex flex-col rounded-md overflow-hidden bg-white border border-dashed border-royal/30 hover:shadow-[0_14px_34px_rgba(11,18,51,.1)] cursor-pointer">
+          <div class="relative h-full overflow-hidden bg-gradient-to-br from-royal/[.07] to-gold/[.07] flex flex-col items-center justify-center gap-2.5">
+            <div class="font-heading text-[52px] leading-none text-royal/[.28]">${p.num}</div>
+            <div class="font-heading text-[11px] tracking-[.26em] uppercase text-royal/70 anim-pulse-soft">Por anunciar</div>
+            <div class="font-heading text-[11px] tracking-[.22em] uppercase text-royal absolute bottom-5">${p.eje}</div>
+          </div>
+        </div>
+        <div class="flip-face flip-back rounded-md overflow-hidden border border-gold/40 bg-gradient-to-br from-royal to-royaldeep p-6 flex flex-col items-center justify-center text-center cursor-pointer">
+          <div class="font-heading text-[11px] tracking-[.24em] uppercase text-gold mb-2">Muy pronto</div>
+          <p class="text-[14.5px] leading-relaxed text-paper/85">Este ponente está por anunciarse. Síguenos en Instagram @trasciende_tec para enterarte primero.</p>
+        </div>
+      </div>
+    </div>`;
+  }
   return `
-    <div class="liftup flex flex-col rounded-md overflow-hidden bg-white border ${pending ? 'border-dashed border-royal/30' : 'border-ink/[.12]'} hover:shadow-[0_14px_34px_rgba(11,18,51,.1)]">
-      <div class="relative h-[280px] overflow-hidden ${pending ? 'bg-gradient-to-br from-royal/[.07] to-gold/[.07]' : 'bg-[#eeebe3]'}">
-        ${media}
-        <span class="absolute top-0 left-0 z-[2] font-heading text-[10px] tracking-[.2em] uppercase px-3 py-1.5 ${badge}">${p.status}</span>
+    <div class="liftup flex flex-col rounded-md overflow-hidden bg-white border border-ink/[.12] hover:shadow-[0_14px_34px_rgba(11,18,51,.1)]">
+      <div class="relative h-[280px] overflow-hidden bg-[#eeebe3]">
+        <div class="absolute inset-0" style="background-image:url('${p.photo}');background-size:cover;background-position:${p.pos}"></div>
+        <span class="absolute top-0 left-0 z-[2] font-heading text-[10px] tracking-[.2em] uppercase px-3 py-1.5 bg-gold text-night">${p.status}</span>
       </div>
       <div class="p-5">
         <div class="font-heading text-[11px] tracking-[.22em] uppercase text-royal">${p.eje}</div>
-        ${pending ? '' : `<div class="font-heading text-[27px] tracking-wide uppercase leading-tight mt-1.5">${p.name}</div>
-        <div class="text-[14.5px] text-muted mt-1.5 leading-snug min-h-[42px]">${p.role}</div>`}
+        <div class="font-heading text-[27px] tracking-wide uppercase leading-tight mt-1.5">${p.name}</div>
+        <div class="text-[14.5px] text-muted mt-1.5 leading-snug min-h-[42px]">${p.role}</div>
       </div>
     </div>`;
 }).join('');
+ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+});
 
 // ---------- agenda bar + rows ----------
 let openRow = 2;
