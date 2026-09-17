@@ -16,7 +16,8 @@
           night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
           royaldeep: '#16297f', gold: '#1ec8d6', goldlight: '#5adbe6', golddeep: '#17a8b4',
           magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
-          paper: '#f5f3ee', surface: '#ffffff', muted: '#5b6284', body: '#3a4066'
+          paper: '#f5f3ee', surface: '#ffffff', muted: '#5b6284', body: '#3a4066',
+          sand: '#e6d7b3', sanddark: '#d9c495'
         },
         fontFamily: {
           heading: ["'Barlow Condensed'", 'sans-serif'],
@@ -186,7 +187,7 @@
         <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_12px_#1ec8d6] anim-glow"></span>
         Conecta · Trasciende · Innova
       </div>
-      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase">México<br><span class="grad-text-fade">Trasciende</span></h1>
+      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="grad-text-fade">Trasciende</span></h1>
       <p class="max-w-[540px] mt-6 text-[18.5px] leading-relaxed text-paper/76" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo en el Campus Ciudad de México, diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes, empresarios, especialistas y organizaciones.</p>
 
       <div class="flex gap-3 mt-9" id="countdown">
@@ -412,37 +413,37 @@
   </div>
 </section>
 
-<section id="contacto" class="relative bg-ink text-paper overflow-hidden">
-  <svg class="deco hidden lg:block right-[-9%] top-[-10%] w-[320px] h-[320px] anim-sweep opacity-50" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <path d="M100 100 L100 6 A94 94 0 1 1 33 166 Z" fill="#2340c4" opacity=".55"/>
+<section id="contacto" class="relative bg-sand text-ink overflow-hidden">
+  <svg class="deco hidden lg:block right-[-9%] top-[-10%] w-[320px] h-[320px] anim-sweep opacity-40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M100 100 L100 6 A94 94 0 1 1 33 166 Z" fill="#2340c4" opacity=".4"/>
   </svg>
-  <svg class="deco hidden lg:block left-[4%] bottom-[12%] w-16 h-16 anim-floaty opacity-80" viewBox="0 0 60 60" aria-hidden="true">
-    <rect x="6" y="6" width="14" height="14" transform="rotate(45 13 13)" fill="#c6e21e"/>
-    <rect x="32" y="30" width="10" height="10" transform="rotate(45 37 35)" fill="#1ec8d6" opacity=".8"/>
+  <svg class="deco hidden lg:block left-[4%] bottom-[12%] w-16 h-16 anim-floaty opacity-90" viewBox="0 0 60 60" aria-hidden="true">
+    <rect x="6" y="6" width="14" height="14" transform="rotate(45 13 13)" fill="#ee1a8c" opacity=".55"/>
+    <rect x="32" y="30" width="10" height="10" transform="rotate(45 37 35)" fill="#ff7a29" opacity=".7"/>
   </svg>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-start">
     <div class="reveal">
       <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br><span class="grad-text">México Trasciende</span></h2>
-      <p class="text-base leading-relaxed text-paper/72 mt-5 mb-8 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
+      <p class="text-base leading-relaxed text-body mt-5 mb-8 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
       <div class="flex flex-col gap-6 font-heading text-xl tracking-wide">
-        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
-        <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
-        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-paper hover:text-gold"><span class="text-[11px] tracking-[.22em] text-paper/50 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
+        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-ink hover:text-magenta"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
+        <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-ink hover:text-magenta"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
+        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-ink hover:text-magenta"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
       </div>
     </div>
-    <div class="p-7 rounded-md border border-[rgba(120,150,255,.24)] bg-night/50">
+    <div class="p-7 rounded-md border border-ink/[.12] bg-white/60 backdrop-blur-sm">
       <form id="contactForm" class="grid gap-4">
         <div>
-          <label for="mt-nombre" class="block text-sm text-paper/70 mb-1.5">Nombre</label>
-          <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="w-full h-11 px-3 rounded bg-paper/[.06] border border-[rgba(120,150,255,.3)] text-paper placeholder:text-paper/40 focus:outline-none focus:border-gold">
+          <label for="mt-nombre" class="block text-sm text-body mb-1.5">Nombre</label>
+          <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="w-full h-11 px-3 rounded bg-white border border-ink/[.15] text-ink placeholder:text-muted focus:outline-none focus:border-royal">
         </div>
         <div>
-          <label for="mt-mail" class="block text-sm text-paper/70 mb-1.5">Correo</label>
-          <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="w-full h-11 px-3 rounded bg-paper/[.06] border border-[rgba(120,150,255,.3)] text-paper placeholder:text-paper/40 focus:outline-none focus:border-gold">
+          <label for="mt-mail" class="block text-sm text-body mb-1.5">Correo</label>
+          <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="w-full h-11 px-3 rounded bg-white border border-ink/[.15] text-ink placeholder:text-muted focus:outline-none focus:border-royal">
         </div>
         <div>
-          <label for="mt-msg" class="block text-sm text-paper/70 mb-1.5">Mensaje</label>
-          <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="w-full px-3 py-2 rounded bg-paper/[.06] border border-[rgba(120,150,255,.3)] text-paper placeholder:text-paper/40 focus:outline-none focus:border-gold"></textarea>
+          <label for="mt-msg" class="block text-sm text-body mb-1.5">Mensaje</label>
+          <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="w-full px-3 py-2 rounded bg-white border border-ink/[.15] text-ink placeholder:text-muted focus:outline-none focus:border-royal"></textarea>
         </div>
         <button type="submit" class="h-[46px] font-heading tracking-[.14em] uppercase bg-gold text-night hover:bg-goldlight" id="contactBtn">Enviar mensaje</button>
       </form>
@@ -623,6 +624,25 @@ function revealStagger(container, step = 70) {
   registerReveals(container.parentElement || container);
 }
 registerReveals();
+
+// ---------- hero title: "México" grows to match "Trasciende" width ----------
+function matchHeroTitleWidth() {
+  const mex = document.getElementById('heroMexico');
+  const tra = document.getElementById('heroTrasciende');
+  if (!mex || !tra) return;
+  mex.style.fontSize = '';
+  const baseSize = parseFloat(getComputedStyle(mex).fontSize);
+  const mexWidth = mex.getBoundingClientRect().width;
+  const traWidth = tra.getBoundingClientRect().width;
+  if (mexWidth > 0 && traWidth > 0) {
+    mex.style.fontSize = (baseSize * (traWidth / mexWidth)) + 'px';
+  }
+}
+window.addEventListener('load', matchHeroTitleWidth);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(matchHeroTitleWidth);
+let heroResizeT;
+window.addEventListener('resize', () => { clearTimeout(heroResizeT); heroResizeT = setTimeout(matchHeroTitleWidth, 150); });
+matchHeroTitleWidth();
 
 // ---------- countdown ----------
 const target = new Date('2026-11-21T07:00:00-06:00').getTime();
