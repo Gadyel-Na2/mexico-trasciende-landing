@@ -65,6 +65,10 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .grad-bar { background: linear-gradient(90deg, #ee1a8c, #ff7a29, #ffd60a, #c6e21e, #1ec8d6); }
+  .grad-text-fade {
+    background: linear-gradient(100deg, #ee1a8c 0%, #ff5a2d 32%, #ffb020 58%, #c6e21e 82%, rgba(198,226,30,.15) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
   @keyframes floaty { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(0,-16px,0) rotate(8deg); } }
   @keyframes twinkle { 0%,100% { opacity: .3; transform: scale(.82) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(15deg); } }
   @keyframes sweep { 0%,100% { transform: translate3d(0,0,0) scale(1); opacity: .5; } 50% { transform: translate3d(-3%,2%,0) scale(1.06); opacity: .8; } }
@@ -182,7 +186,7 @@
         <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_12px_#1ec8d6] anim-glow"></span>
         Conecta · Trasciende · Innova
       </div>
-      <h1 class="grad-text font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase">México<br>Trasciende</h1>
+      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase">México<br><span class="grad-text-fade">Trasciende</span></h1>
       <p class="max-w-[540px] mt-6 text-[18.5px] leading-relaxed text-paper/76" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo en el Campus Ciudad de México, diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes, empresarios, especialistas y organizaciones.</p>
 
       <div class="flex gap-3 mt-9" id="countdown">
