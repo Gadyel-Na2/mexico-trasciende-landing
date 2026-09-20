@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agenda del día · México Trasciende</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
+          magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
+          paper: '#f5f3ee', surface: '#ffffff', muted: '#6b6560', body: '#3d3935',
+          bone: '#f2efe7', bonedeep: '#e9e4d8', noir: '#14110f', coral: '#e8503a'
+        },
+        fontFamily: {
+          heading: ["'Barlow Condensed'", 'sans-serif'],
+          body: ["'Barlow'", 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', system-ui, sans-serif; }
+  ::selection { background: rgba(232,80,58,.28); }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .nav-link { position: relative; padding-bottom: 2px; color: rgba(20,17,15,.72); transition: color .2s ease; }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #e8503a; transition: width .28s cubic-bezier(.16,1,.3,1); }
+  .nav-link:hover { color: #e8503a; }
+  .nav-link:hover::after, .nav-link.text-coral::after { width: 100%; }
+  :focus-visible { outline: 2px solid #e8503a; outline-offset: 3px; border-radius: 2px; }
+  a { transition: color .2s ease; }
+  #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  #mobileMenu.open { max-height: 480px; }
+  #menuBtn span { transition: transform .3s cubic-bezier(.2,.7,.3,1), opacity .2s ease; }
+  #menuBtn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  #menuBtn.open span:nth-child(2) { opacity: 0; }
+  #menuBtn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .chev { transition: transform .25s ease; }
+  .chev.open { transform: rotate(45deg); }
+  .grad-text {
+    background: linear-gradient(103deg, #ee1a8c 0%, #ff5a2d 38%, #ff9d1c 62%, #c6e21e 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .grad-bar { background: linear-gradient(90deg, #ee1a8c, #ff7a29, #ffd60a, #c6e21e, #1ec8d6); }
+  .deco { position: absolute; pointer-events: none; z-index: 0; }
+  @keyframes orbit { 0% { transform: translate3d(0,0,0) rotate(0deg); } 25% { transform: translate3d(14px,-18px,0) rotate(5deg); } 50% { transform: translate3d(0,-28px,0) rotate(-4deg); } 75% { transform: translate3d(-14px,-12px,0) rotate(6deg); } 100% { transform: translate3d(0,0,0) rotate(0deg); } }
+  @keyframes spinSlow { from { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.12); } to { transform: rotate(360deg) scale(1); } }
+  @keyframes pop { 0%,100% { opacity: .45; transform: scale(.7) rotate(-12deg); } 45% { opacity: 1; transform: scale(1.18) rotate(10deg); } 70% { opacity: .8; transform: scale(.95) rotate(2deg); } }
+  @keyframes glow { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+  .anim-orbit { animation: orbit 14s ease-in-out infinite; }
+  .anim-spin-slow { animation: spinSlow 22s linear infinite; }
+  .anim-pop { animation: pop 4.2s cubic-bezier(.16,1,.3,1) infinite; }
+  .anim-glow { animation: glow 2.2s ease-in-out infinite; }
+  .btn-shine { position: relative; overflow: hidden; }
+  .btn-shine::after { content: ''; position: absolute; top: 0; left: -120%; width: 55%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-18deg); transition: left .6s cubic-bezier(.16,1,.3,1); }
+  .btn-shine:hover::after { left: 130%; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body class="bg-bone text-noir overflow-x-hidden">
+
+<div id="scrollProgress" class="grad-bar" style="position:fixed;top:0;left:0;height:3px;width:0%;z-index:90;transition:width .1s linear"></div>
+
+<header class="sticky top-0 z-[60] bg-bone/85 backdrop-blur-md border-b border-noir/10">
+  <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center gap-6">
+    <a href="index.html" class="shrink-0 flex items-center" aria-label="México Trasciende — inicio">
+      <span class="grid place-items-center w-11 h-11 rounded-xl bg-noir">
+        <img src="assets/mt-mark.png" alt="México Trasciende" class="h-6 w-auto">
+      </span>
+    </a>
+    <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
+      <a href="equipo.html" class="nav-link">Nosotros</a>
+      <a href="index.html#espacios" class="nav-link">Espacios</a>
+      <a href="index.html#ponentes" class="nav-link">Ponentes</a>
+      <a href="agenda.html" class="nav-link text-coral">Agenda</a>
+      <a href="index.html#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link">CLEIP</a>
+    </nav>
+    <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-body whitespace-nowrap">
+      <span class="w-1.5 h-1.5 rounded-full bg-coral anim-glow"></span>21 Nov 2026 · CCM
+    </span>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[40px] px-6 rounded-full bg-coral text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-noir">Boletos</a>
+    <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
+      <span class="block w-6 h-[2px] bg-noir"></span>
+      <span class="block w-6 h-[2px] bg-noir"></span>
+      <span class="block w-6 h-[2px] bg-noir"></span>
+    </button>
+  </div>
+  <nav id="mobileMenu" class="lg:hidden px-6">
+    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-noir/10">
+      <a href="equipo.html" class="nav-link">Nosotros</a>
+      <a href="index.html#espacios" class="nav-link">Espacios</a>
+      <a href="index.html#ponentes" class="nav-link">Ponentes</a>
+      <a href="agenda.html" class="nav-link">Agenda</a>
+      <a href="index.html#aliados" class="nav-link">Aliados</a>
+      <a href="cleip.html" class="nav-link">CLEIP</a>
+      <span class="font-heading text-[13px] tracking-[.16em] text-body">Sábado 21 de noviembre 2026 · Campus CCM</span>
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-coral text-white font-heading tracking-[.12em] uppercase">Boletos</a>
+    </div>
+  </nav>
+</header>
+
+<section class="relative bg-bone overflow-hidden">
+  <svg class="deco hidden lg:block left-[4%] top-[22%] w-16 h-16 anim-spin-slow" viewBox="0 0 60 60" aria-hidden="true">
+    <rect x="4" y="4" width="14" height="14" transform="rotate(45 11 11)" fill="#c6e21e"/>
+    <rect x="32" y="32" width="12" height="12" transform="rotate(45 38 38)" fill="#ee1a8c" opacity=".8"/>
+  </svg>
+  <svg class="deco hidden lg:block right-[7%] top-[26%] w-14 h-14 anim-pop" viewBox="0 0 40 40" aria-hidden="true">
+    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
+  </svg>
+  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-16 pb-10">
+    <a href="index.html" class="font-heading text-[13px] tracking-[.2em] uppercase text-muted hover:text-coral">← Volver al inicio</a>
+    <h1 class="font-heading font-bold text-[46px] sm:text-[72px] leading-[.9] uppercase mt-5">El <span class="grad-text">día completo</span></h1>
+    <p class="font-heading text-[17px] tracking-[.14em] uppercase text-body mt-4">Sábado 21 de noviembre 2026 · Campus Ciudad de México</p>
+    <p class="text-[17px] leading-relaxed text-body mt-4 max-w-[660px]">Doce horas mapeadas de extremo a extremo. Cada segmento de la barra es un bloque real del programa — toca cualquiera para abrirlo.</p>
+  </div>
+</section>
+
+<section class="bg-bone">
+  <div class="max-w-[1300px] mx-auto px-6 pb-24">
+    <div class="flex h-16 rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(20,17,15,.1)]" id="dayBar"></div>
+    <div class="flex justify-between mt-2 font-heading text-xs tracking-[.2em] text-muted">
+      <span>07:00</span><span>10:00</span><span>13:00</span><span>16:00</span><span>19:00</span>
+    </div>
+
+    <div class="flex flex-wrap gap-4 mt-5" id="leyenda"></div>
+
+    <div class="mt-9 relative">
+      <div class="absolute left-[97px] top-2.5 bottom-2.5 w-0.5 bg-noir/10 pointer-events-none"></div>
+      <div id="agendaRows"></div>
+    </div>
+    <div class="mt-4 text-[13px] text-muted italic">Agenda preliminar sujeta a cambios conforme se confirmen ponentes.</div>
+
+    <div class="mt-12 flex flex-wrap gap-4">
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine h-[54px] inline-flex items-center px-8 rounded-full font-heading text-base tracking-[.14em] uppercase bg-coral text-white hover:bg-noir">Quiero ser parte</a>
+      <a href="index.html#espacios" class="h-[54px] inline-flex items-center px-7 rounded-full font-heading text-base tracking-[.14em] uppercase border-2 border-noir/20 hover:border-noir hover:bg-noir hover:text-bone">Conoce los 3 espacios</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-noir text-bone/70 border-t border-white/10">
+  <div class="max-w-[1300px] mx-auto px-6 py-10 flex flex-wrap gap-8 items-center justify-between">
+    <div class="flex items-center gap-6">
+      <img src="assets/mt-mark.png" alt="México Trasciende" class="h-12 w-auto">
+      <span class="w-px h-11 bg-white/25"></span>
+      <div class="font-heading leading-tight tracking-[.14em] uppercase text-bone">
+        <div class="text-base">Tecnológico de Monterrey</div>
+        <div class="text-xs text-coral">Campus Ciudad de México · 50 Aniversario</div>
+      </div>
+    </div>
+    <div class="flex gap-6 font-heading text-[13px] tracking-[.18em] uppercase">
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-coral hover:text-white">Boletos</a>
+      <a href="cleip.html" class="text-coral hover:text-white">CLEIP</a>
+      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-coral hover:text-white">Instagram</a>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-bone/50">Grupo Estudiantil Trasciende · Sábado 21 de noviembre 2026 · Campus Ciudad de México</div>
+  </div>
+</footer>
+
+<script>
+// Logistics blocks (registro, protocolo, receso) all share one neutral gray;
+// the three program spaces keep their own flyer color.
+const GRAY = '#7a746e';
+const COLORS = { 'Main Stage': '#ff7a29', 'Jardín': '#c6e21e', 'Lounge': '#ee1a8c', 'Protocolo': GRAY, 'Receso': GRAY };
+const LIGHT_TAGS = ['Main Stage', 'Jardín'];
+const LEYENDA = [
+  { label: 'Main Stage', color: COLORS['Main Stage'] },
+  { label: 'Jardín de Innovación', color: COLORS['Jardín'] },
+  { label: 'Networking Lounge', color: COLORS['Lounge'] },
+  { label: 'Registro, protocolo y receso', color: GRAY }
+];
+
+const AGENDA = [
+  { time: '07:00', min: 60, short: 'Registro', title: 'Registro y acreditación', tag: 'Protocolo', detail: 'Apertura de puertas, validación del boleto de Market TEC y activación de la credencial digital en la app.', chips: ['60 min', 'Acceso principal'] },
+  { time: '08:00', min: 30, short: 'Apertura', title: 'Bienvenida y apertura', tag: 'Protocolo', detail: 'Palabras de apertura del grupo estudiantil y de la dirección del campus, en el marco del 50 aniversario del Tec en la Ciudad de México.', chips: ['30 min', 'Main Stage'] },
+  { time: '08:30', min: 60, short: 'Magistral 01', title: 'Conferencia magistral 01', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+  { time: '09:30', min: 60, short: 'Magistral 02', title: 'Conferencia magistral 02', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+  { time: '10:30', min: 60, short: 'TecTalk + Jardín', title: 'TecTalk y Jardín de Innovación', tag: 'Jardín', detail: 'Una TecTalk de 10 minutos abre el recorrido por el Jardín de Innovación: empresas y organizaciones presentan proyectos, tecnología y experiencias interactivas.', chips: ['10 min TecTalk', '50 min recorrido', 'Jardín'] },
+  { time: '11:30', min: 60, short: 'Magistral 03', title: 'Conferencia magistral 03', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+  { time: '12:30', min: 60, short: 'Lounge I', title: 'Networking Lounge · primera ronda', tag: 'Lounge', detail: 'Los asistentes proponen proyectos a los líderes invitados en mesas de conversación de rotación corta.', chips: ['60 min', '+15 líderes', 'Lounge'] },
+  { time: '13:30', min: 90, short: 'Receso', title: 'Receso y show artístico', tag: 'Receso', detail: 'Receso con presentación artística en el Main Stage.', chips: ['90 min', 'Show en vivo'] },
+  { time: '15:00', min: 60, short: 'Magistral 04', title: 'Conferencia magistral 04', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+  { time: '16:00', min: 60, short: 'TecTalk + Lounge', title: 'TecTalk y Networking Lounge', tag: 'Lounge', detail: 'Segunda TecTalk seguida de la ronda final de mesas en el Networking Lounge, con foco en proyectos en etapa de crecimiento y expansión.', chips: ['10 min TecTalk', '50 min mesas'] },
+  { time: '17:00', min: 60, short: 'Magistral 05', title: 'Conferencia magistral 05', tag: 'Main Stage', detail: 'La última conferencia del foro, pensada como cierre inspiracional del día.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
+  { time: '18:00', min: 60, short: 'Cierre', title: 'Cierre, reconocimientos y foto oficial', tag: 'Protocolo', detail: 'Conclusiones del foro, reconocimiento a ponentes y patrocinadores, y foto oficial de la primera edición.', chips: ['60 min', 'Main Stage'] }
+];
+
+let openRow = 2;
+const dayBar = document.getElementById('dayBar');
+function renderDayBar() {
+  dayBar.innerHTML = AGENDA.map((r, i) => {
+    const c = COLORS[r.tag];
+    const active = openRow === i;
+    return `<button data-i="${i}" title="${r.time} · ${r.title}" style="flex:${r.min} 1 0;background:${c};${active ? 'box-shadow:inset 0 0 0 2px rgba(255,255,255,.9);' : 'filter:saturate(.72) brightness(.96);'}" class="min-w-0 border-0 cursor-pointer px-2 relative transition-all overflow-hidden">
+      <span class="block font-heading text-[11px] tracking-wide uppercase whitespace-nowrap overflow-hidden text-ellipsis" style="color:${LIGHT_TAGS.includes(r.tag) ? '#14110f' : '#fff'};opacity:${r.min >= 60 ? 1 : 0}">${r.short}</span>
+    </button>`;
+  }).join('');
+  dayBar.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { openRow = Number(b.dataset.i); renderAll(); }));
+}
+
+document.getElementById('leyenda').innerHTML = LEYENDA.map(k => `
+  <div class="flex items-center gap-2">
+    <span class="w-[11px] h-[11px] rounded-sm inline-block" style="background:${k.color}"></span>
+    <span class="font-heading text-[12.5px] tracking-[.16em] uppercase text-body">${k.label}</span>
+  </div>`).join('');
+
+function renderAgendaRows() {
+  const wrap = document.getElementById('agendaRows');
+  wrap.innerHTML = AGENDA.map((r, i) => {
+    const open = openRow === i;
+    const c = COLORS[r.tag];
+    const dur = r.min >= 60 ? (r.min / 60) + ' h' : r.min + ' min';
+    return `
+    <div class="rounded-xl ${open ? 'bg-bonedeep' : ''}">
+      <div data-i="${i}" class="agenda-toggle grid grid-cols-[84px_1fr_auto] gap-6 items-center py-4 pr-4 cursor-pointer">
+        <div class="text-right font-heading text-[25px] tabular-nums leading-none">${r.time}</div>
+        <div class="relative pl-7">
+          <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full" style="background:${c};box-shadow:0 0 0 4px #f2efe7"></span>
+          <div class="font-heading text-2xl tracking-wide uppercase leading-tight">${r.title}</div>
+          <div class="flex items-center gap-3 mt-1.5">
+            <span class="font-heading text-[11px] tracking-[.18em] uppercase px-2.5 py-1 rounded whitespace-nowrap" style="background:${c}26;color:${LIGHT_TAGS.includes(r.tag) ? '#6b4a0a' : c}">${r.tag}</span>
+            <span class="text-[13.5px] text-muted">${dur}</span>
+          </div>
+        </div>
+        <span class="chev ${open ? 'open' : ''} font-heading text-[26px] leading-none text-coral inline-block">+</span>
+      </div>
+      ${open ? `<div class="pb-5 pl-[140px] pr-4">
+        <p class="text-[15.5px] leading-relaxed text-body mb-3 max-w-[760px]">${r.detail}</p>
+        <div class="flex flex-wrap gap-2">${r.chips.map(c2 => `<span class="font-heading tracking-[.14em] uppercase text-[11px] px-2.5 py-1.5 rounded bg-noir/[.06] text-body">${c2}</span>`).join('')}</div>
+      </div>` : ''}
+    </div>`;
+  }).join('');
+  wrap.querySelectorAll('.agenda-toggle').forEach(el => el.addEventListener('click', () => {
+    const i = Number(el.dataset.i);
+    openRow = openRow === i ? null : i;
+    renderAll();
+  }));
+}
+function renderAll() { renderDayBar(); renderAgendaRows(); }
+renderAll();
+
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => {
+  const open = !mobileMenu.classList.contains('open');
+  mobileMenu.classList.toggle('open', open);
+  menuBtn.classList.toggle('open', open);
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('open'); menuBtn.classList.remove('open');
+}));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+}, { passive: true });
+</script>
+</body>
+</html>

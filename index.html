@@ -16,8 +16,8 @@
           night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
           royaldeep: '#16297f', gold: '#1ec8d6', goldlight: '#5adbe6', golddeep: '#17a8b4',
           magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
-          paper: '#f5f3ee', surface: '#ffffff', muted: '#5b6284', body: '#3a4066',
-          sand: '#e6d7b3', sanddark: '#d9c495'
+          paper: '#f5f3ee', surface: '#ffffff', muted: '#6b6560', body: '#3d3935',
+          bone: '#f2efe7', bonedeep: '#e9e4d8', noir: '#14110f', coral: '#e8503a'
         },
         fontFamily: {
           heading: ["'Barlow Condensed'", 'sans-serif'],
@@ -30,7 +30,7 @@
 <style>
   html { scroll-behavior: smooth; }
   body { font-family: 'Barlow', system-ui, sans-serif; }
-  ::selection { background: rgba(30,200,214,.35); }
+  ::selection { background: rgba(232,80,58,.28); }
   @keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4%,-3%,0) scale(1.12); } }
   @keyframes glow { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
   @keyframes pulse-soft { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
@@ -55,7 +55,7 @@
   @keyframes espIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   .esp-anim { animation: espIn .5s cubic-bezier(.16,1,.3,1) both; }
   .lounge-chip { transition: transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s ease, background-color .3s ease; }
-  .lounge-chip:hover { transform: translateY(-4px) scale(1.04); background-color: rgba(35,64,196,.28); }
+  .lounge-chip:hover { transform: translateY(-4px) scale(1.04); background-color: rgba(232,80,58,.12); }
   @keyframes tickPop { from { transform: translateY(-5px); opacity: .5; } to { transform: translateY(0); opacity: 1; } }
   .cd-tick { animation: tickPop .45s cubic-bezier(.16,1,.3,1); }
   .tag-tab:hover { transform: translateY(-2px); }
@@ -67,15 +67,21 @@
   }
   .grad-bar { background: linear-gradient(90deg, #ee1a8c, #ff7a29, #ffd60a, #c6e21e, #1ec8d6); }
   .grad-text-fade {
-    background: linear-gradient(100deg, #ee1a8c 0%, #ff5a2d 32%, #ffb020 58%, #c6e21e 82%, rgba(198,226,30,.15) 100%);
+    background: linear-gradient(100deg, #ee1a8c 0%, #ff5a2d 32%, #ffb020 58%, #c6e21e 84%, rgba(198,226,30,.25) 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   @keyframes floaty { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(0,-16px,0) rotate(8deg); } }
   @keyframes twinkle { 0%,100% { opacity: .3; transform: scale(.82) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(15deg); } }
   @keyframes sweep { 0%,100% { transform: translate3d(0,0,0) scale(1); opacity: .5; } 50% { transform: translate3d(-3%,2%,0) scale(1.06); opacity: .8; } }
+  @keyframes orbit { 0% { transform: translate3d(0,0,0) rotate(0deg); } 25% { transform: translate3d(14px,-18px,0) rotate(5deg); } 50% { transform: translate3d(0,-28px,0) rotate(-4deg); } 75% { transform: translate3d(-14px,-12px,0) rotate(6deg); } 100% { transform: translate3d(0,0,0) rotate(0deg); } }
+  @keyframes spinSlow { from { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.12); } to { transform: rotate(360deg) scale(1); } }
+  @keyframes pop { 0%,100% { opacity: .45; transform: scale(.7) rotate(-12deg); } 45% { opacity: 1; transform: scale(1.18) rotate(10deg); } 70% { opacity: .8; transform: scale(.95) rotate(2deg); } }
   .anim-floaty { animation: floaty 9s ease-in-out infinite; }
   .anim-twinkle { animation: twinkle 3.6s ease-in-out infinite; }
   .anim-sweep { animation: sweep 16s ease-in-out infinite; }
+  .anim-orbit { animation: orbit 14s ease-in-out infinite; }
+  .anim-spin-slow { animation: spinSlow 22s linear infinite; }
+  .anim-pop { animation: pop 4.2s cubic-bezier(.16,1,.3,1) infinite; }
   .deco { position: absolute; pointer-events: none; z-index: 0; }
   /* bright category label with the flyer's little colored dash underneath */
   .eje-label { display: inline-block; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
@@ -85,11 +91,11 @@
   /* ---- UX ---- */
   section[id] { scroll-margin-top: 84px; }
   #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 90; transition: width .1s linear; }
-  .nav-link.active { color: #1ec8d6; }
+  .nav-link.active { color: #e8503a; }
   .nav-link { position: relative; padding-bottom: 2px; }
-  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #1ec8d6; transition: width .28s cubic-bezier(.16,1,.3,1); }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #e8503a; transition: width .28s cubic-bezier(.16,1,.3,1); }
   .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-  :focus-visible { outline: 2px solid #1ec8d6; outline-offset: 3px; border-radius: 2px; }
+  :focus-visible { outline: 2px solid #e8503a; outline-offset: 3px; border-radius: 2px; }
   #toTop { transition: opacity .3s ease, transform .3s cubic-bezier(.2,.7,.3,1), background-color .3s ease; }
   #toTop[hidden] { display: flex !important; opacity: 0; transform: translateY(14px); pointer-events: none; }
   #menuBtn span { transition: transform .3s cubic-bezier(.2,.7,.3,1), opacity .2s ease; }
@@ -105,8 +111,8 @@
   }
   .logowall > * { filter: grayscale(1); opacity: .62; transition: filter .35s ease, opacity .35s ease, transform .35s ease; }
   .logowall:hover > * { filter: none; opacity: 1; transform: scale(1.04); }
-  .nav-link { color: rgba(245,243,238,.7); transition: color .2s ease; }
-  .nav-link:hover { color: #1ec8d6; }
+  .nav-link { color: rgba(20,17,15,.72); transition: color .2s ease; }
+  .nav-link:hover { color: #e8503a; }
   a { transition: color .2s ease; }
   #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   #mobileMenu.open { max-height: 480px; }
@@ -115,187 +121,167 @@
   .chev.open { transform: rotate(45deg); }
 </style>
 </head>
-<body class="bg-night text-ink overflow-x-hidden">
+<body class="bg-bone text-noir overflow-x-hidden">
 
 <div id="scrollProgress" class="grad-bar"></div>
 
-<header class="sticky top-0 z-[60] bg-night/80 backdrop-blur-md border-b border-gold/20">
+<header class="sticky top-0 z-[60] bg-bone/85 backdrop-blur-md border-b border-noir/10">
   <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center gap-6">
-    <a href="#inicio" class="flex items-center gap-3 shrink-0">
-      <img src="assets/mt-logo.png" alt="México Trasciende" class="h-8 w-auto brightness-0 invert">
-      <span class="font-heading font-semibold text-[15px] tracking-[.17em] text-paper leading-tight uppercase">México<br>Trasciende</span>
+    <a href="#inicio" class="shrink-0 flex items-center" aria-label="México Trasciende — inicio">
+      <span class="grid place-items-center w-11 h-11 rounded-xl bg-noir">
+        <img src="assets/mt-mark.png" alt="México Trasciende" class="h-6 w-auto">
+      </span>
     </a>
     <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
       <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
-      <a href="#agenda" class="nav-link">Agenda</a>
+      <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="#aliados" class="nav-link">Aliados</a>
       <a href="cleip.html" class="nav-link">CLEIP</a>
     </nav>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[38px] px-5 bg-gold text-night font-heading text-sm tracking-[.12em] uppercase shadow-[0_0_22px_rgba(30,200,214,.4)] hover:bg-goldlight">Boletos</a>
+    <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-body whitespace-nowrap">
+      <span class="w-1.5 h-1.5 rounded-full bg-coral anim-glow"></span>21 Nov 2026 · CCM
+    </span>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[40px] px-6 rounded-full bg-coral text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-noir">Boletos</a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
-      <span class="block w-6 h-[2px] bg-paper"></span>
-      <span class="block w-6 h-[2px] bg-paper"></span>
-      <span class="block w-6 h-[2px] bg-paper"></span>
+      <span class="block w-6 h-[2px] bg-noir"></span>
+      <span class="block w-6 h-[2px] bg-noir"></span>
+      <span class="block w-6 h-[2px] bg-noir"></span>
     </button>
   </div>
   <nav id="mobileMenu" class="lg:hidden px-6">
-    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-gold/15">
+    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-noir/10">
       <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
-      <a href="#agenda" class="nav-link">Agenda</a>
+      <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="#aliados" class="nav-link">Aliados</a>
       <a href="cleip.html" class="nav-link">CLEIP</a>
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 bg-gold text-night font-heading tracking-[.12em] uppercase">Boletos</a>
+      <span class="font-heading text-[13px] tracking-[.16em] text-body">Sábado 21 de noviembre 2026 · Campus CCM</span>
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-coral text-white font-heading tracking-[.12em] uppercase">Boletos</a>
     </div>
   </nav>
 </header>
 
-<section id="inicio" class="relative text-paper overflow-hidden bg-night">
-  <div class="absolute -top-[30%] -left-[10%] w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.55),transparent_62%)] blur-[40px] anim-drift pointer-events-none"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-night/90 pointer-events-none"></div>
-
-  <!-- flyer shapes: wedge, arc, diamond cluster, sparkles -->
-  <svg class="deco hidden lg:block left-[-20%] top-[12%] w-[460px] h-[460px] anim-sweep opacity-50" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+<section id="inicio" class="relative text-noir overflow-hidden bg-bone">
+  <!-- flyer shapes on bone: wedge, arc, diamond cluster, sparkles -->
+  <svg class="deco hidden lg:block left-[-22%] top-[14%] w-[440px] h-[440px] anim-sweep opacity-25" viewBox="0 0 200 200" fill="none" aria-hidden="true">
     <defs><linearGradient id="wedgeGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#2340c4"/><stop offset="55%" stop-color="#1e7fd6"/><stop offset="100%" stop-color="#1ec8d6"/>
     </linearGradient></defs>
     <path d="M100 100 L100 0 A100 100 0 1 1 28 170 Z" fill="url(#wedgeGrad)"/>
   </svg>
-  <svg class="deco hidden lg:block right-[-6%] top-[4%] w-[340px] h-[340px] anim-sweep opacity-70" style="animation-delay:-5s" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <path d="M10 190 A180 180 0 0 1 190 10" stroke="#1ec8d6" stroke-width="5" fill="none" opacity=".75"/>
-    <path d="M40 195 A160 160 0 0 1 195 40" stroke="#2340c4" stroke-width="10" fill="none" opacity=".5"/>
+  <svg class="deco hidden lg:block right-[-7%] top-[6%] w-[340px] h-[340px] anim-orbit opacity-50" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M10 190 A180 180 0 0 1 190 10" stroke="#e8503a" stroke-width="5" fill="none" opacity=".55"/>
+    <path d="M40 195 A160 160 0 0 1 195 40" stroke="#2340c4" stroke-width="10" fill="none" opacity=".35"/>
   </svg>
-  <svg class="deco left-[3%] top-[9%] w-9 h-9 lg:w-16 lg:h-16 anim-floaty" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+  <svg class="deco left-[3%] top-[10%] w-9 h-9 lg:w-16 lg:h-16 anim-spin-slow" viewBox="0 0 60 60" fill="none" aria-hidden="true">
     <rect x="4" y="4" width="14" height="14" transform="rotate(45 11 11)" fill="#c6e21e"/>
-    <rect x="34" y="4" width="10" height="10" transform="rotate(45 39 9)" fill="#c6e21e" opacity=".65"/>
-    <rect x="4" y="34" width="10" height="10" transform="rotate(45 9 39)" fill="#c6e21e" opacity=".65"/>
-    <rect x="32" y="32" width="14" height="14" transform="rotate(45 39 39)" fill="#c6e21e" opacity=".9"/>
+    <rect x="34" y="4" width="10" height="10" transform="rotate(45 39 9)" fill="#ff7a29" opacity=".8"/>
+    <rect x="4" y="34" width="10" height="10" transform="rotate(45 9 39)" fill="#1ec8d6" opacity=".8"/>
+    <rect x="32" y="32" width="14" height="14" transform="rotate(45 39 39)" fill="#ee1a8c" opacity=".85"/>
   </svg>
-  <svg class="deco right-[6%] top-[11%] w-9 h-9 lg:w-16 lg:h-16 anim-twinkle" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#eaff6b"/>
+  <svg class="deco right-[6%] top-[12%] w-9 h-9 lg:w-16 lg:h-16 anim-pop" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
   </svg>
-  <svg class="deco hidden lg:block right-[22%] top-[31%] w-7 h-7 anim-twinkle" style="animation-delay:1.4s" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#f5f3ee"/>
+  <svg class="deco hidden lg:block right-[24%] top-[33%] w-7 h-7 anim-pop" style="animation-delay:1.4s" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ee1a8c"/>
   </svg>
 
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-20 pb-16 grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
+  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-16 pb-16 grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
     <div class="reveal">
-      <div class="inline-flex items-center gap-3 py-[7px] pl-3 pr-4 rounded-full border border-gold/40 bg-gold/[.08] font-heading text-[13px] tracking-[.28em] uppercase text-golddeep mb-6">
-        <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_12px_#1ec8d6] anim-glow"></span>
-        Conecta · Trasciende · Innova
-      </div>
       <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="grad-text-fade">Trasciende</span></h1>
-      <p class="max-w-[540px] mt-6 text-[18.5px] leading-relaxed text-paper/76" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo en el Campus Ciudad de México, diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes, empresarios, especialistas y organizaciones.</p>
+      <p class="font-heading text-[17px] sm:text-[19px] tracking-[.14em] uppercase text-body mt-5">Sábado 21 de noviembre 2026 · Campus Ciudad de México</p>
+      <p class="max-w-[540px] mt-5 text-[18.5px] leading-relaxed text-body" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes de todas las carreras, empresarios, especialistas y organizaciones.</p>
 
       <div class="flex gap-3 mt-9" id="countdown">
-        <div class="flex-none w-[94px] text-center py-3.5 border border-[rgba(120,150,255,.24)] rounded bg-gradient-to-br from-royal/[.28] to-night/20 backdrop-blur-sm">
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
           <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="d">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-golddeep mt-1.5">Días</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Días</div>
         </div>
-        <div class="flex-none w-[94px] text-center py-3.5 border border-[rgba(120,150,255,.24)] rounded bg-gradient-to-br from-royal/[.28] to-night/20 backdrop-blur-sm">
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
           <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="h">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-golddeep mt-1.5">Horas</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Horas</div>
         </div>
-        <div class="flex-none w-[94px] text-center py-3.5 border border-[rgba(120,150,255,.24)] rounded bg-gradient-to-br from-royal/[.28] to-night/20 backdrop-blur-sm">
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
           <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="m">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-golddeep mt-1.5">Min</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Min</div>
         </div>
-        <div class="flex-none w-[94px] text-center py-3.5 border border-[rgba(120,150,255,.24)] rounded bg-gradient-to-br from-royal/[.28] to-night/20 backdrop-blur-sm">
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
           <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="s">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-golddeep mt-1.5">Seg</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Seg</div>
         </div>
       </div>
 
       <div class="flex flex-wrap gap-3.5 mt-9">
-        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine h-[54px] inline-flex items-center px-8 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-gold text-night shadow-[0_0_34px_rgba(30,200,214,.42)] hover:bg-goldlight">Comprar boletos en Market TEC</a>
-        <a href="#espacios" class="h-[54px] inline-flex items-center px-7 font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-paper border border-[rgba(120,150,255,.4)] bg-royal/[.14] hover:bg-royal/[.3]">Conoce los 3 espacios</a>
+        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine h-[54px] inline-flex items-center px-8 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-coral text-white shadow-[0_10px_30px_rgba(232,80,58,.3)] hover:bg-noir">Quiero ser parte</a>
+        <a href="#espacios" class="h-[54px] inline-flex items-center px-7 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-noir border-2 border-noir/20 hover:border-noir hover:bg-noir hover:text-bone">Conoce los 3 espacios</a>
       </div>
     </div>
 
     <div class="relative reveal" style="transition-delay:.12s">
-      <div class="relative rounded-md overflow-hidden bg-gradient-to-br from-white to-[#efeade] px-8 pt-9 pb-6 shadow-[0_30px_80px_rgba(3,6,20,.6)]">
-        <img src="assets/logo-oficial.png" alt="México Trasciende" class="block w-full max-w-[330px] h-auto mx-auto">
-        <div class="mt-6 grid grid-cols-2 gap-px bg-ink/[.16] border-t border-ink/[.16]">
-          <div class="bg-[#f7f4ee] py-3.5 px-1 text-center">
+      <div class="relative rounded-2xl overflow-hidden bg-white px-8 pt-10 pb-7 shadow-[0_26px_60px_rgba(20,17,15,.14)]">
+        <img src="assets/logo-oficial.png" alt="México Trasciende" class="block w-full max-w-[320px] h-auto mx-auto">
+        <div class="mt-7 grid grid-cols-2 gap-px bg-noir/10 border-t border-noir/10">
+          <div class="bg-white py-3.5 px-1 text-center">
             <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-muted">Fecha</div>
-            <div class="font-heading text-[21px] text-ink">Sáb 21 · Nov 2026</div>
+            <div class="font-heading text-[21px] text-noir">Sáb 21 · Nov 2026</div>
           </div>
-          <div class="bg-[#f7f4ee] py-3.5 px-1 text-center">
+          <div class="bg-white py-3.5 px-1 text-center">
             <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-muted">Ubicación</div>
-            <div class="font-heading text-[21px] text-ink">Campus CCM</div>
+            <div class="font-heading text-[21px] text-noir">Campus CCM</div>
           </div>
         </div>
       </div>
       <div class="grid grid-cols-3 gap-2.5 mt-3">
-        <div class="h-24 rounded overflow-hidden border border-[rgba(120,150,255,.22)]"><img src="assets/foto-mainstage.png" alt="Main Stage" class="w-full h-full object-cover"></div>
-        <div class="h-24 rounded overflow-hidden border border-[rgba(120,150,255,.22)]"><img src="assets/foto-grupo.png" alt="Comunidad Trasciende" class="w-full h-full object-cover"></div>
-        <div class="h-24 rounded overflow-hidden border border-[rgba(120,150,255,.22)]"><img src="assets/foto-lounge.png" alt="Networking Lounge" class="w-full h-full object-cover"></div>
+        <div class="h-24 rounded-xl overflow-hidden border border-noir/10"><img src="assets/foto-mainstage.png" alt="Main Stage" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="h-24 rounded-xl overflow-hidden border border-noir/10"><img src="assets/foto-grupo.png" alt="Comunidad Trasciende" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="h-24 rounded-xl overflow-hidden border border-noir/10"><img src="assets/foto-lounge.png" alt="Networking Lounge" loading="lazy" class="w-full h-full object-cover"></div>
       </div>
     </div>
   </div>
 
-  <div class="relative border-y border-gold/20 bg-royal/[.16] overflow-hidden flex">
-    <div class="flex flex-none anim-marquee font-heading text-[15px] tracking-[.34em] uppercase text-paper/80 py-3">
-      <span class="px-6">Liderazgo</span><span class="px-6 text-gold">◆</span><span class="px-6">Innovación</span><span class="px-6 text-gold">◆</span><span class="px-6">Impacto social</span><span class="px-6 text-gold">◆</span><span class="px-6">Emprendimiento</span><span class="px-6 text-gold">◆</span><span class="px-6">Networking</span><span class="px-6 text-gold">◆</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-gold">◆</span>
-      <span class="px-6">Liderazgo</span><span class="px-6 text-gold">◆</span><span class="px-6">Innovación</span><span class="px-6 text-gold">◆</span><span class="px-6">Impacto social</span><span class="px-6 text-gold">◆</span><span class="px-6">Emprendimiento</span><span class="px-6 text-gold">◆</span><span class="px-6">Networking</span><span class="px-6 text-gold">◆</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-gold">◆</span>
+  <div class="relative bg-noir overflow-hidden flex">
+    <div class="flex flex-none anim-marquee font-heading text-[15px] tracking-[.34em] uppercase text-bone/85 py-3">
+      <span class="px-6">Sáb 21 Nov 2026</span><span class="px-6 text-coral">◆</span><span class="px-6">Todas las carreras</span><span class="px-6 text-coral">◆</span><span class="px-6">Liderazgo</span><span class="px-6 text-coral">◆</span><span class="px-6">Innovación</span><span class="px-6 text-coral">◆</span><span class="px-6">Impacto social</span><span class="px-6 text-coral">◆</span><span class="px-6">Networking</span><span class="px-6 text-coral">◆</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-coral">◆</span>
+      <span class="px-6">Sáb 21 Nov 2026</span><span class="px-6 text-coral">◆</span><span class="px-6">Todas las carreras</span><span class="px-6 text-coral">◆</span><span class="px-6">Liderazgo</span><span class="px-6 text-coral">◆</span><span class="px-6">Innovación</span><span class="px-6 text-coral">◆</span><span class="px-6">Impacto social</span><span class="px-6 text-coral">◆</span><span class="px-6">Networking</span><span class="px-6 text-coral">◆</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-coral">◆</span>
     </div>
   </div>
 
   <div class="relative max-w-[1300px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-3">
-    <div class="reveal py-9 px-6 sm:border-r border-[rgba(120,150,255,.18)]">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent" data-count="1000" data-count-prefix="+">+1000</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Te rodearás de</div>
-      <div class="text-sm text-paper/55 mt-1">Empresarios, líderes, especialistas y organizaciones listos para conectar contigo</div>
+    <div class="reveal py-9 px-6 sm:border-r border-noir/10">
+      <div class="font-heading text-[56px] leading-[.88] text-coral" data-count="1000" data-count-prefix="+">+1000</div>
+      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Asistentes en un mismo día</div>
+      <div class="text-sm text-muted mt-1">Estudiantes de todas las carreras, empresarios, especialistas y organizaciones — en el mismo lugar y listos para conectar contigo.</div>
     </div>
-    <div class="reveal py-9 px-6 sm:border-r border-[rgba(120,150,255,.18)]">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent" data-count="3">3</div>
+    <div class="reveal py-9 px-6 sm:border-r border-noir/10">
+      <div class="font-heading text-[56px] leading-[.88] text-coral" data-count="3">3</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Espacios del día</div>
-      <div class="text-sm text-paper/55 mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
+      <div class="text-sm text-muted mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
     </div>
     <div class="reveal py-9 px-6">
-      <div class="font-heading text-[56px] leading-[.88] bg-gradient-to-r from-gold to-[#8aa4ff] bg-clip-text text-transparent" data-count="5">5</div>
+      <div class="font-heading text-[56px] leading-[.88] text-coral" data-count="5">5</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Conferencias magistrales</div>
-      <div class="text-sm text-paper/55 mt-1">Programa del Main Stage</div>
+      <div class="text-sm text-muted mt-1">Programa del Main Stage</div>
     </div>
   </div>
 </section>
 
-<section id="problema" class="relative bg-paper text-ink overflow-hidden">
-  <svg class="deco left-[-4%] top-[12%] w-12 h-12 lg:w-24 lg:h-24 anim-floaty opacity-70" viewBox="0 0 60 60" aria-hidden="true">
-    <rect x="6" y="6" width="16" height="16" transform="rotate(45 14 14)" fill="#ee1a8c" opacity=".5"/>
-    <rect x="34" y="30" width="11" height="11" transform="rotate(45 39 35)" fill="#ff7a29" opacity=".55"/>
-  </svg>
-  <svg class="deco right-[3%] bottom-[8%] w-9 h-9 lg:w-16 lg:h-16 anim-twinkle opacity-80" viewBox="0 0 40 40" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#c6e21e"/>
-  </svg>
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-14 items-center">
-    <div class="reveal">
-      <h2 class="font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tener la idea<br><span class="grad-text">no siempre alcanza</span></h2>
-      <p class="text-[17px] leading-relaxed text-body mt-5" style="text-wrap:pretty">En México existe una generación de jóvenes con interés por emprender, crear proyectos y transformar su entorno. Al mismo tiempo hay empresarios, especialistas y organizaciones dispuestos a compartir experiencia y acompañar a nuevas generaciones — pero ambos grupos pocas veces coinciden en un mismo espacio de manera estructurada.</p>
-      <p class="text-[17px] leading-relaxed text-body mt-4" style="text-wrap:pretty">México Trasciende los reúne en un mismo día, para combatir la indiferencia social inspirando a la juventud a desarrollar iniciativas de impacto real.</p>
-    </div>
-    <div class="reveal relative rounded-md overflow-hidden shadow-[0_24px_60px_rgba(11,18,51,.18)]">
-      <img src="assets/foto-scholars.png" alt="Comunidad Trasciende" class="block w-full h-[400px] object-cover">
-      <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-ink/55"></div>
-    </div>
-  </div>
-</section>
 
-<section id="espacios" class="relative bg-night text-paper overflow-hidden">
-  <div class="absolute top-[10%] -right-[12%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(35,64,196,.4),transparent_65%)] blur-[50px] pointer-events-none"></div>
-  <svg class="deco hidden lg:block right-[-8%] top-[6%] w-[300px] h-[300px] anim-sweep opacity-60" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+<section id="espacios" class="relative bg-bonedeep text-noir overflow-hidden">
+  <div class="absolute top-[10%] -right-[12%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(232,80,58,.12),transparent_65%)] blur-[50px] pointer-events-none"></div>
+  <svg class="deco hidden lg:block right-[-8%] top-[6%] w-[300px] h-[300px] anim-sweep opacity-35" viewBox="0 0 200 200" fill="none" aria-hidden="true">
     <path d="M12 188 A176 176 0 0 1 188 12" stroke="#1ec8d6" stroke-width="6" fill="none" opacity=".6"/>
     <path d="M45 193 A150 150 0 0 1 193 45" stroke="#ee1a8c" stroke-width="9" fill="none" opacity=".35"/>
   </svg>
-  <svg class="deco hidden lg:block left-[2%] bottom-[10%] w-20 h-20 anim-floaty opacity-80" viewBox="0 0 60 60" aria-hidden="true">
+  <svg class="deco hidden lg:block left-[2%] bottom-[10%] w-20 h-20 anim-orbit opacity-70" viewBox="0 0 60 60" aria-hidden="true">
     <rect x="6" y="6" width="15" height="15" transform="rotate(45 13 13)" fill="#c6e21e"/>
     <rect x="33" y="32" width="10" height="10" transform="rotate(45 38 37)" fill="#c6e21e" opacity=".6"/>
   </svg>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] mb-7 uppercase">Tres espacios,<br><span class="grad-text">un mismo día</span></h2>
+    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tres espacios,<br><span class="grad-text">un mismo día</span></h2>
+    <p class="reveal text-[17px] leading-relaxed text-body mt-4 mb-8 max-w-[680px]">Los tres espacios están abiertos a <strong class="font-semibold text-noir">estudiantes de cualquier carrera</strong>: ingeniería, negocios, salud, humanidades, arquitectura, ciencias sociales. No necesitas un perfil específico — solo ganas de construir algo.</p>
 
     <div class="flex flex-wrap gap-2.5" id="espaciosTabs"></div>
 
@@ -304,22 +290,21 @@
         <img data-esp-img="0" src="assets/foto-mainstage.png" alt="Main Stage" class="absolute inset-0 w-full h-full object-cover transition-all duration-700">
         <img data-esp-img="1" src="assets/foto-jardin.png" alt="Jardín de Innovación" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
         <img data-esp-img="2" src="assets/foto-lounge.png" alt="Networking Lounge" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
-        <div class="absolute inset-0 z-[3] bg-gradient-to-b from-transparent via-transparent to-night/75 pointer-events-none"></div>
-        <div class="absolute left-6 bottom-[22px] z-[4] font-heading text-xs tracking-[.24em] uppercase text-golddeep" id="espKicker"></div>
+        <div class="absolute inset-0 z-[3] bg-gradient-to-b from-transparent via-transparent to-noir/80 pointer-events-none"></div>
+        <div class="absolute left-6 bottom-[22px] z-[4] font-heading text-xs tracking-[.24em] uppercase" id="espKicker"></div>
       </div>
       <div class="flex flex-col justify-center">
         <h3 class="font-heading text-4xl tracking-wide uppercase mb-3.5 leading-none" id="espNombre"></h3>
-        <p class="text-[16.5px] leading-relaxed text-paper/74 mb-3" id="espTexto1"></p>
-        <p class="text-[16.5px] leading-relaxed text-paper/74 mb-5" id="espTexto2"></p>
-        <div class="flex flex-wrap gap-2.5 mb-6" id="espSchoolTags"></div>
-        <div class="border-t border-[rgba(120,150,255,.22)]" id="espDatos"></div>
+        <p class="text-[16.5px] leading-relaxed text-body mb-3" id="espTexto1"></p>
+        <p class="text-[16.5px] leading-relaxed text-body mb-5" id="espTexto2"></p>
+        <div class="border-t border-noir/12" id="espDatos"></div>
       </div>
     </div>
 
     <div id="espLoungeExtra" hidden class="mt-11">
       <div class="flex items-center gap-3.5 mb-4">
-        <span class="font-heading text-xs tracking-[.26em] uppercase text-paper/50 whitespace-nowrap">Ponentes confirmados del Lounge</span>
-        <span class="flex-1 h-px bg-[rgba(120,150,255,.18)]"></span>
+        <span class="font-heading text-xs tracking-[.26em] uppercase text-muted whitespace-nowrap">Ponentes confirmados del Lounge</span>
+        <span class="flex-1 h-px bg-noir/12"></span>
       </div>
       <div class="relative overflow-hidden" style="mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)">
         <div class="flex flex-none anim-marquee-slow gap-4 py-1" id="loungeCarousel"></div>
@@ -328,7 +313,7 @@
   </div>
 </section>
 
-<section id="ponentes" class="relative bg-paper text-ink overflow-hidden">
+<section id="ponentes" class="relative bg-bone text-noir overflow-hidden">
   <svg class="deco right-[-3%] top-[8%] w-14 h-14 lg:w-28 lg:h-28 anim-floaty opacity-60" viewBox="0 0 60 60" aria-hidden="true">
     <rect x="8" y="8" width="16" height="16" transform="rotate(45 16 16)" fill="#1ec8d6" opacity=".55"/>
     <rect x="34" y="34" width="11" height="11" transform="rotate(45 39 39)" fill="#ee1a8c" opacity=".5"/>
@@ -339,27 +324,23 @@
   </div>
 </section>
 
-<section id="agenda" class="bg-paper text-ink">
-  <div class="max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] mb-2 uppercase">El <span class="grad-text">día completo</span></h2>
-    <p class="text-base text-muted mb-8 max-w-[660px]">Doce horas mapeadas de extremo a extremo. Cada segmento de la barra es un bloque real del programa — toca cualquiera para abrirlo.</p>
 
-    <div class="flex h-16 rounded overflow-hidden shadow-[0_12px_32px_rgba(11,18,51,.14)]" id="dayBar"></div>
-    <div class="flex justify-between mt-2 font-heading text-xs tracking-[.2em] text-muted">
-      <span>07:00</span><span>10:00</span><span>13:00</span><span>16:00</span><span>19:00</span>
+<section id="agenda-teaser" class="relative bg-noir text-bone overflow-hidden">
+  <svg class="deco hidden lg:block right-[6%] top-[18%] w-16 h-16 anim-pop" viewBox="0 0 40 40" aria-hidden="true">
+    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
+  </svg>
+  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-20 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-center">
+    <div class="reveal">
+      <h2 class="font-heading text-[38px] lg:text-[56px] leading-[.94] uppercase">El <span class="grad-text">día completo</span></h2>
+      <p class="text-[17px] leading-relaxed text-bone/75 mt-4 max-w-[560px]">Doce horas mapeadas de extremo a extremo, del registro al cierre. Consulta el programa hora por hora del sábado 21 de noviembre.</p>
     </div>
-
-    <div class="flex flex-wrap gap-4 mt-5" id="leyenda"></div>
-
-    <div class="mt-9 relative">
-      <div class="absolute left-[97px] top-2.5 bottom-2.5 w-0.5 bg-gradient-to-b from-royal/35 to-gold/35 pointer-events-none"></div>
-      <div id="agendaRows"></div>
+    <div class="reveal lg:justify-self-end">
+      <a href="agenda.html" class="btn-shine inline-flex items-center h-[54px] px-8 rounded-full font-heading text-base tracking-[.14em] uppercase bg-coral text-white hover:bg-white hover:text-noir">Ver agenda del día</a>
     </div>
-    <div class="mt-4 text-[13px] text-muted italic">Agenda preliminar sujeta a cambios conforme se confirmen ponentes.</div>
   </div>
 </section>
 
-<section id="aliados" class="relative bg-white text-ink overflow-hidden">
+<section id="aliados" class="relative bg-bonedeep text-noir overflow-hidden">
   <svg class="deco hidden lg:block left-[-2%] bottom-[6%] w-20 h-20 anim-twinkle opacity-50" viewBox="0 0 40 40" aria-hidden="true">
     <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
   </svg>
@@ -391,12 +372,33 @@
     </div>
 
     <div class="mt-11 flex justify-end">
-      <a href="#contacto" class="btn-shine inline-flex items-center h-[46px] px-6 font-heading tracking-[.12em] uppercase bg-gold text-night hover:bg-goldlight">Quiero patrocinar</a>
+      <a href="#contacto" class="btn-shine inline-flex items-center h-[46px] px-6 rounded-full font-heading tracking-[.12em] uppercase bg-coral text-white hover:bg-noir">Quiero patrocinar</a>
     </div>
   </div>
 </section>
 
-<section id="sede" class="bg-paper text-ink">
+<section id="problema" class="relative bg-bone text-noir overflow-hidden">
+  <svg class="deco left-[-4%] top-[12%] w-12 h-12 lg:w-24 lg:h-24 anim-floaty opacity-70" viewBox="0 0 60 60" aria-hidden="true">
+    <rect x="6" y="6" width="16" height="16" transform="rotate(45 14 14)" fill="#ee1a8c" opacity=".5"/>
+    <rect x="34" y="30" width="11" height="11" transform="rotate(45 39 35)" fill="#ff7a29" opacity=".55"/>
+  </svg>
+  <svg class="deco right-[3%] bottom-[8%] w-9 h-9 lg:w-16 lg:h-16 anim-twinkle opacity-80" viewBox="0 0 40 40" aria-hidden="true">
+    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#c6e21e"/>
+  </svg>
+  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal">
+      <h2 class="font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tener la idea<br><span class="grad-text">no siempre alcanza</span></h2>
+      <p class="text-[17px] leading-relaxed text-body mt-5" style="text-wrap:pretty">En México existe una generación de jóvenes con interés por emprender, crear proyectos y transformar su entorno. Al mismo tiempo hay empresarios, especialistas y organizaciones dispuestos a compartir experiencia y acompañar a nuevas generaciones — pero ambos grupos pocas veces coinciden en un mismo espacio de manera estructurada.</p>
+      <p class="text-[17px] leading-relaxed text-body mt-4" style="text-wrap:pretty">México Trasciende los reúne en un mismo día, para combatir la indiferencia social inspirando a la juventud a desarrollar iniciativas de impacto real.</p>
+    </div>
+    <div class="reveal relative rounded-md overflow-hidden shadow-[0_24px_60px_rgba(11,18,51,.18)]">
+      <img src="assets/foto-scholars.png" alt="Comunidad Trasciende" class="block w-full h-[400px] object-cover">
+      <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-ink/55"></div>
+    </div>
+  </div>
+</section>
+
+<section id="sede" class="bg-bonedeep text-noir">
   <div class="max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-start">
     <div class="reveal">
       <h2 class="font-heading text-[34px] lg:text-[52px] leading-[.94] mb-4.5 uppercase">Tec de Monterrey<br>Campus Ciudad de México</h2>
@@ -407,13 +409,13 @@
         <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Formato</div><div class="font-heading text-[22px]">Presencial</div></div>
         <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Duración</div><div class="font-heading text-[22px]">12 horas</div></div>
       </div>
-      <a href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="inline-flex items-center mt-5 h-11 px-5 font-heading tracking-[.12em] uppercase text-paper border border-ink/20 bg-ink hover:bg-royaldark">Cómo llegar</a>
+      <a href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="inline-flex items-center mt-5 h-11 px-5 rounded-full font-heading tracking-[.12em] uppercase text-bone bg-noir hover:bg-coral">Cómo llegar</a>
     </div>
     <div class="border-t border-ink/[.14]" id="faqList"></div>
   </div>
 </section>
 
-<section id="contacto" class="relative bg-sand text-ink overflow-hidden">
+<section id="contacto" class="relative bg-bone text-noir overflow-hidden">
   <svg class="deco hidden lg:block right-[-9%] top-[-10%] w-[320px] h-[320px] anim-sweep opacity-40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
     <path d="M100 100 L100 6 A94 94 0 1 1 33 166 Z" fill="#2340c4" opacity=".4"/>
   </svg>
@@ -426,70 +428,58 @@
       <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br><span class="grad-text">México Trasciende</span></h2>
       <p class="text-base leading-relaxed text-body mt-5 mb-8 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
       <div class="flex flex-col gap-6 font-heading text-xl tracking-wide">
-        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-ink hover:text-magenta"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
-        <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-ink hover:text-magenta"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
-        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-ink hover:text-magenta"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
+        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-noir hover:text-coral"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
+        <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-noir hover:text-coral"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
+        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-noir hover:text-coral"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
       </div>
     </div>
-    <div class="p-7 rounded-md border border-ink/[.12] bg-white/60 backdrop-blur-sm">
+    <div class="p-7 rounded-2xl border border-noir/[.1] bg-white shadow-[0_10px_34px_rgba(20,17,15,.07)]">
       <form id="contactForm" class="grid gap-4">
         <div>
           <label for="mt-nombre" class="block text-sm text-body mb-1.5">Nombre</label>
-          <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="w-full h-11 px-3 rounded bg-white border border-ink/[.15] text-ink placeholder:text-muted focus:outline-none focus:border-royal">
+          <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-coral">
         </div>
         <div>
           <label for="mt-mail" class="block text-sm text-body mb-1.5">Correo</label>
-          <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="w-full h-11 px-3 rounded bg-white border border-ink/[.15] text-ink placeholder:text-muted focus:outline-none focus:border-royal">
+          <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-coral">
         </div>
         <div>
           <label for="mt-msg" class="block text-sm text-body mb-1.5">Mensaje</label>
-          <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="w-full px-3 py-2 rounded bg-white border border-ink/[.15] text-ink placeholder:text-muted focus:outline-none focus:border-royal"></textarea>
+          <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="w-full px-3 py-2 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-coral"></textarea>
         </div>
-        <button type="submit" class="h-[46px] font-heading tracking-[.14em] uppercase bg-gold text-night hover:bg-goldlight" id="contactBtn">Enviar mensaje</button>
+        <button type="submit" class="h-[46px] rounded-full font-heading tracking-[.14em] uppercase bg-coral text-white hover:bg-noir" id="contactBtn">Enviar mensaje</button>
       </form>
     </div>
   </div>
 </section>
 
-<button id="toTop" hidden aria-label="Volver arriba" class="fixed bottom-7 right-7 z-[70] w-12 h-12 rounded-full bg-gold text-night shadow-[0_8px_28px_rgba(30,200,214,.45)] hover:bg-goldlight flex items-center justify-center">
+<button id="toTop" hidden aria-label="Volver arriba" class="fixed bottom-7 right-7 z-[70] w-12 h-12 rounded-full bg-coral text-white shadow-[0_8px_28px_rgba(232,80,58,.4)] hover:bg-noir flex items-center justify-center">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<footer class="bg-night text-paper/70 border-t border-gold/20">
+<footer class="bg-noir text-bone/70 border-t border-white/10">
   <div class="max-w-[1300px] mx-auto px-6 py-10 flex flex-wrap gap-8 items-center justify-between">
     <div class="flex items-center gap-6">
       <img src="assets/mt-logo.png" alt="México Trasciende" class="h-14 w-auto brightness-0 invert">
-      <span class="w-px h-11 bg-gold/35"></span>
+      <span class="w-px h-11 bg-white/25"></span>
       <div class="font-heading leading-tight tracking-[.14em] uppercase text-paper">
         <div class="text-base">Tecnológico de Monterrey</div>
-        <div class="text-xs text-gold">Campus Ciudad de México · 50 Aniversario</div>
+        <div class="text-xs text-coral">Campus Ciudad de México · 50 Aniversario</div>
       </div>
     </div>
     <div class="flex gap-6 font-heading text-[13px] tracking-[.18em] uppercase">
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Boletos</a>
-      <a href="cleip.html" class="text-gold hover:text-goldlight">CLEIP</a>
-      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-gold hover:text-goldlight">Instagram</a>
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-coral hover:text-white">Boletos</a>
+      <a href="cleip.html" class="text-coral hover:text-white">CLEIP</a>
+      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-coral hover:text-white">Instagram</a>
     </div>
   </div>
   <div class="border-t border-[rgba(120,150,255,.16)]">
-    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-paper/50">Grupo Estudiantil Trasciende · Sábado 21 de noviembre · Campus Ciudad de México</div>
+    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-paper/50">Grupo Estudiantil Trasciende · Sábado 21 de noviembre 2026 · Campus Ciudad de México</div>
   </div>
 </footer>
 
 <script>
 // ---------- data ----------
-const COLORS = { 'Main Stage': '#ff7a29', 'Jardín': '#c6e21e', 'Lounge': '#ee1a8c', 'Receso': '#c0455c', 'Protocolo': '#6e7ba6' };
-const LIGHT_TAGS = ['Main Stage', 'Jardín'];
-
-const SCHOOL_KEYWORDS = [
-  { school: 'Ingeniería y Ciencias', keyword: 'Innovación' },
-  { school: 'Negocios', keyword: 'Relaciones' },
-  { school: 'Arquitectura, Arte y Diseño', keyword: 'Creatividad' },
-  { school: 'Ciencias Sociales y Gobierno', keyword: 'Liderazgo' },
-  { school: 'Humanidades y Educación', keyword: 'Comunicación' },
-  { school: 'TecSalud', keyword: 'Bienestar' }
-];
-
 const LOUNGE_SPEAKERS = [
   { name: 'Oscar Diez', photo: 'assets/l-oscar.jpg', pos: '62% 22%' },
   { name: 'Federico Cerdas', photo: 'assets/l-federico.jpg', pos: 'center 18%' },
@@ -516,25 +506,12 @@ const ESPACIOS = [
     t2: 'La intención es que las organizaciones no estén únicamente presentes como patrocinadores, sino como participantes activos dentro de la experiencia del estudiante.',
     datos: [{ k: 'Formato', v: 'Stands y experiencias' }, { k: 'Quién estará', v: 'Empresas y organizaciones' }, { k: 'Ubicación', v: 'Jardín de Aulas 2' }] },
   { name: 'Networking Lounge', kicker: 'Bloque 03 · Aulas 2',
-    t1: '', t2: '',
-    datos: [{ k: 'Formato', v: 'Mesas de conversación' }, { k: 'Líderes', v: '15 invitados' }, { k: 'Ubicación', v: 'Aulas 2' }],
-    schoolTags: SCHOOL_KEYWORDS, speakers: LOUNGE_SPEAKERS }
+    t1: 'Mesas de conversación donde propones tu proyecto directamente a líderes de empresa, directores de academia y especialistas — vengas de la carrera que vengas.',
+    t2: '',
+    datos: [{ k: 'Formato', v: 'Mesas de conversación' }, { k: 'Líderes', v: '+15 invitados' }, { k: 'Ubicación', v: 'Aulas 2' }],
+    speakers: LOUNGE_SPEAKERS }
 ];
 
-const AGENDA = [
-  { time: '07:00', min: 60, short: 'Registro', title: 'Registro y acreditación', tag: 'Protocolo', detail: 'Apertura de puertas, validación del boleto de Market TEC y activación de la credencial digital en la app.', chips: ['60 min', 'Acceso principal'] },
-  { time: '08:00', min: 30, short: 'Apertura', title: 'Bienvenida y apertura', tag: 'Protocolo', detail: 'Palabras de apertura del grupo estudiantil y de la dirección del campus, en el marco del 50 aniversario del Tec en la Ciudad de México.', chips: ['30 min', 'Main Stage'] },
-  { time: '08:30', min: 60, short: 'Magistral 01', title: 'Conferencia magistral 01', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
-  { time: '09:30', min: 60, short: 'Magistral 02', title: 'Conferencia magistral 02', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
-  { time: '10:30', min: 60, short: 'TecTalk + Jardín', title: 'TecTalk y Jardín de Innovación', tag: 'Jardín', detail: 'Una TecTalk de 10 minutos abre el recorrido por el Jardín de Innovación: empresas y organizaciones presentan proyectos, tecnología y experiencias interactivas.', chips: ['10 min TecTalk', '50 min recorrido', 'Jardín'] },
-  { time: '11:30', min: 60, short: 'Magistral 03', title: 'Conferencia magistral 03', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
-  { time: '12:30', min: 60, short: 'Lounge I', title: 'Networking Lounge · primera ronda', tag: 'Lounge', detail: 'Los asistentes proponen proyectos a los líderes invitados en mesas de conversación de rotación corta.', chips: ['60 min', '15 líderes', 'Lounge'] },
-  { time: '13:30', min: 90, short: 'Receso', title: 'Receso y show artístico', tag: 'Receso', detail: 'Receso con presentación artística en el Main Stage.', chips: ['90 min', 'Show en vivo'] },
-  { time: '15:00', min: 60, short: 'Magistral 04', title: 'Conferencia magistral 04', tag: 'Main Stage', detail: 'Bloque de una hora: 45 minutos de exposición, 10 de preguntas del público y 5 de cierre.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
-  { time: '16:00', min: 60, short: 'TecTalk + Lounge', title: 'TecTalk y Networking Lounge', tag: 'Lounge', detail: 'Segunda TecTalk seguida de la ronda final de mesas en el Networking Lounge, con foco en proyectos en etapa de crecimiento y expansión.', chips: ['10 min TecTalk', '50 min mesas'] },
-  { time: '17:00', min: 60, short: 'Magistral 05', title: 'Conferencia magistral 05', tag: 'Main Stage', detail: 'La última conferencia del foro, pensada como cierre inspiracional del día.', chips: ['45 min exposición', '10 min Q&A', '5 min cierre'] },
-  { time: '18:00', min: 60, short: 'Cierre', title: 'Cierre, reconocimientos y foto oficial', tag: 'Protocolo', detail: 'Conclusiones del foro, reconocimiento a ponentes y patrocinadores, y foto oficial de la primera edición.', chips: ['60 min', 'Main Stage'] }
-];
 
 const PONENTES = [
   { eje: 'Main Stage', status: 'Por confirmar', num: '01' },
@@ -718,8 +695,8 @@ function renderEspacio() {
   document.getElementById('espTexto1').textContent = e.t1;
   document.getElementById('espTexto2').textContent = e.t2;
   document.getElementById('espDatos').innerHTML = e.datos.map(d => `
-    <div class="flex justify-between gap-5 py-3 border-b border-[rgba(120,150,255,.22)]">
-      <span class="font-heading text-xs tracking-[.2em] uppercase text-paper/50">${d.k}</span>
+    <div class="flex justify-between gap-5 py-3 border-b border-noir/10">
+      <span class="font-heading text-xs tracking-[.2em] uppercase text-muted">${d.k}</span>
       <span class="font-heading text-lg text-right">${d.v}</span>
     </div>`).join('');
   document.querySelectorAll('[data-esp-img]').forEach(img => {
@@ -730,22 +707,19 @@ function renderEspacio() {
   });
 
   const loungeExtra = document.getElementById('espLoungeExtra');
-  if (e.schoolTags && e.speakers) {
+  if (e.speakers) {
     loungeExtra.hidden = false;
-    document.getElementById('espSchoolTags').innerHTML = e.schoolTags.map(s => `
-      <span class="font-heading text-[13px] tracking-[.06em] px-3.5 py-2 rounded-full border border-[rgba(120,150,255,.3)] bg-royal/[.14] text-paper/85"><strong class="uppercase tracking-[.12em] text-paper">${s.school}</strong> · ${s.keyword}</span>`).join('');
     const cards = e.speakers.map((sp, i) => {
       const ringTones = ['border-cyan', 'border-magenta', 'border-orange', 'border-lime'];
       const initials = sp.name.split(' ').map(w => w[0]).slice(0, 2).join('');
       const avatar = sp.photo
         ? `<div class="w-14 h-14 rounded-full bg-cover shrink-0" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></div>`
-        : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-heading text-lg bg-royal/25 shrink-0">${initials}</div>`;
-      return `<div class="lounge-chip flex-none flex items-center gap-3 pl-2.5 pr-5 py-2.5 rounded-full border ${ringTones[i % ringTones.length]} bg-royal/[.12]">${avatar}<span class="font-heading text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span></div>`;
+        : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-heading text-lg bg-noir/10 shrink-0">${initials}</div>`;
+      return `<div class="lounge-chip flex-none flex items-center gap-3 pl-2.5 pr-5 py-2.5 rounded-full border-2 ${ringTones[i % ringTones.length]} bg-white">${avatar}<span class="font-heading text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span></div>`;
     });
     document.getElementById('loungeCarousel').innerHTML = cards.concat(cards).join('');
   } else {
     loungeExtra.hidden = true;
-    document.getElementById('espSchoolTags').innerHTML = '';
   }
 
   const textCol = document.getElementById('espNombre').parentElement;
@@ -779,7 +753,7 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
             <div class="eje-label eje-center font-heading text-[11px] absolute bottom-6 text-center" style="color:${c}">${p.eje}</div>
           </div>
         </div>
-        <div class="flip-face flip-back rounded-xl overflow-hidden bg-gradient-to-br from-royal to-royaldeep p-6 flex flex-col items-center justify-center text-center cursor-pointer" style="border:2px solid ${c}">
+        <div class="flip-face flip-back rounded-xl overflow-hidden bg-noir p-6 flex flex-col items-center justify-center text-center cursor-pointer" style="border:2px solid ${c}">
           <svg class="w-9 h-9 mb-3 anim-twinkle" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="${c}"/></svg>
           <div class="font-heading text-[11px] tracking-[.24em] uppercase mb-2" style="color:${c}">Muy pronto</div>
           <p class="text-[14.5px] leading-relaxed text-paper/85">Este ponente está por anunciarse. Síguenos en Instagram @trasciende_tec para enterarte primero.</p>
@@ -804,59 +778,6 @@ ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
 });
 revealStagger(ponentesGrid, 80);
 
-// ---------- agenda bar + rows ----------
-let openRow = 2;
-const dayBar = document.getElementById('dayBar');
-function renderDayBar() {
-  dayBar.innerHTML = AGENDA.map((r, i) => {
-    const c = COLORS[r.tag];
-    const active = openRow === i;
-    return `<button data-i="${i}" title="${r.time} · ${r.title}" style="flex:${r.min} 1 0;background:${c};${active ? 'box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);' : 'filter:saturate(.72) brightness(.94);'}" class="min-w-0 border-0 cursor-pointer px-2 relative transition-all overflow-hidden">
-      <span class="block font-heading text-[11px] tracking-wide uppercase whitespace-nowrap overflow-hidden text-ellipsis" style="color:${LIGHT_TAGS.includes(r.tag) ? '#070b1e' : '#fff'};opacity:${r.min >= 60 ? 1 : 0}">${r.short}</span>
-    </button>`;
-  }).join('');
-  dayBar.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { openRow = Number(b.dataset.i); renderAll(); }));
-}
-document.getElementById('leyenda').innerHTML = Object.keys(COLORS).map(k => `
-  <div class="flex items-center gap-2">
-    <span class="w-[11px] h-[11px] rounded-sm inline-block" style="background:${COLORS[k]}"></span>
-    <span class="font-heading text-[12.5px] tracking-[.16em] uppercase text-body">${k}</span>
-  </div>`).join('');
-
-function renderAgendaRows() {
-  const wrap = document.getElementById('agendaRows');
-  wrap.innerHTML = AGENDA.map((r, i) => {
-    const open = openRow === i;
-    const c = COLORS[r.tag];
-    const dur = r.min >= 60 ? (r.min / 60) + ' h' : r.min + ' min';
-    return `
-    <div class="rounded-md ${open ? 'bg-royal/[.06]' : ''}">
-      <div data-i="${i}" class="agenda-toggle grid grid-cols-[84px_1fr_auto] gap-6 items-center py-4 pr-4 cursor-pointer">
-        <div class="text-right font-heading text-[25px] tabular-nums leading-none">${r.time}</div>
-        <div class="relative pl-7">
-          <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full" style="background:${c};box-shadow:0 0 0 4px #f5f3ee,0 0 14px ${c}"></span>
-          <div class="font-heading text-2xl tracking-wide uppercase leading-tight">${r.title}</div>
-          <div class="flex items-center gap-3 mt-1.5">
-            <span class="font-heading text-[11px] tracking-[.18em] uppercase px-2.5 py-1 rounded whitespace-nowrap" style="background:${c}22;color:${LIGHT_TAGS.includes(r.tag) ? '#8a5c05' : c}">${r.tag}</span>
-            <span class="text-[13.5px] text-muted">${dur}</span>
-          </div>
-        </div>
-        <span class="chev ${open ? 'open' : ''} font-heading text-[26px] leading-none text-royal inline-block">+</span>
-      </div>
-      ${open ? `<div class="pb-5 pl-[140px] pr-4">
-        <p class="text-[15.5px] leading-relaxed text-body mb-3 max-w-[760px]">${r.detail}</p>
-        <div class="flex flex-wrap gap-2">${r.chips.map(c2 => `<span class="font-heading tracking-[.14em] uppercase text-[11px] px-2.5 py-1.5 rounded bg-royal/10 text-royaldark">${c2}</span>`).join('')}</div>
-      </div>` : ''}
-    </div>`;
-  }).join('');
-  wrap.querySelectorAll('.agenda-toggle').forEach(el => el.addEventListener('click', () => {
-    const i = Number(el.dataset.i);
-    openRow = openRow === i ? null : i;
-    renderAll();
-  }));
-}
-function renderAll() { renderDayBar(); renderAgendaRows(); }
-renderAll();
 
 // ---------- logo walls ----------
 function logoWall(list, pos, height) {
