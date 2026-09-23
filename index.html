@@ -13,11 +13,14 @@
     theme: {
       extend: {
         colors: {
-          night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
-          royaldeep: '#16297f', gold: '#1ec8d6', goldlight: '#5adbe6', golddeep: '#17a8b4',
-          magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
+          abyss: '#01040d', deep: '#03144a', deepmid: '#071c5e',
+          nblue: '#2b3fff', ncyan: '#3ce5d2', nsky: '#72f0fe', nmint: '#5af9c1',
+          nlime: '#d5f157', norange: '#ed841b', nred: '#f00822', npink: '#fe005a', nmagenta: '#f6019c',
+          night: '#01040d', ink: '#03144a', royal: '#2b3fff', royaldark: '#1a2fd6',
+          royaldeep: '#071c5e', gold: '#3ce5d2', goldlight: '#72f0fe', golddeep: '#2bb8ab',
+          magenta: '#f6019c', orange: '#ed841b', lime: '#d5f157', cyan: '#3ce5d2',
           paper: '#f5f3ee', surface: '#ffffff', muted: '#6b6560', body: '#3d3935',
-          bone: '#f2efe7', bonedeep: '#e9e4d8', noir: '#14110f', coral: '#e8503a'
+          bone: '#f2efe7', bonedeep: '#e9e4d8', noir: '#14110f', coral: '#fe005a'
         },
         fontFamily: {
           heading: ["'Barlow Condensed'", 'sans-serif'],
@@ -30,7 +33,7 @@
 <style>
   html { scroll-behavior: smooth; }
   body { font-family: 'Barlow', system-ui, sans-serif; }
-  ::selection { background: rgba(232,80,58,.28); }
+  ::selection { background: rgba(254,0,90,.25); }
   @keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4%,-3%,0) scale(1.12); } }
   @keyframes glow { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
   @keyframes pulse-soft { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
@@ -55,17 +58,17 @@
   @keyframes espIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   .esp-anim { animation: espIn .5s cubic-bezier(.16,1,.3,1) both; }
   .lounge-chip { transition: transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s ease, background-color .3s ease; }
-  .lounge-chip:hover { transform: translateY(-4px) scale(1.04); background-color: rgba(232,80,58,.12); }
+  .lounge-chip:hover { transform: translateY(-4px) scale(1.04); background-color: rgba(43,63,255,.14); }
   @keyframes tickPop { from { transform: translateY(-5px); opacity: .5; } to { transform: translateY(0); opacity: 1; } }
   .cd-tick { animation: tickPop .45s cubic-bezier(.16,1,.3,1); }
   .tag-tab:hover { transform: translateY(-2px); }
 
   /* ---- flyer design language ---- */
   .grad-text {
-    background: linear-gradient(103deg, #ee1a8c 0%, #f5286b 16%, #ff5a2d 38%, #ff9d1c 56%, #ffd60a 76%, #c6e21e 100%);
+    background: linear-gradient(100deg, #2b3fff 0%, #3ce5d2 22%, #5af9c1 38%, #d5f157 54%, #ed841b 70%, #fe005a 86%, #f6019c 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .grad-bar { background: linear-gradient(90deg, #ee1a8c, #ff7a29, #ffd60a, #c6e21e, #1ec8d6); }
+  .grad-bar { background: linear-gradient(90deg, #2b3fff, #3ce5d2, #5af9c1, #d5f157, #ed841b, #fe005a, #f6019c); }
   .grad-text-fade {
     background: linear-gradient(100deg, #ee1a8c 0%, #ff5a2d 32%, #ffb020 58%, #c6e21e 84%, rgba(198,226,30,.25) 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -83,6 +86,13 @@
   .anim-spin-slow { animation: spinSlow 22s linear infinite; }
   .anim-pop { animation: pop 4.2s cubic-bezier(.16,1,.3,1) infinite; }
   .deco { position: absolute; pointer-events: none; z-index: 0; }
+  /* brand figure: the lime four-petal cross from the poster/ticket */
+  .petal-x path { fill: #d5f157; }
+  @keyframes petalSpin { 0% { transform: rotate(0deg) scale(.88); } 50% { transform: rotate(180deg) scale(1.12); } 100% { transform: rotate(360deg) scale(.88); } }
+  .anim-petal { animation: petalSpin 16s ease-in-out infinite; transform-origin: 50% 50%; }
+  @keyframes beam { 0%,100% { opacity: .35; transform: scaleY(.94); } 50% { opacity: .85; transform: scaleY(1.06); } }
+  .anim-beam { animation: beam 7s ease-in-out infinite; transform-origin: 50% 100%; }
+
   /* bright category label with the flyer's little colored dash underneath */
   .eje-label { display: inline-block; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
   .eje-label::after { content: ''; display: block; width: 28px; height: 3px; border-radius: 2px; margin-top: 6px; background: currentColor; }
@@ -91,11 +101,11 @@
   /* ---- UX ---- */
   section[id] { scroll-margin-top: 84px; }
   #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 90; transition: width .1s linear; }
-  .nav-link.active { color: #e8503a; }
+  .nav-link.active { color: #d5f157; }
   .nav-link { position: relative; padding-bottom: 2px; }
-  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #e8503a; transition: width .28s cubic-bezier(.16,1,.3,1); }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #d5f157; transition: width .28s cubic-bezier(.16,1,.3,1); }
   .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-  :focus-visible { outline: 2px solid #e8503a; outline-offset: 3px; border-radius: 2px; }
+  :focus-visible { outline: 2px solid #fe005a; outline-offset: 3px; border-radius: 2px; }
   #toTop { transition: opacity .3s ease, transform .3s cubic-bezier(.2,.7,.3,1), background-color .3s ease; }
   #toTop[hidden] { display: flex !important; opacity: 0; transform: translateY(14px); pointer-events: none; }
   #menuBtn span { transition: transform .3s cubic-bezier(.2,.7,.3,1), opacity .2s ease; }
@@ -111,8 +121,8 @@
   }
   .logowall > * { filter: grayscale(1); opacity: .62; transition: filter .35s ease, opacity .35s ease, transform .35s ease; }
   .logowall:hover > * { filter: none; opacity: 1; transform: scale(1.04); }
-  .nav-link { color: rgba(20,17,15,.72); transition: color .2s ease; }
-  .nav-link:hover { color: #e8503a; }
+  .nav-link { color: rgba(255,255,255,.78); transition: color .2s ease; }
+  .nav-link:hover { color: #d5f157; }
   a { transition: color .2s ease; }
   #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   #mobileMenu.open { max-height: 480px; }
@@ -125,12 +135,10 @@
 
 <div id="scrollProgress" class="grad-bar"></div>
 
-<header class="sticky top-0 z-[60] bg-bone/85 backdrop-blur-md border-b border-noir/10">
+<header class="sticky top-0 z-[60] bg-abyss/90 backdrop-blur-md border-b border-white/10">
   <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center gap-6">
     <a href="#inicio" class="shrink-0 flex items-center" aria-label="México Trasciende — inicio">
-      <span class="grid place-items-center w-11 h-11 rounded-xl bg-noir">
-        <img src="assets/mt-mark.png" alt="México Trasciende" class="h-6 w-auto">
-      </span>
+      <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="h-9 w-auto">
     </a>
     <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
       <a href="equipo.html" class="nav-link">Nosotros</a>
@@ -140,137 +148,135 @@
       <a href="#aliados" class="nav-link">Aliados</a>
       <a href="cleip.html" class="nav-link">CLEIP</a>
     </nav>
-    <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-body whitespace-nowrap">
-      <span class="w-1.5 h-1.5 rounded-full bg-coral anim-glow"></span>21 Nov 2026 · CCM
+    <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-white/70 whitespace-nowrap">
+      <span class="w-1.5 h-1.5 rounded-full bg-nlime anim-glow"></span>21 Nov 2026 · CCM
     </span>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[40px] px-6 rounded-full bg-coral text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-noir">Boletos</a>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[40px] px-6 rounded-full bg-npink text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-nlime hover:text-abyss">Boletos</a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
-      <span class="block w-6 h-[2px] bg-noir"></span>
-      <span class="block w-6 h-[2px] bg-noir"></span>
-      <span class="block w-6 h-[2px] bg-noir"></span>
+      <span class="block w-6 h-[2px] bg-white"></span>
+      <span class="block w-6 h-[2px] bg-white"></span>
+      <span class="block w-6 h-[2px] bg-white"></span>
     </button>
   </div>
   <nav id="mobileMenu" class="lg:hidden px-6">
-    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-noir/10">
+    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-white/10">
       <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
       <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="#aliados" class="nav-link">Aliados</a>
       <a href="cleip.html" class="nav-link">CLEIP</a>
-      <span class="font-heading text-[13px] tracking-[.16em] text-body">Sábado 21 de noviembre 2026 · Campus CCM</span>
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-coral text-white font-heading tracking-[.12em] uppercase">Boletos</a>
+      <span class="font-heading text-[13px] tracking-[.16em] text-white/70">Sábado 21 de noviembre 2026 · Campus CCM</span>
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-white font-heading tracking-[.12em] uppercase">Boletos</a>
     </div>
   </nav>
 </header>
 
-<section id="inicio" class="relative text-noir overflow-hidden bg-bone">
-  <!-- flyer shapes on bone: wedge, arc, diamond cluster, sparkles -->
-  <svg class="deco hidden lg:block left-[-22%] top-[14%] w-[440px] h-[440px] anim-sweep opacity-25" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <defs><linearGradient id="wedgeGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#2340c4"/><stop offset="55%" stop-color="#1e7fd6"/><stop offset="100%" stop-color="#1ec8d6"/>
-    </linearGradient></defs>
-    <path d="M100 100 L100 0 A100 100 0 1 1 28 170 Z" fill="url(#wedgeGrad)"/>
-  </svg>
-  <svg class="deco hidden lg:block right-[-7%] top-[6%] w-[340px] h-[340px] anim-orbit opacity-50" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <path d="M10 190 A180 180 0 0 1 190 10" stroke="#e8503a" stroke-width="5" fill="none" opacity=".55"/>
-    <path d="M40 195 A160 160 0 0 1 195 40" stroke="#2340c4" stroke-width="10" fill="none" opacity=".35"/>
-  </svg>
-  <svg class="deco left-[3%] top-[10%] w-9 h-9 lg:w-16 lg:h-16 anim-spin-slow" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-    <rect x="4" y="4" width="14" height="14" transform="rotate(45 11 11)" fill="#c6e21e"/>
-    <rect x="34" y="4" width="10" height="10" transform="rotate(45 39 9)" fill="#ff7a29" opacity=".8"/>
-    <rect x="4" y="34" width="10" height="10" transform="rotate(45 9 39)" fill="#1ec8d6" opacity=".8"/>
-    <rect x="32" y="32" width="14" height="14" transform="rotate(45 39 39)" fill="#ee1a8c" opacity=".85"/>
-  </svg>
-  <svg class="deco right-[6%] top-[12%] w-9 h-9 lg:w-16 lg:h-16 anim-pop" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
-  </svg>
-  <svg class="deco hidden lg:block right-[24%] top-[33%] w-7 h-7 anim-pop" style="animation-delay:1.4s" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ee1a8c"/>
-  </svg>
+<section id="inicio" class="relative text-white overflow-hidden bg-abyss">
+  <!-- poster stage: deep gradient floor + neon light beams down the sides -->
+  <div class="absolute inset-0 bg-[radial-gradient(120%_85%_at_50%_0%,#071c5e_0%,#03144a_38%,#01040d_78%)] pointer-events-none"></div>
+  <div class="absolute inset-y-0 left-0 w-[34%] pointer-events-none hidden md:block" aria-hidden="true">
+    <div class="anim-beam absolute left-[4%] top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-nblue to-transparent blur-[2px]"></div>
+    <div class="anim-beam absolute left-[11%] top-0 bottom-0 w-[5px] bg-gradient-to-b from-transparent via-ncyan to-transparent blur-[3px]" style="animation-delay:-2s"></div>
+    <div class="anim-beam absolute left-[19%] top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-nmint to-transparent blur-[2px]" style="animation-delay:-4s"></div>
+  </div>
+  <div class="absolute inset-y-0 right-0 w-[34%] pointer-events-none hidden md:block" aria-hidden="true">
+    <div class="anim-beam absolute right-[5%] top-0 bottom-0 w-[4px] bg-gradient-to-b from-transparent via-nmagenta to-transparent blur-[3px]" style="animation-delay:-1s"></div>
+    <div class="anim-beam absolute right-[13%] top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-npink to-transparent blur-[2px]" style="animation-delay:-3s"></div>
+    <div class="anim-beam absolute right-[21%] top-0 bottom-0 w-[5px] bg-gradient-to-b from-transparent via-norange to-transparent blur-[3px]" style="animation-delay:-5s"></div>
+  </div>
+  <div class="absolute inset-x-0 bottom-0 h-[2px] grad-bar opacity-80 pointer-events-none"></div>
+
+  <svg class="deco left-[5%] top-[14%] w-9 h-9 lg:w-14 lg:h-14 anim-petal" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+  <svg class="deco hidden lg:block left-[10%] top-[26%] w-8 h-8 anim-petal" style="animation-delay:-5s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+  <svg class="deco right-[7%] top-[12%] w-10 h-10 lg:w-16 lg:h-16 anim-petal" style="animation-delay:-8s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+  <svg class="deco hidden lg:block right-[15%] top-[30%] w-7 h-7 anim-petal" style="animation-delay:-11s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
 
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-16 pb-16 grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
     <div class="reveal">
       <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="grad-text-fade">Trasciende</span></h1>
-      <p class="font-heading text-[17px] sm:text-[19px] tracking-[.14em] uppercase text-body mt-5">Sábado 21 de noviembre 2026 · Campus Ciudad de México</p>
-      <p class="max-w-[540px] mt-5 text-[18.5px] leading-relaxed text-body" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes de todas las carreras, empresarios, especialistas y organizaciones.</p>
+      <p class="font-heading text-[17px] sm:text-[19px] tracking-[.2em] uppercase text-nlime mt-5">21 de noviembre de 2026 · Tec de Monterrey CCM</p>
+      <p class="max-w-[540px] mt-5 text-[18.5px] leading-relaxed text-white/70" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes de todas las carreras, empresarios, especialistas y organizaciones.</p>
 
       <div class="flex gap-3 mt-9" id="countdown">
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
-          <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="d">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Días</div>
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
+          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="d">00</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Días</div>
         </div>
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
-          <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="h">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Horas</div>
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
+          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="h">00</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Horas</div>
         </div>
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
-          <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="m">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Min</div>
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
+          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="m">00</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Min</div>
         </div>
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white border border-noir/10 shadow-[0_6px_18px_rgba(20,17,15,.06)]">
-          <div class="font-heading text-[40px] leading-none tabular-nums" data-cd="s">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-muted mt-1.5">Seg</div>
+        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
+          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="s">00</div>
+          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Seg</div>
         </div>
       </div>
 
       <div class="flex flex-wrap gap-3.5 mt-9">
-        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine h-[54px] inline-flex items-center px-8 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-coral text-white shadow-[0_10px_30px_rgba(232,80,58,.3)] hover:bg-noir">Quiero ser parte</a>
-        <a href="#espacios" class="h-[54px] inline-flex items-center px-7 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-noir border-2 border-noir/20 hover:border-noir hover:bg-noir hover:text-bone">Conoce los 3 espacios</a>
+        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine h-[54px] inline-flex items-center px-8 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-npink text-white shadow-[0_10px_34px_rgba(254,0,90,.4)] hover:bg-white hover:text-abyss">Quiero ser parte</a>
+        <a href="#espacios" class="h-[54px] inline-flex items-center px-7 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-white border-2 border-white/25 hover:border-nlime hover:text-nlime">Conoce los 3 espacios</a>
       </div>
     </div>
 
     <div class="relative reveal" style="transition-delay:.12s">
-      <div class="relative rounded-2xl overflow-hidden bg-white px-8 pt-10 pb-7 shadow-[0_26px_60px_rgba(20,17,15,.14)]">
-        <img src="assets/logo-oficial.png" alt="México Trasciende" class="block w-full max-w-[320px] h-auto mx-auto">
-        <div class="mt-7 grid grid-cols-2 gap-px bg-noir/10 border-t border-noir/10">
-          <div class="bg-white py-3.5 px-1 text-center">
-            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-muted">Fecha</div>
-            <div class="font-heading text-[21px] text-noir">Sáb 21 · Nov 2026</div>
+      <div class="relative rounded-2xl overflow-hidden border border-white/12 bg-white/[.04] backdrop-blur-sm px-8 pt-12 pb-7 text-center">
+        <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="block w-full max-w-[250px] h-auto mx-auto">
+        <div class="font-heading text-[19px] tracking-[.42em] uppercase text-white mt-6">México</div>
+        <div class="font-heading text-[19px] tracking-[.42em] uppercase text-white/70">Trasciende</div>
+        <div class="h-[3px] w-24 mx-auto my-7 rounded grad-bar"></div>
+        <div class="grid grid-cols-2 gap-px bg-white/12">
+          <div class="bg-abyss/60 py-3.5 px-1">
+            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-nlime">Fecha</div>
+            <div class="font-heading text-[21px] text-white">Sáb 21 · Nov 2026</div>
           </div>
-          <div class="bg-white py-3.5 px-1 text-center">
-            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-muted">Ubicación</div>
-            <div class="font-heading text-[21px] text-noir">Campus CCM</div>
+          <div class="bg-abyss/60 py-3.5 px-1">
+            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-nlime">Ubicación</div>
+            <div class="font-heading text-[21px] text-white">Campus CCM</div>
           </div>
         </div>
       </div>
       <div class="grid grid-cols-3 gap-2.5 mt-3">
-        <div class="h-24 rounded-xl overflow-hidden border border-noir/10"><img src="assets/foto-mainstage.png" alt="Main Stage" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="h-24 rounded-xl overflow-hidden border border-noir/10"><img src="assets/foto-grupo.png" alt="Comunidad Trasciende" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="h-24 rounded-xl overflow-hidden border border-noir/10"><img src="assets/foto-lounge.png" alt="Networking Lounge" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="h-24 rounded-xl overflow-hidden border border-white/12"><img src="assets/foto-mainstage.png" alt="Main Stage" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="h-24 rounded-xl overflow-hidden border border-white/12"><img src="assets/foto-grupo.png" alt="Comunidad Trasciende" loading="lazy" class="w-full h-full object-cover"></div>
+        <div class="h-24 rounded-xl overflow-hidden border border-white/12"><img src="assets/foto-lounge.png" alt="Networking Lounge" loading="lazy" class="w-full h-full object-cover"></div>
       </div>
     </div>
   </div>
 
-  <div class="relative bg-noir overflow-hidden flex">
-    <div class="flex flex-none anim-marquee font-heading text-[15px] tracking-[.34em] uppercase text-bone/85 py-3">
-      <span class="px-6">Sáb 21 Nov 2026</span><span class="px-6 text-coral">◆</span><span class="px-6">Todas las carreras</span><span class="px-6 text-coral">◆</span><span class="px-6">Liderazgo</span><span class="px-6 text-coral">◆</span><span class="px-6">Innovación</span><span class="px-6 text-coral">◆</span><span class="px-6">Impacto social</span><span class="px-6 text-coral">◆</span><span class="px-6">Networking</span><span class="px-6 text-coral">◆</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-coral">◆</span>
-      <span class="px-6">Sáb 21 Nov 2026</span><span class="px-6 text-coral">◆</span><span class="px-6">Todas las carreras</span><span class="px-6 text-coral">◆</span><span class="px-6">Liderazgo</span><span class="px-6 text-coral">◆</span><span class="px-6">Innovación</span><span class="px-6 text-coral">◆</span><span class="px-6">Impacto social</span><span class="px-6 text-coral">◆</span><span class="px-6">Networking</span><span class="px-6 text-coral">◆</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-coral">◆</span>
+  <div class="relative bg-deep/60 border-y border-white/10 overflow-hidden flex">
+    <div class="flex flex-none anim-marquee font-heading text-[15px] tracking-[.34em] uppercase text-white/80 py-3">
+      <span class="px-6">21 Nov 2026</span><span class="px-6 text-nlime">✦</span><span class="px-6">Todas las carreras</span><span class="px-6 text-nlime">✦</span><span class="px-6">Ideas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Personas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Cultura</span><span class="px-6 text-nlime">✦</span><span class="px-6">Acción</span><span class="px-6 text-nlime">✦</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-nlime">✦</span>
+      <span class="px-6">21 Nov 2026</span><span class="px-6 text-nlime">✦</span><span class="px-6">Todas las carreras</span><span class="px-6 text-nlime">✦</span><span class="px-6">Ideas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Personas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Cultura</span><span class="px-6 text-nlime">✦</span><span class="px-6">Acción</span><span class="px-6 text-nlime">✦</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-nlime">✦</span>
     </div>
   </div>
 
   <div class="relative max-w-[1300px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-3">
-    <div class="reveal py-9 px-6 sm:border-r border-noir/10">
-      <div class="font-heading text-[56px] leading-[.88] text-coral" data-count="1000" data-count-prefix="+">+1000</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Asistentes en un mismo día</div>
-      <div class="text-sm text-muted mt-1">Estudiantes de todas las carreras, empresarios, especialistas y organizaciones — en el mismo lugar y listos para conectar contigo.</div>
+    <div class="reveal py-9 px-6 sm:border-r border-white/12">
+      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="1000" data-count-prefix="+">+1000</div>
+      <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Asistentes en un mismo día</div>
+      <div class="text-sm text-white/60 mt-1">Estudiantes de todas las carreras, empresarios, especialistas y organizaciones — en el mismo lugar y listos para conectar contigo.</div>
     </div>
-    <div class="reveal py-9 px-6 sm:border-r border-noir/10">
-      <div class="font-heading text-[56px] leading-[.88] text-coral" data-count="3">3</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Espacios del día</div>
-      <div class="text-sm text-muted mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
+    <div class="reveal py-9 px-6 sm:border-r border-white/12">
+      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="3">3</div>
+      <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Espacios del día</div>
+      <div class="text-sm text-white/60 mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
     </div>
     <div class="reveal py-9 px-6">
-      <div class="font-heading text-[56px] leading-[.88] text-coral" data-count="5">5</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase mt-2.5">Conferencias magistrales</div>
-      <div class="text-sm text-muted mt-1">Programa del Main Stage</div>
+      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="5">5</div>
+      <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Conferencias magistrales</div>
+      <div class="text-sm text-white/60 mt-1">Programa del Main Stage</div>
     </div>
   </div>
 </section>
 
 
 <section id="espacios" class="relative bg-bonedeep text-noir overflow-hidden">
-  <div class="absolute top-[10%] -right-[12%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(232,80,58,.12),transparent_65%)] blur-[50px] pointer-events-none"></div>
+  <div class="absolute top-[10%] -right-[12%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(43,63,255,.14),transparent_65%)] blur-[50px] pointer-events-none"></div>
   <svg class="deco hidden lg:block right-[-8%] top-[6%] w-[300px] h-[300px] anim-sweep opacity-35" viewBox="0 0 200 200" fill="none" aria-hidden="true">
     <path d="M12 188 A176 176 0 0 1 188 12" stroke="#1ec8d6" stroke-width="6" fill="none" opacity=".6"/>
     <path d="M45 193 A150 150 0 0 1 193 45" stroke="#ee1a8c" stroke-width="9" fill="none" opacity=".35"/>
@@ -325,17 +331,18 @@
 </section>
 
 
-<section id="agenda-teaser" class="relative bg-noir text-bone overflow-hidden">
+<section id="agenda-teaser" class="relative bg-deep text-white overflow-hidden">
   <svg class="deco hidden lg:block right-[6%] top-[18%] w-16 h-16 anim-pop" viewBox="0 0 40 40" aria-hidden="true">
     <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
   </svg>
+  <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_20%_0%,#071c5e_0%,#03144a_60%,#01040d_100%)] pointer-events-none"></div>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-20 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-center">
     <div class="reveal">
       <h2 class="font-heading text-[38px] lg:text-[56px] leading-[.94] uppercase">El <span class="grad-text">día completo</span></h2>
-      <p class="text-[17px] leading-relaxed text-bone/75 mt-4 max-w-[560px]">Doce horas mapeadas de extremo a extremo, del registro al cierre. Consulta el programa hora por hora del sábado 21 de noviembre.</p>
+      <p class="text-[17px] leading-relaxed text-white/75 mt-4 max-w-[560px]">Doce horas mapeadas de extremo a extremo, del registro al cierre. Consulta el programa hora por hora del sábado 21 de noviembre.</p>
     </div>
     <div class="reveal lg:justify-self-end">
-      <a href="agenda.html" class="btn-shine inline-flex items-center h-[54px] px-8 rounded-full font-heading text-base tracking-[.14em] uppercase bg-coral text-white hover:bg-white hover:text-noir">Ver agenda del día</a>
+      <a href="agenda.html" class="btn-shine inline-flex items-center h-[54px] px-8 rounded-full font-heading text-base tracking-[.14em] uppercase bg-npink text-white hover:bg-nlime hover:text-abyss">Ver agenda del día</a>
     </div>
   </div>
 </section>
@@ -372,7 +379,7 @@
     </div>
 
     <div class="mt-11 flex justify-end">
-      <a href="#contacto" class="btn-shine inline-flex items-center h-[46px] px-6 rounded-full font-heading tracking-[.12em] uppercase bg-coral text-white hover:bg-noir">Quiero patrocinar</a>
+      <a href="#contacto" class="btn-shine inline-flex items-center h-[46px] px-6 rounded-full font-heading tracking-[.12em] uppercase bg-npink text-white hover:bg-abyss">Quiero patrocinar</a>
     </div>
   </div>
 </section>
@@ -409,7 +416,7 @@
         <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Formato</div><div class="font-heading text-[22px]">Presencial</div></div>
         <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Duración</div><div class="font-heading text-[22px]">12 horas</div></div>
       </div>
-      <a href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="inline-flex items-center mt-5 h-11 px-5 rounded-full font-heading tracking-[.12em] uppercase text-bone bg-noir hover:bg-coral">Cómo llegar</a>
+      <a href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="inline-flex items-center mt-5 h-11 px-5 rounded-full font-heading tracking-[.12em] uppercase text-white bg-deep hover:bg-npink">Cómo llegar</a>
     </div>
     <div class="border-t border-ink/[.14]" id="faqList"></div>
   </div>
@@ -428,53 +435,72 @@
       <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br><span class="grad-text">México Trasciende</span></h2>
       <p class="text-base leading-relaxed text-body mt-5 mb-8 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
       <div class="flex flex-col gap-6 font-heading text-xl tracking-wide">
-        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-noir hover:text-coral"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
-        <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-noir hover:text-coral"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
-        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-noir hover:text-coral"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
+        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-noir hover:text-npink"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
+        <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-noir hover:text-npink"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
+        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-noir hover:text-npink"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
       </div>
     </div>
     <div class="p-7 rounded-2xl border border-noir/[.1] bg-white shadow-[0_10px_34px_rgba(20,17,15,.07)]">
       <form id="contactForm" class="grid gap-4">
         <div>
           <label for="mt-nombre" class="block text-sm text-body mb-1.5">Nombre</label>
-          <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-coral">
+          <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-npink">
         </div>
         <div>
           <label for="mt-mail" class="block text-sm text-body mb-1.5">Correo</label>
-          <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-coral">
+          <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-npink">
         </div>
         <div>
           <label for="mt-msg" class="block text-sm text-body mb-1.5">Mensaje</label>
-          <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="w-full px-3 py-2 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-coral"></textarea>
+          <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="w-full px-3 py-2 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-npink"></textarea>
         </div>
-        <button type="submit" class="h-[46px] rounded-full font-heading tracking-[.14em] uppercase bg-coral text-white hover:bg-noir" id="contactBtn">Enviar mensaje</button>
+        <button type="submit" class="h-[46px] rounded-full font-heading tracking-[.14em] uppercase bg-npink text-white hover:bg-abyss" id="contactBtn">Enviar mensaje</button>
       </form>
     </div>
   </div>
 </section>
 
-<button id="toTop" hidden aria-label="Volver arriba" class="fixed bottom-7 right-7 z-[70] w-12 h-12 rounded-full bg-coral text-white shadow-[0_8px_28px_rgba(232,80,58,.4)] hover:bg-noir flex items-center justify-center">
+<button id="toTop" hidden aria-label="Volver arriba" class="fixed bottom-7 right-7 z-[70] w-12 h-12 rounded-full bg-npink text-white shadow-[0_8px_28px_rgba(254,0,90,.45)] hover:bg-abyss flex items-center justify-center">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<footer class="bg-noir text-bone/70 border-t border-white/10">
-  <div class="max-w-[1300px] mx-auto px-6 py-10 flex flex-wrap gap-8 items-center justify-between">
-    <div class="flex items-center gap-6">
-      <img src="assets/mt-logo.png" alt="México Trasciende" class="h-14 w-auto brightness-0 invert">
-      <span class="w-px h-11 bg-white/25"></span>
-      <div class="font-heading leading-tight tracking-[.14em] uppercase text-paper">
-        <div class="text-base">Tecnológico de Monterrey</div>
-        <div class="text-xs text-coral">Campus Ciudad de México · 50 Aniversario</div>
+<footer class="relative bg-deep text-white/70 overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_18%_0%,#071c5e_0%,#03144a_55%,#01040d_100%)] pointer-events-none"></div>
+  <svg class="deco hidden lg:block right-[12%] top-[14%] w-10 h-10 anim-petal" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+  <svg class="deco hidden lg:block right-[19%] top-[38%] w-7 h-7 anim-petal" style="animation-delay:-6s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+
+  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-14 grid gap-10 lg:grid-cols-[auto_1px_1fr_auto] lg:items-center">
+    <div class="flex items-center gap-5">
+      <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="h-14 w-auto">
+      <div class="font-heading leading-tight tracking-[.3em] uppercase text-white">
+        <div class="text-sm">México</div>
+        <div class="text-sm text-white/60">Trasciende</div>
       </div>
     </div>
-    <div class="flex gap-6 font-heading text-[13px] tracking-[.18em] uppercase">
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-coral hover:text-white">Boletos</a>
-      <a href="cleip.html" class="text-coral hover:text-white">CLEIP</a>
-      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-coral hover:text-white">Instagram</a>
+
+    <span class="hidden lg:block w-px h-24 bg-nlime/70"></span>
+
+    <div class="flex items-start gap-4">
+      <span class="grid place-items-center w-11 h-11 rounded-full bg-white/10 shrink-0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d5f157" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      <div class="text-[14.5px] leading-relaxed text-white/85 max-w-[420px]">
+        <strong class="font-semibold text-white">Tecnológico de Monterrey, Campus Ciudad de México</strong><br>
+        Calle del Puente 222, Col. Ejidos de Huipulco, Tlalpan, C.P. 14380, Ciudad de México, CDMX
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 font-heading text-[13px] tracking-[.18em] uppercase lg:text-right">
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-nlime hover:text-white">Boletos</a>
+      <a href="agenda.html" class="text-nlime hover:text-white">Agenda</a>
+      <a href="cleip.html" class="text-nlime hover:text-white">CLEIP</a>
+      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-nlime hover:text-white">Instagram</a>
     </div>
   </div>
-  <div class="border-t border-[rgba(120,150,255,.16)]">
-    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-paper/50">Grupo Estudiantil Trasciende · Sábado 21 de noviembre 2026 · Campus Ciudad de México</div>
+
+  <div class="relative z-[1] h-[3px] grad-bar"></div>
+  <div class="relative z-[1] bg-abyss">
+    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-white/45">Grupo Estudiantil Trasciende · LiFE Grupos Estudiantiles · Sábado 21 de noviembre de 2026</div>
   </div>
 </footer>
 
@@ -670,15 +696,17 @@ document.querySelectorAll('[data-count]').forEach(el => {
 let espacioIdx = 0;
 const tabsWrap = document.getElementById('espaciosTabs');
 // each space keeps its own flyer color across tab, frame and kicker
-const ESPACIO_COLORS = ['#ff7a29', '#c6e21e', '#ee1a8c'];
+const ESPACIO_COLORS = ['#2b3fff', '#d5f157', '#f6019c'];
 function renderTabs() {
   tabsWrap.innerHTML = ESPACIOS.map((e, i) => {
     const c = ESPACIO_COLORS[i % ESPACIO_COLORS.length];
     const active = i === espacioIdx;
+    // active tab fills with its color; lime needs dark type, the others white
+    const lightFill = c === '#d5f157';
     const style = active
-      ? `background:${c};border-color:${c};color:#070b1e;box-shadow:0 0 26px ${c}66`
-      : `border-color:${c}66;color:#f5f3eecc`;
-    return `<button data-i="${i}" style="${style}" class="tag-tab font-heading text-[15px] tracking-[.12em] uppercase whitespace-nowrap px-5 py-3 rounded-full border-2 ${active ? '' : 'bg-royal/[.14] hover:bg-royal/[.26]'}">${e.name}</button>`;
+      ? `background:${c};border-color:${c};color:${lightFill ? '#01040d' : '#ffffff'};box-shadow:0 0 26px ${c}55`
+      : `border-color:${c};color:#14110f`;
+    return `<button data-i="${i}" style="${style}" class="tag-tab font-heading text-[15px] tracking-[.12em] uppercase whitespace-nowrap px-5 py-3 rounded-full border-2 ${active ? '' : 'bg-white hover:bg-bonedeep'}">${e.name}</button>`;
   }).join('');
   tabsWrap.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { espacioIdx = Number(b.dataset.i); renderEspacio(); }));
 }
@@ -733,7 +761,7 @@ renderEspacio();
 
 // ---------- ponentes ----------
 // flyer palette: each card gets its own accent frame + triangle, like the speaker grid on the poster
-const ACCENTS = ['#1ec8d6', '#ee1a8c', '#ff7a29', '#c6e21e', '#2340c4'];
+const ACCENTS = ['#2b3fff', '#3ce5d2', '#d5f157', '#ed841b', '#f6019c'];
 const ponentesGrid = document.getElementById('ponentesGrid');
 ponentesGrid.innerHTML = PONENTES.map((p, i) => {
   const c = ACCENTS[i % ACCENTS.length];

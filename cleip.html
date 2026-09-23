@@ -13,11 +13,14 @@
     theme: {
       extend: {
         colors: {
-          night: '#070b1e', ink: '#0b1233', royal: '#2340c4', royaldark: '#1b33a0',
-          royaldeep: '#16297f', gold: '#1ec8d6', goldlight: '#5adbe6', golddeep: '#17a8b4',
-          magenta: '#ee1a8c', orange: '#ff7a29', lime: '#c6e21e', cyan: '#1ec8d6',
+          abyss: '#01040d', deep: '#03144a', deepmid: '#071c5e',
+          nblue: '#2b3fff', ncyan: '#3ce5d2', nsky: '#72f0fe', nmint: '#5af9c1',
+          nlime: '#d5f157', norange: '#ed841b', nred: '#f00822', npink: '#fe005a', nmagenta: '#f6019c',
+          night: '#01040d', ink: '#03144a', royal: '#2b3fff', royaldark: '#1a2fd6',
+          royaldeep: '#071c5e', gold: '#3ce5d2', goldlight: '#72f0fe', golddeep: '#2bb8ab',
+          magenta: '#f6019c', orange: '#ed841b', lime: '#d5f157', cyan: '#3ce5d2',
           paper: '#f5f3ee', surface: '#ffffff', muted: '#6b6560', body: '#3d3935',
-          bone: '#f2efe7', bonedeep: '#e9e4d8', noir: '#14110f', coral: '#e8503a'
+          bone: '#f2efe7', bonedeep: '#e9e4d8', noir: '#14110f', coral: '#fe005a'
         },
         fontFamily: {
           heading: ["'Barlow Condensed'", 'sans-serif'],
@@ -30,23 +33,23 @@
 <style>
   html { scroll-behavior: smooth; }
   body { font-family: 'Barlow', system-ui, sans-serif; }
-  ::selection { background: rgba(232,80,58,.28); }
+  ::selection { background: rgba(254,0,90,.25); }
   @keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4%,-3%,0) scale(1.12); } }
   .anim-drift { animation: drift 18s ease-in-out infinite; }
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
   .liftup { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease, box-shadow .35s ease; }
   .liftup:hover { transform: translateY(-6px); }
-  .nav-link { color: rgba(20,17,15,.72); transition: color .2s ease; }
-  .nav-link:hover { color: #e8503a; }
+  .nav-link { color: rgba(255,255,255,.78); transition: color .2s ease; }
+  .nav-link:hover { color: #d5f157; }
   a { transition: color .2s ease; }
   #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   #mobileMenu.open { max-height: 480px; }
   .grad-text {
-    background: linear-gradient(103deg, #ee1a8c 0%, #f5286b 16%, #ff5a2d 38%, #ff9d1c 56%, #ffd60a 76%, #c6e21e 100%);
+    background: linear-gradient(100deg, #2b3fff 0%, #3ce5d2 22%, #5af9c1 38%, #d5f157 54%, #ed841b 70%, #fe005a 86%, #f6019c 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .grad-bar { background: linear-gradient(90deg, #ee1a8c, #ff7a29, #ffd60a, #c6e21e, #1ec8d6); }
+  .grad-bar { background: linear-gradient(90deg, #2b3fff, #3ce5d2, #5af9c1, #d5f157, #ed841b, #fe005a, #f6019c); }
   @keyframes floaty { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(0,-16px,0) rotate(8deg); } }
   @keyframes twinkle { 0%,100% { opacity: .3; transform: scale(.82) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(15deg); } }
   @keyframes sweep { 0%,100% { transform: translate3d(0,0,0) scale(1); opacity: .5; } 50% { transform: translate3d(-3%,2%,0) scale(1.06); opacity: .8; } }
@@ -54,12 +57,19 @@
   .anim-twinkle { animation: twinkle 3.6s ease-in-out infinite; }
   .anim-sweep { animation: sweep 16s ease-in-out infinite; }
   .deco { position: absolute; pointer-events: none; z-index: 0; }
+  /* brand figure: the lime four-petal cross from the poster/ticket */
+  .petal-x path { fill: #d5f157; }
+  @keyframes petalSpin { 0% { transform: rotate(0deg) scale(.88); } 50% { transform: rotate(180deg) scale(1.12); } 100% { transform: rotate(360deg) scale(.88); } }
+  .anim-petal { animation: petalSpin 16s ease-in-out infinite; transform-origin: 50% 50%; }
+  @keyframes beam { 0%,100% { opacity: .35; transform: scaleY(.94); } 50% { opacity: .85; transform: scaleY(1.06); } }
+  .anim-beam { animation: beam 7s ease-in-out infinite; transform-origin: 50% 100%; }
+
   .liftup { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease, box-shadow .35s ease; }
   .liftup:hover { transform: translateY(-6px); }
   .nav-link { position: relative; padding-bottom: 2px; }
-  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #e8503a; transition: width .28s cubic-bezier(.16,1,.3,1); }
-  .nav-link:hover::after, .nav-link.text-coral::after { width: 100%; }
-  :focus-visible { outline: 2px solid #e8503a; outline-offset: 3px; border-radius: 2px; }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #d5f157; transition: width .28s cubic-bezier(.16,1,.3,1); }
+  .nav-link:hover::after, .nav-link.text-nlime::after { width: 100%; }
+  :focus-visible { outline: 2px solid #fe005a; outline-offset: 3px; border-radius: 2px; }
   .btn-shine { position: relative; overflow: hidden; }
   .btn-shine::after { content: ''; position: absolute; top: 0; left: -120%; width: 55%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-18deg); transition: left .6s cubic-bezier(.16,1,.3,1); }
   .btn-shine:hover::after { left: 130%; }
@@ -75,12 +85,10 @@
 </head>
 <body class="bg-bone text-noir overflow-x-hidden">
 
-<header class="sticky top-0 z-[60] bg-bone/85 backdrop-blur-md border-b border-noir/10">
+<header class="sticky top-0 z-[60] bg-abyss/90 backdrop-blur-md border-b border-white/10">
   <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center gap-6">
     <a href="index.html" class="shrink-0 flex items-center">
-      <span class="grid place-items-center w-11 h-11 rounded-xl bg-noir">
-        <img src="assets/mt-mark.png" alt="México Trasciende" class="h-6 w-auto">
-      </span>
+      <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="h-9 w-auto">
     </a>
     <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
       <a href="equipo.html" class="nav-link">Nosotros</a>
@@ -88,30 +96,30 @@
       <a href="index.html#ponentes" class="nav-link">Ponentes</a>
       <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="index.html#aliados" class="nav-link">Aliados</a>
-      <a href="cleip.html" class="nav-link text-coral">CLEIP</a>
+      <a href="cleip.html" class="nav-link text-nlime">CLEIP</a>
     </nav>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[40px] px-6 rounded-full bg-coral text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-noir">Boletos</a>
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[40px] px-6 rounded-full bg-npink text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-nlime hover:text-abyss">Boletos</a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
-      <span class="block w-6 h-[2px] bg-noir"></span>
-      <span class="block w-6 h-[2px] bg-noir"></span>
-      <span class="block w-6 h-[2px] bg-noir"></span>
+      <span class="block w-6 h-[2px] bg-white"></span>
+      <span class="block w-6 h-[2px] bg-white"></span>
+      <span class="block w-6 h-[2px] bg-white"></span>
     </button>
   </div>
   <nav id="mobileMenu" class="lg:hidden px-6">
-    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-noir/10">
+    <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-white/10">
       <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="index.html#espacios" class="nav-link">Espacios</a>
       <a href="index.html#ponentes" class="nav-link">Ponentes</a>
       <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="index.html#aliados" class="nav-link">Aliados</a>
       <a href="cleip.html" class="nav-link">CLEIP</a>
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-coral text-white font-heading tracking-[.12em] uppercase">Boletos</a>
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-white font-heading tracking-[.12em] uppercase">Boletos</a>
     </div>
   </nav>
 </header>
 
 <section class="relative bg-bone text-noir overflow-hidden">
-  <div class="absolute -top-[40%] right-[20%] w-[760px] h-[760px] rounded-full bg-[radial-gradient(circle,rgba(232,80,58,.12),transparent_64%)] blur-[50px] anim-drift pointer-events-none"></div>
+  <div class="absolute -top-[40%] right-[20%] w-[760px] h-[760px] rounded-full bg-[radial-gradient(circle,rgba(43,63,255,.14),transparent_64%)] blur-[50px] anim-drift pointer-events-none"></div>
   <svg class="deco left-[3%] top-[18%] w-9 h-9 lg:w-16 lg:h-16 anim-floaty" viewBox="0 0 60 60" aria-hidden="true">
     <rect x="4" y="4" width="14" height="14" transform="rotate(45 11 11)" fill="#c6e21e"/>
     <rect x="32" y="32" width="12" height="12" transform="rotate(45 38 38)" fill="#c6e21e" opacity=".7"/>
@@ -154,24 +162,43 @@
   </div>
 </section>
 
-<footer class="bg-noir text-bone/70 border-t border-white/10">
-  <div class="max-w-[1300px] mx-auto px-6 py-10 flex flex-wrap gap-8 items-center justify-between">
-    <div class="flex items-center gap-6">
-      <img src="assets/mt-mark.png" alt="México Trasciende" class="h-12 w-auto">
-      <span class="w-px h-11 bg-white/25"></span>
-      <div class="font-heading leading-tight tracking-[.14em] uppercase text-bone">
-        <div class="text-base">Tecnológico de Monterrey</div>
-        <div class="text-xs text-coral">Campus Ciudad de México · 50 Aniversario</div>
+<footer class="relative bg-deep text-white/70 overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_18%_0%,#071c5e_0%,#03144a_55%,#01040d_100%)] pointer-events-none"></div>
+  <svg class="deco hidden lg:block right-[12%] top-[14%] w-10 h-10 anim-petal" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+  <svg class="deco hidden lg:block right-[19%] top-[38%] w-7 h-7 anim-petal" style="animation-delay:-6s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+
+  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-14 grid gap-10 lg:grid-cols-[auto_1px_1fr_auto] lg:items-center">
+    <div class="flex items-center gap-5">
+      <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="h-14 w-auto">
+      <div class="font-heading leading-tight tracking-[.3em] uppercase text-white">
+        <div class="text-sm">México</div>
+        <div class="text-sm text-white/60">Trasciende</div>
       </div>
     </div>
-    <div class="flex gap-6 font-heading text-[13px] tracking-[.18em] uppercase">
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-coral hover:text-white">Boletos</a>
-      <a href="cleip.html" class="text-coral hover:text-white">CLEIP</a>
-      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-coral hover:text-white">Instagram</a>
+
+    <span class="hidden lg:block w-px h-24 bg-nlime/70"></span>
+
+    <div class="flex items-start gap-4">
+      <span class="grid place-items-center w-11 h-11 rounded-full bg-white/10 shrink-0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d5f157" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      <div class="text-[14.5px] leading-relaxed text-white/85 max-w-[420px]">
+        <strong class="font-semibold text-white">Tecnológico de Monterrey, Campus Ciudad de México</strong><br>
+        Calle del Puente 222, Col. Ejidos de Huipulco, Tlalpan, C.P. 14380, Ciudad de México, CDMX
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 font-heading text-[13px] tracking-[.18em] uppercase lg:text-right">
+      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-nlime hover:text-white">Boletos</a>
+      <a href="agenda.html" class="text-nlime hover:text-white">Agenda</a>
+      <a href="cleip.html" class="text-nlime hover:text-white">CLEIP</a>
+      <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-nlime hover:text-white">Instagram</a>
     </div>
   </div>
-  <div class="border-t border-[rgba(120,150,255,.16)]">
-    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-bone/50">Grupo Estudiantil Trasciende · Sábado 21 de noviembre 2026 · Campus Ciudad de México</div>
+
+  <div class="relative z-[1] h-[3px] grad-bar"></div>
+  <div class="relative z-[1] bg-abyss">
+    <div class="max-w-[1300px] mx-auto px-6 py-4 text-[12.5px] text-white/45">Grupo Estudiantil Trasciende · LiFE Grupos Estudiantiles · Sábado 21 de noviembre de 2026</div>
   </div>
 </footer>
 
