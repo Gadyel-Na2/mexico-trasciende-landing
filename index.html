@@ -95,7 +95,7 @@
 
   /* bright category label with the flyer's little colored dash underneath */
   .eje-label { display: inline-block; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-  .eje-label::after { content: ''; display: block; width: 28px; height: 3px; border-radius: 2px; margin-top: 6px; background: currentColor; }
+  .eje-label::after { content: ''; display: block; width: 28px; height: 3px; border-radius: 2px; margin-top: 6px; background: var(--dash, currentColor); }
   .eje-center::after { margin-left: auto; margin-right: auto; }
 
   /* ---- UX ---- */
@@ -194,7 +194,7 @@
 
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-16 pb-16 grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
     <div class="reveal">
-      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="grad-text-fade">Trasciende</span></h1>
+      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="text-white">Trasciende</span></h1>
       <p class="font-heading text-[17px] sm:text-[19px] tracking-[.2em] uppercase text-nlime mt-5">21 de noviembre de 2026 · Tec de Monterrey CCM</p>
       <p class="max-w-[540px] mt-5 text-[18.5px] leading-relaxed text-white/70" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes de todas las carreras, empresarios, especialistas y organizaciones.</p>
 
@@ -257,17 +257,17 @@
 
   <div class="relative max-w-[1300px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-3">
     <div class="reveal py-9 px-6 sm:border-r border-white/12">
-      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="1000" data-count-prefix="+">+1000</div>
+      <div class="font-heading text-[56px] leading-[.88] text-white" data-count="1000" data-count-prefix="+">+1000</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Asistentes en un mismo día</div>
       <div class="text-sm text-white/60 mt-1">Estudiantes de todas las carreras, empresarios, especialistas y organizaciones — en el mismo lugar y listos para conectar contigo.</div>
     </div>
     <div class="reveal py-9 px-6 sm:border-r border-white/12">
-      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="3">3</div>
+      <div class="font-heading text-[56px] leading-[.88] text-white" data-count="3">3</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Espacios del día</div>
       <div class="text-sm text-white/60 mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
     </div>
     <div class="reveal py-9 px-6">
-      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="5">5</div>
+      <div class="font-heading text-[56px] leading-[.88] text-white" data-count="5">5</div>
       <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Conferencias magistrales</div>
       <div class="text-sm text-white/60 mt-1">Programa del Main Stage</div>
     </div>
@@ -286,7 +286,7 @@
     <rect x="33" y="32" width="10" height="10" transform="rotate(45 38 37)" fill="#c6e21e" opacity=".6"/>
   </svg>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tres espacios,<br><span class="grad-text">un mismo día</span></h2>
+    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tres espacios,<br>un mismo día</h2>
     <p class="reveal text-[17px] leading-relaxed text-body mt-4 mb-8 max-w-[680px]">Los tres espacios están abiertos a <strong class="font-semibold text-noir">estudiantes de cualquier carrera</strong>: ingeniería, negocios, salud, humanidades, arquitectura, ciencias sociales. No necesitas un perfil específico — solo ganas de construir algo.</p>
 
     <div class="flex flex-wrap gap-2.5" id="espaciosTabs"></div>
@@ -325,7 +325,7 @@
     <rect x="34" y="34" width="11" height="11" transform="rotate(45 39 39)" fill="#ee1a8c" opacity=".5"/>
   </svg>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Los <span class="grad-text">ponentes</span></h2>
+    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Los ponentes</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-9" id="ponentesGrid"></div>
   </div>
 </section>
@@ -338,7 +338,7 @@
   <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_20%_0%,#071c5e_0%,#03144a_60%,#01040d_100%)] pointer-events-none"></div>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-20 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-center">
     <div class="reveal">
-      <h2 class="font-heading text-[38px] lg:text-[56px] leading-[.94] uppercase">El <span class="grad-text">día completo</span></h2>
+      <h2 class="font-heading text-[38px] lg:text-[56px] leading-[.94] uppercase">El día completo</h2>
       <p class="text-[17px] leading-relaxed text-white/75 mt-4 max-w-[560px]">Doce horas mapeadas de extremo a extremo, del registro al cierre. Consulta el programa hora por hora del sábado 21 de noviembre.</p>
     </div>
     <div class="reveal lg:justify-self-end">
@@ -352,7 +352,7 @@
     <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
   </svg>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[36px] lg:text-[58px] leading-[.94] uppercase">Quienes ya están<br><span class="grad-text">invirtiendo</span></h2>
+    <h2 class="reveal font-heading text-[36px] lg:text-[58px] leading-[.94] uppercase">Quienes ya están<br>invirtiendo</h2>
 
     <div class="mt-11">
       <div class="flex items-center gap-3.5 mb-5">
@@ -394,7 +394,7 @@
   </svg>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-14 items-center">
     <div class="reveal">
-      <h2 class="font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tener la idea<br><span class="grad-text">no siempre alcanza</span></h2>
+      <h2 class="font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tener la idea<br>no siempre alcanza</h2>
       <p class="text-[17px] leading-relaxed text-body mt-5" style="text-wrap:pretty">En México existe una generación de jóvenes con interés por emprender, crear proyectos y transformar su entorno. Al mismo tiempo hay empresarios, especialistas y organizaciones dispuestos a compartir experiencia y acompañar a nuevas generaciones — pero ambos grupos pocas veces coinciden en un mismo espacio de manera estructurada.</p>
       <p class="text-[17px] leading-relaxed text-body mt-4" style="text-wrap:pretty">México Trasciende los reúne en un mismo día, para combatir la indiferencia social inspirando a la juventud a desarrollar iniciativas de impacto real.</p>
     </div>
@@ -432,7 +432,7 @@
   </svg>
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-start">
     <div class="reveal">
-      <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br><span class="grad-text">México Trasciende</span></h2>
+      <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br>México Trasciende</h2>
       <p class="text-base leading-relaxed text-body mt-5 mb-8 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
       <div class="flex flex-col gap-6 font-heading text-xl tracking-wide">
         <a href="tel:+525551071205" class="flex gap-3.5 items-center text-noir hover:text-npink"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
@@ -776,14 +776,14 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
         <div class="flip-face liftup rounded-xl overflow-hidden bg-white cursor-pointer" style="border:2px solid ${c}">
           <div class="relative h-full overflow-hidden bg-gradient-to-br from-[#f7f6f2] to-[#eceaf5] flex flex-col items-center justify-center gap-2.5">
             ${triangles}
-            <div class="relative font-heading text-[56px] leading-none" style="color:${c}55">${p.num}</div>
-            <div class="relative font-heading text-[11px] tracking-[.26em] uppercase anim-pulse-soft" style="color:${c}">Por anunciar</div>
-            <div class="eje-label eje-center font-heading text-[11px] absolute bottom-6 text-center" style="color:${c}">${p.eje}</div>
+            <div class="relative font-heading text-[56px] leading-none text-noir/20">${p.num}</div>
+            <div class="relative font-heading text-[11px] tracking-[.26em] uppercase text-muted anim-pulse-soft">Por anunciar</div>
+            <div class="eje-label eje-center font-heading text-[11px] absolute bottom-6 text-center text-noir" style="--dash:${c}">${p.eje}</div>
           </div>
         </div>
         <div class="flip-face flip-back rounded-xl overflow-hidden bg-noir p-6 flex flex-col items-center justify-center text-center cursor-pointer" style="border:2px solid ${c}">
           <svg class="w-9 h-9 mb-3 anim-twinkle" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="${c}"/></svg>
-          <div class="font-heading text-[11px] tracking-[.24em] uppercase mb-2" style="color:${c}">Muy pronto</div>
+          <div class="font-heading text-[11px] tracking-[.24em] uppercase mb-2 text-white">Muy pronto</div>
           <p class="text-[14.5px] leading-relaxed text-paper/85">Este ponente está por anunciarse. Síguenos en Instagram @trasciende_tec para enterarte primero.</p>
         </div>
       </div>
@@ -795,7 +795,7 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
         <div class="absolute inset-0" style="background-image:url('${p.photo}');background-size:cover;background-position:${p.pos}"></div>
       </div>
       <div class="p-5">
-        <div class="eje-label font-heading text-[11px]" style="color:${c}">${p.eje}</div>
+        <div class="eje-label font-heading text-[11px] text-noir" style="--dash:${c}">${p.eje}</div>
         <div class="font-heading text-[27px] tracking-wide uppercase leading-tight mt-2">${p.name}</div>
         <div class="text-[14.5px] text-muted mt-1.5 leading-snug min-h-[42px]">${p.role}</div>
       </div>
