@@ -44,10 +44,10 @@
   #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   #mobileMenu.open { max-height: 480px; }
   .grad-text {
-    background: linear-gradient(100deg, #2b3fff 0%, #3ce5d2 22%, #5af9c1 38%, #d5f157 54%, #ed841b 70%, #fe005a 86%, #f6019c 100%);
+    background: #fe005a;
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .grad-bar { background: linear-gradient(90deg, #2b3fff, #3ce5d2, #5af9c1, #d5f157, #ed841b, #fe005a, #f6019c); }
+  .grad-bar { background: #fe005a; }
   @keyframes floaty { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(0,-16px,0) rotate(8deg); } }
   @keyframes twinkle { 0%,100% { opacity: .3; transform: scale(.82) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(15deg); } }
   @keyframes sweep { 0%,100% { transform: translate3d(0,0,0) scale(1); opacity: .5; } 50% { transform: translate3d(-3%,2%,0) scale(1.06); opacity: .8; } }
@@ -93,11 +93,9 @@
       <a href="equipo.html" class="nav-link text-nlime">Nosotros</a>
       <a href="index.html#espacios" class="nav-link">Espacios</a>
       <a href="index.html#ponentes" class="nav-link">Ponentes</a>
-      <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="index.html#aliados" class="nav-link">Aliados</a>
-      <a href="cleip.html" class="nav-link">CLEIP</a>
     </nav>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center gap-2 h-[42px] px-6 rounded-full bg-npink text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-nlime hover:text-abyss">Boletos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center gap-2 h-[42px] px-6 rounded-full bg-npink text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-nlime hover:text-abyss">Comprar boletos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
       <span class="block w-6 h-[2px] bg-white"></span>
       <span class="block w-6 h-[2px] bg-white"></span>
@@ -109,10 +107,8 @@
       <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="index.html#espacios" class="nav-link">Espacios</a>
       <a href="index.html#ponentes" class="nav-link">Ponentes</a>
-      <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="index.html#aliados" class="nav-link">Aliados</a>
-      <a href="cleip.html" class="nav-link">CLEIP</a>
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-white font-heading tracking-[.12em] uppercase">Boletos</a>
+      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-white font-heading tracking-[.12em] uppercase">Comprar boletos</a>
     </div>
   </nav>
 </header>
@@ -145,13 +141,8 @@
   <div class="max-w-[1300px] mx-auto px-6 py-20">
     <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
       <div class="reveal">
-        <p class="text-[17px] leading-relaxed text-body" style="text-wrap:pretty">Somos el <strong class="font-semibold">Grupo Estudiantil Trasciende</strong> del Tecnológico de Monterrey, Campus Ciudad de México: un equipo de estudiantes que organiza México Trasciende de principio a fin — programación, ponentes, patrocinios, logística y comunicación.</p>
+        <p class="text-[17px] leading-relaxed text-body" style="text-wrap:pretty">Somos el <strong class="font-semibold">Grupo Estudiantil Trasciende</strong> del Tecnológico de Monterrey, Campus Ciudad de México: un equipo de estudiantes que organiza México Trasciende.</p>
         <p class="text-[17px] leading-relaxed text-body mt-4" style="text-wrap:pretty">Nos une la convicción de que la indiferencia social se combate creando encuentros que de otra forma no ocurrirían. Cada área del grupo existe para que un estudiante pueda cruzar la puerta y salir con una conexión real.</p>
-        <div class="grid grid-cols-3 gap-px bg-noir/10 border border-noir/10 mt-7">
-          <div class="bg-white p-5"><div class="font-heading text-[34px] text-coral">2025</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Primera generación</div></div>
-          <div class="bg-white p-5"><div class="font-heading text-[34px] text-coral">8</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Áreas de trabajo</div></div>
-          <div class="bg-white p-5"><div class="font-heading text-[34px] text-coral">+50</div><div class="font-heading text-xs tracking-[.2em] uppercase text-muted mt-1.5">Estudiantes organizando</div></div>
-        </div>
       </div>
       <div class="reveal relative rounded-md overflow-hidden shadow-[0_24px_60px_rgba(20,17,15,.14)]" style="transition-delay:.1s">
         <img src="assets/foto-grupo.png" alt="Grupo Estudiantil Trasciende" class="block w-full h-[420px] object-cover">
@@ -171,7 +162,6 @@
 </section>
 
 <footer class="relative bg-deep text-white/70 overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_18%_0%,#071c5e_0%,#03144a_55%,#01040d_100%)] pointer-events-none"></div>
   <svg class="deco hidden lg:block right-[12%] top-[14%] w-10 h-10 anim-petal" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
   <svg class="deco hidden lg:block right-[19%] top-[38%] w-7 h-7 anim-petal" style="animation-delay:-6s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
 
@@ -197,9 +187,7 @@
     </div>
 
     <div class="flex flex-col gap-3 font-heading text-[13px] tracking-[.18em] uppercase lg:text-right">
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-nlime hover:text-white">Boletos</a>
-      <a href="agenda.html" class="text-nlime hover:text-white">Agenda</a>
-      <a href="cleip.html" class="text-nlime hover:text-white">CLEIP</a>
+      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="text-nlime hover:text-white">Comprar boletos</a>
       <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-nlime hover:text-white">Instagram</a>
     </div>
   </div>
@@ -218,9 +206,8 @@ const COMITE = [
   { area: 'Directora de Logística', name: 'Clara F. Aldrete', lidera: 'Equipo de Logística: montaje, proveedores, señalización y operación del día del evento.' },
   { area: 'Director de Responsabilidad Social', name: 'Emilio Martínez Romero', lidera: 'Equipo de Responsabilidad Social: Trasciende Scholars y vinculación con comunidades.' },
   { area: 'Directora de Comunicación', name: 'Carol González', lidera: 'Equipo de Comunicación: redes sociales, contenido y relación con medios.' },
-  { area: 'Director de Finanzas', name: 'Leonardo de la Rosa', lidera: 'Equipo de Finanzas: presupuesto, ingresos por boletaje y control de gastos del foro.' },
-  { area: 'Coordinador de Tecnología', name: 'Aldo Paz', lidera: 'Equipo de Tecnología: sitio web, CLEIP y soporte digital del evento.' },
-  { area: 'Coordinación de Patrocinios', name: 'Alexa Valle Alva', lidera: 'Equipo de Patrocinios: relación con empresas aliadas y activaciones de marca.' }
+  { area: 'Finanzas y Patrocinios', name: 'Leonardo de la Rosa y Alexa Valle Alva', lidera: 'Equipos de Finanzas y Patrocinios: presupuesto, boletaje y control de gastos, además de la relación con empresas aliadas y activaciones de marca.' },
+  { area: 'Coordinador de Tecnología', name: 'Aldo Paz', lidera: 'Equipo de Tecnología: sitio web y soporte digital del evento.' }
 ];
 
 const comiteGrid = document.getElementById('comiteGrid');

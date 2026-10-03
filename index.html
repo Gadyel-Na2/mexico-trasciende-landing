@@ -39,12 +39,12 @@
 
   /* ---------- type ---------- */
   .t-display { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .9; letter-spacing: -.005em; }
-  .hl { background: linear-gradient(95deg, #fe005a 0%, #ff2d55 42%, #ff6a1f 82%, #ff8f1f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-  .hl-v { background: linear-gradient(95deg, #fe005a 0%, #f6019c 48%, #a43dff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-  .grad-bar { background: linear-gradient(90deg, #2b3fff, #3ce5d2, #5af9c1, #d5f157, #ed841b, #fe005a, #f6019c); }
-  .grad-warm { background: linear-gradient(90deg, #fe005a, #ff7a1a, #a43dff); }
+  .hl { color: #fe005a; }
+  .hl-v { color: #fe005a; }
+  .grad-bar { background: #fe005a; }
+  .grad-warm { background: #fe005a; }
   .eyebrow { display: inline-flex; align-items: center; gap: .75rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .32em; text-transform: uppercase; color: #fe005a; }
-  .eyebrow::before { content: ''; width: 26px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #fe005a, #ff7a1a); }
+  .eyebrow::before { content: ''; width: 26px; height: 3px; border-radius: 2px; background: #fe005a; }
   .eyebrow-ink { color: #14110f; }
   .note { font-family: 'Gochi Hand', cursive; text-transform: uppercase; letter-spacing: .05em; line-height: 1.05; }
   .script { font-family: 'Permanent Marker', cursive; letter-spacing: .02em; }
@@ -146,14 +146,14 @@
   .esp-card.is-active .esp-name { color: #fe005a; }
   .esp-card.is-active .esp-name .arr { transform: rotate(90deg); }
   .esp-line { display: block; margin-top: 7px; font-size: 15px; line-height: 1.45; color: #5b5866; }
-  .esp-bar { display: block; height: 3px; width: 0; margin-top: 12px; border-radius: 2px; background: linear-gradient(90deg, #fe005a, #ff7a1a); transition: width .45s cubic-bezier(.16,1,.3,1); }
+  .esp-bar { display: block; height: 3px; width: 0; margin-top: 12px; border-radius: 2px; background: #fe005a; transition: width .45s cubic-bezier(.16,1,.3,1); }
   .esp-card.is-active .esp-bar { width: 64px; }
   #espTexto1:empty, #espTexto2:empty { display: none; }
   .dato { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; background: #fff; border: 1px solid rgba(12,20,51,.1); box-shadow: 0 10px 26px -18px rgba(12,20,51,.35); }
   .ic-bubble { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 999px; background: #ffe5ee; color: #fe005a; }
   .lounge-chip { transition: transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s ease, box-shadow .3s ease; }
   .lounge-chip:hover { transform: translateY(-4px) rotate(-1deg); border-color: #fe005a; box-shadow: 0 12px 24px -14px rgba(254,0,90,.6); }
-  .tape { background: linear-gradient(90deg, #fe005a, #ff3d4f 50%, #ff7a1a); color: #fff; box-shadow: 0 14px 34px -14px rgba(254,0,90,.7); }
+  .tape { background: #fe005a; color: #fff; box-shadow: 0 14px 34px -14px rgba(254,0,90,.7); }
 
   /* ---------- ponentes ---------- */
   .flip-card { perspective: 1200px; }
@@ -161,10 +161,10 @@
   .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
   .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; overflow: hidden; }
   .flip-back { transform: rotateY(180deg); }
-  .pon-wrap { position: relative; transform: rotate(var(--tilt, 0deg)); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
-  .pon-wrap:hover { transform: rotate(0deg) translateY(-10px); }
-  .pon-swatch { position: absolute; left: -11%; top: -8%; width: 122%; height: 116%; max-width: none; object-fit: fill; transform: rotate(calc(var(--tilt, 0deg) * -2.4)); opacity: .9; pointer-events: none; }
-  .pon-card { position: relative; aspect-ratio: 3 / 4; cursor: pointer; box-shadow: 0 30px 50px -26px rgba(0,0,0,.8); border-radius: 16px; }
+  .pon-wrap { position: relative; }
+  @media (hover: hover) { .pon-card:hover .flip-inner { transform: rotateY(180deg); } }
+  .pon-swatch { position: absolute; left: -11%; top: -8%; width: 122%; height: 116%; max-width: none; object-fit: fill; transform: rotate(-3deg); opacity: .9; pointer-events: none; }
+  .pon-card { position: relative; aspect-ratio: 2 / 3; cursor: pointer; box-shadow: 0 30px 50px -26px rgba(0,0,0,.8); border-radius: 16px; }
 
   /* ---------- faq ---------- */
   .faq-item { border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: rgba(255,255,255,.03); transition: background-color .3s ease, border-color .3s ease; }
@@ -216,14 +216,12 @@
       <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
-      <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="#aliados" class="nav-link">Aliados</a>
-      <a href="cleip.html" class="nav-link">CLEIP</a>
     </nav>
     <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-white/75 whitespace-nowrap">
       <span class="w-1.5 h-1.5 rounded-full bg-nlime anim-glow"></span>21 Nov 2026 · CCM
     </span>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn btn-pink hidden lg:inline-flex shrink-0 h-[42px] px-6 text-sm">Boletos <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="btn btn-pink hidden lg:inline-flex shrink-0 h-[42px] px-6 text-sm">Comprar boletos <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú" aria-expanded="false">
       <span class="block w-6 h-[2px] bg-white"></span>
       <span class="block w-6 h-[2px] bg-white"></span>
@@ -235,11 +233,9 @@
       <a href="equipo.html" class="nav-link">Nosotros</a>
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
-      <a href="agenda.html" class="nav-link">Agenda</a>
       <a href="#aliados" class="nav-link">Aliados</a>
-      <a href="cleip.html" class="nav-link">CLEIP</a>
       <span class="font-heading text-[13px] tracking-[.16em] text-white/70">Sábado 21 de noviembre 2026 · Campus CCM</span>
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-white font-heading tracking-[.12em] uppercase">Boletos</a>
+      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-white font-heading tracking-[.12em] uppercase">Comprar boletos</a>
     </div>
   </nav>
 </header>
@@ -273,7 +269,7 @@
         <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fe005a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Tec de Monterrey · Campus CCM</span>
       </div>
       <div class="flex flex-wrap gap-3.5 mt-9 reveal" style="transition-delay:.26s">
-        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn btn-pink">Quiero ser parte <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="btn btn-pink">Comprar boletos <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#espacios" class="btn btn-ghost">Conoce los 3 espacios</a>
       </div>
     </div>
@@ -376,33 +372,11 @@
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-12 mt-14 px-2 lg:px-3" id="ponentesGrid"></div>
   </div>
-  <img src="assets/torn-white-b.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
-</section>
-
-<!-- ============ AGENDA ============ -->
-<section id="agenda-teaser" class="relative bg-white text-noir">
-  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)] gap-14 lg:gap-16 items-center">
-    <div class="reveal">
-      <div class="eyebrow">Agenda</div>
-      <h2 class="t-display text-[44px] sm:text-[56px] lg:text-[64px] mt-4">El <span class="hl">día completo</span></h2>
-      <p class="text-[17px] leading-relaxed text-body mt-5 max-w-[520px]">Doce horas mapeadas de extremo a extremo, del registro al cierre. Consulta el programa hora por hora del sábado 21 de noviembre.</p>
-      <a href="agenda.html" class="btn btn-pink mt-9">Ver agenda del día <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-    <div class="relative reveal-pop">
-      <img src="assets/swatch-sunset.webp" alt="" aria-hidden="true" class="paint left-[4%] top-[-9%] w-[100%] h-[118%] rotate-[5deg]" style="object-fit:fill" loading="lazy">
-      <div class="relative rotate-[-2.5deg] rounded-[18px] overflow-hidden shadow-[0_34px_60px_-26px_rgba(1,4,13,.6)] aspect-[16/11]">
-        <img src="assets/stage-vivid.jpg" alt="Main Stage de México Trasciende en la carpa de eventos" class="w-full h-full object-cover" loading="lazy">
-        <span class="grain-overlay"></span>
-      </div>
-      <img src="assets/brush-pink.webp" alt="" aria-hidden="true" class="paint paint-in left-[-14%] bottom-[-9%] w-[72%] rotate-[-9deg]">
-      <div class="absolute -top-9 right-0 lg:-right-4 note text-[26px] text-noir rotate-[6deg] anim-wobble" style="--r:6deg" aria-hidden="true">07:00 → 19:00</div>
-    </div>
-  </div>
-  <img src="assets/torn-coal-b.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
+  <img src="assets/torn-navy-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
 </section>
 
 <!-- ============ PROBLEMA ============ -->
-<section id="problema" class="relative bg-coal text-white">
+<section id="problema" class="relative bg-navy text-white">
   <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-20 lg:pt-28 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-14 lg:gap-16 items-center">
     <div class="relative order-2 lg:order-1 reveal-pop">
       <div class="relative lg:bleed-l h-[300px] sm:h-[380px] lg:h-[460px]">
@@ -430,7 +404,7 @@
   <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,.55fr)_minmax(0,1fr)_minmax(0,1fr)] gap-10 xl:gap-12">
     <div class="relative reveal-pop">
       <div class="relative lg:bleed-l h-[260px] sm:h-[340px] lg:h-full lg:min-h-[560px]">
-        <div class="absolute inset-0 translate-x-3" style="clip-path:polygon(0 0, 100% 0, 100% 42%, 93% 100%, 0 100%);background:linear-gradient(180deg,#ffb020 0%,#ff7a1a 38%,#fe005a 100%)"></div>
+        <div class="absolute inset-0 translate-x-3" style="clip-path:polygon(0 0, 100% 0, 100% 42%, 93% 100%, 0 100%);background:#fe005a"></div>
         <div class="absolute inset-0" style="clip-path:polygon(0 0, 100% 0, 100% 40%, 89% 100%, 0 100%)">
           <img src="assets/campus-tec.jpg" alt="Edificio del Tecnológico de Monterrey, Campus Ciudad de México" class="w-full h-full object-cover object-[70%_22%] lg:object-[100%_50%]" loading="lazy">
           <span class="grain-overlay"></span>
@@ -453,11 +427,14 @@
         <div class="dato"><span class="ic-bubble"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.24em] uppercase text-muted">Duración</span><span class="block font-heading font-bold text-[22px] leading-tight">12 horas</span></span></div>
       </div>
       <div class="flex flex-wrap items-center gap-5 mt-8">
-        <a href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="btn btn-dark h-[50px]">Cómo llegar <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Tecnol%C3%B3gico+de+Monterrey,+Calle+del+Puente+222,+Ejidos+de+Huipulco,+Tlalpan,+14380+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="btn btn-dark h-[50px]">Cómo llegar <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <span class="note text-[21px] text-noir/80 rotate-[-6deg] inline-flex items-center gap-2" aria-hidden="true">
           <svg class="draw" width="62" height="30" viewBox="0 0 92 40" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M88 22 C 64 6, 34 8, 10 22"/><path pathLength="1" d="M22 12 L8 22 L22 31"/></svg>
           50 años Tec CCM
         </span>
+      </div>
+      <div class="mt-6 rounded-2xl overflow-hidden border border-noir/10 shadow-[0_18px_40px_-22px_rgba(12,20,51,.45)] h-[210px]">
+        <iframe title="Mapa del Tec de Monterrey, Campus Ciudad de México" src="https://www.google.com/maps?q=Tecnol%C3%B3gico+de+Monterrey,+Calle+del+Puente+222,+Ejidos+de+Huipulco,+Tlalpan,+14380+Ciudad+de+M%C3%A9xico&z=16&output=embed" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -475,6 +452,46 @@
         </div>
         <div class="grid gap-3 mt-8" id="faqList"></div>
       </div>
+    </div>
+  </div>
+  </section>
+
+<!-- ============ ALIADOS ============ -->
+<section id="aliados" class="relative bg-white text-noir">
+  <img src="assets/brush-sunset.webp" alt="" aria-hidden="true" class="paint paint-in right-[-14%] top-[70px] w-[46%] opacity-90 rotate-[-6deg]">
+  <img src="assets/splatter.webp" alt="" aria-hidden="true" class="paint left-[-90px] bottom-[60px] w-[260px] opacity-35" loading="lazy">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-28">
+    <div class="reveal">
+      <div class="eyebrow">Aliados</div>
+      <h2 class="t-display text-[42px] sm:text-[54px] lg:text-[62px] mt-4">Quienes ya están<br><span class="hl">invirtiendo</span></h2>
+    </div>
+
+    <div class="mt-14">
+      <div class="flex items-center gap-3.5 mb-7">
+        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Patrocinadores confirmados</span>
+        <span class="flex-1 h-px bg-ink/[.12]"></span>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="sponsorsGrid"></div>
+    </div>
+
+    <div class="mt-14">
+      <div class="flex items-center gap-3.5 mb-7">
+        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Áreas del Tec aliadas</span>
+        <span class="flex-1 h-px bg-ink/[.12]"></span>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="areasGrid"></div>
+    </div>
+
+    <div class="mt-14">
+      <div class="flex items-center gap-3.5 mb-7">
+        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Escuelas del Tec impulsoras</span>
+        <span class="flex-1 h-px bg-ink/[.12]"></span>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="escuelasGrid"></div>
+    </div>
+
+    <div class="mt-14 flex justify-end">
+      <a href="#contacto" class="btn btn-pink">Quiero patrocinar <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
   <img src="assets/torn-navy-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
@@ -532,47 +549,6 @@
       </div>
     </div>
   </div>
-  <img src="assets/torn-white-a.svg" alt="" aria-hidden="true" class="torn torn-bottom torn-flip z-[5]">
-</section>
-
-<!-- ============ ALIADOS ============ -->
-<section id="aliados" class="relative bg-white text-noir">
-  <img src="assets/brush-sunset.webp" alt="" aria-hidden="true" class="paint paint-in right-[-14%] top-[70px] w-[46%] opacity-90 rotate-[-6deg]">
-  <img src="assets/splatter.webp" alt="" aria-hidden="true" class="paint left-[-90px] bottom-[60px] w-[260px] opacity-35" loading="lazy">
-  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-28">
-    <div class="reveal">
-      <div class="eyebrow">Aliados</div>
-      <h2 class="t-display text-[42px] sm:text-[54px] lg:text-[62px] mt-4">Quienes ya están<br><span class="hl">invirtiendo</span></h2>
-    </div>
-
-    <div class="mt-14">
-      <div class="flex items-center gap-3.5 mb-7">
-        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Patrocinadores confirmados</span>
-        <span class="flex-1 h-px bg-ink/[.12]"></span>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="sponsorsGrid"></div>
-    </div>
-
-    <div class="mt-14">
-      <div class="flex items-center gap-3.5 mb-7">
-        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Áreas del Tec aliadas</span>
-        <span class="flex-1 h-px bg-ink/[.12]"></span>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="areasGrid"></div>
-    </div>
-
-    <div class="mt-14">
-      <div class="flex items-center gap-3.5 mb-7">
-        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Escuelas del Tec impulsoras</span>
-        <span class="flex-1 h-px bg-ink/[.12]"></span>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="escuelasGrid"></div>
-    </div>
-
-    <div class="mt-14 flex justify-end">
-      <a href="#contacto" class="btn btn-pink">Quiero patrocinar <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-  </div>
 </section>
 
 </main>
@@ -582,8 +558,7 @@
 </button>
 
 <footer class="relative bg-deep text-white/70 overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_18%_0%,#071c5e_0%,#03144a_55%,#01040d_100%)] pointer-events-none"></div>
-  <img src="assets/torn-white-b.svg" alt="" aria-hidden="true" class="torn torn-top z-[2]">
+  <img src="assets/torn-navy-a.svg" alt="" aria-hidden="true" class="torn torn-top z-[2]">
   <img src="assets/brush-violet.webp" alt="" aria-hidden="true" class="paint right-[-12%] bottom-[18%] w-[44%] opacity-35 rotate-[-6deg] z-0" loading="lazy">
 
   <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-24 pb-14 grid gap-10 lg:grid-cols-[auto_1px_1fr_auto] lg:items-center">
@@ -608,9 +583,7 @@
     </div>
 
     <div class="flex flex-col gap-3 font-heading text-[13px] tracking-[.18em] uppercase lg:text-right">
-      <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="text-nlime hover:text-white">Boletos</a>
-      <a href="agenda.html" class="text-nlime hover:text-white">Agenda</a>
-      <a href="cleip.html" class="text-nlime hover:text-white">CLEIP</a>
+      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="text-nlime hover:text-white">Comprar boletos</a>
       <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-nlime hover:text-white">Instagram</a>
     </div>
   </div>
@@ -685,10 +658,9 @@ const ESCUELAS = [
 ];
 
 const FAQS = [
-  { q: '¿Dónde compro mi boleto?', a: 'En Market TEC, la plataforma oficial del Tecnológico de Monterrey. El botón de esta página te lleva directo; tu compra activa después la credencial digital en la app.' },
+  { q: '¿Dónde compro mi boleto?', a: 'En Market TEC, la plataforma oficial del Tecnológico de Monterrey. El botón de esta página te lleva directo.' },
   { q: '¿Es solo para estudiantes del Tec?', a: 'No. El foro está dirigido a jóvenes de preparatoria y universidad de cualquier institución, además de EXATEC, empresas aliadas y público interesado en liderazgo e impacto social.' },
-  { q: '¿Qué incluye la entrada?', a: 'Acceso al Main Stage —cinco conferencias magistrales—, al Jardín de Innovación y al Networking Lounge, más la credencial digital en la app.' },
-  { q: '¿Necesito descargar CLEIP?', a: 'No requiere descarga: la aplicación web funciona desde el navegador. Ahí vive tu credencial, la agenda y las dinámicas en vivo.' }
+  { q: '¿Qué incluye la entrada?', a: 'Acceso al Main Stage —cinco conferencias magistrales—, al Jardín de Innovación y al Networking Lounge.' }
 ];
 
 const ARROW = '<svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
@@ -896,7 +868,7 @@ function renderEspacio() {
     loungeExtra.hidden = false;
     const chips = e.speakers.map(sp => `
       <div class="lounge-chip flex-none flex items-center gap-3 pl-2 pr-5 py-2 rounded-full border-2 border-noir/10 bg-white">
-        <span class="w-14 h-14 rounded-full p-[2px] shrink-0" style="background:linear-gradient(135deg,#fe005a,#ff7a1a)"><span class="block w-full h-full rounded-full bg-cover border-2 border-white" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></span></span>
+        <span class="w-14 h-14 rounded-full p-[2px] shrink-0" style="background:#fe005a"><span class="block w-full h-full rounded-full bg-cover border-2 border-white" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></span></span>
         <span class="font-heading font-semibold text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span>
       </div>`);
     document.getElementById('loungeCarousel').innerHTML = chips.concat(chips).join('');
@@ -912,7 +884,7 @@ function renderEspacio() {
 renderEspacio();
 
 // ---------- ponentes: tilted canvases that flip ----------
-const ACCENTS = ['#fe005a', '#ff7a1a', '#a43dff', '#3ce5d2', '#f6019c'];
+const ACCENTS = ['#fe005a'];
 const PON_SWATCH = ['assets/swatch-violet.webp', 'assets/swatch-sunset.webp', 'assets/swatch-blue.webp'];
 const PON_TILT = [-3, 2.4, -1.8, 3, -2.2];
 const ponentesGrid = document.getElementById('ponentesGrid');
@@ -925,9 +897,9 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
       <div class="flip-card pon-card" role="button" tabindex="0" aria-label="Ponente ${p.num}: por anunciar. Voltear tarjeta">
         <div class="flip-inner">
           <div class="flip-face">
-            <div class="absolute inset-0" style="background:radial-gradient(130% 80% at 50% 6%, ${c}55 0%, transparent 62%), linear-gradient(180deg,#151c3a 0%,#090d20 100%)"></div>
+            <div class="absolute inset-0" style="background:#121933"></div>
             <svg class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[88%]" viewBox="0 0 200 210" aria-hidden="true">
-              <defs><linearGradient id="pg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity=".8"/><stop offset="1" stop-color="${c}" stop-opacity=".06"/></linearGradient></defs>
+              <defs><linearGradient id="pg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity=".85"/><stop offset="1" stop-color="${c}" stop-opacity=".85"/></linearGradient></defs>
               <circle cx="100" cy="72" r="40" fill="url(#pg${i})"/>
               <path d="M14 210 C 18 150, 58 120, 100 120 C 142 120, 182 150, 186 210 Z" fill="url(#pg${i})"/>
             </svg>
@@ -935,11 +907,11 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
             <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:${c}">${p.num}</div>
             <div class="absolute inset-x-0 bottom-5 text-center px-2">
               <div class="note text-[22px] sm:text-[24px] text-white">Por anunciar</div>
-              <div class="font-heading font-semibold text-[11px] tracking-[.3em] uppercase mt-1.5" style="color:${c}">${p.eje}</div>
+              <div class="font-heading font-semibold text-[11px] tracking-[.3em] uppercase mt-1.5 text-white/85">${p.eje}</div>
             </div>
           </div>
-          <div class="flip-face flip-back p-5 flex flex-col items-center justify-center text-center" style="background:linear-gradient(165deg, ${c} 0%, #0c1433 72%)">
-            <div class="note text-[26px] text-white rotate-[-4deg]">¡Muy pronto!</div>
+          <div class="flip-face flip-back p-5 flex flex-col items-center justify-center text-center border-2 border-npink" style="background:#0c1433">
+            <div class="note text-[26px] text-npink rotate-[-4deg]">¡Muy pronto!</div>
             <p class="text-[14px] leading-relaxed text-white/85 mt-3">Este ponente está por anunciarse. Síguenos en Instagram @trasciende_tec para enterarte primero.</p>
           </div>
         </div>
@@ -949,7 +921,7 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
 }).join('');
 ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
   const flip = () => card.classList.toggle('flipped');
-  card.addEventListener('click', flip);
+  card.addEventListener('click', () => { if (!matchMedia('(hover: hover)').matches) flip(); });
   card.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); flip(); } });
 });
 
