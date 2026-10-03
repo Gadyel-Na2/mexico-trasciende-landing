@@ -6,21 +6,21 @@
 <title>México Trasciende · Tec de Monterrey CCM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500;600&family=Gochi+Hand&family=Permanent+Marker&display=swap">
+<link rel="preload" as="image" href="assets/hero-campus.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          abyss: '#01040d', deep: '#03144a', deepmid: '#071c5e',
+          abyss: '#01040d', deep: '#03144a', deepmid: '#071c5e', coal: '#070b1c', navy: '#0c1433',
           nblue: '#2b3fff', ncyan: '#3ce5d2', nsky: '#72f0fe', nmint: '#5af9c1',
           nlime: '#d5f157', norange: '#ed841b', nred: '#f00822', npink: '#fe005a', nmagenta: '#f6019c',
-          night: '#01040d', ink: '#03144a', royal: '#2b3fff', royaldark: '#1a2fd6',
-          royaldeep: '#071c5e', gold: '#3ce5d2', goldlight: '#72f0fe', golddeep: '#2bb8ab',
+          night: '#01040d', ink: '#03144a', royal: '#2b3fff',
           magenta: '#f6019c', orange: '#ed841b', lime: '#d5f157', cyan: '#3ce5d2',
-          paper: '#f5f3ee', surface: '#ffffff', muted: '#6b6560', body: '#3d3935',
-          bone: '#f2efe7', bonedeep: '#e9e4d8', noir: '#14110f', coral: '#fe005a'
+          paper: '#f5f3ee', surface: '#ffffff', muted: '#6b6873', body: '#3d3a42',
+          noir: '#14110f', coral: '#fe005a'
         },
         fontFamily: {
           heading: ["'Barlow Condensed'", 'sans-serif'],
@@ -34,111 +34,183 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Barlow', system-ui, sans-serif; }
   ::selection { background: rgba(254,0,90,.25); }
-  @keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4%,-3%,0) scale(1.12); } }
-  @keyframes glow { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
-  @keyframes pulse-soft { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .anim-drift { animation: drift 18s ease-in-out infinite; }
-  .anim-drift-rev { animation: drift 23s ease-in-out infinite reverse; }
-  .anim-glow { animation: glow 2.2s ease-in-out infinite; }
-  .anim-pulse-soft { animation: pulse-soft 2.6s ease-in-out infinite; }
-  .anim-marquee { animation: marquee 28s linear infinite; }
-  .anim-marquee-slow { animation: marquee 38s linear infinite; width: max-content; }
-  .anim-marquee-slow:hover { animation-play-state: paused; }
-  #espTexto1:empty, #espTexto2:empty, #espSchoolTags:empty { display: none; }
-  .flip-card { perspective: 1200px; }
-  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .5s cubic-bezier(.2,.7,.3,1); transform-style: preserve-3d; }
-  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
-  .flip-face { position: absolute; inset: 0; backface-visibility: hidden; }
-  .flip-back { transform: rotateY(180deg); }
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-  .liftup { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease, box-shadow .35s ease; }
-  .liftup:hover { transform: translateY(-6px); }
-  @keyframes espIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-  .esp-anim { animation: espIn .5s cubic-bezier(.16,1,.3,1) both; }
-  .lounge-chip { transition: transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s ease, background-color .3s ease; }
-  .lounge-chip:hover { transform: translateY(-4px) scale(1.04); background-color: rgba(43,63,255,.14); }
-  @keyframes tickPop { from { transform: translateY(-5px); opacity: .5; } to { transform: translateY(0); opacity: 1; } }
-  .cd-tick { animation: tickPop .45s cubic-bezier(.16,1,.3,1); }
-  .tag-tab:hover { transform: translateY(-2px); }
+  section[id] { scroll-margin-top: 70px; }
+  :focus-visible { outline: 2px solid #fe005a; outline-offset: 3px; border-radius: 4px; }
 
-  /* ---- flyer design language ---- */
-  .grad-text {
-    background: linear-gradient(100deg, #2b3fff 0%, #3ce5d2 22%, #5af9c1 38%, #d5f157 54%, #ed841b 70%, #fe005a 86%, #f6019c 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
+  /* ---------- type ---------- */
+  .t-display { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .9; letter-spacing: -.005em; }
+  .hl { background: linear-gradient(95deg, #fe005a 0%, #ff2d55 42%, #ff6a1f 82%, #ff8f1f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .hl-v { background: linear-gradient(95deg, #fe005a 0%, #f6019c 48%, #a43dff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
   .grad-bar { background: linear-gradient(90deg, #2b3fff, #3ce5d2, #5af9c1, #d5f157, #ed841b, #fe005a, #f6019c); }
-  .grad-text-fade {
-    background: linear-gradient(100deg, #ee1a8c 0%, #ff5a2d 32%, #ffb020 58%, #c6e21e 84%, rgba(198,226,30,.25) 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  @keyframes floaty { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(0,-16px,0) rotate(8deg); } }
-  @keyframes twinkle { 0%,100% { opacity: .3; transform: scale(.82) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(15deg); } }
-  @keyframes sweep { 0%,100% { transform: translate3d(0,0,0) scale(1); opacity: .5; } 50% { transform: translate3d(-3%,2%,0) scale(1.06); opacity: .8; } }
-  @keyframes orbit { 0% { transform: translate3d(0,0,0) rotate(0deg); } 25% { transform: translate3d(14px,-18px,0) rotate(5deg); } 50% { transform: translate3d(0,-28px,0) rotate(-4deg); } 75% { transform: translate3d(-14px,-12px,0) rotate(6deg); } 100% { transform: translate3d(0,0,0) rotate(0deg); } }
-  @keyframes spinSlow { from { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.12); } to { transform: rotate(360deg) scale(1); } }
-  @keyframes pop { 0%,100% { opacity: .45; transform: scale(.7) rotate(-12deg); } 45% { opacity: 1; transform: scale(1.18) rotate(10deg); } 70% { opacity: .8; transform: scale(.95) rotate(2deg); } }
-  .anim-floaty { animation: floaty 9s ease-in-out infinite; }
-  .anim-twinkle { animation: twinkle 3.6s ease-in-out infinite; }
-  .anim-sweep { animation: sweep 16s ease-in-out infinite; }
-  .anim-orbit { animation: orbit 14s ease-in-out infinite; }
-  .anim-spin-slow { animation: spinSlow 22s linear infinite; }
-  .anim-pop { animation: pop 4.2s cubic-bezier(.16,1,.3,1) infinite; }
-  .deco { position: absolute; pointer-events: none; z-index: 0; }
-  /* brand figure: the lime four-petal cross from the poster/ticket */
-  .petal-x path { fill: #d5f157; }
-  @keyframes petalSpin { 0% { transform: rotate(0deg) scale(.88); } 50% { transform: rotate(180deg) scale(1.12); } 100% { transform: rotate(360deg) scale(.88); } }
-  .anim-petal { animation: petalSpin 16s ease-in-out infinite; transform-origin: 50% 50%; }
-  @keyframes beam { 0%,100% { opacity: .35; transform: scaleY(.94); } 50% { opacity: .85; transform: scaleY(1.06); } }
-  .anim-beam { animation: beam 7s ease-in-out infinite; transform-origin: 50% 100%; }
+  .grad-warm { background: linear-gradient(90deg, #fe005a, #ff7a1a, #a43dff); }
+  .eyebrow { display: inline-flex; align-items: center; gap: .75rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .32em; text-transform: uppercase; color: #fe005a; }
+  .eyebrow::before { content: ''; width: 26px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #fe005a, #ff7a1a); }
+  .eyebrow-ink { color: #14110f; }
+  .note { font-family: 'Gochi Hand', cursive; text-transform: uppercase; letter-spacing: .05em; line-height: 1.05; }
+  .script { font-family: 'Permanent Marker', cursive; letter-spacing: .02em; }
+  .num-outline { color: transparent !important; -webkit-text-stroke: 2px var(--stroke, #fe005a); }
 
-  /* bright category label with the flyer's little colored dash underneath */
-  .eje-label { display: inline-block; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-  .eje-label::after { content: ''; display: block; width: 28px; height: 3px; border-radius: 2px; margin-top: 6px; background: currentColor; }
-  .eje-center::after { margin-left: auto; margin-right: auto; }
+  /* ---------- buttons ---------- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; height: 54px; padding: 0 28px; border-radius: 999px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; transition: transform .25s cubic-bezier(.2,.7,.3,1), background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn .arr { transition: transform .25s cubic-bezier(.2,.7,.3,1); }
+  .btn:hover .arr { transform: translateX(4px); }
+  .btn-pink { background: #fe005a; color: #fff; box-shadow: 0 14px 32px -10px rgba(254,0,90,.6); }
+  .btn-pink:hover { background: #ff2a6d; box-shadow: 0 18px 38px -10px rgba(254,0,90,.75); }
+  .btn-ghost { border: 2px solid rgba(255,255,255,.85); color: #fff; }
+  .btn-ghost:hover { background: #fff; color: #01040d; }
+  .btn-dark { background: #0c1433; color: #fff; box-shadow: 0 14px 30px -12px rgba(12,20,51,.6); }
+  .btn-dark:hover { background: #fe005a; }
 
-  /* ---- UX ---- */
-  section[id] { scroll-margin-top: 84px; }
-  #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 90; transition: width .1s linear; }
-  .nav-link.active { color: #d5f157; }
-  .nav-link { position: relative; padding-bottom: 2px; }
-  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #d5f157; transition: width .28s cubic-bezier(.16,1,.3,1); }
+  /* ---------- header ---------- */
+  .nav-link { position: relative; padding-bottom: 2px; color: rgba(255,255,255,.8); transition: color .2s ease; }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: #d5f157; transition: width .28s cubic-bezier(.16,1,.3,1); }
+  .nav-link:hover { color: #d5f157; }
   .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-  :focus-visible { outline: 2px solid #fe005a; outline-offset: 3px; border-radius: 2px; }
-  #toTop { transition: opacity .3s ease, transform .3s cubic-bezier(.2,.7,.3,1), background-color .3s ease; }
-  #toTop[hidden] { display: flex !important; opacity: 0; transform: translateY(14px); pointer-events: none; }
+  .nav-link.active { color: #d5f157; }
+  #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 90; transition: width .1s linear; }
   #menuBtn span { transition: transform .3s cubic-bezier(.2,.7,.3,1), opacity .2s ease; }
   #menuBtn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   #menuBtn.open span:nth-child(2) { opacity: 0; }
   #menuBtn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-  .btn-shine { position: relative; overflow: hidden; }
-  .btn-shine::after { content: ''; position: absolute; top: 0; left: -120%; width: 55%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-18deg); transition: left .6s cubic-bezier(.16,1,.3,1); }
-  .btn-shine:hover::after { left: 130%; }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-    .reveal { opacity: 1 !important; transform: none !important; }
-  }
-  .logowall > * { filter: grayscale(1); opacity: .62; transition: filter .35s ease, opacity .35s ease, transform .35s ease; }
-  .logowall:hover > * { filter: none; opacity: 1; transform: scale(1.04); }
-  .nav-link { color: rgba(255,255,255,.78); transition: color .2s ease; }
-  .nav-link:hover { color: #d5f157; }
-  a { transition: color .2s ease; }
   #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   #mobileMenu.open { max-height: 480px; }
-  .tag-tab { transition: all .25s ease; }
-  .chev { transition: transform .25s ease; }
-  .chev.open { transform: rotate(45deg); }
+  #toTop { transition: opacity .3s ease, transform .3s cubic-bezier(.2,.7,.3,1), background-color .3s ease; }
+  #toTop[hidden] { display: flex !important; opacity: 0; transform: translateY(14px); pointer-events: none; }
+
+  /* ---------- paint, grain, torn paper ---------- */
+  .paint { position: absolute; pointer-events: none; user-select: none; max-width: none; }
+  .paint-in { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.65,0,.25,1); }
+  .paint-in.in { clip-path: inset(0 0 0 0); }
+  .grain-overlay { position: absolute; inset: 0; background: url(assets/grain.png); opacity: .13; mix-blend-mode: overlay; pointer-events: none; }
+  .torn { position: absolute; left: 0; width: 100%; aspect-ratio: 1440 / 90; min-height: 46px; object-fit: cover; object-position: bottom; pointer-events: none; display: block; }
+  .torn-bottom { bottom: -1px; }
+  .torn-top { top: -1px; transform: scaleY(-1); }
+  .torn-flip { transform: scaleX(-1); }
+  @media (min-width: 1024px) {
+    .bleed-l { margin-left: calc(-1 * max(24px, (100vw - 1300px) / 2 + 24px)); }
+    .bleed-r { margin-right: calc(-1 * max(24px, (100vw - 1300px) / 2 + 24px)); }
+  }
+
+  /* ---------- motion ---------- */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-pop { opacity: 0; transform: scale(.92) rotate(-2deg); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); }
+  .reveal-pop.in { opacity: 1; transform: none; }
+  .draw path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1) .45s; }
+  .in .draw path, .draw.in path { stroke-dashoffset: 0; }
+  @keyframes kenburns { from { transform: scale(1.1); } to { transform: scale(1); } }
+  .kenburns { animation: kenburns 16s cubic-bezier(.2,.6,.2,1) both; transform-origin: 62% 40%; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .anim-marquee { animation: marquee 34s linear infinite; width: max-content; }
+  .anim-marquee-slow { animation: marquee 44s linear infinite; width: max-content; }
+  .anim-marquee-slow:hover { animation-play-state: paused; }
+  @keyframes glow { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+  .anim-glow { animation: glow 2.2s ease-in-out infinite; }
+  @keyframes wobble { 0%,100% { transform: rotate(var(--r, -6deg)) translateY(0); } 50% { transform: rotate(calc(var(--r, -6deg) + 2deg)) translateY(-5px); } }
+  .anim-wobble { animation: wobble 6s ease-in-out infinite; }
+  @keyframes floaty { 0%,100% { transform: translate3d(0,0,0) rotate(var(--r, 0deg)); } 50% { transform: translate3d(0,-14px,0) rotate(calc(var(--r, 0deg) + 3deg)); } }
+  .anim-floaty { animation: floaty 9s ease-in-out infinite; }
+  @keyframes tickPop { from { transform: translateY(-4px); opacity: .5; } to { transform: none; opacity: 1; } }
+  .cd-tick { display: inline-block; animation: tickPop .45s cubic-bezier(.16,1,.3,1); }
+  @keyframes espIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .esp-anim { animation: espIn .55s cubic-bezier(.16,1,.3,1) both; }
+
+  /* ---------- hero ---------- */
+  .hero-shade { background:
+      linear-gradient(0deg, #01040d 0%, rgba(1,4,13,.78) 38%, rgba(1,4,13,.35) 70%, rgba(1,4,13,.55) 100%); }
+  @media (min-width: 1024px) {
+    .hero-shade { background:
+        linear-gradient(90deg, #01040d 0%, rgba(1,4,13,.92) 14%, rgba(1,4,13,.45) 34%, rgba(1,4,13,0) 54%),
+        linear-gradient(0deg, #01040d 0%, rgba(1,4,13,.55) 20%, rgba(1,4,13,0) 46%),
+        linear-gradient(180deg, rgba(1,4,13,.5) 0%, rgba(1,4,13,0) 20%); }
+  }
+  .hero-strip { left: calc(-1 * max(0px, (100vw - 1300px) / 2)); width: calc(max(0px, (100vw - 1300px) / 2) + 24px + (100% - 48px) * .36 - 40px); }
+  .stats-bar { background: rgba(1,4,13,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,.1); }
+  @media (min-width: 1024px) { .stats-bar { clip-path: polygon(2.6% 0, 100% 0, 100% 100%, 0 100%); padding-left: 2.6%; } }
+  .stat { padding: 18px 22px; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 36px; line-height: 1; color: #fe005a; font-variant-numeric: tabular-nums; }
+  .stat-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.88); margin-top: 7px; }
+
+  /* ---------- espacios ---------- */
+  .esp-card { position: relative; display: block; width: 100%; text-align: left; cursor: pointer; padding: 22px 12px 8px; scroll-snap-align: center; }
+  .esp-frame { position: relative; display: block; aspect-ratio: 4 / 3; transform: perspective(900px) rotateY(var(--ry, 0deg)) rotate(var(--tilt, 0deg)); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .esp-swatch { position: absolute; left: -12%; top: -12%; width: 124%; height: 124%; max-width: none; object-fit: fill; transform: rotate(calc(var(--tilt, 0deg) * -2.6)); opacity: .5; transition: opacity .45s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+  .esp-photo { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 26px 44px -20px rgba(1,4,13,.6); }
+  .esp-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.16,1,.3,1); }
+  .esp-card:hover .esp-frame, .esp-card.is-active .esp-frame { transform: perspective(900px) rotateY(0deg) rotate(0deg) translateY(-6px); }
+  .esp-card:hover .esp-swatch, .esp-card.is-active .esp-swatch { opacity: 1; transform: rotate(calc(var(--tilt, 0deg) * -3.4)) scale(1.04); }
+  .esp-card:hover .esp-photo img { transform: scale(1.07); }
+  .esp-name { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 26px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18.5px; letter-spacing: .09em; white-space: nowrap; text-transform: uppercase; color: #14110f; transition: color .3s ease; }
+  .esp-name .arr { color: #fe005a; flex: none; transition: transform .35s cubic-bezier(.2,.7,.3,1); }
+  .esp-card.is-active .esp-name { color: #fe005a; }
+  .esp-card.is-active .esp-name .arr { transform: rotate(90deg); }
+  .esp-line { display: block; margin-top: 7px; font-size: 15px; line-height: 1.45; color: #5b5866; }
+  .esp-bar { display: block; height: 3px; width: 0; margin-top: 12px; border-radius: 2px; background: linear-gradient(90deg, #fe005a, #ff7a1a); transition: width .45s cubic-bezier(.16,1,.3,1); }
+  .esp-card.is-active .esp-bar { width: 64px; }
+  #espTexto1:empty, #espTexto2:empty { display: none; }
+  .dato { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; background: #fff; border: 1px solid rgba(12,20,51,.1); box-shadow: 0 10px 26px -18px rgba(12,20,51,.35); }
+  .ic-bubble { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 999px; background: #ffe5ee; color: #fe005a; }
+  .lounge-chip { transition: transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s ease, box-shadow .3s ease; }
+  .lounge-chip:hover { transform: translateY(-4px) rotate(-1deg); border-color: #fe005a; box-shadow: 0 12px 24px -14px rgba(254,0,90,.6); }
+  .tape { background: linear-gradient(90deg, #fe005a, #ff3d4f 50%, #ff7a1a); color: #fff; box-shadow: 0 14px 34px -14px rgba(254,0,90,.7); }
+
+  /* ---------- ponentes ---------- */
+  .flip-card { perspective: 1200px; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .6s cubic-bezier(.2,.7,.3,1); transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; overflow: hidden; }
+  .flip-back { transform: rotateY(180deg); }
+  .pon-wrap { position: relative; transform: rotate(var(--tilt, 0deg)); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .pon-wrap:hover { transform: rotate(0deg) translateY(-10px); }
+  .pon-swatch { position: absolute; left: -11%; top: -8%; width: 122%; height: 116%; max-width: none; object-fit: fill; transform: rotate(calc(var(--tilt, 0deg) * -2.4)); opacity: .9; pointer-events: none; }
+  .pon-card { position: relative; aspect-ratio: 3 / 4; cursor: pointer; box-shadow: 0 30px 50px -26px rgba(0,0,0,.8); border-radius: 16px; }
+
+  /* ---------- faq ---------- */
+  .faq-item { border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: rgba(255,255,255,.03); transition: background-color .3s ease, border-color .3s ease; }
+  .faq-item.open { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.3); }
+  .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; text-align: left; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .05em; text-transform: uppercase; color: #fff; }
+  .faq-q:hover { color: #ffd0dd; }
+  .faq-ic { position: relative; width: 16px; height: 16px; flex: none; }
+  .faq-ic::before, .faq-ic::after { content: ''; position: absolute; left: 0; top: 7px; width: 16px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .3s ease; }
+  .faq-ic::after { transform: rotate(90deg); }
+  .faq-item.open .faq-ic::after { transform: rotate(0deg); }
+  .faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s cubic-bezier(.2,.7,.3,1); }
+  .faq-a > div { overflow: hidden; }
+  .faq-a p { padding: 0 20px 18px; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.76); }
+  .faq-item.open .faq-a { grid-template-rows: 1fr; }
+
+  /* ---------- contacto & aliados ---------- */
+  .field { width: 100%; height: 46px; padding: 0 14px; border-radius: 9px; background: #f6f6f9; border: 1px solid #e2e2ea; color: #14110f; transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease; }
+  textarea.field { height: auto; padding: 12px 14px; resize: vertical; }
+  .field::placeholder { color: #9a98a3; }
+  .field:focus { outline: none; border-color: #fe005a; background: #fff; box-shadow: 0 0 0 4px rgba(254,0,90,.12); }
+  .contact-item { display: flex; align-items: center; gap: 14px; }
+  .contact-item .ic-bubble { background: rgba(254,0,90,.14); }
+  .contact-item:hover .ci-v { color: #ff8fb1; }
+  .logo-card { position: relative; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid rgba(12,20,51,.1); border-radius: 12px; padding: 26px 30px; transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, border-color .35s ease; }
+  .logo-card::before { content: ''; position: absolute; top: -11px; left: 50%; width: 86px; height: 22px; transform: translateX(-50%) rotate(var(--tape-rot, -4deg)); background: var(--tape, rgba(254,0,90,.6)); clip-path: polygon(3% 0, 97% 7%, 100% 52%, 96% 100%, 2% 93%, 0 48%); }
+  .logo-card:hover { transform: translateY(-6px) rotate(-.6deg); border-color: rgba(254,0,90,.35); box-shadow: 0 20px 40px -18px rgba(12,20,51,.32); }
+  .logo-img { width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; filter: grayscale(1); opacity: .68; transition: filter .35s ease, opacity .35s ease; }
+  .logo-card:hover .logo-img { filter: none; opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    .reveal, .reveal-pop { opacity: 1 !important; transform: none !important; }
+    .paint-in { clip-path: none !important; }
+    .draw path { stroke-dashoffset: 0 !important; }
+  }
 </style>
 </head>
 <body class="bg-white text-noir overflow-x-hidden">
 
-<div id="scrollProgress" class="grad-bar"></div>
+<div id="scrollProgress" class="grad-warm"></div>
 
 <header class="sticky top-0 z-[60] bg-abyss/90 backdrop-blur-md border-b border-white/10">
   <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center gap-6">
-    <a href="#inicio" class="shrink-0 flex items-center" aria-label="México Trasciende — inicio">
-      <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="h-9 w-auto">
+    <a href="#inicio" class="shrink-0 flex items-center gap-3" aria-label="México Trasciende — inicio">
+      <img src="assets/mt-logo-gradient.png" alt="" class="h-9 w-auto">
+      <span class="font-heading font-semibold text-[13px] leading-[1.08] tracking-[.22em] uppercase text-white">México<br>Trasciende</span>
     </a>
     <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
       <a href="equipo.html" class="nav-link">Nosotros</a>
@@ -148,11 +220,11 @@
       <a href="#aliados" class="nav-link">Aliados</a>
       <a href="cleip.html" class="nav-link">CLEIP</a>
     </nav>
-    <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-white/70 whitespace-nowrap">
+    <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-white/75 whitespace-nowrap">
       <span class="w-1.5 h-1.5 rounded-full bg-nlime anim-glow"></span>21 Nov 2026 · CCM
     </span>
-    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine hidden lg:inline-flex shrink-0 items-center h-[40px] px-6 rounded-full bg-npink text-white font-heading text-sm tracking-[.12em] uppercase hover:bg-nlime hover:text-abyss">Boletos</a>
-    <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
+    <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn btn-pink hidden lg:inline-flex shrink-0 h-[42px] px-6 text-sm">Boletos <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú" aria-expanded="false">
       <span class="block w-6 h-[2px] bg-white"></span>
       <span class="block w-6 h-[2px] bg-white"></span>
       <span class="block w-6 h-[2px] bg-white"></span>
@@ -172,293 +244,338 @@
   </nav>
 </header>
 
-<section id="inicio" class="relative text-white overflow-hidden bg-abyss">
-  <!-- poster stage: deep gradient floor + neon light beams down the sides -->
-  <div class="absolute inset-0 bg-[radial-gradient(120%_85%_at_50%_0%,#071c5e_0%,#03144a_38%,#01040d_78%)] pointer-events-none"></div>
-  <div class="absolute inset-y-0 left-0 w-[34%] pointer-events-none hidden md:block" aria-hidden="true">
-    <div class="anim-beam absolute left-[4%] top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-nblue to-transparent blur-[2px]"></div>
-    <div class="anim-beam absolute left-[11%] top-0 bottom-0 w-[5px] bg-gradient-to-b from-transparent via-ncyan to-transparent blur-[3px]" style="animation-delay:-2s"></div>
-    <div class="anim-beam absolute left-[19%] top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-nmint to-transparent blur-[2px]" style="animation-delay:-4s"></div>
+<main style="overflow-x:clip">
+
+<!-- ============ HERO ============ -->
+<section id="inicio" class="relative bg-abyss text-white">
+  <div class="absolute inset-0 lg:left-[22%] overflow-hidden" aria-hidden="true">
+    <img src="assets/hero-campus.jpg" alt="" class="kenburns w-full h-full object-cover object-[38%_62%] lg:object-[64%_38%]">
+    <span class="grain-overlay" style="opacity:.16"></span>
   </div>
-  <div class="absolute inset-y-0 right-0 w-[34%] pointer-events-none hidden md:block" aria-hidden="true">
-    <div class="anim-beam absolute right-[5%] top-0 bottom-0 w-[4px] bg-gradient-to-b from-transparent via-nmagenta to-transparent blur-[3px]" style="animation-delay:-1s"></div>
-    <div class="anim-beam absolute right-[13%] top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-npink to-transparent blur-[2px]" style="animation-delay:-3s"></div>
-    <div class="anim-beam absolute right-[21%] top-0 bottom-0 w-[5px] bg-gradient-to-b from-transparent via-norange to-transparent blur-[3px]" style="animation-delay:-5s"></div>
+  <div class="hero-shade absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="hidden lg:block absolute right-[6%] top-[19%] z-[3] text-white text-right reveal" style="transition-delay:.5s" aria-hidden="true">
+    <div class="note text-[25px] rotate-[-13deg] anim-wobble" style="--r:-13deg">Ideas<br>&nbsp;&nbsp;Personas<br>&nbsp;&nbsp;&nbsp;&nbsp;Cultura<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acción</div>
+    <svg class="draw ml-auto mr-[150px] -mt-1" width="64" height="72" viewBox="0 0 64 72" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M58 6 C 46 14, 30 30, 22 48 S 14 62, 12 66"/><path pathLength="1" d="M4 54 L12 67 L24 58"/></svg>
   </div>
-  <div class="absolute inset-x-0 bottom-0 h-[2px] grad-bar opacity-80 pointer-events-none"></div>
 
-  <svg class="deco left-[5%] top-[14%] w-9 h-9 lg:w-14 lg:h-14 anim-petal" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
-  <svg class="deco hidden lg:block left-[10%] top-[26%] w-8 h-8 anim-petal" style="animation-delay:-5s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
-  <svg class="deco right-[7%] top-[12%] w-10 h-10 lg:w-16 lg:h-16 anim-petal" style="animation-delay:-8s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
-  <svg class="deco hidden lg:block right-[15%] top-[30%] w-7 h-7 anim-petal" style="animation-delay:-11s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
-
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-16 pb-16 grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
-    <div class="reveal">
-      <h1 class="font-heading font-bold text-[56px] sm:text-[76px] lg:text-[108px] leading-[.85] tracking-tight uppercase"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="grad-text-fade">Trasciende</span></h1>
-      <p class="font-heading text-[17px] sm:text-[19px] tracking-[.2em] uppercase text-nlime mt-5">21 de noviembre de 2026 · Tec de Monterrey CCM</p>
-      <p class="max-w-[540px] mt-5 text-[18.5px] leading-relaxed text-white/70" style="text-wrap:pretty">No es únicamente un ciclo de conferencias. Un día completo diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes de todas las carreras, empresarios, especialistas y organizaciones.</p>
-
-      <div class="flex gap-3 mt-9" id="countdown">
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
-          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="d">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Días</div>
-        </div>
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
-          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="h">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Horas</div>
-        </div>
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
-          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="m">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Min</div>
-        </div>
-        <div class="flex-none w-[94px] text-center py-3.5 rounded-xl bg-white/[.06] border border-white/15 backdrop-blur-sm">
-          <div class="font-heading text-[40px] leading-none tabular-nums text-white" data-cd="s">00</div>
-          <div class="font-heading text-[10px] tracking-[.26em] uppercase text-nlime mt-1.5">Seg</div>
-        </div>
+  <div class="relative z-[3] max-w-[1300px] mx-auto px-6 pt-12 sm:pt-16 lg:pt-20 pb-10">
+    <div class="relative max-w-[660px]">
+      <div class="note text-[20px] sm:text-[22px] text-white/90 rotate-[-5deg] mb-4 inline-flex items-end gap-2 reveal" style="transition-delay:.35s">
+        Un encuentro para mirar más lejos
+        <svg class="draw shrink-0 translate-y-3" width="46" height="52" viewBox="0 0 56 70" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 4 C 2 24, 14 46, 42 60"/><path pathLength="1" d="M28 62 L43 61 L38 47"/></svg>
       </div>
-
-      <div class="flex flex-wrap gap-3.5 mt-9">
-        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn-shine h-[54px] inline-flex items-center px-8 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap bg-npink text-white shadow-[0_10px_34px_rgba(254,0,90,.4)] hover:bg-white hover:text-abyss">Quiero ser parte</a>
-        <a href="#espacios" class="h-[54px] inline-flex items-center px-7 rounded-full font-heading text-base tracking-[.14em] uppercase whitespace-nowrap text-white border-2 border-white/25 hover:border-nlime hover:text-nlime">Conoce los 3 espacios</a>
+      <h1 class="t-display text-[62px] sm:text-[88px] lg:text-[104px] leading-[.84] reveal"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="hl">Trasciende</span></h1>
+      <p class="max-w-[540px] mt-6 text-[17.5px] leading-relaxed text-white/80 reveal" style="text-wrap:pretty;transition-delay:.1s">No es únicamente un ciclo de conferencias. Un día completo diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes de todas las carreras, empresarios, especialistas y organizaciones.</p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-7 font-heading font-semibold text-[14.5px] tracking-[.18em] uppercase text-white/90 reveal" style="transition-delay:.18s">
+        <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fe005a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Sáb 21 Nov 2026</span>
+        <span class="hidden sm:block w-px h-5 bg-white/25"></span>
+        <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fe005a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Tec de Monterrey · Campus CCM</span>
       </div>
-    </div>
-
-    <div class="relative reveal" style="transition-delay:.12s">
-      <div class="relative rounded-2xl overflow-hidden border border-white/12 bg-white/[.04] backdrop-blur-sm px-8 pt-12 pb-7 text-center">
-        <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="block w-full max-w-[250px] h-auto mx-auto">
-        <div class="font-heading text-[19px] tracking-[.42em] uppercase text-white mt-6">México</div>
-        <div class="font-heading text-[19px] tracking-[.42em] uppercase text-white/70">Trasciende</div>
-        <div class="h-[3px] w-24 mx-auto my-7 rounded grad-bar"></div>
-        <div class="grid grid-cols-2 gap-px bg-white/12">
-          <div class="bg-abyss/60 py-3.5 px-1">
-            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-nlime">Fecha</div>
-            <div class="font-heading text-[21px] text-white">Sáb 21 · Nov 2026</div>
-          </div>
-          <div class="bg-abyss/60 py-3.5 px-1">
-            <div class="font-heading text-[10.5px] tracking-[.24em] uppercase text-nlime">Ubicación</div>
-            <div class="font-heading text-[21px] text-white">Campus CCM</div>
-          </div>
-        </div>
-      </div>
-      <div class="grid grid-cols-3 gap-2.5 mt-3">
-        <div class="h-24 rounded-xl overflow-hidden border border-white/12"><img src="assets/foto-mainstage.png" alt="Main Stage" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="h-24 rounded-xl overflow-hidden border border-white/12"><img src="assets/foto-grupo.png" alt="Comunidad Trasciende" loading="lazy" class="w-full h-full object-cover"></div>
-        <div class="h-24 rounded-xl overflow-hidden border border-white/12"><img src="assets/foto-lounge.png" alt="Networking Lounge" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="flex flex-wrap gap-3.5 mt-9 reveal" style="transition-delay:.26s">
+        <a href="https://market.tec.mx/" target="_blank" rel="noopener" class="btn btn-pink">Quiero ser parte <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#espacios" class="btn btn-ghost">Conoce los 3 espacios</a>
       </div>
     </div>
   </div>
 
-  <div class="relative bg-deep/60 border-y border-white/10 overflow-hidden flex">
-    <div class="flex flex-none anim-marquee font-heading text-[15px] tracking-[.34em] uppercase text-white/80 py-3">
-      <span class="px-6">21 Nov 2026</span><span class="px-6 text-nlime">✦</span><span class="px-6">Todas las carreras</span><span class="px-6 text-nlime">✦</span><span class="px-6">Ideas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Personas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Cultura</span><span class="px-6 text-nlime">✦</span><span class="px-6">Acción</span><span class="px-6 text-nlime">✦</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-nlime">✦</span>
-      <span class="px-6">21 Nov 2026</span><span class="px-6 text-nlime">✦</span><span class="px-6">Todas las carreras</span><span class="px-6 text-nlime">✦</span><span class="px-6">Ideas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Personas</span><span class="px-6 text-nlime">✦</span><span class="px-6">Cultura</span><span class="px-6 text-nlime">✦</span><span class="px-6">Acción</span><span class="px-6 text-nlime">✦</span><span class="px-6">50 años Tec CCM</span><span class="px-6 text-nlime">✦</span>
+  <!-- stats bar + torn collage strip -->
+  <div class="relative z-[4] max-w-[1300px] mx-auto px-6 pb-[64px] lg:pb-[70px] lg:pt-6">
+    <div class="hero-strip hidden lg:block absolute bottom-[-34px] z-[6] h-[158px] reveal-pop" style="transition-delay:.4s" aria-hidden="true">
+      <div class="absolute inset-0 rotate-[-3deg] origin-bottom-left" style="clip-path:polygon(0 24%, 6% 17%, 12% 21%, 18% 10%, 25% 15%, 32% 7%, 39% 13%, 47% 5%, 55% 11%, 62% 4%, 70% 10%, 78% 3%, 86% 9%, 100% 2%, 98% 78%, 92% 84%, 83% 79%, 73% 88%, 62% 82%, 51% 92%, 39% 86%, 27% 95%, 14% 89%, 0 97%)">
+        <img src="assets/grupo-duo.jpg" alt="" class="w-full h-full object-cover object-[50%_62%]" loading="lazy">
+        <span class="grain-overlay" style="opacity:.2"></span>
+      </div>
+      <img src="assets/brush-flick.webp" alt="" class="paint paint-in right-[2%] -top-[30%] w-[58%] rotate-[-8deg]">
+    </div>
+    <div class="stats-bar lg:ml-[36%] lg:bleed-r grid grid-cols-2 lg:grid-cols-4 reveal" style="transition-delay:.3s">
+      <div class="stat border-b border-white/10 lg:border-b-0 border-r lg:border-r border-white/[.14]">
+        <div class="stat-num" data-count="1000" data-count-prefix="+">+1000</div>
+        <div class="stat-label">Asistentes en un mismo día</div>
+      </div>
+      <div class="stat border-b border-white/10 lg:border-b-0 lg:border-r border-white/[.14]">
+        <div class="stat-num" data-count="3">3</div>
+        <div class="stat-label">Espacios del día</div>
+      </div>
+      <div class="stat border-r border-white/[.14]">
+        <div class="stat-num" data-count="5">5</div>
+        <div class="stat-label">Conferencias magistrales</div>
+      </div>
+      <div class="stat" id="countdown" aria-label="Cuenta regresiva para el evento">
+        <div class="stat-num"><span data-cd="d">00</span><span class="text-[17px] font-semibold tracking-[.14em] ml-1.5 align-middle text-white/80">días</span></div>
+        <div class="stat-label tabular-nums whitespace-nowrap"><span data-cd="h">00</span>h <span data-cd="m">00</span>m <span data-cd="s">00</span>s</div>
+      </div>
     </div>
   </div>
 
-  <div class="relative max-w-[1300px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-3">
-    <div class="reveal py-9 px-6 sm:border-r border-white/12">
-      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="1000" data-count-prefix="+">+1000</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Asistentes en un mismo día</div>
-      <div class="text-sm text-white/60 mt-1">Estudiantes de todas las carreras, empresarios, especialistas y organizaciones — en el mismo lugar y listos para conectar contigo.</div>
-    </div>
-    <div class="reveal py-9 px-6 sm:border-r border-white/12">
-      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="3">3</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Espacios del día</div>
-      <div class="text-sm text-white/60 mt-1">Main Stage, Jardín de Innovación y Networking Lounge</div>
-    </div>
-    <div class="reveal py-9 px-6">
-      <div class="font-heading text-[56px] leading-[.88] grad-text" data-count="5">5</div>
-      <div class="font-heading text-[13px] tracking-[.2em] uppercase text-white mt-2.5">Conferencias magistrales</div>
-      <div class="text-sm text-white/60 mt-1">Programa del Main Stage</div>
-    </div>
-  </div>
+  <img src="assets/torn-white-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
 </section>
 
-
-<section id="espacios" class="relative bg-white text-noir overflow-hidden">
-  <div class="absolute top-[10%] -right-[12%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(43,63,255,.14),transparent_65%)] blur-[50px] pointer-events-none"></div>
-  <svg class="deco hidden lg:block right-[-8%] top-[6%] w-[300px] h-[300px] anim-sweep opacity-35" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <path d="M12 188 A176 176 0 0 1 188 12" stroke="#1ec8d6" stroke-width="6" fill="none" opacity=".6"/>
-    <path d="M45 193 A150 150 0 0 1 193 45" stroke="#ee1a8c" stroke-width="9" fill="none" opacity=".35"/>
-  </svg>
-  <svg class="deco hidden lg:block left-[2%] bottom-[10%] w-20 h-20 anim-orbit opacity-70" viewBox="0 0 60 60" aria-hidden="true">
-    <rect x="6" y="6" width="15" height="15" transform="rotate(45 13 13)" fill="#c6e21e"/>
-    <rect x="33" y="32" width="10" height="10" transform="rotate(45 38 37)" fill="#c6e21e" opacity=".6"/>
-  </svg>
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tres espacios,<br><span class="text-npink">un mismo día</span></h2>
-    <p class="reveal text-[17px] leading-relaxed text-body mt-4 mb-8 max-w-[680px]">Los tres espacios están abiertos a <strong class="font-semibold text-noir">estudiantes de cualquier carrera</strong>: ingeniería, negocios, salud, humanidades, arquitectura, ciencias sociales. No necesitas un perfil específico — solo ganas de construir algo.</p>
-
-    <div class="flex flex-wrap gap-2.5" id="espaciosTabs"></div>
-
-    <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-11 mt-8 items-stretch">
-      <div class="relative h-[440px] rounded-xl overflow-hidden border-2 border-[rgba(120,150,255,.25)] transition-all duration-500" id="espaciosImgWrap">
-        <img data-esp-img="0" src="assets/foto-mainstage.png" alt="Main Stage" class="absolute inset-0 w-full h-full object-cover transition-all duration-700">
-        <img data-esp-img="1" src="assets/foto-jardin.png" alt="Jardín de Innovación" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
-        <img data-esp-img="2" src="assets/foto-lounge.png" alt="Networking Lounge" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0">
-        <div class="absolute inset-0 z-[3] bg-gradient-to-b from-transparent via-transparent to-noir/80 pointer-events-none"></div>
-        <div class="absolute left-6 bottom-[22px] z-[4] font-heading text-xs tracking-[.24em] uppercase" id="espKicker"></div>
+<!-- ============ ESPACIOS ============ -->
+<section id="espacios" class="relative bg-white text-noir">
+  <img src="assets/splatter.webp" alt="" aria-hidden="true" class="paint hidden lg:block right-[-70px] top-[60px] w-[280px] opacity-40 rotate-[20deg]" loading="lazy">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-36 lg:pb-44">
+    <div class="grid lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.6fr)] gap-10 lg:gap-12 items-center">
+      <div class="reveal">
+        <div class="eyebrow">Espacios</div>
+        <h2 class="t-display text-[44px] sm:text-[56px] lg:text-[64px] mt-4">Tres espacios,<br><span class="hl">un mismo día</span></h2>
+        <p class="text-[17px] leading-relaxed text-body mt-5 max-w-[460px]" style="text-wrap:pretty">Los tres espacios están abiertos a <strong class="font-semibold text-noir">estudiantes de cualquier carrera</strong>: ingeniería, negocios, salud, humanidades, arquitectura, ciencias sociales. No necesitas un perfil específico — solo ganas de construir algo.</p>
+        <div class="hidden lg:inline-flex items-center gap-2 note text-[20px] text-noir/75 mt-7 rotate-[-4deg]" aria-hidden="true">
+          Elige un espacio
+          <svg class="draw" width="92" height="40" viewBox="0 0 92 40" fill="none" stroke="#fe005a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M4 30 C 24 8, 52 6, 82 18"/><path pathLength="1" d="M70 8 L84 18 L70 28"/></svg>
+        </div>
       </div>
-      <div class="flex flex-col justify-center">
-        <h3 class="font-heading text-4xl tracking-wide uppercase mb-3.5 leading-none" id="espNombre"></h3>
-        <p class="text-[16.5px] leading-relaxed text-body mb-3" id="espTexto1"></p>
-        <p class="text-[16.5px] leading-relaxed text-body mb-5" id="espTexto2"></p>
-        <div class="border-t border-noir/12" id="espDatos"></div>
-      </div>
+      <div id="espCards" class="grid grid-flow-col auto-cols-[80%] sm:auto-cols-[46%] lg:grid-flow-row lg:grid-cols-3 lg:auto-cols-auto gap-4 lg:gap-5 overflow-x-auto lg:overflow-visible snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0 pb-4 lg:pb-0" style="scrollbar-width:none"></div>
     </div>
 
-    <div id="espLoungeExtra" hidden class="mt-11">
-      <div class="flex items-center gap-3.5 mb-4">
-        <span class="font-heading text-xs tracking-[.26em] uppercase text-muted whitespace-nowrap">Ponentes confirmados del Lounge</span>
+    <div id="espDetail" class="mt-12 lg:mt-16 pt-10 border-t-2 border-noir/[.07] grid lg:grid-cols-[auto_minmax(0,1.1fr)_minmax(0,.9fr)] gap-x-12 gap-y-6 items-start">
+      <div class="t-display num-outline text-[88px] lg:text-[124px] leading-[.78]" style="--stroke:#fe005a" id="espNum">01</div>
+      <div>
+        <div class="eyebrow" id="espKicker"></div>
+        <h3 class="t-display text-[38px] lg:text-[50px] mt-3" id="espNombre"></h3>
+        <p class="text-[16.5px] leading-relaxed text-body mt-4" id="espTexto1"></p>
+        <p class="text-[16.5px] leading-relaxed text-body mt-3" id="espTexto2"></p>
+      </div>
+      <div class="grid gap-3" id="espDatos"></div>
+    </div>
+
+    <div id="espLoungeExtra" hidden class="mt-12">
+      <div class="flex items-center gap-3.5 mb-5">
+        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Ponentes confirmados del Lounge</span>
         <span class="flex-1 h-px bg-noir/12"></span>
       </div>
-      <div class="relative overflow-hidden" style="mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)">
+      <div class="relative overflow-hidden py-2" style="mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)">
         <div class="flex flex-none anim-marquee-slow gap-4 py-1" id="loungeCarousel"></div>
       </div>
     </div>
   </div>
-</section>
 
-<section id="ponentes" class="relative bg-white text-noir overflow-hidden">
-  <svg class="deco right-[-3%] top-[8%] w-14 h-14 lg:w-28 lg:h-28 anim-floaty opacity-60" viewBox="0 0 60 60" aria-hidden="true">
-    <rect x="8" y="8" width="16" height="16" transform="rotate(45 16 16)" fill="#1ec8d6" opacity=".55"/>
-    <rect x="34" y="34" width="11" height="11" transform="rotate(45 39 39)" fill="#ee1a8c" opacity=".5"/>
-  </svg>
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Los <span class="text-npink">ponentes</span></h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-9" id="ponentesGrid"></div>
-  </div>
-</section>
-
-
-<section id="agenda-teaser" class="relative bg-deep text-white overflow-hidden">
-  <svg class="deco hidden lg:block right-[6%] top-[18%] w-16 h-16 anim-pop" viewBox="0 0 40 40" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
-  </svg>
-  <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_20%_0%,#071c5e_0%,#03144a_60%,#01040d_100%)] pointer-events-none"></div>
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-20 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-center">
-    <div class="reveal">
-      <h2 class="font-heading text-[38px] lg:text-[56px] leading-[.94] uppercase">El <span class="text-npink">día completo</span></h2>
-      <p class="text-[17px] leading-relaxed text-white/75 mt-4 max-w-[560px]">Doce horas mapeadas de extremo a extremo, del registro al cierre. Consulta el programa hora por hora del sábado 21 de noviembre.</p>
-    </div>
-    <div class="reveal lg:justify-self-end">
-      <a href="agenda.html" class="btn-shine inline-flex items-center h-[54px] px-8 rounded-full font-heading text-base tracking-[.14em] uppercase bg-npink text-white hover:bg-nlime hover:text-abyss">Ver agenda del día</a>
+  <div class="tape absolute left-[-3%] right-[-3%] bottom-[34px] lg:bottom-[44px] z-[7] rotate-[-2deg] overflow-hidden" aria-hidden="true">
+    <div class="flex anim-marquee font-heading font-bold text-[16px] lg:text-[18px] tracking-[.3em] uppercase py-3">
+      <span class="px-6">21 Nov 2026</span><span class="px-2">✦</span><span class="px-6">Todas las carreras</span><span class="px-2">✦</span><span class="px-6">Ideas</span><span class="px-2">✦</span><span class="px-6">Personas</span><span class="px-2">✦</span><span class="px-6">Cultura</span><span class="px-2">✦</span><span class="px-6">Acción</span><span class="px-2">✦</span><span class="px-6">50 años Tec CCM</span><span class="px-2">✦</span>
+      <span class="px-6">21 Nov 2026</span><span class="px-2">✦</span><span class="px-6">Todas las carreras</span><span class="px-2">✦</span><span class="px-6">Ideas</span><span class="px-2">✦</span><span class="px-6">Personas</span><span class="px-2">✦</span><span class="px-6">Cultura</span><span class="px-2">✦</span><span class="px-6">Acción</span><span class="px-2">✦</span><span class="px-6">50 años Tec CCM</span><span class="px-2">✦</span>
     </div>
   </div>
+  <img src="assets/torn-coal-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
 </section>
 
-<section id="problema" class="relative bg-white text-noir overflow-hidden">
-  <svg class="deco left-[-4%] top-[12%] w-12 h-12 lg:w-24 lg:h-24 anim-floaty opacity-70" viewBox="0 0 60 60" aria-hidden="true">
-    <rect x="6" y="6" width="16" height="16" transform="rotate(45 14 14)" fill="#ee1a8c" opacity=".5"/>
-    <rect x="34" y="30" width="11" height="11" transform="rotate(45 39 35)" fill="#ff7a29" opacity=".55"/>
-  </svg>
-  <svg class="deco right-[3%] bottom-[8%] w-9 h-9 lg:w-16 lg:h-16 anim-twinkle opacity-80" viewBox="0 0 40 40" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#c6e21e"/>
-  </svg>
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-14 items-center">
-    <div class="reveal">
-      <h2 class="font-heading text-[38px] lg:text-[62px] leading-[.94] uppercase">Tener la idea<br><span class="text-npink">no siempre alcanza</span></h2>
-      <p class="text-[17px] leading-relaxed text-body mt-5" style="text-wrap:pretty">En México existe una generación de jóvenes con interés por emprender, crear proyectos y transformar su entorno. Al mismo tiempo hay empresarios, especialistas y organizaciones dispuestos a compartir experiencia y acompañar a nuevas generaciones — pero ambos grupos pocas veces coinciden en un mismo espacio de manera estructurada.</p>
-      <p class="text-[17px] leading-relaxed text-body mt-4" style="text-wrap:pretty">México Trasciende los reúne en un mismo día, para combatir la indiferencia social inspirando a la juventud a desarrollar iniciativas de impacto real.</p>
-    </div>
-    <div class="reveal relative rounded-md overflow-hidden shadow-[0_24px_60px_rgba(11,18,51,.18)]">
-      <img src="assets/foto-scholars.png" alt="Comunidad Trasciende" class="block w-full h-[400px] object-cover">
-      <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-ink/55"></div>
-    </div>
-  </div>
-</section>
-
-<section id="sede" class="bg-white text-noir">
-  <div class="max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-start">
-    <div class="reveal">
-      <h2 class="font-heading text-[34px] lg:text-[52px] leading-[.94] mb-4.5 uppercase">Tec de Monterrey<br><span class="text-npink">Campus Ciudad de México</span></h2>
-      <p class="text-base leading-relaxed text-body mb-5 max-w-[440px]">Calle del Puente 222, Ejidos de Huipulco, Tlalpan, 14380, Ciudad de México. El foro ocupa el Main Stage en la carpa de eventos, el jardín y el lounge, ambos en Aulas 2.</p>
-      <div class="grid grid-cols-2 gap-3">
-        <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Registro</div><div class="font-heading text-[22px]">07:00 hrs</div></div>
-        <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Cierre</div><div class="font-heading text-[22px]">19:00 hrs</div></div>
-        <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Formato</div><div class="font-heading text-[22px]">Presencial</div></div>
-        <div class="p-4 rounded bg-white border border-ink/10"><div class="font-heading text-[11px] tracking-[.22em] uppercase text-muted">Duración</div><div class="font-heading text-[22px]">12 horas</div></div>
+<!-- ============ PONENTES ============ -->
+<section id="ponentes" class="relative bg-coal text-white">
+  <img src="assets/brush-violet.webp" alt="" aria-hidden="true" class="paint paint-in left-[-10%] top-[150px] w-[64%] opacity-80 rotate-[-7deg]" data-parallax="0.06">
+  <img src="assets/splatter.webp" alt="" aria-hidden="true" class="paint right-[4%] bottom-[120px] w-[220px] opacity-50" loading="lazy">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-24 lg:pt-28 pb-32 lg:pb-40">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div class="reveal">
+        <div class="eyebrow">Main Stage</div>
+        <h2 class="t-display text-[44px] sm:text-[56px] lg:text-[72px] mt-4">Los <span class="hl">ponentes</span></h2>
       </div>
-      <a href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="inline-flex items-center mt-5 h-11 px-5 rounded-full font-heading tracking-[.12em] uppercase text-white bg-deep hover:bg-npink">Cómo llegar</a>
-    </div>
-    <div class="border-t border-ink/[.14]" id="faqList"></div>
-  </div>
-</section>
-
-<section id="contacto" class="relative bg-white text-noir overflow-hidden">
-  <svg class="deco hidden lg:block right-[-9%] top-[-10%] w-[320px] h-[320px] anim-sweep opacity-40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <path d="M100 100 L100 6 A94 94 0 1 1 33 166 Z" fill="#2340c4" opacity=".4"/>
-  </svg>
-  <svg class="deco hidden lg:block left-[4%] bottom-[12%] w-16 h-16 anim-floaty opacity-90" viewBox="0 0 60 60" aria-hidden="true">
-    <rect x="6" y="6" width="14" height="14" transform="rotate(45 13 13)" fill="#ee1a8c" opacity=".55"/>
-    <rect x="32" y="30" width="10" height="10" transform="rotate(45 37 35)" fill="#ff7a29" opacity=".7"/>
-  </svg>
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-start">
-    <div class="reveal">
-      <h2 class="font-heading text-[34px] lg:text-[54px] leading-[.96] uppercase">Sé parte de<br><span class="text-npink">México Trasciende</span></h2>
-      <p class="text-base leading-relaxed text-body mt-5 mb-8 max-w-[430px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
-      <div class="flex flex-col gap-6 font-heading text-xl tracking-wide">
-        <a href="tel:+525551071205" class="flex gap-3.5 items-center text-noir hover:text-npink"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Teléfono</span>55 5107 1205</a>
-        <a href="mailto:grupo.trasciende@outlook.com" class="flex gap-3.5 items-center text-noir hover:text-npink"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Correo</span>grupo.trasciende@outlook.com</a>
-        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="flex gap-3.5 items-center text-noir hover:text-npink"><span class="text-[11px] tracking-[.22em] text-body/60 w-[86px] uppercase">Instagram</span>@trasciende_tec</a>
+      <div class="note text-[22px] lg:text-[25px] text-white/85 rotate-[-6deg] flex items-end gap-2 lg:mr-10 reveal" style="transition-delay:.2s">
+        Cinco voces<br>extraordinarias
+        <svg class="draw shrink-0" width="46" height="52" viewBox="0 0 56 70" fill="none" stroke="#fe005a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 4 C 2 24, 14 46, 42 60"/><path pathLength="1" d="M28 62 L43 61 L38 47"/></svg>
       </div>
     </div>
-    <div class="p-7 rounded-2xl border border-noir/[.1] bg-white shadow-[0_10px_34px_rgba(20,17,15,.07)]">
-      <form id="contactForm" class="grid gap-4">
-        <div>
-          <label for="mt-nombre" class="block text-sm text-body mb-1.5">Nombre</label>
-          <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-npink">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-12 mt-14 px-2 lg:px-3" id="ponentesGrid"></div>
+  </div>
+  <img src="assets/torn-white-b.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section id="agenda-teaser" class="relative bg-white text-noir">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)] gap-14 lg:gap-16 items-center">
+    <div class="reveal">
+      <div class="eyebrow">Agenda</div>
+      <h2 class="t-display text-[44px] sm:text-[56px] lg:text-[64px] mt-4">El <span class="hl">día completo</span></h2>
+      <p class="text-[17px] leading-relaxed text-body mt-5 max-w-[520px]">Doce horas mapeadas de extremo a extremo, del registro al cierre. Consulta el programa hora por hora del sábado 21 de noviembre.</p>
+      <a href="agenda.html" class="btn btn-pink mt-9">Ver agenda del día <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="relative reveal-pop">
+      <img src="assets/swatch-sunset.webp" alt="" aria-hidden="true" class="paint left-[4%] top-[-9%] w-[100%] h-[118%] rotate-[5deg]" style="object-fit:fill" loading="lazy">
+      <div class="relative rotate-[-2.5deg] rounded-[18px] overflow-hidden shadow-[0_34px_60px_-26px_rgba(1,4,13,.6)] aspect-[16/11]">
+        <img src="assets/stage-vivid.jpg" alt="Main Stage de México Trasciende en la carpa de eventos" class="w-full h-full object-cover" loading="lazy">
+        <span class="grain-overlay"></span>
+      </div>
+      <img src="assets/brush-pink.webp" alt="" aria-hidden="true" class="paint paint-in left-[-14%] bottom-[-9%] w-[72%] rotate-[-9deg]">
+      <div class="absolute -top-9 right-0 lg:-right-4 note text-[26px] text-noir rotate-[6deg] anim-wobble" style="--r:6deg" aria-hidden="true">07:00 → 19:00</div>
+    </div>
+  </div>
+  <img src="assets/torn-coal-b.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
+</section>
+
+<!-- ============ PROBLEMA ============ -->
+<section id="problema" class="relative bg-coal text-white">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-20 lg:pt-28 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-14 lg:gap-16 items-center">
+    <div class="relative order-2 lg:order-1 reveal-pop">
+      <div class="relative lg:bleed-l h-[300px] sm:h-[380px] lg:h-[460px]">
+        <div class="absolute inset-0" style="clip-path:polygon(0 5%, 94% 0, 100% 56%, 89% 100%, 0 95%)">
+          <img src="assets/grupo-bw.jpg" alt="Jóvenes de la comunidad Trasciende" class="w-full h-full object-cover object-[50%_60%]" loading="lazy">
+          <span class="grain-overlay" style="opacity:.22"></span>
         </div>
-        <div>
-          <label for="mt-mail" class="block text-sm text-body mb-1.5">Correo</label>
-          <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="w-full h-11 px-3 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-npink">
+        <img src="assets/brush-pink.webp" alt="" aria-hidden="true" class="paint paint-in left-[2%] bottom-[4%] w-[70%] rotate-[-14deg]">
+        <img src="assets/brush-flick.webp" alt="" aria-hidden="true" class="paint paint-in right-[-4%] top-[8%] w-[46%] rotate-[-28deg]">
+      </div>
+      <div class="absolute right-2 lg:right-6 -bottom-8 note text-[26px] text-white rotate-[-7deg] anim-wobble" style="--r:-7deg" aria-hidden="true">Impacto real</div>
+    </div>
+    <div class="order-1 lg:order-2 reveal">
+      <div class="eyebrow">El reto</div>
+      <h2 class="t-display text-[44px] sm:text-[56px] lg:text-[64px] mt-4">Tener la idea<br><span class="hl">no siempre alcanza</span></h2>
+      <p class="text-[17px] leading-relaxed text-white/75 mt-6" style="text-wrap:pretty">En México existe una generación de jóvenes con interés por emprender, crear proyectos y transformar su entorno. Al mismo tiempo hay empresarios, especialistas y organizaciones dispuestos a compartir experiencia y acompañar a nuevas generaciones — pero ambos grupos pocas veces coinciden en un mismo espacio de manera estructurada.</p>
+      <p class="text-[17px] leading-relaxed text-white/75 mt-4" style="text-wrap:pretty">México Trasciende los reúne en un mismo día, para combatir la indiferencia social inspirando a la juventud a desarrollar iniciativas de impacto real.</p>
+    </div>
+  </div>
+  <img src="assets/torn-white-c.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
+</section>
+
+<!-- ============ UBICACIÓN + FAQ ============ -->
+<section id="sede" class="relative bg-white text-noir">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,.55fr)_minmax(0,1fr)_minmax(0,1fr)] gap-10 xl:gap-12">
+    <div class="relative reveal-pop">
+      <div class="relative lg:bleed-l h-[260px] sm:h-[340px] lg:h-full lg:min-h-[560px]">
+        <div class="absolute inset-0 translate-x-3" style="clip-path:polygon(0 0, 100% 0, 100% 42%, 93% 100%, 0 100%);background:linear-gradient(180deg,#ffb020 0%,#ff7a1a 38%,#fe005a 100%)"></div>
+        <div class="absolute inset-0" style="clip-path:polygon(0 0, 100% 0, 100% 40%, 89% 100%, 0 100%)">
+          <img src="assets/campus-tec.jpg" alt="Edificio del Tecnológico de Monterrey, Campus Ciudad de México" class="w-full h-full object-cover object-[70%_22%] lg:object-[100%_50%]" loading="lazy">
+          <span class="grain-overlay"></span>
         </div>
-        <div>
-          <label for="mt-msg" class="block text-sm text-body mb-1.5">Mensaje</label>
-          <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="w-full px-3 py-2 rounded bg-white border border-noir/[.15] text-noir placeholder:text-muted focus:outline-none focus:border-npink"></textarea>
+        <img src="assets/brush-sunset.webp" alt="" aria-hidden="true" class="paint paint-in left-[-8%] bottom-[-4%] lg:left-[-12%] lg:bottom-[2%] w-[80%] lg:w-[120%] rotate-[-14deg] lg:rotate-[-24deg]">
+      </div>
+    </div>
+
+    <div class="reveal lg:pt-4">
+      <div class="eyebrow">Ubicación</div>
+      <h2 class="t-display text-[40px] sm:text-[48px] lg:text-[50px] mt-4 relative" style="text-wrap:balance">Tec de Monterrey<br><span class="hl">Campus Ciudad de México</span>
+        <svg class="draw absolute -top-8 right-2 sm:right-10 lg:-right-2 rotate-[12deg]" width="54" height="44" viewBox="0 0 54 44" fill="none" stroke="#fe005a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M5 38 L9 10 L20 24 L28 5 L36 24 L47 10 L50 38 Z"/></svg>
+      </h2>
+      <p class="flex gap-3 mt-6 text-[16px] leading-relaxed text-noir"><svg class="shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fe005a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Calle del Puente 222, Ejidos de Huipulco, Tlalpan, 14380, Ciudad de México.</span></p>
+      <p class="mt-2 pl-8 text-[15.5px] leading-relaxed text-body">El foro ocupa el Main Stage en la carpa de eventos, el jardín y el lounge, ambos en Aulas 2.</p>
+      <div class="grid grid-cols-2 gap-3 mt-7">
+        <div class="dato"><span class="ic-bubble"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.24em] uppercase text-muted">Registro</span><span class="block font-heading font-bold text-[22px] leading-tight">07:00 hrs</span></span></div>
+        <div class="dato"><span class="ic-bubble"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.24em] uppercase text-muted">Cierre</span><span class="block font-heading font-bold text-[22px] leading-tight">19:00 hrs</span></span></div>
+        <div class="dato"><span class="ic-bubble"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.24em] uppercase text-muted">Formato</span><span class="block font-heading font-bold text-[22px] leading-tight">Presencial</span></span></div>
+        <div class="dato"><span class="ic-bubble"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.24em] uppercase text-muted">Duración</span><span class="block font-heading font-bold text-[22px] leading-tight">12 horas</span></span></div>
+      </div>
+      <div class="flex flex-wrap items-center gap-5 mt-8">
+        <a href="https://maps.google.com/?q=Tecnol%C3%B3gico+de+Monterrey+Campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" class="btn btn-dark h-[50px]">Cómo llegar <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <span class="note text-[21px] text-noir/80 rotate-[-6deg] inline-flex items-center gap-2" aria-hidden="true">
+          <svg class="draw" width="62" height="30" viewBox="0 0 92 40" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M88 22 C 64 6, 34 8, 10 22"/><path pathLength="1" d="M22 12 L8 22 L22 31"/></svg>
+          50 años Tec CCM
+        </span>
+      </div>
+    </div>
+
+    <div class="relative reveal lg:pt-14">
+      <div class="relative lg:bleed-r h-[92px] sm:h-[120px] -mb-6 lg:-mb-10 z-0" aria-hidden="true">
+        <div class="absolute inset-0" style="clip-path:polygon(4% 0, 100% 0, 100% 100%, 0 78%)">
+          <img src="assets/campus-patio.jpg" alt="" class="w-full h-full object-cover" loading="lazy">
         </div>
-        <button type="submit" class="h-[46px] rounded-full font-heading tracking-[.14em] uppercase bg-npink text-white hover:bg-abyss" id="contactBtn">Enviar mensaje</button>
-      </form>
+      </div>
+      <div class="relative z-[1] bg-navy text-white px-6 sm:px-8 lg:pl-12 lg:pr-9 pt-9 pb-9 lg:bleed-r lg:[clip-path:polygon(7%_0,100%_0,100%_100%,0_100%)] rounded-2xl lg:rounded-none shadow-[0_30px_60px_-30px_rgba(1,4,13,.7)]">
+        <div class="relative inline-block">
+          <img src="assets/brush-under.webp" alt="" aria-hidden="true" class="paint paint-in left-[-5%] top-[-46%] w-[30%] rotate-[-8deg]">
+          <h3 class="relative script text-[30px] lg:text-[34px] leading-none text-[#ff2a6d] rotate-[-3deg]">Preguntas frecuentes</h3>
+          <svg class="absolute -right-10 -top-3" width="34" height="30" viewBox="0 0 34 30" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 22 L2 28"/><path d="M14 16 L12 6"/><path d="M22 20 L31 14"/></svg>
+        </div>
+        <div class="grid gap-3 mt-8" id="faqList"></div>
+      </div>
+    </div>
+  </div>
+  <img src="assets/torn-navy-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto" class="relative bg-navy text-white">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,.62fr)_minmax(0,1fr)_minmax(0,1fr)] gap-10 xl:gap-12 items-center">
+    <div class="relative reveal-pop">
+      <div class="relative lg:bleed-l h-[240px] sm:h-[320px] lg:h-[540px]">
+        <div class="absolute inset-0" style="clip-path:polygon(0 0, 100% 7%, 86% 52%, 97% 100%, 0 100%)">
+          <img src="assets/crowd-stage.jpg" alt="Público frente al escenario durante una conferencia" class="w-full h-full object-cover object-[30%_50%]" loading="lazy">
+          <span class="grain-overlay" style="opacity:.18"></span>
+        </div>
+        <img src="assets/brush-violet.webp" alt="" aria-hidden="true" class="paint paint-in left-[30%] bottom-[16%] w-[110%] rotate-[-58deg] opacity-95">
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="eyebrow">Colabora</div>
+      <h2 class="t-display text-[42px] sm:text-[52px] lg:text-[58px] mt-4">Sé parte de<br><span class="hl-v">México Trasciende</span></h2>
+      <p class="text-[17px] leading-relaxed text-white/80 mt-5 max-w-[440px]">Inspira a quienes impulsarán el futuro de México. Patrocinios, ponencias o prensa: el equipo te responde.</p>
+      <div class="flex flex-col gap-5 mt-9">
+        <a href="tel:+525551071205" class="contact-item"><span class="ic-bubble"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.26em] uppercase text-white/55">Teléfono</span><span class="ci-v block font-heading font-bold text-[22px] tracking-wide transition-colors">55 5107 1205</span></span></a>
+        <a href="mailto:grupo.trasciende@outlook.com" class="contact-item"><span class="ic-bubble"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.26em] uppercase text-white/55">Correo</span><span class="ci-v block font-heading font-bold text-[20px] tracking-wide transition-colors break-all">grupo.trasciende@outlook.com</span></span></a>
+        <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="contact-item"><span class="ic-bubble"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.26em] uppercase text-white/55">Instagram</span><span class="ci-v block font-heading font-bold text-[22px] tracking-wide transition-colors">@trasciende_tec</span></span></a>
+      </div>
+    </div>
+
+    <div class="relative reveal" style="transition-delay:.12s">
+      <div class="hidden lg:block absolute top-[-22%] h-[66%] left-[40%] lg:bleed-r right-0 z-0" aria-hidden="true">
+        <div class="absolute inset-0" style="clip-path:polygon(14% 9%, 100% 0, 100% 100%, 0 100%, 6% 42%)">
+          <img src="assets/students-bw.jpg" alt="" class="w-full h-full object-cover object-[62%_40%]" loading="lazy">
+          <span class="grain-overlay" style="opacity:.2"></span>
+        </div>
+        <img src="assets/brush-pink.webp" alt="" aria-hidden="true" class="paint paint-in right-[-2%] top-[30%] w-[86%] rotate-[-24deg]">
+      </div>
+      <div class="relative z-[2] bg-white text-noir rounded-[18px] p-7 lg:p-8 shadow-[0_34px_70px_-24px_rgba(0,0,0,.65)] max-w-[480px] lg:max-w-[400px] lg:mt-16">
+        <div class="eyebrow eyebrow-ink">Contáctanos</div>
+        <form id="contactForm" class="grid gap-4 mt-6">
+          <div>
+            <label for="mt-nombre" class="block text-[13.5px] font-medium text-body mb-1.5">Nombre</label>
+            <input id="mt-nombre" type="text" required placeholder="Tu nombre" class="field">
+          </div>
+          <div>
+            <label for="mt-mail" class="block text-[13.5px] font-medium text-body mb-1.5">Correo</label>
+            <input id="mt-mail" type="email" required placeholder="tucorreo@dominio.com" class="field">
+          </div>
+          <div>
+            <label for="mt-msg" class="block text-[13.5px] font-medium text-body mb-1.5">Mensaje</label>
+            <textarea id="mt-msg" required rows="4" placeholder="Cuéntanos en qué te podemos ayudar" class="field"></textarea>
+          </div>
+          <button type="submit" class="btn btn-pink h-[50px] justify-self-start mt-1" id="contactBtn"><span id="contactBtnLabel">Enviar mensaje</span> <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <img src="assets/torn-white-a.svg" alt="" aria-hidden="true" class="torn torn-bottom torn-flip z-[5]">
+</section>
+
+<!-- ============ ALIADOS ============ -->
+<section id="aliados" class="relative bg-white text-noir">
+  <img src="assets/brush-sunset.webp" alt="" aria-hidden="true" class="paint paint-in right-[-14%] top-[70px] w-[46%] opacity-90 rotate-[-6deg]">
+  <img src="assets/splatter.webp" alt="" aria-hidden="true" class="paint left-[-90px] bottom-[60px] w-[260px] opacity-35" loading="lazy">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-28">
+    <div class="reveal">
+      <div class="eyebrow">Aliados</div>
+      <h2 class="t-display text-[42px] sm:text-[54px] lg:text-[62px] mt-4">Quienes ya están<br><span class="hl">invirtiendo</span></h2>
+    </div>
+
+    <div class="mt-14">
+      <div class="flex items-center gap-3.5 mb-7">
+        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Patrocinadores confirmados</span>
+        <span class="flex-1 h-px bg-ink/[.12]"></span>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="sponsorsGrid"></div>
+    </div>
+
+    <div class="mt-14">
+      <div class="flex items-center gap-3.5 mb-7">
+        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Áreas del Tec aliadas</span>
+        <span class="flex-1 h-px bg-ink/[.12]"></span>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="areasGrid"></div>
+    </div>
+
+    <div class="mt-14">
+      <div class="flex items-center gap-3.5 mb-7">
+        <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Escuelas del Tec impulsoras</span>
+        <span class="flex-1 h-px bg-ink/[.12]"></span>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="escuelasGrid"></div>
+    </div>
+
+    <div class="mt-14 flex justify-end">
+      <a href="#contacto" class="btn btn-pink">Quiero patrocinar <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
 
-<section id="aliados" class="relative bg-white text-noir overflow-hidden">
-  <svg class="deco hidden lg:block left-[-2%] bottom-[6%] w-20 h-20 anim-twinkle opacity-50" viewBox="0 0 40 40" aria-hidden="true">
-    <path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="#ff7a29"/>
-  </svg>
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-24">
-    <h2 class="reveal font-heading text-[36px] lg:text-[58px] leading-[.94] uppercase">Quienes ya están<br><span class="text-npink">invirtiendo</span></h2>
-
-    <div class="mt-11">
-      <div class="flex items-center gap-3.5 mb-5">
-        <span class="font-heading text-xs tracking-[.26em] uppercase text-muted whitespace-nowrap">Patrocinadores confirmados</span>
-        <span class="flex-1 h-px bg-ink/[.14]"></span>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4.5" id="sponsorsGrid"></div>
-    </div>
-
-    <div class="mt-11">
-      <div class="flex items-center gap-3.5 mb-5">
-        <span class="font-heading text-xs tracking-[.26em] uppercase text-muted whitespace-nowrap">Áreas del Tec aliadas</span>
-        <span class="flex-1 h-px bg-ink/[.14]"></span>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4.5" id="areasGrid"></div>
-    </div>
-
-    <div class="mt-11">
-      <div class="flex items-center gap-3.5 mb-5">
-        <span class="font-heading text-xs tracking-[.26em] uppercase text-muted whitespace-nowrap">Escuelas del Tec impulsoras</span>
-        <span class="flex-1 h-px bg-ink/[.14]"></span>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4.5" id="escuelasGrid"></div>
-    </div>
-
-    <div class="mt-11 flex justify-end">
-      <a href="#contacto" class="btn-shine inline-flex items-center h-[46px] px-6 rounded-full font-heading tracking-[.12em] uppercase bg-npink text-white hover:bg-abyss">Quiero patrocinar</a>
-    </div>
-  </div>
-</section>
+</main>
 
 <button id="toTop" hidden aria-label="Volver arriba" class="fixed bottom-7 right-7 z-[70] w-12 h-12 rounded-full bg-npink text-white shadow-[0_8px_28px_rgba(254,0,90,.45)] hover:bg-abyss flex items-center justify-center">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
@@ -466,10 +583,10 @@
 
 <footer class="relative bg-deep text-white/70 overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(110%_130%_at_18%_0%,#071c5e_0%,#03144a_55%,#01040d_100%)] pointer-events-none"></div>
-  <svg class="deco hidden lg:block right-[12%] top-[14%] w-10 h-10 anim-petal" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
-  <svg class="deco hidden lg:block right-[19%] top-[38%] w-7 h-7 anim-petal" style="animation-delay:-6s" viewBox="-20 -20 40 40" aria-hidden="true"><g class="petal-x"><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(90)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(180)"/><path d="M3 -3 Q10 -6 17 -17 Q6 -10 3 -3 Z" transform="rotate(270)"/></g></svg>
+  <img src="assets/torn-white-b.svg" alt="" aria-hidden="true" class="torn torn-top z-[2]">
+  <img src="assets/brush-violet.webp" alt="" aria-hidden="true" class="paint right-[-12%] bottom-[18%] w-[44%] opacity-35 rotate-[-6deg] z-0" loading="lazy">
 
-  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 py-14 grid gap-10 lg:grid-cols-[auto_1px_1fr_auto] lg:items-center">
+  <div class="relative z-[1] max-w-[1300px] mx-auto px-6 pt-24 pb-14 grid gap-10 lg:grid-cols-[auto_1px_1fr_auto] lg:items-center">
     <div class="flex items-center gap-5">
       <img src="assets/mt-logo-gradient.png" alt="México Trasciende" class="h-14 w-auto">
       <div class="font-heading leading-tight tracking-[.3em] uppercase text-white">
@@ -538,7 +655,6 @@ const ESPACIOS = [
     speakers: LOUNGE_SPEAKERS }
 ];
 
-
 const PONENTES = [
   { eje: 'Main Stage', status: 'Por confirmar', num: '01' },
   { eje: 'Main Stage', status: 'Por confirmar', num: '02' },
@@ -575,6 +691,18 @@ const FAQS = [
   { q: '¿Necesito descargar CLEIP?', a: 'No requiere descarga: la aplicación web funciona desde el navegador. Ahí vive tu credencial, la agenda y las dinámicas en vivo.' }
 ];
 
+const ARROW = '<svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const ICONS = {
+  layers: '<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/>',
+  mic: '<rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5"/>',
+  pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+  users: '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/>',
+  star: '<path d="m12 2.8 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17l-5.6 3 1.1-6.2L3 9.4l6.2-.9L12 2.8Z"/>'
+};
+const DATO_ICON = { 'Formato': 'layers', 'Sesiones': 'mic', 'Ubicación': 'pin', 'Quién estará': 'users', 'Líderes': 'star' };
+const icon = (name, size = 22) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.layers}</svg>`;
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // ---------- mobile menu ----------
 const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -586,13 +714,16 @@ function toggleMenu(open) {
 menuBtn.addEventListener('click', () => toggleMenu(!mobileMenu.classList.contains('open')));
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
 
-// ---------- scroll progress, scrollspy, back to top ----------
+// ---------- scroll progress, scrollspy, back to top, parallax ----------
 const progressBar = document.getElementById('scrollProgress');
 const toTop = document.getElementById('toTop');
 const spyLinks = [...document.querySelectorAll('.nav-link[href^="#"]')];
 const spySections = spyLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const parallaxEls = REDUCED ? [] : [...document.querySelectorAll('[data-parallax]')];
 
+let scrollTicking = false;
 function onScroll() {
+  scrollTicking = false;
   const max = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
   toTop.hidden = window.scrollY < 700;
@@ -602,23 +733,42 @@ function onScroll() {
     if (sec.getBoundingClientRect().top <= 140) activeId = sec.id;
   }
   spyLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + activeId));
+
+  const vh = window.innerHeight;
+  for (const el of parallaxEls) {
+    const r = el.parentElement.getBoundingClientRect();
+    if (r.bottom < -300 || r.top > vh + 300) continue;
+    const off = (r.top + r.height / 2 - vh / 2) * parseFloat(el.dataset.parallax);
+    el.style.translate = `0 ${off.toFixed(1)}px`;
+  }
 }
-window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) { scrollTicking = true; requestAnimationFrame(onScroll); }
+}, { passive: true });
 onScroll();
 toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// ---------- scroll reveal ----------
+// ---------- scroll reveal (also paints brush strokes and draws arrows) ----------
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
 function registerReveals(root = document) {
-  root.querySelectorAll('.reveal:not([data-rev])').forEach(el => {
+  root.querySelectorAll('.reveal:not([data-rev]), .reveal-pop:not([data-rev]), .draw:not([data-rev])').forEach(el => {
     el.setAttribute('data-rev', '');
     io.observe(el);
   });
 }
-// stagger siblings inside a grid/list so cards cascade instead of popping together
+// a stroke clipped to 0% never reports as visible, so watch its container and paint it in from there
+const paintIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll(':scope > .paint-in').forEach(p => p.classList.add('in'));
+    paintIo.unobserve(e.target);
+  });
+}, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+document.querySelectorAll('.paint-in').forEach(p => paintIo.observe(p.parentElement));
+
 function revealStagger(container, step = 70) {
   [...container.children].forEach((el, i) => {
     el.classList.add('reveal');
@@ -626,7 +776,6 @@ function revealStagger(container, step = 70) {
   });
   registerReveals(container.parentElement || container);
 }
-registerReveals();
 
 // ---------- hero title: "México" grows to match "Trasciende" width ----------
 function matchHeroTitleWidth() {
@@ -677,7 +826,7 @@ const countIo = new IntersectionObserver((entries) => {
     const end = Number(el.dataset.count);
     const prefix = el.dataset.countPrefix || '';
     const start = performance.now();
-    const dur = 1100;
+    const dur = 1200;
     const step = (now) => {
       const t = Math.min(1, (now - start) / dur);
       const eased = 1 - Math.pow(1 - t, 3);
@@ -692,126 +841,125 @@ document.querySelectorAll('[data-count]').forEach(el => {
   countIo.observe(el);
 });
 
-// ---------- espacios ----------
+// ---------- espacios: canvas cards pick the space, detail below ----------
+const ESP_MEDIA = [
+  { img: 'assets/esp-stage.jpg', swatch: 'assets/swatch-violet.webp', tilt: -3, ry: 10 },
+  { img: 'assets/esp-jardin.jpg', swatch: 'assets/swatch-sunset.webp', tilt: 2.4, ry: -9 },
+  { img: 'assets/esp-lounge.jpg', swatch: 'assets/swatch-blue.webp', tilt: -2.2, ry: 9 }
+];
 let espacioIdx = 0;
-const tabsWrap = document.getElementById('espaciosTabs');
-// each space keeps its own flyer color across tab, frame and kicker
-const ESPACIO_COLORS = ['#2b3fff', '#d5f157', '#f6019c'];
-function renderTabs() {
-  tabsWrap.innerHTML = ESPACIOS.map((e, i) => {
-    const c = ESPACIO_COLORS[i % ESPACIO_COLORS.length];
-    const active = i === espacioIdx;
-    // active tab fills with its color; lime needs dark type, the others white
-    const lightFill = c === '#d5f157';
-    const style = active
-      ? `background:${c};border-color:${c};color:${lightFill ? '#01040d' : '#ffffff'};box-shadow:0 0 26px ${c}55`
-      : `border-color:${c};color:#14110f`;
-    return `<button data-i="${i}" style="${style}" class="tag-tab font-heading text-[15px] tracking-[.12em] uppercase whitespace-nowrap px-5 py-3 rounded-full border-2 ${active ? '' : 'bg-white hover:bg-bonedeep'}">${e.name}</button>`;
-  }).join('');
-  tabsWrap.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { espacioIdx = Number(b.dataset.i); renderEspacio(); }));
-}
+const cardsWrap = document.getElementById('espCards');
+cardsWrap.innerHTML = ESPACIOS.map((e, i) => {
+  const m = ESP_MEDIA[i];
+  const line = e.datos.filter(d => d.k === 'Formato' || d.k === 'Ubicación').map(d => d.v).join(' · ');
+  return `
+  <button type="button" class="esp-card reveal" style="--tilt:${m.tilt}deg;--ry:${m.ry}deg;transition-delay:${i * 110}ms" data-i="${i}" aria-pressed="false" aria-controls="espDetail">
+    <span class="esp-frame">
+      <img class="esp-swatch" src="${m.swatch}" alt="" aria-hidden="true">
+      <span class="esp-photo"><img src="${m.img}" alt="${e.name}"><span class="grain-overlay"></span></span>
+    </span>
+    <span class="esp-name"><span>${e.name}</span>${ARROW}</span>
+    <span class="esp-line">${line}</span>
+    <span class="esp-bar"></span>
+  </button>`;
+}).join('');
+cardsWrap.querySelectorAll('.esp-card').forEach(b => b.addEventListener('click', () => {
+  if (Number(b.dataset.i) === espacioIdx) return;
+  espacioIdx = Number(b.dataset.i);
+  renderEspacio();
+  const detail = document.getElementById('espDetail');
+  if (detail.getBoundingClientRect().top > window.innerHeight - 120) detail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}));
+
 function renderEspacio() {
   const e = ESPACIOS[espacioIdx];
-  const accent = ESPACIO_COLORS[espacioIdx % ESPACIO_COLORS.length];
-  const kicker = document.getElementById('espKicker');
-  kicker.textContent = e.kicker;
-  kicker.style.color = accent;
-  const imgWrap = document.getElementById('espaciosImgWrap');
-  imgWrap.style.borderColor = accent;
-  imgWrap.style.boxShadow = `0 0 34px ${accent}33`;
+  cardsWrap.querySelectorAll('.esp-card').forEach((b, i) => {
+    b.classList.toggle('is-active', i === espacioIdx);
+    b.setAttribute('aria-pressed', String(i === espacioIdx));
+  });
+  document.getElementById('espNum').textContent = pad(espacioIdx + 1);
+  document.getElementById('espKicker').textContent = e.kicker;
   document.getElementById('espNombre').textContent = e.name;
   document.getElementById('espTexto1').textContent = e.t1;
   document.getElementById('espTexto2').textContent = e.t2;
   document.getElementById('espDatos').innerHTML = e.datos.map(d => `
-    <div class="flex justify-between gap-5 py-3 border-b border-noir/10">
-      <span class="font-heading text-xs tracking-[.2em] uppercase text-muted">${d.k}</span>
-      <span class="font-heading text-lg text-right">${d.v}</span>
+    <div class="dato">
+      <span class="ic-bubble">${icon(DATO_ICON[d.k])}</span>
+      <span class="min-w-0">
+        <span class="block font-heading font-semibold text-[11px] tracking-[.24em] uppercase text-muted">${d.k}</span>
+        <span class="block font-heading font-bold text-[20px] leading-tight">${d.v}</span>
+      </span>
     </div>`).join('');
-  document.querySelectorAll('[data-esp-img]').forEach(img => {
-    const on = Number(img.dataset.espImg) === espacioIdx;
-    img.style.opacity = on ? '1' : '0';
-    img.style.zIndex = on ? '2' : '1';
-    img.style.transform = on ? 'scale(1)' : 'scale(1.04)';
-  });
 
   const loungeExtra = document.getElementById('espLoungeExtra');
   if (e.speakers) {
     loungeExtra.hidden = false;
-    const cards = e.speakers.map((sp, i) => {
-      const ringTones = ['border-cyan', 'border-magenta', 'border-orange', 'border-lime'];
-      const initials = sp.name.split(' ').map(w => w[0]).slice(0, 2).join('');
-      const avatar = sp.photo
-        ? `<div class="w-14 h-14 rounded-full bg-cover shrink-0" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></div>`
-        : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-heading text-lg bg-noir/10 shrink-0">${initials}</div>`;
-      return `<div class="lounge-chip flex-none flex items-center gap-3 pl-2.5 pr-5 py-2.5 rounded-full border-2 ${ringTones[i % ringTones.length]} bg-white">${avatar}<span class="font-heading text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span></div>`;
-    });
-    document.getElementById('loungeCarousel').innerHTML = cards.concat(cards).join('');
+    const chips = e.speakers.map(sp => `
+      <div class="lounge-chip flex-none flex items-center gap-3 pl-2 pr-5 py-2 rounded-full border-2 border-noir/10 bg-white">
+        <span class="w-14 h-14 rounded-full p-[2px] shrink-0" style="background:linear-gradient(135deg,#fe005a,#ff7a1a)"><span class="block w-full h-full rounded-full bg-cover border-2 border-white" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></span></span>
+        <span class="font-heading font-semibold text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span>
+      </div>`);
+    document.getElementById('loungeCarousel').innerHTML = chips.concat(chips).join('');
   } else {
     loungeExtra.hidden = true;
   }
 
-  const textCol = document.getElementById('espNombre').parentElement;
-  textCol.classList.remove('esp-anim');
-  void textCol.offsetWidth;
-  textCol.classList.add('esp-anim');
-
-  renderTabs();
+  const detail = document.getElementById('espDetail');
+  detail.classList.remove('esp-anim');
+  void detail.offsetWidth;
+  detail.classList.add('esp-anim');
 }
 renderEspacio();
 
-// ---------- ponentes ----------
-// flyer palette: each card gets its own accent frame + triangle, like the speaker grid on the poster
-const ACCENTS = ['#2b3fff', '#3ce5d2', '#d5f157', '#ed841b', '#f6019c'];
+// ---------- ponentes: tilted canvases that flip ----------
+const ACCENTS = ['#fe005a', '#ff7a1a', '#a43dff', '#3ce5d2', '#f6019c'];
+const PON_SWATCH = ['assets/swatch-violet.webp', 'assets/swatch-sunset.webp', 'assets/swatch-blue.webp'];
+const PON_TILT = [-3, 2.4, -1.8, 3, -2.2];
 const ponentesGrid = document.getElementById('ponentesGrid');
 ponentesGrid.innerHTML = PONENTES.map((p, i) => {
   const c = ACCENTS[i % ACCENTS.length];
-  const pending = !p.photo;
-  const triangles = `
-    <svg class="deco -left-3 top-8 w-12 h-12 anim-floaty" style="animation-delay:${i * .7}s" viewBox="0 0 40 40" aria-hidden="true"><path d="M0 20 L28 2 L28 38 Z" fill="${c}" opacity=".9"/></svg>
-    <svg class="deco -right-2 bottom-10 w-9 h-9 anim-floaty" style="animation-delay:${i * .7 + 1.2}s" viewBox="0 0 40 40" aria-hidden="true"><path d="M40 20 L12 2 L12 38 Z" fill="${c}" opacity=".55"/></svg>`;
-  if (pending) {
-    return `
-    <div class="flip-card h-[300px]" data-i="${i}">
-      <div class="flip-inner">
-        <div class="flip-face liftup rounded-xl overflow-hidden bg-white cursor-pointer" style="border:2px solid ${c}">
-          <div class="relative h-full overflow-hidden bg-gradient-to-br from-[#f7f6f2] to-[#eceaf5] flex flex-col items-center justify-center gap-2.5">
-            ${triangles}
-            <div class="relative font-heading text-[56px] leading-none" style="color:${c}55">${p.num}</div>
-            <div class="relative font-heading text-[11px] tracking-[.26em] uppercase anim-pulse-soft" style="color:${c}">Por anunciar</div>
-            <div class="eje-label eje-center font-heading text-[11px] absolute bottom-6 text-center" style="color:${c}">${p.eje}</div>
+  return `
+  <div class="reveal" style="transition-delay:${i * 90}ms">
+    <div class="pon-wrap" style="--tilt:${PON_TILT[i % PON_TILT.length]}deg">
+      <img class="pon-swatch" src="${PON_SWATCH[i % PON_SWATCH.length]}" alt="" aria-hidden="true" loading="lazy">
+      <div class="flip-card pon-card" role="button" tabindex="0" aria-label="Ponente ${p.num}: por anunciar. Voltear tarjeta">
+        <div class="flip-inner">
+          <div class="flip-face">
+            <div class="absolute inset-0" style="background:radial-gradient(130% 80% at 50% 6%, ${c}55 0%, transparent 62%), linear-gradient(180deg,#151c3a 0%,#090d20 100%)"></div>
+            <svg class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[88%]" viewBox="0 0 200 210" aria-hidden="true">
+              <defs><linearGradient id="pg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity=".8"/><stop offset="1" stop-color="${c}" stop-opacity=".06"/></linearGradient></defs>
+              <circle cx="100" cy="72" r="40" fill="url(#pg${i})"/>
+              <path d="M14 210 C 18 150, 58 120, 100 120 C 142 120, 182 150, 186 210 Z" fill="url(#pg${i})"/>
+            </svg>
+            <span class="grain-overlay" style="opacity:.25"></span>
+            <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:${c}">${p.num}</div>
+            <div class="absolute inset-x-0 bottom-5 text-center px-2">
+              <div class="note text-[22px] sm:text-[24px] text-white">Por anunciar</div>
+              <div class="font-heading font-semibold text-[11px] tracking-[.3em] uppercase mt-1.5" style="color:${c}">${p.eje}</div>
+            </div>
+          </div>
+          <div class="flip-face flip-back p-5 flex flex-col items-center justify-center text-center" style="background:linear-gradient(165deg, ${c} 0%, #0c1433 72%)">
+            <div class="note text-[26px] text-white rotate-[-4deg]">¡Muy pronto!</div>
+            <p class="text-[14px] leading-relaxed text-white/85 mt-3">Este ponente está por anunciarse. Síguenos en Instagram @trasciende_tec para enterarte primero.</p>
           </div>
         </div>
-        <div class="flip-face flip-back rounded-xl overflow-hidden bg-noir p-6 flex flex-col items-center justify-center text-center cursor-pointer" style="border:2px solid ${c}">
-          <svg class="w-9 h-9 mb-3 anim-twinkle" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="${c}"/></svg>
-          <div class="font-heading text-[11px] tracking-[.24em] uppercase mb-2" style="color:${c}">Muy pronto</div>
-          <p class="text-[14.5px] leading-relaxed text-paper/85">Este ponente está por anunciarse. Síguenos en Instagram @trasciende_tec para enterarte primero.</p>
-        </div>
       </div>
-    </div>`;
-  }
-  return `
-    <div class="liftup flex flex-col rounded-xl overflow-hidden bg-white hover:shadow-[0_18px_40px_rgba(11,18,51,.14)]" style="border:2px solid ${c}">
-      <div class="relative h-[280px] overflow-hidden bg-[#eeebe3]">
-        <div class="absolute inset-0" style="background-image:url('${p.photo}');background-size:cover;background-position:${p.pos}"></div>
-      </div>
-      <div class="p-5">
-        <div class="eje-label font-heading text-[11px]" style="color:${c}">${p.eje}</div>
-        <div class="font-heading text-[27px] tracking-wide uppercase leading-tight mt-2">${p.name}</div>
-        <div class="text-[14.5px] text-muted mt-1.5 leading-snug min-h-[42px]">${p.role}</div>
-      </div>
-    </div>`;
+    </div>
+  </div>`;
 }).join('');
 ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
-  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  const flip = () => card.classList.toggle('flipped');
+  card.addEventListener('click', flip);
+  card.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); flip(); } });
 });
-revealStagger(ponentesGrid, 80);
 
-
-// ---------- logo walls ----------
+// ---------- logo walls: taped-on cards ----------
+const TAPES = ['rgba(254,0,90,.55)', 'rgba(255,122,26,.6)', 'rgba(164,61,255,.5)', 'rgba(60,229,210,.55)'];
+const TAPE_ROT = [-5, 4, -3, 6, -6, 3];
 function logoWall(list, pos, height) {
-  return list.map(s => `
-    <div class="logowall liftup flex items-center justify-center border border-ink/[.12] rounded-md bg-[#fbfaf7] hover:border-royal/40 hover:shadow-[0_14px_34px_rgba(11,18,51,.1)]" style="height:${height}px;padding:26px 30px">
-      <div role="img" aria-label="${s.alt}" style="width:100%;height:100%;background-image:url('${s.src}');background-size:contain;background-position:${pos};background-repeat:no-repeat"></div>
+  return list.map((s, i) => `
+    <div class="logo-card" style="height:${height}px;--tape:${TAPES[i % TAPES.length]};--tape-rot:${TAPE_ROT[i % TAPE_ROT.length]}deg">
+      <div role="img" aria-label="${s.alt}" class="logo-img" style="background-image:url('${s.src}');background-position:${pos}"></div>
     </div>`).join('');
 }
 document.getElementById('sponsorsGrid').innerHTML = logoWall(SPONSORS, 'center', 132);
@@ -821,25 +969,24 @@ document.getElementById('escuelasGrid').innerHTML = logoWall(ESCUELAS, 'left cen
 
 // ---------- FAQ ----------
 let openFaq = 0;
-function renderFaqs() {
-  document.getElementById('faqList').innerHTML = FAQS.map((f, i) => {
-    const open = openFaq === i;
-    return `
-    <div class="border-b border-ink/[.14]">
-      <div data-i="${i}" class="faq-toggle flex items-center justify-between gap-4.5 py-4.5 cursor-pointer hover:text-royal">
-        <span class="font-heading text-xl tracking-wide uppercase">${f.q}</span>
-        <span class="chev ${open ? 'open' : ''} font-heading text-[26px] leading-none text-royal inline-block">+</span>
-      </div>
-      ${open ? `<p class="pb-5 pr-10 text-[15.5px] leading-relaxed text-body">${f.a}</p>` : ''}
-    </div>`;
-  }).join('');
-  document.querySelectorAll('.faq-toggle').forEach(el => el.addEventListener('click', () => {
-    const i = Number(el.dataset.i);
-    openFaq = openFaq === i ? null : i;
-    renderFaqs();
-  }));
-}
-renderFaqs();
+const faqList = document.getElementById('faqList');
+faqList.innerHTML = FAQS.map((f, i) => `
+  <div class="faq-item${i === openFaq ? ' open' : ''}">
+    <button type="button" class="faq-q" data-i="${i}" aria-expanded="${i === openFaq}" aria-controls="faq-a-${i}">
+      <span>${f.q}</span><span class="faq-ic" aria-hidden="true"></span>
+    </button>
+    <div class="faq-a" id="faq-a-${i}" role="region"><div><p>${f.a}</p></div></div>
+  </div>`).join('');
+faqList.addEventListener('click', ev => {
+  const btn = ev.target.closest('.faq-q');
+  if (!btn) return;
+  const i = Number(btn.dataset.i);
+  openFaq = openFaq === i ? null : i;
+  faqList.querySelectorAll('.faq-item').forEach((item, j) => {
+    item.classList.toggle('open', j === openFaq);
+    item.querySelector('.faq-q').setAttribute('aria-expanded', String(j === openFaq));
+  });
+});
 
 // ---------- contact form (mailto) ----------
 document.getElementById('contactForm').addEventListener('submit', (e) => {
@@ -848,11 +995,13 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   const mail = document.getElementById('mt-mail').value;
   const msg = document.getElementById('mt-msg').value;
   const body = encodeURIComponent(msg + '\n\n' + name + ' · ' + mail);
-  const btn = document.getElementById('contactBtn');
-  btn.textContent = 'Abriendo tu correo…';
+  const label = document.getElementById('contactBtnLabel');
+  label.textContent = 'Abriendo tu correo…';
   window.open('mailto:grupo.trasciende@outlook.com?subject=' + encodeURIComponent('Contacto web · ' + (name || 'México Trasciende')) + '&body=' + body, '_blank');
-  setTimeout(() => { btn.textContent = 'Enviar mensaje'; }, 2500);
+  setTimeout(() => { label.textContent = 'Enviar mensaje'; }, 2500);
 });
+
+registerReveals();
 </script>
 </body>
 </html>
