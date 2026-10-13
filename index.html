@@ -14,13 +14,13 @@
     theme: {
       extend: {
         colors: {
-          abyss: '#01040d', deep: '#03144a', deepmid: '#071c5e', coal: '#070b1c', navy: '#0c1433',
+          abyss: '#01072a', deep: '#031447', deepmid: '#0a2370', coal: '#020d36', navy: '#031447',
           nblue: '#2b3fff', ncyan: '#3ce5d2', nsky: '#72f0fe', nmint: '#5af9c1',
-          nlime: '#d5f157', norange: '#ed841b', nred: '#f00822', npink: '#fe005a', nmagenta: '#f6019c',
-          night: '#01040d', ink: '#03144a', royal: '#2b3fff',
-          magenta: '#f6019c', orange: '#ed841b', lime: '#d5f157', cyan: '#3ce5d2',
+          nlime: '#ff7a1a', norange: '#ff7a1a', nred: '#f00822', npink: '#ff7a1a', nmagenta: '#ff7a1a',
+          night: '#01072a', ink: '#031447', royal: '#2b3fff',
+          magenta: '#ff7a1a', orange: '#ff7a1a', lime: '#ff7a1a', cyan: '#3ce5d2',
           paper: '#f5f3ee', surface: '#ffffff', muted: '#6b6873', body: '#3d3a42',
-          noir: '#14110f', coral: '#fe005a'
+          noir: '#14110f', coral: '#ff7a1a'
         },
         fontFamily: {
           heading: ["'Barlow Condensed'", 'sans-serif'],
@@ -33,41 +33,41 @@
 <style>
   html { scroll-behavior: smooth; }
   body { font-family: 'Barlow', system-ui, sans-serif; }
-  ::selection { background: rgba(254,0,90,.25); }
+  ::selection { background: rgba(255,122,26,.25); }
   section[id] { scroll-margin-top: 70px; }
-  :focus-visible { outline: 2px solid #fe005a; outline-offset: 3px; border-radius: 4px; }
+  :focus-visible { outline: 2px solid #ff7a1a; outline-offset: 3px; border-radius: 4px; }
 
   /* ---------- type ---------- */
   .t-display { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .9; letter-spacing: -.005em; }
-  .hl { color: #fe005a; }
-  .hl-v { color: #fe005a; }
-  .grad-bar { background: #fe005a; }
-  .grad-warm { background: #fe005a; }
-  .eyebrow { display: inline-flex; align-items: center; gap: .75rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .32em; text-transform: uppercase; color: #fe005a; }
-  .eyebrow::before { content: ''; width: 26px; height: 3px; border-radius: 2px; background: #fe005a; }
+  .hl { color: #ff7a1a; }
+  .hl-v { color: #ff7a1a; }
+  .grad-bar { background: #ff7a1a; }
+  .grad-warm { background: #ff7a1a; }
+  .eyebrow { display: inline-flex; align-items: center; gap: .75rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .32em; text-transform: uppercase; color: #ff7a1a; }
+  .eyebrow::before { content: ''; width: 26px; height: 3px; border-radius: 2px; background: #ff7a1a; }
   .eyebrow-ink { color: #14110f; }
   .note { font-family: 'Gochi Hand', cursive; text-transform: uppercase; letter-spacing: .05em; line-height: 1.05; }
   .script { font-family: 'Permanent Marker', cursive; letter-spacing: .02em; }
-  .num-outline { color: transparent !important; -webkit-text-stroke: 2px var(--stroke, #fe005a); }
+  .num-outline { color: transparent !important; -webkit-text-stroke: 2px var(--stroke, #ff7a1a); }
 
   /* ---------- buttons ---------- */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; height: 54px; padding: 0 28px; border-radius: 999px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; transition: transform .25s cubic-bezier(.2,.7,.3,1), background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease; }
   .btn:hover { transform: translateY(-2px); }
   .btn .arr { transition: transform .25s cubic-bezier(.2,.7,.3,1); }
   .btn:hover .arr { transform: translateX(4px); }
-  .btn-pink { background: #fe005a; color: #fff; box-shadow: 0 14px 32px -10px rgba(254,0,90,.6); }
-  .btn-pink:hover { background: #ff2a6d; box-shadow: 0 18px 38px -10px rgba(254,0,90,.75); }
+  .btn-pink { background: #ff7a1a; color: #031447; box-shadow: 0 14px 32px -10px rgba(255,122,26,.6); }
+  .btn-pink:hover { background: #ff9440; color: #031447; box-shadow: 0 18px 38px -10px rgba(255,122,26,.75); }
   .btn-ghost { border: 2px solid rgba(255,255,255,.85); color: #fff; }
-  .btn-ghost:hover { background: #fff; color: #01040d; }
-  .btn-dark { background: #0c1433; color: #fff; box-shadow: 0 14px 30px -12px rgba(12,20,51,.6); }
-  .btn-dark:hover { background: #fe005a; }
+  .btn-ghost:hover { background: #fff; color: #01072a; }
+  .btn-dark { background: #031447; color: #fff; box-shadow: 0 14px 30px -12px rgba(12,20,51,.6); }
+  .btn-dark:hover { background: #ff7a1a; }
 
   /* ---------- header ---------- */
   .nav-link { position: relative; padding-bottom: 2px; color: rgba(255,255,255,.8); transition: color .2s ease; }
-  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: #d5f157; transition: width .28s cubic-bezier(.16,1,.3,1); }
-  .nav-link:hover { color: #d5f157; }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: #ff7a1a; transition: width .28s cubic-bezier(.16,1,.3,1); }
+  .nav-link:hover { color: #ff7a1a; }
   .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-  .nav-link.active { color: #d5f157; }
+  .nav-link.active { color: #ff7a1a; }
   #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 90; transition: width .1s linear; }
   #menuBtn span { transition: transform .3s cubic-bezier(.2,.7,.3,1), opacity .2s ease; }
   #menuBtn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -118,20 +118,21 @@
 
   /* ---------- hero ---------- */
   .hero-shade { background:
-      linear-gradient(0deg, #01040d 0%, rgba(1,4,13,.78) 38%, rgba(1,4,13,.35) 70%, rgba(1,4,13,.55) 100%); }
+      linear-gradient(0deg, #01072a 0%, rgba(1,7,42,.78) 38%, rgba(1,7,42,.35) 70%, rgba(1,7,42,.55) 100%); }
   @media (min-width: 1024px) {
     .hero-shade { background:
-        linear-gradient(90deg, #01040d 0%, rgba(1,4,13,.92) 14%, rgba(1,4,13,.45) 34%, rgba(1,4,13,0) 54%),
-        linear-gradient(0deg, #01040d 0%, rgba(1,4,13,.55) 20%, rgba(1,4,13,0) 46%),
-        linear-gradient(180deg, rgba(1,4,13,.5) 0%, rgba(1,4,13,0) 20%); }
+        linear-gradient(90deg, #01072a 0%, rgba(1,7,42,.92) 14%, rgba(1,7,42,.45) 34%, rgba(1,7,42,0) 54%),
+        linear-gradient(0deg, #01072a 0%, rgba(1,7,42,.55) 20%, rgba(1,7,42,0) 46%),
+        linear-gradient(180deg, rgba(1,7,42,.5) 0%, rgba(1,7,42,0) 20%); }
   }
   .hero-strip { left: calc(-1 * max(0px, (100vw - 1300px) / 2)); width: calc(max(0px, (100vw - 1300px) / 2) + 24px + (100% - 48px) * .36 - 40px); }
-  .stats-bar { background: rgba(1,4,13,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,.1); }
+  .stats-bar { background: rgba(1,7,42,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,.1); }
   @media (min-width: 1024px) { .stats-bar { clip-path: polygon(2.6% 0, 100% 0, 100% 100%, 0 100%); padding-left: 2.6%; } }
   .stat { padding: 18px 22px; }
   .cd-box { width: 88px; padding: 14px 0 12px; text-align: center; border-radius: 14px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
   .cd-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 46px; line-height: 1; color: #fff; }
-  .cd-box:first-child { background: #fe005a; border-color: #fe005a; }
+  .cd-box:first-child { background: #ff7a1a; border-color: #ff7a1a; }
+  .cd-box:first-child .cd-num, .cd-box:first-child .cd-lbl { color: #031447; }
   .cd-lbl { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: rgba(255,255,255,.8); margin-top: 6px; }
   @media (max-width: 640px) {
     .cd-box { flex: 1 1 0; width: auto; padding: 12px 0 10px; }
@@ -145,31 +146,31 @@
     .faq-q { font-size: 17px; padding: 14px 16px; }
     .faq-a p { padding: 0 16px 16px; font-size: 15px; }
   }
-  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 36px; line-height: 1; color: #fe005a; font-variant-numeric: tabular-nums; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 36px; line-height: 1; color: #ff7a1a; font-variant-numeric: tabular-nums; }
   .stat-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.88); margin-top: 7px; }
 
   /* ---------- espacios ---------- */
   .esp-card { position: relative; display: block; width: 100%; text-align: left; cursor: pointer; padding: 22px 12px 8px; scroll-snap-align: center; }
   .esp-frame { position: relative; display: block; aspect-ratio: 4 / 3; transform: perspective(900px) rotateY(var(--ry, 0deg)) rotate(var(--tilt, 0deg)); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
   .esp-swatch { position: absolute; left: -12%; top: -12%; width: 124%; height: 124%; max-width: none; object-fit: fill; transform: rotate(calc(var(--tilt, 0deg) * -2.6)); opacity: .5; transition: opacity .45s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
-  .esp-photo { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 26px 44px -20px rgba(1,4,13,.6); }
+  .esp-photo { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 26px 44px -20px rgba(1,7,42,.6); }
   .esp-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.16,1,.3,1); }
   .esp-card:hover .esp-frame, .esp-card.is-active .esp-frame { transform: perspective(900px) rotateY(0deg) rotate(0deg) translateY(-6px); }
   .esp-card:hover .esp-swatch, .esp-card.is-active .esp-swatch { opacity: 1; transform: rotate(calc(var(--tilt, 0deg) * -3.4)) scale(1.04); }
   .esp-card:hover .esp-photo img { transform: scale(1.07); }
   .esp-name { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 26px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18.5px; letter-spacing: .09em; white-space: nowrap; text-transform: uppercase; color: #14110f; transition: color .3s ease; }
-  .esp-name .arr { color: #fe005a; flex: none; transition: transform .35s cubic-bezier(.2,.7,.3,1); }
-  .esp-card.is-active .esp-name { color: #fe005a; }
+  .esp-name .arr { color: #ff7a1a; flex: none; transition: transform .35s cubic-bezier(.2,.7,.3,1); }
+  .esp-card.is-active .esp-name { color: #ff7a1a; }
   .esp-card.is-active .esp-name .arr { transform: rotate(90deg); }
   .esp-line { display: block; margin-top: 7px; font-size: 15px; line-height: 1.45; color: #5b5866; }
-  .esp-bar { display: block; height: 3px; width: 0; margin-top: 12px; border-radius: 2px; background: #fe005a; transition: width .45s cubic-bezier(.16,1,.3,1); }
+  .esp-bar { display: block; height: 3px; width: 0; margin-top: 12px; border-radius: 2px; background: #ff7a1a; transition: width .45s cubic-bezier(.16,1,.3,1); }
   .esp-card.is-active .esp-bar { width: 64px; }
   #espTexto1:empty, #espTexto2:empty { display: none; }
   .dato { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; background: #fff; border: 1px solid rgba(12,20,51,.1); box-shadow: 0 10px 26px -18px rgba(12,20,51,.35); }
-  .ic-bubble { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 999px; background: #ffe5ee; color: #fe005a; }
+  .ic-bubble { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 999px; background: #ffeede; color: #ff7a1a; }
   .lounge-chip { transition: transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s ease, box-shadow .3s ease; }
-  .lounge-chip:hover { transform: translateY(-4px) rotate(-1deg); border-color: #fe005a; box-shadow: 0 12px 24px -14px rgba(254,0,90,.6); }
-  .tape { background: #fe005a; color: #fff; box-shadow: 0 14px 34px -14px rgba(254,0,90,.7); }
+  .lounge-chip:hover { transform: translateY(-4px) rotate(-1deg); border-color: #ff7a1a; box-shadow: 0 12px 24px -14px rgba(255,122,26,.6); }
+  .tape { background: #ff7a1a; color: #031447; box-shadow: 0 14px 34px -14px rgba(255,122,26,.7); }
 
   /* ---------- ponentes ---------- */
   .flip-card { perspective: 1200px; }
@@ -186,7 +187,7 @@
   .faq-item { border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: rgba(255,255,255,.03); transition: background-color .3s ease, border-color .3s ease; }
   .faq-item.open { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.3); }
   .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; text-align: left; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .05em; text-transform: uppercase; color: #fff; }
-  .faq-q:hover { color: #ffd0dd; }
+  .faq-q:hover { color: #ffe0c7; }
   .faq-ic { position: relative; width: 16px; height: 16px; flex: none; }
   .faq-ic::before, .faq-ic::after { content: ''; position: absolute; left: 0; top: 7px; width: 16px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .3s ease; }
   .faq-ic::after { transform: rotate(90deg); }
@@ -200,13 +201,13 @@
   .field { width: 100%; height: 46px; padding: 0 14px; border-radius: 9px; background: #f6f6f9; border: 1px solid #e2e2ea; color: #14110f; transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease; }
   textarea.field { height: auto; padding: 12px 14px; resize: vertical; }
   .field::placeholder { color: #9a98a3; }
-  .field:focus { outline: none; border-color: #fe005a; background: #fff; box-shadow: 0 0 0 4px rgba(254,0,90,.12); }
+  .field:focus { outline: none; border-color: #ff7a1a; background: #fff; box-shadow: 0 0 0 4px rgba(255,122,26,.12); }
   .contact-item { display: flex; align-items: center; gap: 14px; }
-  .contact-item .ic-bubble { background: rgba(254,0,90,.14); }
-  .contact-item:hover .ci-v { color: #ff8fb1; }
+  .contact-item .ic-bubble { background: rgba(255,122,26,.14); }
+  .contact-item:hover .ci-v { color: #ffb37a; }
   .logo-card { position: relative; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid rgba(12,20,51,.1); border-radius: 12px; padding: 26px 30px; transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, border-color .35s ease; }
-  .logo-card::before { content: ''; position: absolute; top: -11px; left: 50%; width: 86px; height: 22px; transform: translateX(-50%) rotate(var(--tape-rot, -4deg)); background: var(--tape, rgba(254,0,90,.6)); clip-path: polygon(3% 0, 97% 7%, 100% 52%, 96% 100%, 2% 93%, 0 48%); }
-  .logo-card:hover { transform: translateY(-6px) rotate(-.6deg); border-color: rgba(254,0,90,.35); box-shadow: 0 20px 40px -18px rgba(12,20,51,.32); }
+  .logo-card::before { content: ''; position: absolute; top: -11px; left: 50%; width: 86px; height: 22px; transform: translateX(-50%) rotate(var(--tape-rot, -4deg)); background: var(--tape, rgba(255,122,26,.6)); clip-path: polygon(3% 0, 97% 7%, 100% 52%, 96% 100%, 2% 93%, 0 48%); }
+  .logo-card:hover { transform: translateY(-6px) rotate(-.6deg); border-color: rgba(255,122,26,.35); box-shadow: 0 20px 40px -18px rgba(12,20,51,.32); }
   .logo-img { width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; filter: grayscale(1); opacity: .68; transition: filter .35s ease, opacity .35s ease; }
   .logo-card:hover .logo-img { filter: none; opacity: 1; }
 
@@ -251,7 +252,7 @@
       <a href="#ponentes" class="nav-link">Ponentes</a>
       <a href="#aliados" class="nav-link">Aliados</a>
       <span class="font-heading text-[13px] tracking-[.16em] text-white/70">Sábado 21 de noviembre 2026 · Campus CCM</span>
-      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-white font-heading tracking-[.12em] uppercase">Comprar boletos</a>
+      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-[#031447] font-heading tracking-[.12em] uppercase">Comprar boletos</a>
     </div>
   </nav>
 </header>
@@ -280,9 +281,9 @@
       <h1 class="t-display text-[62px] sm:text-[88px] lg:text-[104px] leading-[.84] reveal"><span id="heroMexico">México</span><br><span id="heroTrasciende" class="hl">Trasciende</span></h1>
       <p class="max-w-[540px] mt-5 sm:mt-6 text-[16px] sm:text-[17.5px] leading-relaxed text-white/80 reveal" style="text-wrap:pretty;transition-delay:.1s">No es únicamente un ciclo de conferencias. Un día completo diseñado en tres espacios que reúnen a quienes normalmente no coinciden: estudiantes, empresarios, especialistas y organizaciones.</p>
       <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-7 font-heading font-semibold text-[14.5px] tracking-[.18em] uppercase text-white/90 reveal" style="transition-delay:.18s">
-        <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fe005a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Sáb 21 Nov 2026</span>
+        <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff7a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Sáb 21 Nov 2026</span>
         <span class="hidden sm:block w-px h-5 bg-white/25"></span>
-        <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fe005a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Tec de Monterrey · Campus CCM</span>
+        <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff7a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Tec de Monterrey · Campus CCM</span>
       </div>
       <div class="hero-ctas flex flex-wrap gap-3 sm:gap-3.5 mt-8 sm:mt-9 reveal" style="transition-delay:.26s">
         <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="btn btn-pink">Comprar boletos <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -339,14 +340,14 @@
         <p class="text-[17px] leading-relaxed text-body mt-5 max-w-[460px]" style="text-wrap:pretty">Los tres espacios están abiertos a <strong class="font-semibold text-noir">todos los estudiantes</strong>. No necesitas un perfil específico — solo ganas de construir algo.</p>
         <div class="hidden lg:inline-flex items-center gap-2 note text-[20px] text-noir/75 mt-7 rotate-[-4deg]" aria-hidden="true">
           Elige un espacio
-          <svg class="draw" width="92" height="40" viewBox="0 0 92 40" fill="none" stroke="#fe005a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M4 30 C 24 8, 52 6, 82 18"/><path pathLength="1" d="M70 8 L84 18 L70 28"/></svg>
+          <svg class="draw" width="92" height="40" viewBox="0 0 92 40" fill="none" stroke="#ff7a1a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M4 30 C 24 8, 52 6, 82 18"/><path pathLength="1" d="M70 8 L84 18 L70 28"/></svg>
         </div>
       </div>
       <div id="espCards" class="grid grid-flow-col auto-cols-[80%] sm:auto-cols-[46%] lg:grid-flow-row lg:grid-cols-3 lg:auto-cols-auto gap-4 lg:gap-5 overflow-x-auto lg:overflow-visible snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0 pb-4 lg:pb-0" style="scrollbar-width:none"></div>
     </div>
 
     <div id="espDetail" class="mt-12 lg:mt-16 pt-10 border-t-2 border-noir/[.07] grid lg:grid-cols-[auto_minmax(0,1.1fr)_minmax(0,.9fr)] gap-x-12 gap-y-6 items-start">
-      <div class="t-display num-outline text-[88px] lg:text-[124px] leading-[.78]" style="--stroke:#fe005a" id="espNum">01</div>
+      <div class="t-display num-outline text-[88px] lg:text-[124px] leading-[.78]" style="--stroke:#ff7a1a" id="espNum">01</div>
       <div>
         <div class="eyebrow" id="espKicker"></div>
         <h3 class="t-display text-[38px] lg:text-[50px] mt-3" id="espNombre"></h3>
@@ -388,7 +389,7 @@
       </div>
       <div class="note text-[22px] lg:text-[25px] text-white/85 rotate-[-6deg] flex items-end gap-2 lg:mr-10 reveal" style="transition-delay:.2s">
         Cinco voces<br>extraordinarias
-        <svg class="draw shrink-0" width="46" height="52" viewBox="0 0 56 70" fill="none" stroke="#fe005a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 4 C 2 24, 14 46, 42 60"/><path pathLength="1" d="M28 62 L43 61 L38 47"/></svg>
+        <svg class="draw shrink-0" width="46" height="52" viewBox="0 0 56 70" fill="none" stroke="#ff7a1a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 4 C 2 24, 14 46, 42 60"/><path pathLength="1" d="M28 62 L43 61 L38 47"/></svg>
       </div>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-12 mt-14 px-2 lg:px-3" id="ponentesGrid"></div>
@@ -425,7 +426,7 @@
   <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-16 lg:pt-24 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,.55fr)_minmax(0,1fr)_minmax(0,1fr)] gap-10 xl:gap-12">
     <div class="relative reveal-pop">
       <div class="relative lg:bleed-l h-[260px] sm:h-[340px] lg:h-full lg:min-h-[560px]">
-        <div class="absolute inset-0 translate-x-3" style="clip-path:polygon(0 0, 100% 0, 100% 42%, 93% 100%, 0 100%);background:#fe005a"></div>
+        <div class="absolute inset-0 translate-x-3" style="clip-path:polygon(0 0, 100% 0, 100% 42%, 93% 100%, 0 100%);background:#ff7a1a"></div>
         <div class="absolute inset-0" style="clip-path:polygon(0 0, 100% 0, 100% 40%, 89% 100%, 0 100%)">
           <img src="assets/campus-tec.jpg" alt="Edificio del Tecnológico de Monterrey, Campus Ciudad de México" class="w-full h-full object-cover object-[70%_22%] lg:object-[100%_50%]" loading="lazy">
           <span class="grain-overlay"></span>
@@ -437,9 +438,9 @@
     <div class="reveal lg:pt-4">
       <div class="eyebrow">Ubicación</div>
       <h2 class="t-display text-[40px] sm:text-[48px] lg:text-[50px] mt-4 relative" style="text-wrap:balance">Tec de Monterrey<br><span class="hl">Campus Ciudad de México</span>
-        <svg class="draw absolute -top-8 right-2 sm:right-10 lg:-right-2 rotate-[12deg]" width="54" height="44" viewBox="0 0 54 44" fill="none" stroke="#fe005a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M5 38 L9 10 L20 24 L28 5 L36 24 L47 10 L50 38 Z"/></svg>
+        <svg class="draw absolute -top-8 right-2 sm:right-10 lg:-right-2 rotate-[12deg]" width="54" height="44" viewBox="0 0 54 44" fill="none" stroke="#ff7a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M5 38 L9 10 L20 24 L28 5 L36 24 L47 10 L50 38 Z"/></svg>
       </h2>
-      <p class="flex gap-3 mt-6 text-[16px] leading-relaxed text-noir"><svg class="shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fe005a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Calle del Puente 222, Ejidos de Huipulco, Tlalpan, 14380, Ciudad de México.</span></p>
+      <p class="flex gap-3 mt-6 text-[16px] leading-relaxed text-noir"><svg class="shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff7a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Calle del Puente 222, Ejidos de Huipulco, Tlalpan, 14380, Ciudad de México.</span></p>
       <p class="mt-2 pl-8 text-[15.5px] leading-relaxed text-body">El foro ocupa el Main Stage en la carpa de eventos, el jardín y el lounge, ambos en Aulas 2.</p>
       <div class="grid grid-cols-2 gap-3 mt-7">
         <div class="dato"><span class="ic-bubble"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><span class="block font-heading font-semibold text-[11px] tracking-[.24em] uppercase text-muted">Registro</span><span class="block font-heading font-bold text-[22px] leading-tight">07:00 hrs</span></span></div>
@@ -465,10 +466,10 @@
           <img src="assets/campus-patio.jpg" alt="" class="w-full h-full object-cover" loading="lazy">
         </div>
       </div>
-      <div class="relative z-[1] bg-navy text-white px-6 sm:px-8 lg:pl-12 lg:pr-9 pt-9 pb-9 lg:bleed-r lg:[clip-path:polygon(7%_0,100%_0,100%_100%,0_100%)] rounded-2xl lg:rounded-none shadow-[0_30px_60px_-30px_rgba(1,4,13,.7)]">
+      <div class="relative z-[1] bg-navy text-white px-6 sm:px-8 lg:pl-12 lg:pr-9 pt-9 pb-9 lg:bleed-r lg:[clip-path:polygon(7%_0,100%_0,100%_100%,0_100%)] rounded-2xl lg:rounded-none shadow-[0_30px_60px_-30px_rgba(1,7,42,.7)]">
         <div class="relative inline-block">
           <img src="assets/brush-under.webp" alt="" aria-hidden="true" class="paint paint-in left-[-5%] top-[-46%] w-[30%] rotate-[-8deg]">
-          <h3 class="relative script text-[30px] lg:text-[34px] leading-none text-[#ff2a6d] rotate-[-3deg]">Preguntas frecuentes</h3>
+          <h3 class="relative script text-[30px] lg:text-[34px] leading-none text-[#ff9440] rotate-[-3deg]">Preguntas frecuentes</h3>
           <svg class="absolute -right-10 -top-3" width="34" height="30" viewBox="0 0 34 30" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 22 L2 28"/><path d="M14 16 L12 6"/><path d="M22 20 L31 14"/></svg>
         </div>
         <div class="grid gap-3 mt-8" id="faqList"></div>
@@ -574,7 +575,7 @@
 
 </main>
 
-<button id="toTop" hidden aria-label="Volver arriba" class="fixed bottom-7 right-7 z-[70] w-12 h-12 rounded-full bg-npink text-white shadow-[0_8px_28px_rgba(254,0,90,.45)] hover:bg-abyss flex items-center justify-center">
+<button id="toTop" hidden aria-label="Volver arriba" class="fixed bottom-7 right-7 z-[70] w-12 h-12 rounded-full bg-npink text-[#031447] shadow-[0_8px_28px_rgba(255,122,26,.45)] hover:bg-abyss flex items-center justify-center">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
@@ -595,7 +596,7 @@
 
     <div class="flex items-start gap-4">
       <span class="grid place-items-center w-11 h-11 rounded-full bg-white/10 shrink-0">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d5f157" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff7a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       </span>
       <div class="text-[14.5px] leading-relaxed text-white/85 max-w-[420px]">
         <strong class="font-semibold text-white">Tecnológico de Monterrey, Campus Ciudad de México</strong><br>
@@ -891,7 +892,7 @@ function renderEspacio() {
     loungeExtra.hidden = false;
     const chips = e.speakers.map(sp => `
       <div class="lounge-chip flex-none flex items-center gap-3 pl-2 pr-5 py-2 rounded-full border-2 border-noir/10 bg-white">
-        <span class="w-14 h-14 rounded-full p-[2px] shrink-0" style="background:#fe005a"><span class="block w-full h-full rounded-full bg-cover border-2 border-white" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></span></span>
+        <span class="w-14 h-14 rounded-full p-[2px] shrink-0" style="background:#ff7a1a"><span class="block w-full h-full rounded-full bg-cover border-2 border-white" style="background-image:url('${sp.photo}');background-position:${sp.pos || 'center'}"></span></span>
         <span class="font-heading font-semibold text-[15px] tracking-wide uppercase whitespace-nowrap">${sp.name}</span>
       </div>`);
     document.getElementById('loungeCarousel').innerHTML = chips.concat(chips).join('');
@@ -907,7 +908,7 @@ function renderEspacio() {
 renderEspacio();
 
 // ---------- ponentes: tilted canvases that flip ----------
-const ACCENTS = ['#fe005a'];
+const ACCENTS = ['#ff7a1a'];
 const PON_SWATCH = ['assets/swatch-violet.webp', 'assets/swatch-sunset.webp', 'assets/swatch-blue.webp'];
 const PON_TILT = [-3, 2.4, -1.8, 3, -2.2];
 const ponentesGrid = document.getElementById('ponentesGrid');
@@ -921,14 +922,14 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
         <div class="flip-inner">
           <div class="flip-face">
             <img src="${p.photo}" alt="${p.name}" class="absolute inset-0 w-full h-full object-cover" style="object-position:${p.pos}">
-            <span class="absolute top-3 right-3 font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase bg-npink text-white px-2.5 py-1 rounded-full">Confirmada</span>
+            <span class="absolute top-3 right-3 font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase bg-npink text-[#031447] px-2.5 py-1 rounded-full">Confirmada</span>
             <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:#ffffff">${p.num}</div>
             <div class="absolute inset-x-0 bottom-0 bg-navy/95 px-4 pt-3 pb-4 border-t-4 border-npink">
               <div class="t-display text-[20px] sm:text-[24px] leading-none text-white">${p.name}</div>
               <div class="text-[12.5px] leading-snug text-white/80 mt-1.5">${p.role}</div>
             </div>
           </div>
-          <div class="flip-face flip-back p-5 flex flex-col justify-center border-2 border-npink" style="background:#0c1433">
+          <div class="flip-face flip-back p-5 flex flex-col justify-center border-2 border-npink" style="background:#031447">
             <div class="note text-[22px] text-npink rotate-[-3deg]">Conoce a ${p.name.split(' ')[0]}</div>
             <p class="text-[13.5px] leading-relaxed text-white/85 mt-3">${p.bio}</p>
             <div class="font-heading font-semibold text-[11px] tracking-[.28em] uppercase text-npink mt-4">${p.eje} · ${p.num}</div>
@@ -944,7 +945,7 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
       <div class="flip-card pon-card" role="button" tabindex="0" aria-label="Ponente ${p.num}: por anunciar. Voltear tarjeta">
         <div class="flip-inner">
           <div class="flip-face">
-            <div class="absolute inset-0" style="background:#121933"></div>
+            <div class="absolute inset-0" style="background:#04195a"></div>
             <svg class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[88%]" viewBox="0 0 200 210" aria-hidden="true">
               <defs><linearGradient id="pg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity=".85"/><stop offset="1" stop-color="${c}" stop-opacity=".85"/></linearGradient></defs>
               <circle cx="100" cy="72" r="40" fill="url(#pg${i})"/>
@@ -957,7 +958,7 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
               <div class="font-heading font-semibold text-[11px] tracking-[.3em] uppercase mt-1.5 text-white/85">${p.eje}</div>
             </div>
           </div>
-          <div class="flip-face flip-back p-5 flex flex-col items-center justify-center text-center border-2 border-npink" style="background:#0c1433">
+          <div class="flip-face flip-back p-5 flex flex-col items-center justify-center text-center border-2 border-npink" style="background:#031447">
             <div class="note text-[26px] text-npink rotate-[-4deg]">¡Muy pronto!</div>
             <p class="text-[14px] leading-relaxed text-white/85 mt-3">Este ponente está por anunciarse. Síguenos en Instagram @trasciende_tec para enterarte primero.</p>
           </div>
@@ -973,7 +974,7 @@ ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
 });
 
 // ---------- logo walls: taped-on cards ----------
-const TAPES = ['rgba(254,0,90,.55)', 'rgba(255,122,26,.6)', 'rgba(164,61,255,.5)', 'rgba(60,229,210,.55)'];
+const TAPES = ['rgba(255,122,26,.55)', 'rgba(255,122,26,.6)', 'rgba(164,61,255,.5)', 'rgba(60,229,210,.55)'];
 const TAPE_ROT = [-5, 4, -3, 6, -6, 3];
 function logoWall(list, pos, height) {
   return list.map((s, i) => `
