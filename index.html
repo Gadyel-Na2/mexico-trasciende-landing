@@ -1047,7 +1047,7 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
               <path d="M14 210 C 18 150, 58 120, 100 120 C 142 120, 182 150, 186 210 Z" fill="url(#pg${i})"/>
             </svg>
             <span class="grain-overlay" style="opacity:.25"></span>
-            <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:${c}">${p.num}</div>
+            <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:${c};filter:drop-shadow(0 1px 4px rgba(3,20,71,.75))">${p.num}</div>
             <div class="absolute inset-x-0 bottom-5 text-center px-2">
               <div class="note text-[18px] sm:text-[24px] text-white">Por anunciar</div>
               <div class="font-heading font-semibold text-[11px] tracking-[.3em] uppercase mt-1.5 text-white/85">${p.eje}</div>
